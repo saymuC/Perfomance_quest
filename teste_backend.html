@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teste do Backend - Performance Quest</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .ok { color: #2ecc71; font-weight: bold; }
+        .erro { color: #e74c3c; font-weight: bold; }
+        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Teste do Backend Completo</h1>
+    <div id="resultado" class="card">⏳ Carregando...</div>
+
+    <script type="module">
+        import { salvarHistorico, carregarHistorico, limparHistorico } from './backend/src/storage.js';
+        import { gerarResumo, gerarRelatorioCompleto } from './backend/src/relatorios.js';
+
+        try {
+            // ============================================================
+            // 1. LIMPA O HISTÓRICO (para começar do zero)
+            // ============================================================
+            limparHistorico();
+            console.log(' Histórico limpo para teste');
+
+            // ============================================================
+            // 2. SIMULA RESPOSTAS DO ALUNO
+            // ============================================================
+            const respostas = [
+                { assunto: 'Matemática', acertou: true, tempo: 10 },
+                { assunto: 'Matemática', acertou: false, tempo: 15 },
+                { assunto: 'Matemática', acertou: false, tempo: 20 },
+                { assunto: 'Português', acertou: true, tempo: 5 },
+                { assunto: 'Português', acertou: true, tempo: 8 },
+                { assunto: 'Ciências', acertou: true, tempo: 7 },
+                { assunto: 'Ciências', acertou: true, tempo: 6 },
+                { assunto: 'História', acertou: false, tempo: 14 },
+            ];
+
+            // ============================================================
+            // 3. SALVA AS RESPOSTAS
+            // ============================================================
+            salvarHistorico(respostas);
+            console.log(' Respostas salvas');
+
+            // ============================================================
+            // 4. CARREGA O HISTÓRICO
+            // ============================================================
+            const historico = carregarHistorico();
+            console.log(' Histórico carregado:', historico);
+
+            // ============================================================
+            // 5. GERA O RESUMO
+            // ============================================================
+            const resumo = gerarResumo();
+            console.log(' Resumo:', resumo);
+
+            // ============================================================
+            // 6. GERA O RELATÓRIO COMPLETO
+            // ============================================================
+            const relatorio = gerarRelatorioCompleto();
+            console.log(' Relatório completo:', relatorio);
+
+            // ============================================================
+            // 7. EXIBE OS RESULTADOS NA TELA
+            // ============================================================
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+                <h2 class="ok"> Teste concluído com sucesso!</h2>
+                
+                <h3> Resumo do desempenho:</h3>
+                <ul>
+                    <li><strong>Total de questões:</strong> ${resumo.total}</li>
+                    <li><strong>Acertos:</strong> ${resumo.acertos}</li>
+                    <li><strong>Taxa de acerto:</strong> ${resumo.taxaAcerto}%</li>
+                    <li><strong>Mensagem:</strong> ${resumo.mensagem}</li>
+                </ul>
+
+                <h3> 3 assuntos prioritários:</h3>
+                <ul>
+                    ${relatorio.assuntosPrioritarios.map(item => `
+                        <li>
+                            <strong>${item.assunto}</strong> - 
+                            IPE: ${item.ipe.toFixed(2)} | 
+                            Acertos: ${item.acertos}/${item.total} | 
+                            Taxa: ${item.taxaAcerto.toFixed(0)}%
+                        </li>
+                    `).join('')}
+                </ul>
+
+                <h3>Desempenho por assunto:</h3>
+                <pre>${JSON.stringify(relatorio.desempenhoPorAssunto, null, 2)}</pre>
+
+                <br>
+                <p class="ok"> Todos os módulos do backend estão funcionando corretamente!</p>
+                <p style="font-size: 0.9rem; color: #555;">Verifique também o console do navegador (F12) para mais detalhes.</p>
+            `;
+
+        } catch (erro) {
+            document.getElementById('resultado').innerHTML = `
+                <h2 class="erro"> Erro ao executar o teste</h2>
+                <p><strong>Mensagem:</strong> ${erro.message}</p>
+                <p>Verifique o console do navegador (F12) para mais detalhes.</p>
+            `;
+            console.error(' Erro no teste:', erro);
+        }
+    </script>
+</body>
+</html>
