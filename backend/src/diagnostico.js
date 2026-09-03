@@ -76,18 +76,33 @@ export function calcularDesempenhoPorArea(historico) {
             const { total, acertos, tempo} = dados;
             const taxaErros =  total > 0 ? 1 - (acertos / total) : 1;
             const tempoMedio = total > 0 ? tempo / total : 0;
-            const ipe = taxaErros * (1 + tempoMedio / 10) 
+            // O IPE representa somente a taxa de erros. O tempo e usado
+            // exclusivamente como criterio de desempate no ranking.
+            const ipe = taxaErros;
 
             resultados.push({
                 assunto,
                 ipe,
                 total,
                 acertos,
-                taxaAcerto: total > 0 ? (acertos / total) * 100 : 0, 
+                taxaAcerto: total > 0 ? (acertos / total) * 100 : 0,
+                tempoMedio
             });
         }
 
-        resultados.sort((a, b) => b.ipe - a.ipe);
+        resultados.sort((a, b) => {
+            if (b.taxaAcerto !== a.taxaAcerto) {
+                return b.ipe - a.ipe;
+            }
+
+            // Apenas assuntos com a mesma taxa de acerto sao desempatados
+            // pelo tempo medio; o mais demorado vem primeiro.
+            if (b.tempoMedio !== a.tempoMedio) {
+                return b.tempoMedio - a.tempoMedio;
+            }
+
+            return a.assunto.localeCompare(b.assunto);
+        });
         return resultados;
   
     } 
@@ -104,8 +119,7 @@ export function calcularDesempenhoPorArea(historico) {
 
         const desempenho = calcularDesempenhoPorAssunto(historico);
         const ranking = calcularIPE(desempenho);
-        const filtrados = ranking.filter(item => item.total >= 2);
-        const lista = filtrados.length > 0 ? filtrados : ranking;
-
-        return lista.slice(0, quantidade);
+        return ranking
+            .filter(item => item.total >= 2)
+            .slice(0, quantidade);
     }

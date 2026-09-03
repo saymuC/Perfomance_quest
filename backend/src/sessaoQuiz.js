@@ -73,7 +73,9 @@ export class SessaoQuiz {
 
         salvarHistorico(this.respostas);
         this.finalizada = true;
-        return gerarRelatorioCompleto();
+        // O resultado final considera somente esta tentativa; o historico
+        // continua salvo para consultas futuras.
+        return gerarRelatorioCompleto(this.respostas);
     }
 }
 

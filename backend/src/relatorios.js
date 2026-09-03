@@ -11,8 +11,8 @@ import {
  * @returns {Object} Resumo com total de questões e taxa de acerto
  */
 
- export function gerarResumo() {
-    const historico = carregarHistorico();
+ export function gerarResumo(respostas = carregarHistorico()) {
+    const historico = respostas;
 
     if (historico.length === 0) {
         return {
@@ -42,8 +42,8 @@ import {
    * @returns {Object} Relatório com resumo, desempenho por assunto e prioridades
    */
 
-  export function gerarRelatorioCompleto() {
-    const historico = carregarHistorico();
+  export function gerarRelatorioCompleto(respostas = carregarHistorico()) {
+    const historico = respostas;
 
     if (historico.length === 0) {
         return {
@@ -62,7 +62,7 @@ import {
     }
     
          // 1. Calcula o resumo 
-         const resumo = gerarResumo();
+         const resumo = gerarResumo(historico);
 
          // 2. Pega os 3 assuntos prioritários (usando a IA)
          const assuntosPrioritarios = sugerirAssuntosPrioritarios(historico, 3);
