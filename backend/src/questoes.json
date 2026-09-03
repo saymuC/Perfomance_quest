@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "disciplina": "linguagens",
+    "assunto": "Interpretação de Texto",
+    "enunciado": "Qual é a principal função de um texto com linguagem informativa?",
+    "alternativas": [
+      "A) Transmitir dados e fatos de forma objetiva.",
+      "B) Convencer o leitor a comprar um produto.",
+      "C) Expressar sentimentos e emoções do autor.",
+      "D) Contar uma história de ficção fantástica."
+    ],
+    "correta": 0
+  },
+  {
+    "id": 2,
+    "disciplina": "matematica",
+    "assunto": "Equações do 2º Grau",
+    "enunciado": "Qual é o valor do discriminante (delta) na equação x² - 5x + 6 = 0?",
+    "alternativas": [
+      "A) 1",
+      "B) 5",
+      "C) 12",
+      "D) 25"
+    ],
+    "correta": 0
+  }
+]
