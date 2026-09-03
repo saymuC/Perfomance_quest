@@ -1,7 +1,10 @@
 // Geração de relatórios e gráficos 
 
 import { carregarHistorico} from './storage.js';
-import { sugerirAssuntosPrioritarios} from './diagnostico.js';
+import {
+    calcularDesempenhoPorArea,
+    sugerirAssuntosPrioritarios
+} from './diagnostico.js';
 
 /**
  * Calcula o resumo do geral desempenho do aluno 
@@ -53,7 +56,8 @@ import { sugerirAssuntosPrioritarios} from './diagnostico.js';
             },
 
             assuntosPrioritarios: [],
-            desempenhoPorAssunto: {}
+            desempenhoPorAssunto: {},
+            desempenhoPorArea: calcularDesempenhoPorArea([])
         };
     }
     
@@ -62,6 +66,7 @@ import { sugerirAssuntosPrioritarios} from './diagnostico.js';
 
          // 2. Pega os 3 assuntos prioritários (usando a IA)
          const assuntosPrioritarios = sugerirAssuntosPrioritarios(historico, 3);
+         const desempenhoPorArea = calcularDesempenhoPorArea(historico);
          
          // 3. Calcula o desempenho ṕor assunto 
          const desempenhoPorAssunto = {};
@@ -79,7 +84,8 @@ import { sugerirAssuntosPrioritarios} from './diagnostico.js';
          return {
             resumo,
             assuntosPrioritarios,
-            desempenhoPorAssunto
+            desempenhoPorAssunto,
+            desempenhoPorArea
 
          };
       }

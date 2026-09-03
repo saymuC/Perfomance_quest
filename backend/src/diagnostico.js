@@ -17,7 +17,8 @@ export function calcularDesempenhoPorAssunto(historico) {
 
             desempenho[assunto].total++;
             if (resposta.acertou) desempenho[assunto].acertos++;
-            if (resposta.tempo) desempenho[assunto].tempo += resposta.tempo;
+            const tempo = resposta.tempoSegundos ?? resposta.tempo ?? 0;
+            desempenho[assunto].tempo += tempo;
     });
 
 
@@ -32,6 +33,43 @@ export function calcularDesempenhoPorAssunto(historico) {
     return desempenho;
 
  } 
+
+/**
+ * Calcula acertos e porcentagem para cada area do ENEM.
+ * @param {Array} historico - Lista de respostas do aluno
+ * @returns {Object} Desempenho agrupado por area
+ */
+export function calcularDesempenhoPorArea(historico) {
+    const areasPadrao = [
+        'Linguagens',
+        'Matemática',
+        'Ciências Humanas',
+        'Ciências da Natureza'
+    ];
+
+    const desempenho = {};
+    areasPadrao.forEach(area => {
+        desempenho[area] = { total: 0, acertos: 0, taxaAcerto: 0 };
+    });
+
+    historico.forEach(resposta => {
+        const area = resposta.area || 'Geral';
+        if (!desempenho[area]) {
+            desempenho[area] = { total: 0, acertos: 0, taxaAcerto: 0 };
+        }
+
+        desempenho[area].total++;
+        if (resposta.acertou) desempenho[area].acertos++;
+    });
+
+    Object.values(desempenho).forEach(dados => {
+        dados.taxaAcerto = dados.total > 0
+            ? Math.round((dados.acertos / dados.total) * 100)
+            : 0;
+    });
+
+    return desempenho;
+}
      export function calcularIPE(desempenho) {
         const resultados = [];
         for (const [assunto, dados] of Object.entries(desempenho)) {
