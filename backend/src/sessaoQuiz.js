@@ -9,6 +9,10 @@ export class SessaoQuiz {
             throw new TypeError('As questoes do quiz devem ser uma lista.');
         }
 
+        if (questoes.length === 0) {
+            throw new Error('O quiz precisa ter pelo menos uma questao.');
+        }
+
         this.questoes = new Map();
         this.respostas = [];
         this.finalizada = false;
