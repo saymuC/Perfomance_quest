@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Quest — Rendimento por Assunto (ENEM)</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Cabeçalho da Aplicação -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="brand">
+        <span class="brand-icon">🎯</span>
+        <div>
+          <h1 class="brand-title">Performance Quest</h1>
+          <p class="brand-subtitle">Simulador & Diagnóstico Inteligente de Rendimento para o ENEM</p>
+        </div>
+      </div>
+      <div>
+        <span id="api-status-badge" class="badge badge-primary">Conectando...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="main-container">
+
+    <!-- ========================================================
+         TELA 1: INÍCIO E CONFIGURAÇÃO DO SIMULADO
+         ======================================================== -->
+    <section id="screen-home" class="screen active">
+      <div class="card">
+        <h2 class="card-title">🚀 Bem-vindo ao Simulado Inteligente</h2>
+        <p style="color: #475569; margin-bottom: 1.25rem;">
+          Prepare-se para o ENEM com questões reais e receba uma <strong>análise diagnóstica por IA</strong> 
+          apontando exatamente os <strong>3 assuntos prioritários</strong> que você precisa revisar para aumentar sua nota.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label" for="filtro-area">Área do Conhecimento:</label>
+          <select id="filtro-area" class="form-select">
+            <option value="Todas" selected>Todas as Áreas (Simulado Geral)</option>
+            <option value="Matemática">Matemática e suas Tecnologias</option>
+            <option value="Ciências da Natureza">Ciências da Natureza (Física, Química, Biologia)</option>
+            <option value="Ciências Humanas">Ciências Humanas (História, Geografia, Filosofia)</option>
+            <option value="Linguagens">Linguagens, Códigos e suas Tecnologias</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="filtro-quantidade">Quantidade de Questões:</label>
+          <select id="filtro-quantidade" class="form-select">
+            <option value="5" selected>5 questões (Diagnóstico Rápido)</option>
+            <option value="10">10 questões (Recomendado)</option>
+            <option value="15">15 questões (Completo)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+          <button id="btn-iniciar-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;">
+            Iniciar Simulado →
+          </button>
+          <button id="btn-ver-historico" class="btn btn-outline" style="flex: 1; min-width: 140px;">
+            Ver Meu Histórico
+          </button>
+        </div>
+      </div>
+
+      <div class="card" style="background: #f8fafc;">
+        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;">ℹ️ Como funciona o diagnóstico por IA?</h3>
+        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">
+          A cada questão respondida, nosso algoritmo calcula o <strong>Índice de Prioridade de Estudo (IPE)</strong> cruzando sua taxa de acerto com o tempo médio de resolução. Ao final, você recebe recomendações pedagógicas precisas sem precisar enviar nenhum dado pessoal.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         TELA 2: EXECUÇÃO DO QUIZ (RF05, RF06, RN03)
+         ======================================================== -->
+    <section id="screen-quiz" class="screen">
+      <div class="card">
+        <!-- Barra de Metadados e Progresso -->
+        <div class="quiz-header-bar">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <span id="quiz-area-badge" class="badge badge-primary">Área</span>
+            <span id="quiz-assunto-badge" class="badge badge-warning">Assunto</span>
+          </div>
+
+          <div class="quiz-timer">
+            <span>⏱</span>
+            <span id="quiz-timer-text">00:00</span>
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div style="display: flex; justify-content: space-between; font-size: 0.825rem; color: #64748b;">
+            <span id="quiz-counter">Questão 1 de 5</span>
+          </div>
+          <div class="progress-track">
+            <div id="quiz-progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Enunciado -->
+        <div id="quiz-question-text" class="question-body">
+          Carregando enunciado da questão...
+        </div>
+
+        <!-- Lista de Alternativas -->
+        <div id="quiz-alternatives" class="alternatives-list"></div>
+
+        <!-- Banner de Correção Imediata -->
+        <div id="quiz-feedback" class="feedback-banner"></div>
+
+        <!-- Ações do Quiz -->
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button id="btn-confirmar-resposta" class="btn btn-primary" disabled>
+            Confirmar Resposta
+          </button>
+          <button id="btn-proxima-questao" class="btn btn-primary" style="display: none;">
+            Próxima Questão →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         TELA 3: RELATÓRIO E RESULTADO DO SIMULADO (RF08, RF09, RF10)
+         ======================================================== -->
+    <section id="screen-result" class="screen">
+      <div class="card">
+        <h2 class="card-title">📊 Resultado do Simulado</h2>
+        <p id="resumo-mensagem" style="font-size: 1.05rem; color: #334155; margin-bottom: 1.25rem;">
+          Carregando diagnóstico...
+        </p>
+
+        <!-- Indicadores Numéricos -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div id="resumo-total" class="stat-value">0</div>
+            <div class="stat-label">Questões</div>
+          </div>
+          <div class="stat-box">
+            <div id="resumo-acertos" class="stat-value" style="color: #10b981;">0</div>
+            <div class="stat-label">Acertos</div>
+          </div>
+          <div class="stat-box">
+            <div id="resumo-taxa" class="stat-value">0%</div>
+            <div class="stat-label">Aproveitamento</div>
+          </div>
+        </div>
+
+        <!-- DESTAQUE IA: Top 3 Assuntos Prioritários (RF09) -->
+        <div class="ai-highlight-card">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.3rem;">🧠</span>
+            <h3 style="font-size: 1.1rem; color: #0369a1;">Diagnóstico IA: Seus 3 Assuntos Mais Urgentes</h3>
+          </div>
+          <p style="font-size: 0.85rem; color: #0284c7; margin-top: 0.25rem;">
+            Calculado através do Índice de Prioridade de Estudo (IPE) com base em seus erros e tempo de resposta.
+          </p>
+          <div id="ai-priority-container" class="ai-priority-list"></div>
+        </div>
+
+        <!-- Desempenho por Área do ENEM -->
+        <div style="margin-top: 1.5rem;">
+          <h3 style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem;">Desempenho por Área de Conhecimento</h3>
+          <div id="area-breakdown-container" class="area-breakdown-list"></div>
+        </div>
+
+        <!-- Ações Pós-Quiz -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem;">
+          <button id="btn-novo-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;">
+            Fazer Novo Simulado
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal de Histórico Acumulado -->
+  <div id="modal-history" class="modal-backdrop">
+    <div class="modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
+        <h3 style="font-size: 1.15rem; color: #0f172a;">📈 Meu Histórico Acumulado (LocalStorage)</h3>
+        <button id="btn-fechar-historico" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
+      </div>
+
+      <div id="history-content" style="padding: 1rem 0;"></div>
+
+      <div style="display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
+        <button id="btn-limpar-historico" class="btn btn-danger" style="font-size: 0.85rem;">
+          Limpar Histórico
+        </button>
+        <button onclick="document.getElementById('modal-history').classList.remove('active')" class="btn btn-secondary" style="font-size: 0.85rem;">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="app-footer">
+    <p>Performance Quest: Rendimento por Assunto &copy; 2026 — UNINORTE / Manaus-AM</p>
+    <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">
+      Atividades Práticas Interdisciplinares de Extensão II • Questões oficiais do ENEM via api.enem.dev
+    </p>
+  </footer>
+
+  <!-- Carregador da Aplicação -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
