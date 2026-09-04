@@ -1,37 +1,63 @@
-// Módulo de Consumo da API Pública do ENEM e Backup Local (Fallback)
+// Módulo de Consumo, Higienização e Seleção do Quiz (RF01 a RF04)
 
 /**
- * Busca as questões da API do ENEM com contingência local
- * @returns {Promise<Array>} Lista de questões oficiais ou de contingência
+ * RF04: Padroniza os campos para que o Frontend sempre receba a mesma estrutura
  */
-export async function carregarQuestoes() {
+function padronizarQuestao(q) {
+  return {
+    id: q.id || Math.random(),
+    area: q.area || q.disciplina || 'Geral',
+    assunto: q.assunto || q.topic || 'Conhecimentos Gerais',
+    enunciado: q.enunciado || q.title || '',
+    alternativas: q.alternativas || q.options || [],
+    correta: q.correta !== undefined ? q.correta : q.correctAlternative
+  };
+}
+
+/**
+ * Algoritmo para embaralhar o array (Fisher-Yates)
+ */
+function embaralhar(array) {
+  const lista = [...array];
+  for (let i = lista.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [lista[i], lista[j]] = [lista[j], lista[i]];
+  }
+  return lista;
+}
+
+/**
+ * RF01, RF02, RF03 e RF04: Busca, trata erro, padroniza e sorteia o quiz
+ * @param {number} quantidade Total de questões para o quiz (padrão: 10)
+ */
+export async function carregarEPrepararQuiz(quantidade = 10) {
   const URL_API_ENEM = 'https://api.enem.dev/v1/exams';
+  let questoesBrutas = [];
 
+  // 1. RF01 & RF02: Tenta a API; se falhar, vai pro Fallback Local
   try {
-    // 1. Tenta buscar da API pública
     const resposta = await fetch(URL_API_ENEM);
-
-    if (!resposta.ok) {
-      throw new Error(`Erro na API do ENEM (Status: ${resposta.status})`);
-    }
-
-    const questoesAPI = await resposta.json();
-    console.log('Questões carregadas com sucesso via API do ENEM!');
-    return questoesAPI;
-
+    if (!resposta.ok) throw new Error(`Status HTTP: ${resposta.status}`);
+    questoesBrutas = await resposta.json();
+    console.log('Questões obtidas via API do ENEM!');
   } catch (erro) {
-    // 2. FALLBACK: Se a API falhar ou ficar sem internet, carrega do JSON local
-    console.warn('API indisponível. Carregando questões do backup local...', erro.message);
-
+    console.warn('API indisponível. Carregando backup local...', erro.message);
     try {
       const respostaLocal = await fetch(new URL('./questoes.json', import.meta.url));
-      const questoesLocais = await respostaLocal.json();
-      console.log('Backup local carregado com sucesso!');
-      return questoesLocais;
-
+      questoesBrutas = await respostaLocal.json();
     } catch (erroLocal) {
-      console.error('Erro crítico ao carregar backup local:', erroLocal);
+      console.error('Erro crítico no backup local:', erroLocal);
       return [];
     }
   }
+
+  // 2. RF04: Padronização de campos e filtro de segurança (garante área, assunto, alternativas e gabarito)
+  const questoesValidas = questoesBrutas
+    .map(padronizarQuestao)
+    .filter(q => q.enunciado && q.alternativas.length > 0 && q.correta !== undefined);
+
+  // 3. RF03: Embaralha para não repetir e limita a quantidade desejada para o quiz
+  const quizSorteado = embaralhar(questoesValidas).slice(0, quantidade);
+
+  return quizSorteado;
 }
