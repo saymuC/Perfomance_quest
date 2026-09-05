@@ -1,28 +1,170 @@
 [
   {
-    "id": 1,
-    "disciplina": "linguagens",
-    "assunto": "Interpretação de Texto",
-    "enunciado": "Qual é a principal função de um texto com linguagem informativa?",
+    "id": "2023-101",
+    "area": "Matemática",
+    "assunto": "Geometria Plana",
+    "enunciado": "Um estudante precisa calcular a área de uma praça circular cujo raio mede 10 metros. Usando pi = 3,14, qual é a área total?",
     "alternativas": [
-      "A) Transmitir dados e fatos de forma objetiva.",
-      "B) Convencer o leitor a comprar um produto.",
-      "C) Expressar sentimentos e emoções do autor.",
-      "D) Contar uma história de ficção fantástica."
+      { "letter": "A", "text": "31,4 m²" },
+      { "letter": "B", "text": "62,8 m²" },
+      { "letter": "C", "text": "314 m²" },
+      { "letter": "D", "text": "628 m²" },
+      { "letter": "E", "text": "100 m²" }
     ],
-    "correta": 0
+    "correta": "C"
   },
   {
-    "id": 2,
-    "disciplina": "matematica",
-    "assunto": "Equações do 2º Grau",
-    "enunciado": "Qual é o valor do discriminante (delta) na equação x² - 5x + 6 = 0?",
+    "id": "2023-102",
+    "area": "Matemática",
+    "assunto": "Porcentagem",
+    "enunciado": "Um produto que custava R$ 200,00 sofreu um desconto de 15%. Qual o novo valor do produto?",
     "alternativas": [
-      "A) 1",
-      "B) 5",
-      "C) 12",
-      "D) 25"
+      { "letter": "A", "text": "R$ 170,00" },
+      { "letter": "B", "text": "R$ 180,00" },
+      { "letter": "C", "text": "R$ 185,00" },
+      { "letter": "D", "text": "R$ 150,00" },
+      { "letter": "E", "text": "R$ 175,00" }
     ],
-    "correta": 0
+    "correta": "A"
+  },
+  {
+    "id": "2023-103",
+    "area": "Matemática",
+    "assunto": "Estatística",
+    "enunciado": "As notas de um aluno foram 6, 7, 8 e 9. Qual é a média aritmética das notas deste aluno?",
+    "alternativas": [
+      { "letter": "A", "text": "7,0" },
+      { "letter": "B", "text": "7,5" },
+      { "letter": "C", "text": "8,0" },
+      { "letter": "D", "text": "8,5" },
+      { "letter": "E", "text": "6,5" }
+    ],
+    "correta": "B"
+  },
+  {
+    "id": "2023-201",
+    "area": "Linguagens",
+    "assunto": "Interpretação de Texto",
+    "enunciado": "A função da linguagem que tem como foco a própria mensagem, explorando a sonoridade e o ritmo, é chamada de:",
+    "alternativas": [
+      { "letter": "A", "text": "Função Referencial" },
+      { "letter": "B", "text": "Função Emotiva" },
+      { "letter": "C", "text": "Função Poética" },
+      { "letter": "D", "text": "Função Fática" },
+      { "letter": "E", "text": "Função Metalinguística" }
+    ],
+    "correta": "C"
+  },
+  {
+    "id": "2023-202",
+    "area": "Linguagens",
+    "assunto": "Gramática",
+    "enunciado": "Assinale a alternativa em que o uso da crase está CORRETO:",
+    "alternativas": [
+      { "letter": "A", "text": "Ele foi à pé para a escola." },
+      { "letter": "B", "text": "Entregou o presente à uma menina." },
+      { "letter": "C", "text": "Fomos à praia no fim de semana." },
+      { "letter": "D", "text": "Voltou à casa após à aula." },
+      { "letter": "E", "text": "Ele começou à falar rapidamente." }
+    ],
+    "correta": "C"
+  },
+  {
+    "id": "2023-203",
+    "area": "Linguagens",
+    "assunto": "Literatura",
+    "enunciado": "O movimento literário brasileiro marcado pela subjetividade, pessimismo e culto à noite no século XIX foi o:",
+    "alternativas": [
+      { "letter": "A", "text": "Arcadismo" },
+      { "letter": "B", "text": "Romanticismo (Segunda Geração)" },
+      { "letter": "C", "text": "Realismo" },
+      { "letter": "D", "text": "Modernismo" },
+      { "letter": "E", "text": "Parnasianismo" }
+    ],
+    "correta": "B"
+  },
+  {
+    "id": "2023-301",
+    "area": "Ciências Humanas",
+    "assunto": "História do Brasil",
+    "enunciado": "A Proclamação da República no Brasil, ocorrida em 1889, foi liderada por qual figura militar?",
+    "alternativas": [
+      { "letter": "A", "text": "Dom Pedro II" },
+      { "letter": "B", "text": "Marechal Deodoro da Fonseca" },
+      { "letter": "C", "text": "Getúlio Vargas" },
+      { "letter": "D", "text": "Juscelino Kubitschek" },
+      { "letter": "E", "text": "Duke de Caxias" }
+    ],
+    "correta": "B"
+  },
+  {
+    "id": "2023-302",
+    "area": "Ciências Humanas",
+    "assunto": "Geografia",
+    "enunciado": "O bioma brasileiro caracterizado por clima semiárido, vegetação xerófila e presença de cactáceas é a:",
+    "alternativas": [
+      { "letter": "A", "text": "Amazônia" },
+      { "letter": "B", "text": "Mata Atlântica" },
+      { "letter": "C", "text": "Caatinga" },
+      { "letter": "D", "text": "Pampa" },
+      { "letter": "E", "text": "Pantanal" }
+    ],
+    "correta": "C"
+  },
+  {
+    "id": "2023-303",
+    "area": "Ciências Humanas",
+    "assunto": "Sociologia",
+    "enunciado": "O conceito de 'Fato Social', definido como formas de agir e pensar externas ao indivíduo, foi criado por:",
+    "alternativas": [
+      { "letter": "A", "text": "Karl Marx" },
+      { "letter": "B", "text": "Max Weber" },
+      { "letter": "C", "text": "Émile Durkheim" },
+      { "letter": "D", "text": "Auguste Comte" },
+      { "letter": "E", "text": "Michel Foucault" }
+    ],
+    "correta": "C"
+  },
+  {
+    "id": "2023-401",
+    "area": "Ciências da Natureza",
+    "assunto": "Física",
+    "enunciado": "A Primeira Lei de Newton também é conhecida universalmente como o Princípio da:",
+    "alternativas": [
+      { "letter": "A", "text": "Ação e Reação" },
+      { "letter": "B", "text": "Inércia" },
+      { "letter": "C", "text": "Gravitação Universal" },
+      { "letter": "D", "text": "Conservação de Energia" },
+      { "letter": "E", "text": "Termodinâmica" }
+    ],
+    "correta": "B"
+  },
+  {
+    "id": "2023-402",
+    "area": "Ciências da Natureza",
+    "assunto": "Biologia",
+    "enunciado": "Qual organela celular é responsável pela produção de energia (ATP) através da respiração celular?",
+    "alternativas": [
+      { "letter": "A", "text": "Ribossomo" },
+      { "letter": "B", "text": "Complexo de Golgi" },
+      { "letter": "C", "text": "Mitocôndria" },
+      { "letter": "D", "text": "Lisossomo" },
+      { "letter": "E", "text": "Retículo Endoplasmático" }
+    ],
+    "correta": "C"
+  },
+  {
+    "id": "2023-403",
+    "area": "Ciências da Natureza",
+    "assunto": "Química",
+    "enunciado": "Qual é o valor aproximado do pH de uma solução totalmente neutra a 25°C?",
+    "alternativas": [
+      { "letter": "A", "text": "0" },
+      { "letter": "B", "text": "1" },
+      { "letter": "C", "text": "7" },
+      { "letter": "D", "text": "14" },
+      { "letter": "E", "text": "10" }
+    ],
+    "correta": "C"
   }
 ]
