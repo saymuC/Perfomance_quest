@@ -16,7 +16,8 @@ const estado = {
     indiceAtual: 0,
     alternativaSelecionada: null,
     tempoInicioQuestao: 0,
-    intervaloTimer: null
+    intervaloTimer: null,
+    historicoTentativa: []
 };
 
 /**
@@ -90,6 +91,7 @@ async function iniciarSimulado() {
 
         estado.questoes = questoes;
         estado.indiceAtual = 0;
+        estado.historicoTentativa = [];
         estado.sessaoAtual = criarSessaoQuiz(questoes);
 
         UI.mostrarTela('quiz');
@@ -125,6 +127,9 @@ function confirmarResposta() {
             tempoGasto
         );
 
+        // Armazena a questão e o resultado para a revisão detalhada ao final
+        estado.historicoTentativa.push({ questao, resposta });
+
         const ehUltima = estado.indiceAtual === estado.questoes.length - 1;
 
         UI.exibirFeedback({
@@ -153,6 +158,7 @@ function proximaQuestao() {
         const relatorio = estado.sessaoAtual.finalizar();
         UI.mostrarTela('result');
         UI.renderizarRelatorio(relatorio);
+        UI.renderizarRevisaoQuestoes(estado.historicoTentativa);
     }
 }
 
@@ -245,4 +251,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnLimparHist = document.getElementById('btn-limpar-historico');
     if (btnLimparHist) btnLimparHist.addEventListener('click', handleLimparHistorico);
+
+    // Navegação e Acessibilidade por Teclado (RNF01, RNF05)
+    window.addEventListener('keydown', (e) => {
+        // Ignora se o usuário estiver digitando em formulários ou se modal estiver aberto
+        const modalAtivo = document.querySelector('.modal-backdrop.active');
+        if (modalAtivo) return;
+
+        const quizAtivo = UI.screens.quiz && UI.screens.quiz.classList.contains('active');
+        if (!quizAtivo) return;
+
+        const key = e.key.toUpperCase();
+
+        // Teclas A, B, C, D, E para seleção de alternativas
+        if (['A', 'B', 'C', 'D', 'E'].includes(key)) {
+            const opcao = document.querySelector(`.alt-option[data-letra="${key}"]`);
+            if (opcao && !opcao.classList.contains('locked')) {
+                opcao.click();
+            }
+            return;
+        }
+
+        // Tecla Enter para confirmar resposta ou avançar de questão
+        if (e.key === 'Enter') {
+            const btnConfirmar = document.getElementById('btn-confirmar-resposta');
+            const btnProxima = document.getElementById('btn-proxima-questao');
+
+            if (btnConfirmar && btnConfirmar.style.display !== 'none' && !btnConfirmar.disabled) {
+                e.preventDefault();
+                confirmarResposta();
+            } else if (btnProxima && btnProxima.style.display !== 'none') {
+                e.preventDefault();
+                proximaQuestao();
+            }
+        }
+    });
 });
+

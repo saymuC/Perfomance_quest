@@ -118,10 +118,10 @@
         <!-- Ações do Quiz -->
         <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
           <button id="btn-confirmar-resposta" class="btn btn-primary" disabled>
-            Confirmar Resposta
+            Confirmar Resposta <kbd class="kbd-hint">Enter ↵</kbd>
           </button>
           <button id="btn-proxima-questao" class="btn btn-primary" style="display: none;">
-            Próxima Questão →
+            Próxima Questão → <kbd class="kbd-hint">Enter ↵</kbd>
           </button>
         </div>
       </div>
@@ -169,6 +169,20 @@
         <div style="margin-top: 1.5rem;">
           <h3 style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem;">Desempenho por Área de Conhecimento</h3>
           <div id="area-breakdown-container" class="area-breakdown-list"></div>
+        </div>
+
+        <!-- Revisão Detalhada das Questões Respondidas (RF10) -->
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="font-size: 1.1rem; color: #1e293b; display: flex; align-items: center; gap: 0.4rem;">
+              <span>📝</span> Revisão Detalhada do Gabarito
+            </h3>
+            <span id="revisao-resumo-tag" class="badge badge-primary">Resumo da Tentativa</span>
+          </div>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">
+            Confira abaixo cada questão respondida nesta sessão, a alternativa marcada, o gabarito oficial e a explicação pedagógica.
+          </p>
+          <div id="revisao-questoes-container" class="revisao-list"></div>
         </div>
 
         <!-- Ações Pós-Quiz -->

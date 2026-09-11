@@ -92,6 +92,7 @@ export const UI = {
                 optEl.innerHTML = `
                     <span class="alt-letter">${alt.letra || alt.id}</span>
                     <span class="alt-text">${alt.texto || ''}</span>
+                    <span class="alt-key-hint">Tecla ${alt.letra || alt.id}</span>
                 `;
 
                 optEl.addEventListener('click', () => {
@@ -208,17 +209,95 @@ export const UI = {
         // Desempenho por Área do ENEM
         const areaContainer = document.getElementById('area-breakdown-container');
         if (areaContainer && desempenhoPorArea) {
-            areaContainer.innerHTML = Object.entries(desempenhoPorArea).map(([area, dados]) => `
+            areaContainer.innerHTML = Object.entries(desempenhoPorArea).map(([area, dados]) => {
+                let badgeClass = 'badge-success';
+                let badgeTexto = 'Alto Rendimento';
+                let fillColor = '#10b981';
+
+                if (dados.taxaAcerto < 50) {
+                    badgeClass = 'badge-error';
+                    badgeTexto = 'Revisão Prioritária';
+                    fillColor = '#ef4444';
+                } else if (dados.taxaAcerto < 70) {
+                    badgeClass = 'badge-warning';
+                    badgeTexto = 'Rendimento Regular';
+                    fillColor = '#f59e0b';
+                }
+
+                return `
                 <div class="area-item">
                     <div class="area-info">
                         <span>${area}</span>
-                        <span>${dados.taxaAcerto}% (${dados.acertos}/${dados.total})</span>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="badge ${badgeClass}" style="font-size: 0.7rem;">${badgeTexto}</span>
+                            <span>${dados.taxaAcerto}% (${dados.acertos}/${dados.total})</span>
+                        </div>
                     </div>
                     <div class="area-track">
-                        <div class="area-fill" style="width: ${dados.taxaAcerto}%;"></div>
+                        <div class="area-fill" style="width: ${dados.taxaAcerto}%; background: ${fillColor};"></div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
+    },
+
+    /**
+     * RF10: Renderiza o gabarito detalhado questão por questão
+     */
+    renderizarRevisaoQuestoes(tentativaDetalhada = []) {
+        const container = document.getElementById('revisao-questoes-container');
+        const tagResumo = document.getElementById('revisao-resumo-tag');
+        if (!container) return;
+
+        if (tagResumo) {
+            const acertos = tentativaDetalhada.filter(item => item.resposta.acertou).length;
+            tagResumo.textContent = `${acertos}/${tentativaDetalhada.length} Acertos`;
+        }
+
+        if (tentativaDetalhada.length === 0) {
+            container.innerHTML = '<p style="color: #64748b; font-size: 0.9rem;">Nenhuma questão respondida para revisão.</p>';
+            return;
+        }
+
+        container.innerHTML = tentativaDetalhada.map((item, index) => {
+            const { questao, resposta } = item;
+            const acertou = resposta.acertou;
+            const statusClass = acertou ? 'correct-item' : 'incorrect-item';
+            const statusIcon = acertou ? '✓ Acertou' : '✕ Errou';
+            const statusBadge = acertou ? 'badge-success' : 'badge-error';
+
+            return `
+                <div class="revisao-item ${statusClass}">
+                    <div class="revisao-header">
+                        <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+                            <strong>Questão ${index + 1}</strong>
+                            <span class="badge badge-primary">${questao.area || 'ENEM'}</span>
+                            <span class="badge badge-warning">${questao.assunto || 'Geral'}</span>
+                            ${questao.ano ? `<span class="badge" style="background:#f1f5f9;">ENEM ${questao.ano}</span>` : ''}
+                        </div>
+                        <span class="badge ${statusBadge}">${statusIcon} (${resposta.tempoSegundos}s)</span>
+                    </div>
+
+                    <div class="revisao-enunciado">${questao.enunciado || ''}</div>
+
+                    <div class="revisao-respostas">
+                        <div>
+                            <strong>Sua resposta:</strong> Alternativa ${resposta.alternativaEscolhida}
+                            <span style="margin-left: 6px; color: ${acertou ? '#10b981' : '#ef4444'}; font-weight: 600;">
+                                ${acertou ? '(Correta)' : '(Incorreta)'}
+                            </span>
+                        </div>
+                        ${!acertou ? `<div><strong>Gabarito Oficial:</strong> Alternativa ${resposta.alternativaCorreta}</div>` : ''}
+                    </div>
+
+                    ${questao.explicacao ? `
+                        <div class="revisao-explicacao">
+                            💡 <strong>Explicação Pedagógica:</strong> ${questao.explicacao}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }).join('');
     }
 };
+
