@@ -13,7 +13,7 @@ function perguntar(query) {
 
 async function iniciarJogoTerminal() {
   console.log('\n==================================================');
-  console.log('       🎮 SIMULADOR DE QUIZ ENEM (TERMINAL)       ');
+  console.log('      🎮 SIMULADOR DE QUIZ ENEM (TERMINAL)       ');
   console.log('==================================================\n');
   
   console.log('⏳ Carregando e balanceando questões...\n');
@@ -29,17 +29,19 @@ async function iniciarJogoTerminal() {
     console.log(`--------------------------------------------------`);
     console.log(`\n${q.enunciado}\n`);
 
+    // Chaves atualizadas para o padrão em português
     q.alternativas.forEach(alt => {
-      console.log(`  [${alt.letter}] ${alt.text}`);
+      console.log(`  [${alt.letra}] ${alt.texto}`);
     });
 
     const resposta = await perguntar('\nSua resposta (A, B, C, D ou E): ');
     
-    if (resposta.trim().toUpperCase() === String(q.correta).toUpperCase()) {
+    // Validação atualizada para usar a nova chave 'gabarito'
+    if (resposta.trim().toUpperCase() === String(q.gabarito).toUpperCase()) {
       console.log('\n✅ RESPOSTA CORRETA!');
       pontuacao++;
     } else {
-      console.log(`\n❌ RESPOSTA INCORRETA! A certa era a letra [${q.correta}]`);
+      console.log(`\n❌ RESPOSTA INCORRETA! A certa era a letra [${q.gabarito}]`);
     }
   }
 

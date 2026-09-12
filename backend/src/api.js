@@ -51,8 +51,8 @@ function validarQuestaoRigida(q) {
   return alternativasValidas;
 }
 
-export async function buscarQuestoesAPI(ano = 2023, limite = 10) {
-  const URL_API_ENEM = `https://api.enem.dev/v1/exams/${ano}/questions?limit=${limite}`;
+export async function buscarQuestoesAPI(ano = 2023) {
+  const URL_API_ENEM = `https://api.enem.dev/v1/exams/${ano}/questions`;
 
   try {
     const resposta = await fetch(URL_API_ENEM);
@@ -136,7 +136,7 @@ function balancearPorAreas(questoes, totalDesejado = 10) {
 }
 
 export async function carregarEPrepararQuiz(quantidadeDesejada = 10, ano = 2023) {
-  let questoesFinais = await buscarQuestoesAPI(ano, quantidadeDesejada * 2);
+  let questoesFinais = await buscarQuestoesAPI(ano);
 
   if (questoesFinais.length < quantidadeDesejada) {
     console.warn(`[Fallback] API retornou saldo insuficiente. Mesclando com arquivo local...`);
