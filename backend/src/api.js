@@ -1,67 +1,56 @@
-// ============================================================================
-// ETAPA 1: CORREÇÃO DO ENDPOINT, NORMALIZAÇÃO E MAPEAMENTO DO PAYLOAD
-// ============================================================================
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-/**
- * Mapeia e formata as áreas do conhecimento para o padrão oficial do projeto.
- */
+// Configuração de caminhos absolutos no Node.js (necessário para o Fallback)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 function formatarArea(areaBruta) {
   if (!areaBruta) return 'Geral';
-
   const areaLimpa = String(areaBruta).toLowerCase().trim();
-
   const mapaAreas = {
     'matematica': 'Matemática',
     'linguagens': 'Linguagens',
     'ciencias-humanas': 'Ciências Humanas',
     'ciencias-natureza': 'Ciências da Natureza'
   };
-
   return mapaAreas[areaLimpa] || areaBruta;
 }
 
-/**
- * Normaliza um objeto de questão bruto para o schema padronizado.
- */
 export function padronizarQuestao(q) {
   const ano = q.exam_year || q.year || 2023;
   const indexOuId = q.index !== undefined ? q.index : q.id;
 
-  if (indexOuId === undefined || indexOuId === null) {
-    return null; // ID inválido -> Descarte
-  }
-
-  const idValido = `${ano}-${indexOuId}`;
-  const enunciadoValido = q.context || q.alternatives_introduction || q.enunciado || '';
+  if (indexOuId === undefined || indexOuId === null) return null;
 
   let alternativasValidas = [];
-  if (Array.isArray(q.alternatives)) {
-    alternativasValidas = q.alternatives.map(alt => ({
-      letter: alt.letter || alt.id || '',
-      text: alt.text || alt.texto || ''
-    }));
-  } else if (Array.isArray(q.alternativas)) {
-    alternativasValidas = q.alternativas.map(alt => ({
-      letter: alt.letter || alt.letra || '',
-      text: alt.text || alt.texto || ''
-    }));
-  }
-
-  const gabaritoValido = q.correctAlternative || q.gabarito || q.respostaCorreta || q.resposta_correta || q.correta;
+  const fonteAlternativas = q.alternatives || q.alternativas || [];
+  
+  alternativasValidas = fonteAlternativas.map(alt => ({
+    letra: alt.letter || alt.letra || alt.id || '', // Adaptado para o corretor
+    texto: alt.text || alt.texto || alt.valor || '' // Adaptado para o corretor
+  }));
 
   return {
-    id: idValido,
+    id: `${ano}-${indexOuId}`,
     area: formatarArea(q.discipline || q.area || q.disciplina),
-    assunto: q.topic || q.assunto || 'Conhecimentos Gerais',
-    enunciado: enunciadoValido,
+    assunto: q.topic || q.assunto || 'Geral', // RF04
+    enunciado: q.context || q.alternatives_introduction || q.enunciado || '',
     alternativas: alternativasValidas,
-    correta: gabaritoValido
+    gabarito: q.correctAlternative || q.gabarito || q.respostaCorreta || q.correta || '', // Compatibilidade com correcao.js
+    imagens: q.images || q.imagens || [], // RF05
+    justificativa: q.justification || q.justificativa || '' // RF06
   };
 }
 
-/**
- * Busca questões no endpoint correto da API.
- */
+// Filtro rigoroso: descarta se faltar enunciado, gabarito ou se alternativas estiverem incompletas
+function validarQuestaoRigida(q) {
+  if (!q || !q.enunciado || !q.gabarito || q.alternativas.length === 0) return false;
+  const alternativasValidas = q.alternativas.every(a => a.letra.trim() !== '' && a.texto.trim() !== '');
+  return alternativasValidas;
+}
+
 export async function buscarQuestoesAPI(ano = 2023, limite = 10) {
   const URL_API_ENEM = `https://api.enem.dev/v1/exams/${ano}/questions?limit=${limite}`;
 
@@ -74,42 +63,29 @@ export async function buscarQuestoesAPI(ano = 2023, limite = 10) {
 
     return listaBruta
       .map(padronizarQuestao)
-      .filter(q => q !== null && q.enunciado && q.alternativas.length > 0);
-
+      .filter(validarQuestaoRigida);
   } catch (erro) {
     console.warn('Falha no consumo da API:', erro.message);
     return [];
   }
 }
 
-// ============================================================================
-// ETAPA 2: MECANISMO APRIMORADO DE FALLBACK LOCAL
-// ============================================================================
-
-/**
- * Carrega e padroniza as questões do backup local (questoes.json).
- */
 async function carregarFallbackLocal() {
   try {
-    const respostaLocal = await fetch(new URL('./questoes.json', import.meta.url));
-    const dadosLocais = await respostaLocal.json();
+    // Uso do File System (fs) para garantir a leitura no backend (Node.js)
+    const caminhoArquivo = path.join(__dirname, 'questoes.json');
+    const arquivoBruto = await fs.readFile(caminhoArquivo, 'utf-8');
+    const dadosLocais = JSON.parse(arquivoBruto);
     
     return dadosLocais
       .map(padronizarQuestao)
-      .filter(q => q !== null && q.enunciado && q.alternativas.length > 0);
+      .filter(validarQuestaoRigida);
   } catch (erro) {
-    console.error('Erro ao ler arquivo de fallback local (questoes.json):', erro.message);
+    console.error('Erro ao ler arquivo de fallback local:', erro.message);
     return [];
   }
 }
 
-// ============================================================================
-// ETAPA 3: BALANCEAMENTO POR ÁREAS DO CONHECIMENTO (RF03) E DEDUPLICAÇÃO
-// ============================================================================
-
-/**
- * Remove questões com IDs repetidos da lista.
- */
 function removerDuplicatas(questoes) {
   const vistos = new Set();
   return questoes.filter(q => {
@@ -119,9 +95,6 @@ function removerDuplicatas(questoes) {
   });
 }
 
-/**
- * Algoritmo Fisher-Yates para embaralhar arrays de forma aleatória.
- */
 function embaralhar(array) {
   const lista = [...array];
   for (let i = lista.length - 1; i > 0; i--) {
@@ -131,41 +104,24 @@ function embaralhar(array) {
   return lista;
 }
 
-/**
- * Distribui as questões proporcionalmente entre as 4 áreas do ENEM.
- */
 function balancearPorAreas(questoes, totalDesejado = 10) {
   const areasOficiais = ['Matemática', 'Linguagens', 'Ciências Humanas', 'Ciências da Natureza'];
-  
-  // Agrupa as questões disponíveis por área
-  const porArea = {
-    'Matemática': [],
-    'Linguagens': [],
-    'Ciências Humanas': [],
-    'Ciências da Natureza': [],
-    'Outras': []
-  };
+  const porArea = { 'Matemática': [], 'Linguagens': [], 'Ciências Humanas': [], 'Ciências da Natureza': [], 'Outras': [] };
 
   questoes.forEach(q => {
-    if (porArea[q.area]) {
-      porArea[q.area].push(q);
-    } else {
-      porArea['Outras'].push(q);
-    }
+    if (porArea[q.area]) porArea[q.area].push(q);
+    else porArea['Outras'].push(q);
   });
 
   const quizFinal = [];
-  const metaPorArea = Math.floor(totalDesejado / areasOficiais.length); // Ex: 2 por área para um quiz de 10
+  const metaPorArea = Math.floor(totalDesejado / areasOficiais.length);
 
-  // 1. Pega a cota proporcional de cada área oficial
   areasOficiais.forEach(area => {
     const disponiveis = embaralhar(porArea[area]);
-    const selecionadas = disponiveis.slice(0, metaPorArea);
-    quizFinal.push(...selecionadas);
-    porArea[area] = disponiveis.slice(metaPorArea); // Deixa o restante guardado na reserva
+    quizFinal.push(...disponiveis.slice(0, metaPorArea));
+    porArea[area] = disponiveis.slice(metaPorArea);
   });
 
-  // 2. Preenche vagas restantes se faltar questões em alguma área
   if (quizFinal.length < totalDesejado) {
     const idsJaUsados = new Set(quizFinal.map(q => q.id));
     const sobraGeral = embaralhar(questoes.filter(q => !idsJaUsados.has(q.id)));
@@ -179,23 +135,15 @@ function balancearPorAreas(questoes, totalDesejado = 10) {
   return embaralhar(quizFinal);
 }
 
-/**
- * Função principal integrando Busca -> Fallback -> Deduplicação -> Balanceamento
- */
 export async function carregarEPrepararQuiz(quantidadeDesejada = 10, ano = 2023) {
-  // 1. Busca inicial na API
-  let questoesFinais = await buscarQuestoesAPI(ano, quantidadeDesejada * 2); // Pede margem para balancear
+  let questoesFinais = await buscarQuestoesAPI(ano, quantidadeDesejada * 2);
 
-  // 2. Aciona o Fallback se faltar questões
   if (questoesFinais.length < quantidadeDesejada) {
     console.warn(`[Fallback] API retornou saldo insuficiente. Mesclando com arquivo local...`);
     const questoesLocal = await carregarFallbackLocal();
     questoesFinais = [...questoesFinais, ...questoesLocal];
   }
 
-  // 3. Deduplicação de IDs
   const semDuplicatas = removerDuplicatas(questoesFinais);
-
-  // 4. Seleção Equilibrada pelas 4 áreas
   return balancearPorAreas(semDuplicatas, quantidadeDesejada);
 }
