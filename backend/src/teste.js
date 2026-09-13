@@ -36,12 +36,12 @@ async function iniciarJogoTerminal() {
 
     const resposta = await perguntar('\nSua resposta (A, B, C, D ou E): ');
     
-    // Validação atualizada para usar a nova chave 'gabarito'
-    if (resposta.trim().toUpperCase() === String(q.gabarito).toUpperCase()) {
+    // Validação atualizada para usar a nova chave 'alternativaCorreta'
+    if (resposta.trim().toUpperCase() === String(q.alternativaCorreta).toUpperCase()) {
       console.log('\n✅ RESPOSTA CORRETA!');
       pontuacao++;
     } else {
-      console.log(`\n❌ RESPOSTA INCORRETA! A certa era a letra [${q.gabarito}]`);
+      console.log(`\n❌ RESPOSTA INCORRETA! A certa era a letra [${q.alternativaCorreta}]`);
     }
   }
 

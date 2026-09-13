@@ -1,6 +1,6 @@
 /**
  * Módulo de Integração com API Externa (api.enem.dev) e Fallback Local
- * Atende aos requisitos RF01, RF02, RF03, RF04, RF05 e RF06.
+ * Atende aos requisitos RF01 a RF06, alinhado com o schema da branch main.
  */
 
 const FALLBACK_PATH = './data/questoes_fallback.json';
@@ -51,6 +51,11 @@ export function inferirAssunto(area, textoCompleto = '') {
 }
 
 export function normalizarQuestaoAPI(rawQuestion) {
+    // Evita dupla normalização caso o fallback já esteja no formato correto
+    if (rawQuestion.alternativaCorreta && rawQuestion.enunciado) {
+        return rawQuestion;
+    }
+
     const area = normalizarArea(rawQuestion.discipline);
     const enunciadoCompleto = [rawQuestion.context, rawQuestion.alternativesIntroduction].filter(Boolean).join('\n\n');
     const assunto = inferirAssunto(area, `${rawQuestion.title || ''} ${enunciadoCompleto}`);
@@ -61,7 +66,8 @@ export function normalizarQuestaoAPI(rawQuestion) {
         isCorrect: Boolean(alt.isCorrect)
     }));
 
-    const gabarito = rawQuestion.correctAlternative || alternativas.find(a => a.isCorrect)?.letra || 'A';
+    const gabaritoBruto = rawQuestion.correctAlternative || alternativas.find(a => a.isCorrect)?.letra || 'A';
+    const alternativaCorreta = String(gabaritoBruto).toUpperCase();
 
     return {
         id: `enem-${rawQuestion.year || 2023}-${rawQuestion.index || Math.random().toString(36).slice(2, 7)}`,
@@ -70,10 +76,17 @@ export function normalizarQuestaoAPI(rawQuestion) {
         assunto,
         enunciado: enunciadoCompleto || 'Sem enunciado disponível.',
         alternativas,
-        gabarito: String(gabarito).toUpperCase(), // Padronizado com o backend
-        imagens: rawQuestion.images || [], // RF05
-        justificativa: rawQuestion.justification || `Gabarito oficial do ENEM: Alternativa ${gabarito}.` // RF06
+        alternativaCorreta, // Atualizado conforme feedback
+        imagens: rawQuestion.images || [],
+        explicacao: rawQuestion.justification || `Gabarito oficial do ENEM: Alternativa ${alternativaCorreta}.` // Atualizado conforme feedback
     };
+}
+
+// Filtro rigoroso exigido no feedback
+function validarQuestaoRigida(q) {
+    if (!q || !q.id || !q.enunciado || !q.alternativaCorreta || !q.area || !q.assunto) return false;
+    if (!Array.isArray(q.alternativas) || q.alternativas.length === 0) return false;
+    return true;
 }
 
 export async function carregarQuestoesFallback() {
@@ -81,10 +94,6 @@ export async function carregarQuestoesFallback() {
     if (!resposta.ok) throw new Error(`Falha ao carregar arquivo de contingência: ${resposta.statusText}`);
     return await resposta.json();
 }
-
-// ============================================================================
-// FUNÇÕES IMPORTADAS DO BACKEND (Melhorias de Performance e Lógica)
-// ============================================================================
 
 function removerDuplicatas(questoes) {
     const vistos = new Set();
@@ -140,7 +149,6 @@ export async function obterQuestoesSimulado({ area = null, quantidade = 5, ano =
     let fonte = 'api';
 
     try {
-        // Limite removido para permitir balanceamento real
         const url = `${API_BASE_URL}/exams/${ano}/questions`;
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 4000); 
@@ -164,10 +172,9 @@ export async function obterQuestoesSimulado({ area = null, quantidade = 5, ano =
         fonte = 'fallback';
     }
 
-    // 1. Deduplicar base completa
-    let questoesTratadas = removerDuplicatas(questoes);
+    // Deduplica e valida rigorosamente as questões antes do balanceamento
+    let questoesTratadas = removerDuplicatas(questoes).filter(validarQuestaoRigida);
 
-    // 2. Filtrar por área específica ou aplicar balanceamento global
     let selecionadas = [];
     if (area && area !== 'Todas') {
         const filtradas = questoesTratadas.filter(q => q.area === area);

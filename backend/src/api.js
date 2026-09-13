@@ -32,21 +32,23 @@ export function padronizarQuestao(q) {
     texto: alt.text || alt.texto || alt.valor || '' // Adaptado para o corretor
   }));
 
+  const gabaritoBruto = q.correctAlternative || q.gabarito || q.respostaCorreta || q.correta || '';
+
   return {
     id: `${ano}-${indexOuId}`,
     area: formatarArea(q.discipline || q.area || q.disciplina),
     assunto: q.topic || q.assunto || 'Geral', // RF04
     enunciado: q.context || q.alternatives_introduction || q.enunciado || '',
     alternativas: alternativasValidas,
-    gabarito: q.correctAlternative || q.gabarito || q.respostaCorreta || q.correta || '', // Compatibilidade com correcao.js
+    alternativaCorreta: String(gabaritoBruto).toUpperCase(), // Correção do undefined
     imagens: q.images || q.imagens || [], // RF05
-    justificativa: q.justification || q.justificativa || '' // RF06
+    explicacao: q.justification || q.justificativa || `Gabarito oficial: ${String(gabaritoBruto).toUpperCase()}` // Ajuste para a branch main
   };
 }
 
 // Filtro rigoroso: descarta se faltar enunciado, gabarito ou se alternativas estiverem incompletas
 function validarQuestaoRigida(q) {
-  if (!q || !q.enunciado || !q.gabarito || q.alternativas.length === 0) return false;
+  if (!q || !q.enunciado || !q.alternativaCorreta || q.alternativas.length === 0) return false;
   const alternativasValidas = q.alternativas.every(a => a.letra.trim() !== '' && a.texto.trim() !== '');
   return alternativasValidas;
 }
