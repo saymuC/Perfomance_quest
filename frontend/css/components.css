@@ -527,3 +527,279 @@
   font-style: italic;
 }
 
+/* ==========================================================================
+   ESTADOS DE CARREGAMENTO, ERRO E SINCRONIZAÇÃO (TECH LEAD REQUIREMENT)
+   ========================================================================== */
+
+/* Overlay e Spinner de Carregamento */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  color: white;
+  backdrop-filter: blur(3px);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Banner de Erro Global / Dismissible */
+.error-banner {
+  background: #fef2f2;
+  border: 1.5px solid #f87171;
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  color: #991b1b;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.error-banner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.error-banner-desc {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #7f1d1d;
+}
+
+.error-banner-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+/* Card de Status de Sincronização */
+.sync-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.sync-card.synced {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.sync-card.failed {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #991b1b;
+}
+
+.sync-card.pending {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+/* Identificação do Aluno */
+.aluno-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f1f5f9;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.825rem;
+  color: #1e293b;
+  border: 1px solid var(--border);
+}
+
+.aluno-card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.1rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   MODAL E TABELA DE RANKING (TECH LEAD REQUIREMENT)
+   ========================================================================== */
+
+.ranking-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.ranking-table th {
+  background: #f8fafc;
+  padding: 0.75rem 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+.ranking-table td {
+  padding: 0.75rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.ranking-table tr:hover {
+  background: #f8fafc;
+}
+
+.ranking-table tr.current-student-row {
+  background: #eff6ff;
+  font-weight: 700;
+}
+
+.rank-pos {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.rank-pos-1 { background: #fef08a; color: #854d0e; border: 1px solid #facc15; }
+.rank-pos-2 { background: #e2e8f0; color: #475569; border: 1px solid #cbd5e1; }
+.rank-pos-3 { background: #ffedd5; color: #9a3412; border: 1px solid #fdba74; }
+.rank-pos-other { background: #f1f5f9; color: #64748b; }
+
+/* ==========================================================================
+   AJUSTES DE RESPONSIVIDADE MOBILE (TELEFONES E TABLETS)
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  /* Formulários e Inputs */
+  .form-select, .form-input {
+    font-size: 1rem; /* Previne auto-zoom no iOS Safari */
+    padding: 0.75rem 0.9rem;
+  }
+
+  /* Botões com área de toque mínima confortável para mobile */
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Alternativas do Quiz */
+  .alt-option {
+    padding: 0.85rem 0.9rem;
+    min-height: 48px;
+    gap: 0.65rem;
+  }
+
+  .alt-letter {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 0.85rem;
+  }
+
+  .alt-key-hint {
+    display: none; /* Em telas de toque, não há atalhos de teclado visíveis */
+  }
+
+  /* Grade de Estatísticas da Tela de Resultados */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .stat-box {
+    padding: 0.85rem 0.6rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  /* Modais */
+  .modal-content {
+    width: 95%;
+    padding: 1.15rem;
+    max-height: 90vh;
+  }
+
+  /* Card de Identificação do Aluno */
+  .aluno-card-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aluno-card-info button {
+    width: 100%;
+    margin-top: 0.4rem;
+  }
+
+  /* Ranking */
+  .ranking-table th, .ranking-table td {
+    padding: 0.65rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Ações em Rodapé de Cards */
+  .quiz-header-bar {
+    gap: 0.5rem;
+  }
+
+  .revisao-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+
