@@ -5,5 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "node --test --test-isolation=none"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.3",
+    "pg": "^8.23.0"
   }
 }
