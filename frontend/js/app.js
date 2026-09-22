@@ -1,12 +1,13 @@
 /**
  * PERFORMANCE QUEST - APLICAÇÃO PRINCIPAL (APP)
- * Conecta os módulos de lógica do backend à camada de apresentação e API.
+ * 
+ * Orquestra o ciclo de vida do quiz, cadastro do estudante,
+ * comunicação REST com o backend, sincronização de resultados e ranking.
  */
 
-import { criarSessaoQuiz } from '../../backend/src/sessaoQuiz.js';
-import { carregarHistorico, limparHistorico } from '../../backend/src/storage.js';
-import { gerarRelatorioCompleto } from '../../backend/src/relatorios.js';
-import { obterQuestoesSimulado } from './api.js';
+import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
+import { obterDadosAluno, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
+import { obterQuestoesSimulado, carregarQuestoesFallbackLocal, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI } from './api.js';
 import { UI } from './ui.js';
 
 // Estado global da aplicação
@@ -17,7 +18,9 @@ const estado = {
     alternativaSelecionada: null,
     tempoInicioQuestao: 0,
     intervaloTimer: null,
-    historicoTentativa: []
+    historicoTentativa: [],
+    resultadoAtual: null,
+    turmasConhecidas: new Set(['3A', '3B', '3C', '3º Ano 1', '3º Ano 2'])
 };
 
 /**
@@ -35,7 +38,7 @@ function iniciarTimer() {
 }
 
 /**
- * Para o cronômetro e retorna o tempo total gasto na questão em segundos
+ * Para o cronômetro e retorna o tempo gasto em segundos
  */
 function pararTimer() {
     if (estado.intervaloTimer) {
@@ -46,7 +49,7 @@ function pararTimer() {
 }
 
 /**
- * Carrega e renderiza uma questão pelo índice
+ * Carrega e renderiza a questão atual
  */
 function carregarQuestaoAtual() {
     const questao = estado.questoes[estado.indiceAtual];
@@ -67,7 +70,22 @@ function carregarQuestaoAtual() {
 /**
  * Inicia uma nova sessão de Simulado
  */
-async function iniciarSimulado() {
+async function iniciarSimulado({ usarContingencia = false } = {}) {
+    UI.ocultarErro();
+
+    // Valida se o aluno preencheu a identificação obrigatória
+    const aluno = obterDadosAluno();
+    if (!aluno) {
+        const cardCadastro = document.getElementById('card-identificacao-aluno');
+        if (cardCadastro) {
+            cardCadastro.scrollIntoView({ behavior: 'smooth' });
+            cardCadastro.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.4)';
+            setTimeout(() => cardCadastro.style.boxShadow = '', 2000);
+        }
+        alert('Por favor, preencha sua identificação (Nome, Turma e Matrícula) antes de iniciar o simulado para registrar sua pontuação no ranking.');
+        return;
+    }
+
     const selectArea = document.getElementById('filtro-area');
     const selectQtd = document.getElementById('filtro-quantidade');
     const btnIniciar = document.getElementById('btn-iniciar-simulado');
@@ -77,16 +95,25 @@ async function iniciarSimulado() {
 
     if (btnIniciar) {
         btnIniciar.disabled = true;
-        btnIniciar.textContent = '⏳ Carregando questões...';
+        btnIniciar.textContent = '⏳ Carregando...';
     }
 
+    UI.mostrarCarregando('Carregando questões do servidor da API...');
+
     try {
-        const { questoes, fonte } = await obterQuestoesSimulado({ area, quantidade });
-        UI.atualizarStatusFonte(fonte);
+        let dados;
+        if (usarContingencia) {
+            dados = await carregarQuestoesFallbackLocal();
+            UI.atualizarStatusAPI('fallback');
+        } else {
+            dados = await obterQuestoesSimulado({ area, quantidade });
+            UI.atualizarStatusAPI('online');
+        }
+
+        const { questoes, fonte } = dados;
 
         if (!questoes || questoes.length === 0) {
-            alert('Não foi possível carregar as questões. Verifique sua conexão ou tente novamente.');
-            return;
+            throw new Error('Nenhuma questão disponível para iniciar o simulado.');
         }
 
         estado.questoes = questoes;
@@ -94,11 +121,20 @@ async function iniciarSimulado() {
         estado.historicoTentativa = [];
         estado.sessaoAtual = criarSessaoQuiz(questoes);
 
+        UI.ocultarCarregando();
         UI.mostrarTela('quiz');
         carregarQuestaoAtual();
     } catch (err) {
+        UI.ocultarCarregando();
         console.error('Erro ao inicializar simulado:', err);
-        alert('Erro ao inicializar o simulado. Detalhes: ' + err.message);
+
+        UI.mostrarErro(
+            `Falha ao obter questões: ${err.message}`,
+            {
+                onTentarNovamente: () => iniciarSimulado({ usarContingencia: false }),
+                onUsarContingencia: () => iniciarSimulado({ usarContingencia: true })
+            }
+        );
     } finally {
         if (btnIniciar) {
             btnIniciar.disabled = false;
@@ -120,14 +156,12 @@ function confirmarResposta() {
     const tempoGasto = pararTimer();
 
     try {
-        // O módulo do backend corrige e armazena a tentativa
         const resposta = estado.sessaoAtual.registrarResposta(
             questao.id,
             estado.alternativaSelecionada,
             tempoGasto
         );
 
-        // Armazena a questão e o resultado para a revisão detalhada ao final
         estado.historicoTentativa.push({ questao, resposta });
 
         const ehUltima = estado.indiceAtual === estado.questoes.length - 1;
@@ -147,94 +181,380 @@ function confirmarResposta() {
 /**
  * Avança para a próxima questão ou finaliza o simulado
  */
-function proximaQuestao() {
+async function proximaQuestao() {
     const total = estado.questoes.length;
 
     if (estado.indiceAtual < total - 1) {
         estado.indiceAtual++;
         carregarQuestaoAtual();
     } else {
-        // Finaliza o quiz e gera o relatório completo da tentativa
+        // Finaliza o simulado
         const relatorio = estado.sessaoAtual.finalizar();
+        estado.resultadoAtual = relatorio;
+
         UI.mostrarTela('result');
         UI.renderizarRelatorio(relatorio);
         UI.renderizarRevisaoQuestoes(estado.historicoTentativa);
+
+        // Sincroniza resultado com a API REST
+        await sincronizarResultadoAtual(relatorio);
     }
 }
 
 /**
- * Exibe o modal com o histórico cumulativo salvo no LocalStorage
+ * Envia o resultado do simulado para a API (POST /api/results)
+ * e gerencia os estados de sincronização
+ */
+async function sincronizarResultadoAtual(relatorio) {
+    const aluno = obterDadosAluno();
+    if (!aluno) return;
+
+    UI.atualizarStatusSincronizacao({
+        status: 'pending',
+        mensagem: 'Enviando pontuação para o ranking da turma...'
+    });
+
+    const payload = {
+        nome: aluno.nome,
+        turma: aluno.turma,
+        matricula: aluno.matricula,
+        acertos: relatorio.resumo.acertos,
+        total: relatorio.resumo.total,
+        taxaAcerto: relatorio.resumo.taxaAcerto,
+        tempoTotalSegundos: relatorio.resumo.tempoTotalSegundos,
+        respostas: estado.historicoTentativa.map(item => ({
+            questaoId: item.questao.id,
+            area: item.questao.area,
+            assunto: item.questao.assunto,
+            alternativaEscolhida: item.resposta.alternativaEscolhida,
+            alternativaCorreta: item.resposta.alternativaCorreta,
+            acertou: item.resposta.acertou,
+            tempoSegundos: item.resposta.tempoSegundos
+        }))
+    };
+
+    try {
+        await enviarResultadoAPI(payload);
+        UI.atualizarStatusSincronizacao({
+            status: 'synced',
+            mensagem: `Pontuação registrada com sucesso no ranking da Turma ${aluno.turma}!`
+        });
+
+        // Tenta enviar pendências offline anteriores se houver
+        await tentarSincronizarFilaPendente();
+    } catch (err) {
+        console.warn('Falha ao enviar resultado para a API online:', err);
+        enfileirarResultadoPendente(payload);
+
+        UI.atualizarStatusSincronizacao({
+            status: 'failed',
+            mensagem: 'Servidor indisponível no momento. O resultado foi salvo localmente e será reenviado assim que a conexão restabelecer.',
+            onTentarSincronizar: () => sincronizarResultadoAtual(relatorio)
+        });
+    }
+}
+
+/**
+ * Tenta enviar resultados que ficaram pendentes na fila offline
+ */
+async function tentarSincronizarFilaPendente() {
+    const fila = obterResultadosPendentes();
+    if (!Array.isArray(fila) || fila.length === 0) return;
+
+    for (const item of fila) {
+        try {
+            await enviarResultadoAPI(item.payload);
+            removerResultadoPendente(item.id);
+        } catch {
+            break; // Se a API continuar fora, interrompe
+        }
+    }
+}
+
+/**
+ * Abre e carrega o modal de ranking
+ */
+async function abrirRanking(turma = null) {
+    const modal = document.getElementById('modal-ranking');
+    const selectTurma = document.getElementById('ranking-filtro-turma');
+    const aluno = obterDadosAluno();
+
+    if (modal) modal.classList.add('active');
+
+    // Turma padrão a consultar
+    const turmaAlvo = turma !== null ? turma : (selectTurma ? selectTurma.value : (aluno ? aluno.turma : 'Todas'));
+
+    carregarDadosRanking(turmaAlvo);
+}
+
+function fecharRanking() {
+    const modal = document.getElementById('modal-ranking');
+    if (modal) modal.classList.remove('active');
+}
+
+/**
+ * Consulta a API e renderiza a tabela de ranking
+ */
+async function carregarDadosRanking(turmaFiltro = 'Todas') {
+    const container = document.getElementById('ranking-conteudo-container');
+    const aluno = obterDadosAluno();
+
+    if (container) {
+        container.replaceChildren();
+        const p = document.createElement('p');
+        p.style.color = '#64748b';
+        p.style.textAlign = 'center';
+        p.style.padding = '1.5rem';
+        p.textContent = 'Carregando ranking da API...';
+        container.appendChild(p);
+    }
+
+    try {
+        const classNameParam = (turmaFiltro && turmaFiltro !== 'Todas') ? turmaFiltro : '';
+        const dados = await obterRankingsAPI({ className: classNameParam, limit: 30 });
+
+        // Coleta turmas retornadas para alimentar o filtro
+        if (Array.isArray(dados)) {
+            dados.forEach(item => {
+                const t = item.className || item.turma;
+                if (t) estado.turmasConhecidas.add(String(t).trim());
+            });
+        }
+        if (aluno && aluno.turma) {
+            estado.turmasConhecidas.add(aluno.turma);
+        }
+
+        UI.renderizarRanking({
+            ranking: dados,
+            turmas: Array.from(estado.turmasConhecidas).sort(),
+            turmaSelecionada: turmaFiltro,
+            alunoAtual: aluno
+        });
+    } catch (err) {
+        console.error('Erro ao consultar ranking:', err);
+        if (container) {
+            container.replaceChildren();
+            const divErro = document.createElement('div');
+            divErro.style.textAlign = 'center';
+            divErro.style.padding = '1.5rem';
+
+            const pErro = document.createElement('p');
+            pErro.style.color = '#dc2626';
+            pErro.style.marginBottom = '0.75rem';
+            pErro.textContent = `Não foi possível carregar o ranking da API: ${err.message}`;
+
+            const btnRecarregar = document.createElement('button');
+            btnRecarregar.className = 'btn btn-outline';
+            btnRecarregar.textContent = '🔄 Tentar Novamente';
+            btnRecarregar.onclick = () => carregarDadosRanking(turmaFiltro);
+
+            divErro.appendChild(pErro);
+            divErro.appendChild(btnRecarregar);
+            container.appendChild(divErro);
+        }
+    }
+}
+
+/**
+ * Gerenciamento do Cadastro de Aluno
+ */
+function salvarCadastroAluno(e) {
+    if (e) e.preventDefault();
+
+    const inputNome = document.getElementById('input-aluno-nome');
+    const inputTurma = document.getElementById('input-aluno-turma');
+    const inputMatricula = document.getElementById('input-aluno-matricula');
+
+    try {
+        const aluno = salvarDadosAluno({
+            nome: inputNome ? inputNome.value : '',
+            turma: inputTurma ? inputTurma.value : '',
+            matricula: inputMatricula ? inputMatricula.value : ''
+        });
+
+        UI.atualizarIdentificacaoAluno(aluno);
+        estado.turmasConhecidas.add(aluno.turma);
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+function abrirModalEdicaoAluno() {
+    const modal = document.getElementById('modal-aluno');
+    const aluno = obterDadosAluno();
+
+    const inputNome = document.getElementById('input-modal-nome');
+    const inputTurma = document.getElementById('input-modal-turma');
+    const inputMatricula = document.getElementById('input-modal-matricula');
+
+    if (aluno) {
+        if (inputNome) inputNome.value = aluno.nome;
+        if (inputTurma) inputTurma.value = aluno.turma;
+        if (inputMatricula) inputMatricula.value = aluno.matricula;
+    }
+
+    if (modal) modal.classList.add('active');
+}
+
+function fecharModalEdicaoAluno() {
+    const modal = document.getElementById('modal-aluno');
+    if (modal) modal.classList.remove('active');
+}
+
+function salvarEdicaoModalAluno(e) {
+    if (e) e.preventDefault();
+
+    const inputNome = document.getElementById('input-modal-nome');
+    const inputTurma = document.getElementById('input-modal-turma');
+    const inputMatricula = document.getElementById('input-modal-matricula');
+
+    try {
+        const aluno = salvarDadosAluno({
+            nome: inputNome ? inputNome.value : '',
+            turma: inputTurma ? inputTurma.value : '',
+            matricula: inputMatricula ? inputMatricula.value : ''
+        });
+
+        UI.atualizarIdentificacaoAluno(aluno);
+        estado.turmasConhecidas.add(aluno.turma);
+        fecharModalEdicaoAluno();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+/**
+ * Histórico cumulativo local (LocalStorage)
  */
 function abrirHistorico() {
-    const historico = carregarHistorico();
+    const historico = carregarHistoricoLocal();
     const modal = document.getElementById('modal-history');
     const container = document.getElementById('history-content');
 
     if (!modal || !container) return;
 
+    container.replaceChildren();
+
     if (historico.length === 0) {
-        container.innerHTML = '<p style="color: #64748b;">Nenhuma questão respondida ainda no histórico local.</p>';
+        const p = document.createElement('p');
+        p.style.color = '#64748b';
+        p.textContent = 'Nenhuma questão respondida ainda no histórico local.';
+        container.appendChild(p);
     } else {
         const relatorio = gerarRelatorioCompleto(historico);
-        container.innerHTML = `
-            <div class="stats-grid" style="margin-top: 1rem;">
-                <div class="stat-box">
-                    <div class="stat-value">${relatorio.resumo.total}</div>
-                    <div class="stat-label">Total Geral</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" style="color: #10b981;">${relatorio.resumo.acertos}</div>
-                    <div class="stat-label">Acertos</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">${relatorio.resumo.taxaAcerto}%</div>
-                    <div class="stat-label">Aproveitamento</div>
-                </div>
-            </div>
 
-            <h4 style="margin: 1.25rem 0 0.5rem 0;">Assuntos mais críticos identificados pela IA:</h4>
-            ${relatorio.assuntosPrioritarios.length === 0 ? '<p style="color:#64748b;font-size:0.9rem;">Acumule ao menos 2 questões por assunto para o ranking IA.</p>' : `
-                <ul style="padding-left: 1.25rem; font-size: 0.95rem; color: #334155;">
-                    ${relatorio.assuntosPrioritarios.map(item => `
-                        <li style="margin-bottom: 0.35rem;">
-                            <strong>${item.assunto}</strong> — Taxa: ${item.taxaAcerto.toFixed(0)}% (IPE: ${(item.ipe * 100).toFixed(0)})
-                        </li>
-                    `).join('')}
-                </ul>
-            `}
-        `;
+        const statsGrid = document.createElement('div');
+        statsGrid.className = 'stats-grid';
+        statsGrid.style.marginTop = '1rem';
+
+        [
+            { valor: relatorio.resumo.total, label: 'Total Geral' },
+            { valor: relatorio.resumo.acertos, label: 'Acertos', cor: '#10b981' },
+            { valor: `${relatorio.resumo.taxaAcerto}%`, label: 'Aproveitamento' }
+        ].forEach(box => {
+            const div = document.createElement('div');
+            div.className = 'stat-box';
+            const v = document.createElement('div');
+            v.className = 'stat-value';
+            if (box.cor) v.style.color = box.cor;
+            v.textContent = box.valor;
+            const l = document.createElement('div');
+            l.className = 'stat-label';
+            l.textContent = box.label;
+            div.appendChild(v);
+            div.appendChild(l);
+            statsGrid.appendChild(div);
+        });
+
+        const h4 = document.createElement('h4');
+        h4.style.margin = '1.25rem 0 0.5rem 0';
+        h4.textContent = 'Assuntos mais críticos identificados pela IA:';
+
+        container.appendChild(statsGrid);
+        container.appendChild(h4);
+
+        if (relatorio.assuntosPrioritarios.length === 0) {
+            const p = document.createElement('p');
+            p.style.color = '#64748b';
+            p.style.fontSize = '0.9rem';
+            p.textContent = 'Acumule ao menos 2 questões por assunto para gerar o ranking da IA.';
+            container.appendChild(p);
+        } else {
+            const ul = document.createElement('ul');
+            ul.style.paddingLeft = '1.25rem';
+            ul.style.fontSize = '0.95rem';
+            ul.style.color = '#334155';
+
+            relatorio.assuntosPrioritarios.forEach(item => {
+                const li = document.createElement('li');
+                li.style.marginBottom = '0.35rem';
+                const strong = document.createElement('strong');
+                strong.textContent = item.assunto;
+                const txt = document.createTextNode(` — Taxa: ${item.taxaAcerto.toFixed(0)}% (IPE: ${(item.ipe * 100).toFixed(0)})`);
+                li.appendChild(strong);
+                li.appendChild(txt);
+                ul.appendChild(li);
+            });
+
+            container.appendChild(ul);
+        }
     }
 
     modal.classList.add('active');
 }
 
-function fecharHistorico() {
-    const modal = document.getElementById('modal-history');
-    if (modal) modal.classList.remove('active');
-}
-
 function handleLimparHistorico() {
     if (confirm('Tem certeza que deseja limpar todo o histórico acumulado no navegador?')) {
-        limparHistorico();
+        limparHistoricoLocal();
         abrirHistorico();
     }
 }
 
-// Inicialização dos eventos do DOM
-document.addEventListener('DOMContentLoaded', () => {
-    // Botão iniciar
-    const btnIniciar = document.getElementById('btn-iniciar-simulado');
-    if (btnIniciar) btnIniciar.addEventListener('click', iniciarSimulado);
+// ========================================================
+// INICIALIZAÇÃO DA APLICAÇÃO NO DOM
+// ========================================================
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Inicializa identificação do aluno se já existir
+    const alunoSalvo = obterDadosAluno();
+    UI.atualizarIdentificacaoAluno(alunoSalvo);
+    if (alunoSalvo && alunoSalvo.turma) {
+        estado.turmasConhecidas.add(alunoSalvo.turma);
+    }
 
-    // Botão confirmar resposta
+    // 2. Verifica a saúde da API REST
+    verificarSaudeAPI()
+        .then(() => UI.atualizarStatusAPI('online'))
+        .catch(() => UI.atualizarStatusAPI('offline'));
+
+    // 3. Eventos de Cadastro de Aluno
+    const formCadastro = document.getElementById('form-cadastro-aluno');
+    if (formCadastro) formCadastro.addEventListener('submit', salvarCadastroAluno);
+
+    const btnAlterarHome = document.getElementById('btn-alterar-cadastro-home');
+    if (btnAlterarHome) btnAlterarHome.addEventListener('click', abrirModalEdicaoAluno);
+
+    const btnEditarHeader = document.getElementById('btn-editar-aluno-header');
+    if (btnEditarHeader) btnEditarHeader.addEventListener('click', abrirModalEdicaoAluno);
+
+    const formModalAluno = document.getElementById('form-modal-aluno');
+    if (formModalAluno) formModalAluno.addEventListener('submit', salvarEdicaoModalAluno);
+
+    const btnFecharModalAluno = document.getElementById('btn-fechar-modal-aluno');
+    if (btnFecharModalAluno) btnFecharModalAluno.addEventListener('click', fecharModalEdicaoAluno);
+
+    const btnCancelarModalAluno = document.getElementById('btn-cancelar-modal-aluno');
+    if (btnCancelarModalAluno) btnCancelarModalAluno.addEventListener('click', fecharModalEdicaoAluno);
+
+    // 4. Eventos do Quiz
+    const btnIniciar = document.getElementById('btn-iniciar-simulado');
+    if (btnIniciar) btnIniciar.addEventListener('click', () => iniciarSimulado({ usarContingencia: false }));
+
     const btnConfirmar = document.getElementById('btn-confirmar-resposta');
     if (btnConfirmar) btnConfirmar.addEventListener('click', confirmarResposta);
 
-    // Botão próxima questão / finalizar
     const btnProxima = document.getElementById('btn-proxima-questao');
     if (btnProxima) btnProxima.addEventListener('click', proximaQuestao);
 
-    // Botão novo simulado (da tela de resultado)
     const btnNovoSimulado = document.getElementById('btn-novo-simulado');
     if (btnNovoSimulado) {
         btnNovoSimulado.addEventListener('click', () => {
@@ -242,21 +562,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Modal de Histórico
+    // 5. Eventos do Ranking
+    const btnRankingHeader = document.getElementById('btn-abrir-ranking-header');
+    if (btnRankingHeader) btnRankingHeader.addEventListener('click', () => abrirRanking());
+
+    const btnRankingHome = document.getElementById('btn-abrir-ranking-home');
+    if (btnRankingHome) btnRankingHome.addEventListener('click', () => abrirRanking());
+
+    const btnRankingResult = document.getElementById('btn-abrir-ranking-resultado');
+    if (btnRankingResult) {
+        btnRankingResult.addEventListener('click', () => {
+            const aluno = obterDadosAluno();
+            abrirRanking(aluno ? aluno.turma : 'Todas');
+        });
+    }
+
+    const btnFecharRanking = document.getElementById('btn-fechar-ranking');
+    if (btnFecharRanking) btnFecharRanking.addEventListener('click', fecharRanking);
+
+    const btnAtualizarRanking = document.getElementById('btn-atualizar-ranking');
+    if (btnAtualizarRanking) {
+        btnAtualizarRanking.addEventListener('click', () => {
+            const selectTurma = document.getElementById('ranking-filtro-turma');
+            carregarDadosRanking(selectTurma ? selectTurma.value : 'Todas');
+        });
+    }
+
+    const selectTurmaRanking = document.getElementById('ranking-filtro-turma');
+    if (selectTurmaRanking) {
+        selectTurmaRanking.addEventListener('change', (e) => {
+            carregarDadosRanking(e.target.value);
+        });
+    }
+
+    // 6. Eventos do Histórico Local
     const btnVerHistorico = document.getElementById('btn-ver-historico');
     if (btnVerHistorico) btnVerHistorico.addEventListener('click', abrirHistorico);
 
     const btnFecharHistorico = document.getElementById('btn-fechar-historico');
-    if (btnFecharHistorico) btnFecharHistorico.addEventListener('click', fecharHistorico);
+    if (btnFecharHistorico) btnFecharHistorico.addEventListener('click', () => {
+        const modal = document.getElementById('modal-history');
+        if (modal) modal.classList.remove('active');
+    });
 
     const btnLimparHist = document.getElementById('btn-limpar-historico');
     if (btnLimparHist) btnLimparHist.addEventListener('click', handleLimparHistorico);
 
-    // Navegação e Acessibilidade por Teclado (RNF01, RNF05)
+    const btnFecharErro = document.getElementById('btn-fechar-erro');
+    if (btnFecharErro) btnFecharErro.addEventListener('click', () => UI.ocultarErro());
+
+    // 7. Navegação e Acessibilidade por Teclado (RNF01, RNF05)
     window.addEventListener('keydown', (e) => {
-        // Ignora se o usuário estiver digitando em formulários ou se modal estiver aberto
         const modalAtivo = document.querySelector('.modal-backdrop.active');
         if (modalAtivo) return;
+
+        // Se o foco estiver em um input de texto, não captura teclas de atalho
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
 
         const quizAtivo = UI.screens.quiz && UI.screens.quiz.classList.contains('active');
         if (!quizAtivo) return;
@@ -272,7 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Tecla Enter para confirmar resposta ou avançar de questão
+        // Tecla Enter para confirmar ou avançar
         if (e.key === 'Enter') {
             const btnConfirmar = document.getElementById('btn-confirmar-resposta');
             const btnProxima = document.getElementById('btn-proxima-questao');
@@ -287,4 +648,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-

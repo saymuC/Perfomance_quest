@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Performance Quest — Rendimento por Assunto (ENEM)</title>
+  <!-- Configuração da API (README.md requirement) -->
+  <script src="config.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
+
+  <!-- Overlay de Carregamento Global -->
+  <div id="app-loading-overlay" class="loading-overlay" style="display: none;">
+    <div class="spinner"></div>
+    <p id="loading-overlay-text" style="font-weight: 600; font-size: 1.05rem;">Carregando...</p>
+  </div>
 
   <!-- Cabeçalho da Aplicação -->
   <header class="app-header">
@@ -19,8 +27,19 @@
           <p class="brand-subtitle">Simulador & Diagnóstico Inteligente de Rendimento para o ENEM</p>
         </div>
       </div>
-      <div>
-        <span id="api-status-badge" class="badge badge-primary">Conectando...</span>
+      <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+        <!-- Badge de Identificação do Aluno -->
+        <div id="header-aluno-container" class="aluno-header-badge" style="display: none;">
+          <span>👤</span>
+          <span id="header-aluno-texto">Aluno</span>
+          <button id="btn-editar-aluno-header" class="btn btn-outline" style="padding: 0.15rem 0.45rem; font-size: 0.75rem; border-radius: 9999px;" title="Alterar meus dados">✏️</button>
+        </div>
+
+        <button id="btn-abrir-ranking-header" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" title="Ver Ranking da Turma">
+          🏆 Ranking
+        </button>
+
+        <span id="api-status-badge" class="badge badge-primary">API: Conectando...</span>
       </div>
     </div>
   </header>
@@ -28,15 +47,72 @@
   <!-- Container Principal -->
   <main class="main-container">
 
+    <!-- Banner de Erro Global / Dismissible -->
+    <div id="app-error-banner" class="error-banner" style="display: none;">
+      <div class="error-banner-header">
+        <span id="error-banner-title">⚠️ Erro de Comunicação com a API</span>
+        <button id="btn-fechar-erro" class="btn btn-outline" style="padding: 0.1rem 0.4rem; font-size: 0.8rem;">✕</button>
+      </div>
+      <p id="error-banner-message" class="error-banner-desc">Não foi possível conectar com o servidor.</p>
+      <div id="error-banner-actions" class="error-banner-actions"></div>
+    </div>
+
     <!-- ========================================================
          TELA 1: INÍCIO E CONFIGURAÇÃO DO SIMULADO
          ======================================================== -->
     <section id="screen-home" class="screen active">
+      
+      <!-- Card de Identificação do Estudante (Requisito Tech Lead) -->
+      <div class="card" id="card-identificacao-aluno">
+        <h3 class="card-title">👤 Identificação do Estudante</h3>
+        
+        <!-- Estado: Aluno Já Cadastrado -->
+        <div id="aluno-cadastrado-view" style="display: none;">
+          <div class="aluno-card-info">
+            <div>
+              <strong id="card-aluno-nome" style="font-size: 1.05rem; color: #1e3a8a;">Nome do Aluno</strong>
+              <div style="font-size: 0.85rem; color: #475569; margin-top: 2px;">
+                Turma: <span id="card-aluno-turma" style="font-weight: 700; color: #2563eb;">3A</span> • 
+                Matrícula: <span id="card-aluno-matricula" style="font-family: monospace;">12345</span>
+              </div>
+            </div>
+            <button id="btn-alterar-cadastro-home" class="btn btn-outline" style="font-size: 0.825rem; padding: 0.4rem 0.8rem;">
+              ✏️ Alterar Dados
+            </button>
+          </div>
+        </div>
+
+        <!-- Estado: Primeiro Acesso (Formulário Simples) -->
+        <form id="form-cadastro-aluno">
+          <p style="font-size: 0.875rem; color: #475569; margin-bottom: 0.85rem;">
+            Preencha seus dados para salvar suas tentativas e participar do ranking da sua turma:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem;">
+            <div>
+              <label class="form-label" for="input-aluno-nome">Nome Completo: *</label>
+              <input type="text" id="input-aluno-nome" class="form-input" placeholder="Ex: André Luiz" required>
+            </div>
+            <div>
+              <label class="form-label" for="input-aluno-turma">Turma: *</label>
+              <input type="text" id="input-aluno-turma" class="form-input" placeholder="Ex: 3A, 3B, 3º Ano 1" required>
+            </div>
+            <div>
+              <label class="form-label" for="input-aluno-matricula">Matrícula / ID: *</label>
+              <input type="text" id="input-aluno-matricula" class="form-input" placeholder="Ex: 202601" required>
+            </div>
+          </div>
+          <button type="submit" id="btn-salvar-aluno" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.5rem 1rem;">
+            Salvar Identificação
+          </button>
+        </form>
+      </div>
+
+      <!-- Card de Configuração do Simulado -->
       <div class="card">
-        <h2 class="card-title">🚀 Bem-vindo ao Simulado Inteligente</h2>
+        <h2 class="card-title">🚀 Configuração do Simulado</h2>
         <p style="color: #475569; margin-bottom: 1.25rem;">
-          Prepare-se para o ENEM com questões reais e receba uma <strong>análise diagnóstica por IA</strong> 
-          apontando exatamente os <strong>3 assuntos prioritários</strong> que você precisa revisar para aumentar sua nota.
+          Prepare-se com questões oficiais do ENEM e receba o diagnóstico por IA 
+          com os <strong>3 assuntos prioritários</strong> que você mais precisa focar.
         </p>
 
         <div class="form-group">
@@ -63,16 +139,19 @@
           <button id="btn-iniciar-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;">
             Iniciar Simulado →
           </button>
-          <button id="btn-ver-historico" class="btn btn-outline" style="flex: 1; min-width: 140px;">
-            Ver Meu Histórico
+          <button id="btn-abrir-ranking-home" class="btn btn-outline" style="flex: 1; min-width: 130px;">
+            🏆 Ver Ranking
+          </button>
+          <button id="btn-ver-historico" class="btn btn-outline" style="flex: 1; min-width: 130px;">
+            Meu Histórico
           </button>
         </div>
       </div>
 
       <div class="card" style="background: #f8fafc;">
-        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;">ℹ️ Como funciona o diagnóstico por IA?</h3>
+        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;">ℹ️ Como funciona o diagnóstico por IA e o Ranking?</h3>
         <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">
-          A cada questão respondida, nosso algoritmo calcula o <strong>Índice de Prioridade de Estudo (IPE)</strong> cruzando sua taxa de acerto com o tempo médio de resolução. Ao final, você recebe recomendações pedagógicas precisas sem precisar enviar nenhum dado pessoal.
+          A cada simulado, nosso algoritmo calcula o <strong>Índice de Prioridade de Estudo (IPE)</strong> ponderando erros e tempo de resposta. O resultado final é enviado para a API para consolidar o <strong>Ranking da sua Turma</strong> (critérios: percentual, acertos e menor tempo).
         </p>
       </div>
     </section>
@@ -137,6 +216,17 @@
           Carregando diagnóstico...
         </p>
 
+        <!-- Card de Status de Sincronização com o Backend (Requisito Tech Lead) -->
+        <div id="result-sync-card" class="sync-card">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span id="sync-icon">⏳</span>
+            <span id="sync-status-texto">Sincronizando com o ranking online...</span>
+          </div>
+          <button id="btn-tentar-sincronizar" class="btn btn-outline" style="display: none; font-size: 0.8rem; padding: 0.3rem 0.7rem;">
+            🔄 Sincronizar Agora
+          </button>
+        </div>
+
         <!-- Indicadores Numéricos -->
         <div class="stats-grid">
           <div class="stat-box">
@@ -150,6 +240,10 @@
           <div class="stat-box">
             <div id="resumo-taxa" class="stat-value">0%</div>
             <div class="stat-label">Aproveitamento</div>
+          </div>
+          <div class="stat-box">
+            <div id="resumo-tempo" class="stat-value">0s</div>
+            <div class="stat-label">Tempo Total</div>
           </div>
         </div>
 
@@ -190,17 +284,89 @@
           <button id="btn-novo-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;">
             Fazer Novo Simulado
           </button>
+          <button id="btn-abrir-ranking-resultado" class="btn btn-outline" style="flex: 1; min-width: 160px;">
+            🏆 Ver Ranking da Turma
+          </button>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Modal de Histórico Acumulado -->
+  <!-- ========================================================
+       MODAL 1: RANKING DOS ESTUDANTES (Requisito Tech Lead)
+       ======================================================== -->
+  <div id="modal-ranking" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 750px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
+        <h3 style="font-size: 1.2rem; color: #0f172a; display: flex; align-items: center; gap: 0.4rem;">
+          <span>🏆</span> Ranking dos Estudantes
+        </h3>
+        <button id="btn-fechar-ranking" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
+      </div>
+
+      <!-- Filtros do Ranking -->
+      <div style="display: flex; gap: 0.75rem; align-items: flex-end; margin-top: 1rem; flex-wrap: wrap;">
+        <div style="flex: 2; min-width: 180px;">
+          <label class="form-label" for="ranking-filtro-turma">Filtrar por Turma:</label>
+          <select id="ranking-filtro-turma" class="form-select">
+            <option value="Todas" selected>Todas as Turmas (Geral)</option>
+          </select>
+        </div>
+        <button id="btn-atualizar-ranking" class="btn btn-outline" style="padding: 0.65rem 1rem;">
+          🔄 Atualizar
+        </button>
+      </div>
+
+      <!-- Container da Tabela / Cards de Ranking -->
+      <div id="ranking-conteudo-container" style="padding: 1rem 0; min-height: 150px;">
+        <p style="color: #64748b; font-size: 0.95rem;">Carregando classificação...</p>
+      </div>
+
+      <div style="border-top: 1px solid #e2e8f0; padding-top: 0.75rem; margin-top: 0.5rem; font-size: 0.775rem; color: #64748b; line-height: 1.4;">
+        ℹ️ <em>Critérios do ranking:</em> 1º Maior percentual de acerto, 2º Mais acertos absolutos, 3º Menor tempo total, 4º Data mais antiga.
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL 2: EDIÇÃO DE IDENTIFICAÇÃO DO ALUNO
+       ======================================================== -->
+  <div id="modal-aluno" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 500px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
+        <h3 style="font-size: 1.15rem; color: #0f172a;">👤 Meus Dados de Identificação</h3>
+        <button id="btn-fechar-modal-aluno" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
+      </div>
+
+      <form id="form-modal-aluno" style="padding-top: 1rem;">
+        <div class="form-group">
+          <label class="form-label" for="input-modal-nome">Nome Completo: *</label>
+          <input type="text" id="input-modal-nome" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-modal-turma">Turma: *</label>
+          <input type="text" id="input-modal-turma" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-modal-matricula">Matrícula: *</label>
+          <input type="text" id="input-modal-matricula" class="form-input" required>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.25rem;">
+          <button type="button" id="btn-cancelar-modal-aluno" class="btn btn-secondary">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL 3: HISTÓRICO LOCAL ACUMULADO
+       ======================================================== -->
   <div id="modal-history" class="modal-backdrop">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
-        <h3 style="font-size: 1.15rem; color: #0f172a;">📈 Meu Histórico Acumulado (LocalStorage)</h3>
+        <h3 style="font-size: 1.15rem; color: #0f172a;">📈 Meu Histórico Local (Navegador)</h3>
         <button id="btn-fechar-historico" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
       </div>
 
@@ -221,7 +387,7 @@
   <footer class="app-footer">
     <p>Performance Quest: Rendimento por Assunto &copy; 2026 — UNINORTE / Manaus-AM</p>
     <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">
-      Atividades Práticas Interdisciplinares de Extensão II • Questões oficiais do ENEM via api.enem.dev
+      Atividades Práticas Interdisciplinares de Extensão II • API REST integrada
     </p>
   </footer>
 

@@ -1,47 +1,65 @@
 # Frontend — Performance Quest: Rendimento por Assunto
 
-Este diretório contém a interface web interativa do **Performance Quest**, desenvolvida para proporcionar aos estudantes uma experiência fluida, responsiva e acessível na resolução de simulados do ENEM com diagnóstico por IA.
+Interface web interativa do **Performance Quest**, desenvolvida em arquitetura desacoplada para execução estática no navegador (Cloudflare Pages, Vercel, Netlify, GitHub Pages) consumindo a API REST do backend.
 
-## Estrutura
+## Estrutura de Arquivos
 
 ```
 frontend/
+├── config.js                 # Ponto único de configuração (apiBaseUrl do backend)
 ├── css/
-│   ├── style.css                 # Estilos globais, variáveis de design e layout base
-│   └── components.css            # Estilização de cards, botões, opções, timer e gabarito
+│   ├── style.css             # Estilos globais, variáveis e layout base
+│   └── components.css        # Cards, botões, modais, ranking, sync states e responsividade
 ├── data/
-│   └── questoes_fallback.json    # Dataset de contingência local para funcionamento offline
+│   └── questoes_fallback.json # Dataset de contingência local para funcionamento offline
 ├── js/
-│   ├── api.js                    # Consumo da api.enem.dev e classificador de tópicos
-│   ├── ui.js                     # Gerenciamento de elementos DOM, telas e revisões
-│   └── app.js                    # Ciclo de vida do quiz e orquestração do backend
-├── index.html                    # Ponto de entrada visual da aplicação
-└── README.md                     # Este arquivo
+│   ├── api.js                # Cliente HTTP REST para /questions, /results, /rankings, /health
+│   ├── quiz.js               # Sessão client-side autônoma, correção e algoritmo IPE (Top 3)
+│   ├── storage.js            # Cadastro do aluno (nome, turma, matrícula) e fila offline
+│   ├── ui.js                 # Renderização segura de DOM (anti-XSS), modais e estados
+│   └── app.js                # Orquestração da aplicação, ciclo do quiz e atalhos de teclado
+├── index.html                # Aplicação SPA (Single Page Application)
+└── README.md                 # Documentação do módulo frontend
 ```
 
-## Funcionalidades e Diferenciais
+## Funcionalidades e Requisitos Atendidos
 
-- **Tecnologias Limpas (Vanilla JS/CSS3/HTML5):** Desenvolvido sem frameworks pesados para garantir máximo desempenho em computadores escolares e dispositivos móveis (RNF01, RNF02).
-- **Consumo Dinâmico & Resiliência:** Integração com a API pública do ENEM (`api.enem.dev`) e fallback automático para arquivo JSON local caso não haja conexão com a internet (RF01, RF02).
-- **Classificação Pedagógica por IA:** Mapeamento heurístico de assuntos para cada questão consumida da API (RF04).
-- **Acessibilidade por Teclado:** Suporte completo para resolução do quiz utilizando as teclas **A, B, C, D, E** e confirmação/avanço via tecla **Enter** (RNF05).
-- **Feedback Imediato:** Identificação instantânea de acertos/erros com exibição do gabarito oficial e justificativa pedagógica (RF06).
-- **Painel Diagnóstico (Pós-Quiz):** 
-  - Cálculo do Índice de Prioridade de Estudo (IPE) com destaque para os **3 assuntos prioritários de estudo** (RF09).
-  - Indicadores visuais de aproveitamento por área de conhecimento (RF08, RF10).
-  - Revisão detalhada questão por questão do simulado realizado.
-- **Persistência Local (LocalStorage):** Histórico de simulados e métricas cumulativas salvas no próprio navegador, sem necessidade de cadastro ou servidores remotos de banco de dados (RF07, RNF04).
+- **Configuração Centralizada (`config.js`):** A URL da API REST é definida unicamente em `window.PERFORMANCE_QUEST_CONFIG.apiBaseUrl`, facilitando publicação e deploy em diferentes ambientes sem alterar código-fonte.
+- **Cadastro Simples do Estudante:** Armazenamento de nome, turma e matrícula via `storage.js`, com exibição no cabeçalho e modal de edição.
+- **Desacoplamento Total:** O frontend é 100% estático e não importa arquivos locais de `backend/`, comunicando-se exclusivamente por HTTP.
+- **Estados Visuais de Carregamento, Erro e Sincronização:**
+  - Spinner/overlay durante carregamento de questões e consultas de ranking;
+  - Banners de erro claros com ações de tentativa e modo de contingência local;
+  - Indicador de sincronização pós-quiz com fila offline caso a API esteja temporariamente indisponível.
+- **Ranking da Turma e Geral:** Modal responsivo com filtro por turma, classificação com critérios oficiais (maior percentual, maior número de acertos, menor tempo e data mais antiga) e destaque para o aluno ativo.
+- **Segurança Anti-XSS:** Todas as inserções de dados externos (enunciados, alternativas, justificativas, nomes de alunos e turmas) são feitas via criação segura de elementos DOM (`textContent` e `replaceChildren`), eliminando o uso inseguro de `innerHTML`.
+- **Acessibilidade & Responsividade:** Navegação por teclado (teclas A–E e Enter), layout testado para desktop e dispositivos móveis (375px+).
 
-## Como Executar
+## Configuração e Execução
 
-1. Na raiz do projeto, execute o servidor local:
+1. No arquivo `frontend/config.js`, configure a URL da sua API backend:
+   ```js
+   window.PERFORMANCE_QUEST_CONFIG = {
+     apiBaseUrl: 'http://localhost:3001/api'
+   };
+   ```
+
+2. Inicie o servidor local:
    ```bash
    npm start
    ```
-2. Abra o navegador no endereço indicado:
+
+3. Acesse no navegador:
    ```
-   http://localhost:3000
+   http://localhost:3000/frontend/
    ```
+
+## Testes
+
+Os testes automatizados do projeto podem ser executados com:
+```bash
+npm test
+```
 
 ## Autor
 
