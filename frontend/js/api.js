@@ -5,11 +5,10 @@
  * (conforme especificado na nova arquitetura do README.md).
  */
 
-const FALLBACK_PATH = './data/questoes_fallback.json';
-
 /**
  * Retorna a URL base da API configurada
  */
+
 export function getApiBaseUrl() {
     const config = window.PERFORMANCE_QUEST_CONFIG;
     if (config && typeof config.apiBaseUrl === 'string' && config.apiBaseUrl.trim() !== '') {
@@ -150,22 +149,6 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 }
 
 /**
- * Carrega a base de contingência local quando solicitado explicitamente
- */
-export async function carregarQuestoesFallbackLocal() {
-    const resposta = await fetch(FALLBACK_PATH);
-    if (!resposta.ok) {
-        throw new Error(`Falha ao carregar arquivo de contingência: ${resposta.statusText}`);
-    }
-    const data = await resposta.json();
-    return {
-        questoes: data.map(normalizarQuestao),
-        fonte: 'fallback',
-        totalDisponivel: data.length
-    };
-}
-
-/**
  * Envia o resultado concluído para persistência no banco e ranking (POST /api/results)
  */
 export async function enviarResultadoAPI(resultado) {
@@ -175,7 +158,6 @@ export async function enviarResultadoAPI(resultado) {
     const timeout = setTimeout(() => controller.abort(), 6000);
 
     const payload = {
-        // Campos em português e inglês para compatibilidade total com o backend
         studentName: resultado.nome,
         name: resultado.nome,
         className: resultado.turma,

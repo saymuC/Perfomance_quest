@@ -3,7 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+
+    "start:api": "node backend/src/api.js",
     "start": "node server.js",
     "test": "node --test --test-isolation=none"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
   }
 }

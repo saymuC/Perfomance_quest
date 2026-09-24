@@ -10,8 +10,6 @@ frontend/
 ├── css/
 │   ├── style.css             # Estilos globais, variáveis e layout base
 │   └── components.css        # Cards, botões, modais, ranking, sync states e responsividade
-├── data/
-│   └── questoes_fallback.json # Dataset de contingência local para funcionamento offline
 ├── js/
 │   ├── api.js                # Cliente HTTP REST para /questions, /results, /rankings, /health
 │   ├── quiz.js               # Sessão client-side autônoma, correção e algoritmo IPE (Top 3)

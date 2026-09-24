@@ -7,7 +7,7 @@
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
 import { obterDadosAluno, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
-import { obterQuestoesSimulado, carregarQuestoesFallbackLocal, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI } from './api.js';
+import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI } from './api.js';
 import { UI } from './ui.js';
 
 // Estado global da aplicação
@@ -70,7 +70,7 @@ function carregarQuestaoAtual() {
 /**
  * Inicia uma nova sessão de Simulado
  */
-async function iniciarSimulado({ usarContingencia = false } = {}) {
+async function iniciarSimulado() {
     UI.ocultarErro();
 
     // Valida se o aluno preencheu a identificação obrigatória
@@ -101,16 +101,10 @@ async function iniciarSimulado({ usarContingencia = false } = {}) {
     UI.mostrarCarregando('Carregando questões do servidor da API...');
 
     try {
-        let dados;
-        if (usarContingencia) {
-            dados = await carregarQuestoesFallbackLocal();
-            UI.atualizarStatusAPI('fallback');
-        } else {
-            dados = await obterQuestoesSimulado({ area, quantidade });
-            UI.atualizarStatusAPI('online');
-        }
+        const dados = await obterQuestoesSimulado({ area, quantidade });
+        UI.atualizarStatusAPI('online');
 
-        const { questoes, fonte } = dados;
+        const { questoes } = dados;
 
         if (!questoes || questoes.length === 0) {
             throw new Error('Nenhuma questão disponível para iniciar o simulado.');
@@ -131,8 +125,7 @@ async function iniciarSimulado({ usarContingencia = false } = {}) {
         UI.mostrarErro(
             `Falha ao obter questões: ${err.message}`,
             {
-                onTentarNovamente: () => iniciarSimulado({ usarContingencia: false }),
-                onUsarContingencia: () => iniciarSimulado({ usarContingencia: true })
+                onTentarNovamente: () => iniciarSimulado()
             }
         );
     } finally {
@@ -547,7 +540,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 4. Eventos do Quiz
     const btnIniciar = document.getElementById('btn-iniciar-simulado');
-    if (btnIniciar) btnIniciar.addEventListener('click', () => iniciarSimulado({ usarContingencia: false }));
+    if (btnIniciar) btnIniciar.addEventListener('click', () => iniciarSimulado());
 
     const btnConfirmar = document.getElementById('btn-confirmar-resposta');
     if (btnConfirmar) btnConfirmar.addEventListener('click', confirmarResposta);

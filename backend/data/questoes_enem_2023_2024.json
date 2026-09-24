@@ -5683,5 +5683,806 @@
     ],
     "alternativaCorreta": "B",
     "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-mat-01",
+    "ano": 2023,
+    "area": "Matemática",
+    "assunto": "Geometria Espacial",
+    "enunciado": "Um reservatório de água possui o formato de um cilindro circular reto com raio da base medindo 2 metros e altura de 5 metros. Sabendo que o volume de um cilindro é dado por V = π · r² · h e adotando π = 3, qual é a capacidade total aproximada desse reservatório em metros cúbicos?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "30 m³" },
+      { "id": "B", "letra": "B", "texto": "60 m³" },
+      { "id": "C", "letra": "C", "texto": "120 m³" },
+      { "id": "D", "letra": "D", "texto": "20 m³" },
+      { "id": "E", "letra": "E", "texto": "45 m³" }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "V = π · r² · h = 3 · (2)² · 5 = 3 · 4 · 5 = 60 m³."
+  },
+  {
+    "id": "enem-mat-02",
+    "ano": 2023,
+    "area": "Matemática",
+    "assunto": "Geometria Espacial",
+    "enunciado": "Uma caixa d'água cúbica tem aresta interna de 1,5 metro. Qual é o volume dessa caixa d'água em litros, sabendo que 1 m³ equivale a 1.000 litros?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "1.500 litros" },
+      { "id": "B", "letra": "B", "texto": "2.250 litros" },
+      { "id": "C", "letra": "C", "texto": "3.375 litros" },
+      { "id": "D", "letra": "D", "texto": "4.500 litros" },
+      { "id": "E", "letra": "E", "texto": "3.000 litros" }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "V = a³ = (1,5)³ = 3,375 m³ = 3.375 litros."
+  },
+  {
+    "id": "enem-mat-03",
+    "ano": 2022,
+    "area": "Matemática",
+    "assunto": "Funções e Álgebra",
+    "enunciado": "O custo de produção C (em reais) de x unidades de um produto é dado pela função linear C(x) = 15x + 300, onde 300 representa os custos fixos. Se um microempreendedor produziu 40 unidades, qual foi o custo total incorrido?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "R$ 600,00" },
+      { "id": "B", "letra": "B", "texto": "R$ 750,00" },
+      { "id": "C", "letra": "C", "texto": "R$ 900,00" },
+      { "id": "D", "letra": "D", "texto": "R$ 1.050,00" },
+      { "id": "E", "letra": "E", "texto": "R$ 1.200,00" }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "C(40) = 15 · 40 + 300 = 600 + 300 = R$ 900,00."
+  },
+  {
+    "id": "enem-mat-04",
+    "ano": 2022,
+    "area": "Matemática",
+    "assunto": "Funções e Álgebra",
+    "enunciado": "A trajetória de um projétil é modelada pela função quadrática h(t) = -5t² + 20t, onde h é a altura em metros e t é o tempo em segundos. Em quantos segundos o projétil atinge sua altura máxima?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "1 segundo" },
+      { "id": "B", "letra": "B", "texto": "2 segundos" },
+      { "id": "C", "letra": "C", "texto": "3 segundos" },
+      { "id": "D", "letra": "D", "texto": "4 segundos" },
+      { "id": "E", "letra": "E", "texto": "5 segundos" }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O tempo do vértice é dado por t_v = -b / (2a) = -20 / (2 · (-5)) = -20 / -10 = 2 segundos."
+  },
+  {
+    "id": "enem-nat-01",
+    "ano": 2023,
+    "area": "Ciências da Natureza",
+    "assunto": "Ecologia",
+    "enunciado": "Em uma cadeia alimentar, a energia disponível diminui a cada nível trófico que se avança a partir dos produtores. Esse fenômeno é explicado principalmente pelo fato de que parte considerável da energia é perdida:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Na forma de calor pela respiração e processos metabólicos dos organismos." },
+      { "id": "B", "letra": "B", "texto": "Exclusivamente através da ação de microrganismos fotossintetizantes." },
+      { "id": "C", "letra": "C", "texto": "Pela reflexão da luz solar nas camadas superiores da biosfera." },
+      { "id": "D", "letra": "D", "texto": "Na transformação direta de biomassa vegetal em combustíveis fósseis." },
+      { "id": "E", "letra": "E", "texto": "Pelo acúmulo de toxinas não biodegradáveis na cadeia alimentar." }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "De acordo com a 2ª Lei da Termodinâmica aplicada aos ecossistemas, cerca de 90% da energia é dissipada como calor na respiração celular e excreções."
+  },
+  {
+    "id": "enem-nat-02",
+    "ano": 2023,
+    "area": "Ciências da Natureza",
+    "assunto": "Ecologia",
+    "enunciado": "O despejo de efluentes domésticos ricos em matéria orgânica e fosfatos em corpos d'água pode provocar a proliferação excessiva de algas, seguida da morte de peixes por asfixia. Esse processo de degradação ambiental é conhecido como:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Magnificação trófica." },
+      { "id": "B", "letra": "B", "texto": "Eutrofização." },
+      { "id": "C", "letra": "C", "texto": "Biomagnificação." },
+      { "id": "D", "letra": "D", "texto": "Bioacumulação." },
+      { "id": "E", "letra": "E", "texto": "Inversão térmica." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A eutrofização ocorre pelo excesso de nutrientes que induz a proliferação de algas e consequente esgotamento do oxigênio dissolvido pela decomposição aeróbica."
+  },
+  {
+    "id": "enem-nat-03",
+    "ano": 2022,
+    "area": "Ciências da Natureza",
+    "assunto": "Termodinâmica e Ondulatória",
+    "enunciado": "Garrafas térmicas são projetadas para minimizar as três formas de transferência de calor entre seu interior e o ambiente externo. O vácuo existente entre as paredes duplas de vidro tem a função de impedir a transferência por:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Radiação e irradiação." },
+      { "id": "B", "letra": "B", "texto": "Condução e convecção." },
+      { "id": "C", "letra": "C", "texto": "Exclusivamente radiação." },
+      { "id": "D", "letra": "D", "texto": "Condução e reflexão metálica." },
+      { "id": "E", "letra": "E", "texto": "Convecção e dilatação térmica." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Condução e convecção exigem um meio material para propagar calor; portanto, o vácuo impede ambas. A radiação é reduzida pelo espelhamento das superfícies."
+  },
+  {
+    "id": "enem-nat-04",
+    "ano": 2022,
+    "area": "Ciências da Natureza",
+    "assunto": "Termodinâmica e Ondulatória",
+    "enunciado": "Ao ouvir uma ambulância se aproximando, um pedestre percebe o som da sirene mais agudo do que quando a ambulância se afasta. Esse fenômeno ondulatório associado à frequência aparente é denominado:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Difração sonora." },
+      { "id": "B", "letra": "B", "texto": "Efeito Doppler." },
+      { "id": "C", "letra": "C", "texto": "Ressonância harmônica." },
+      { "id": "D", "letra": "D", "texto": "Polarização acústica." },
+      { "id": "E", "letra": "E", "texto": "Refração ondulatória." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O Efeito Doppler descreve a alteração na frequência observada de uma onda quando a fonte e o observador estão em movimento relativo."
+  },
+  {
+    "id": "enem-hum-01",
+    "ano": 2023,
+    "area": "Ciências Humanas",
+    "assunto": "História do Brasil",
+    "enunciado": "A chamada Era Vargas (1930-1945) promoveu transformações profundas na estrutura socioeconômica do Brasil. Entre as principais marcas desse período, destaca-se:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A descentralização administrativa com forte autonomia outorgada às oligarquias estaduais." },
+      { "id": "B", "letra": "B", "texto": "A criação de leis trabalhistas e o fomento estatal à industrialização de base." },
+      { "id": "C", "letra": "C", "texto": "A privatização imediata dos setores estratégicos de mineração e siderurgia." },
+      { "id": "D", "letra": "D", "texto": "A consolidação do modelo agrário exclusivamente cafeeiro sem interferência do Estado." },
+      { "id": "E", "letra": "E", "texto": "A abolição de qualquer intervenção do Executivo sobre as relações sindicais." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A Era Vargas foi marcada pelo incentivo à indústria nacional de base (CSN, Vale) e consolidação das leis do trabalho (CLT)."
+  },
+  {
+    "id": "enem-hum-02",
+    "ano": 2023,
+    "area": "Ciências Humanas",
+    "assunto": "História do Brasil",
+    "enunciado": "Durante o período da Primeira República no Brasil (1889-1930), a política coronelista baseava-se fortemente no controle eleitoral local. A prática de coagir eleitores a votar nos candidatos apoiados pelos fazendeiros locais ficou conhecida como:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Voto de cabresto." },
+      { "id": "B", "letra": "B", "texto": "Revolução Federalista." },
+      { "id": "C", "letra": "C", "texto": "Política dos Governadores." },
+      { "id": "D", "letra": "D", "texto": "República da Espada." },
+      { "id": "E", "letra": "E", "texto": "Pacto de Ouro Preto." }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "O voto de cabresto era o mecanismo de coerção e tutela eleitoral praticado pelos coronéis sobre os eleitores dependentes."
+  },
+  {
+    "id": "enem-hum-03",
+    "ano": 2022,
+    "area": "Ciências Humanas",
+    "assunto": "Cidadania e Filosofia Política",
+    "enunciado": "Para o filósofo contratualista John Locke, os seres humanos no estado de natureza possuem direitos fundamentais inalienáveis, entre os quais o Estado tem o dever primordial de proteger. São eles:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A submissão irrestrita ao soberano e a renúncia à liberdade civil." },
+      { "id": "B", "letra": "B", "texto": "A vida, a liberdade e a propriedade privada." },
+      { "id": "C", "letra": "C", "texto": "A igualdade material absoluta e a coletivização da terra." },
+      { "id": "D", "letra": "D", "texto": "O direito de guerra ilimitado contra o pacto social." },
+      { "id": "E", "letra": "E", "texto": "A honra militar e o voto estritamente censitário." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Locke defende o jusnaturalismo com ênfase na preservação da vida, da liberdade e da propriedade obtida pelo trabalho."
+  },
+  {
+    "id": "enem-lin-01",
+    "ano": 2023,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "A função da linguagem que visa primordialmente influenciar ou convencer o interlocutor, muito utilizada em textos publicitários e discursos persuasivos por meio de verbos no imperativo, é a função:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Metalinguística." },
+      { "id": "B", "letra": "B", "texto": "Referencial ou denotativa." },
+      { "id": "C", "letra": "C", "texto": "Conativa ou apelativa." },
+      { "id": "D", "letra": "D", "texto": "Fática." },
+      { "id": "E", "letra": "E", "texto": "Emotiva ou expressiva." }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "A função conativa (ou apelativa) foca no receptor para induzir uma ação ou comportamento, com verbos no imperativo e vocativos."
+  },
+  {
+    "id": "enem-lin-02",
+    "ano": 2023,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "A variação linguística regional ou diatópica reflete a diversidade cultural e geográfica de um país. O reconhecimento dessas variações na prova de Linguagens do ENEM tem como princípio pedagógico:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Desqualificar falares regionais em favor do padrão formal único." },
+      { "id": "B", "letra": "B", "texto": "Valorizar a identidade sociocultural e combater o preconceito linguístico." },
+      { "id": "C", "letra": "C", "texto": "Eliminar o uso da norma culta em produções acadêmicas e profissionais." },
+      { "id": "D", "letra": "D", "texto": "Comprovar que variantes populares configuram incorreções gramaticais graves." },
+      { "id": "E", "letra": "E", "texto": "Uniformizar compulsoriamente os sotaques nas escolas brasileiras." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O estudo da variação linguística no ENEM valoriza a riqueza cultural dos diferentes falares e combate o preconceito linguístico."
+  },
+  {
+    "id": "enem-lin-03",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "O texto estabelece uma relação entre elementos da natureza e comandos de um programa de computador para",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "alertar as pessoas sobre a rápida destruição da natureza." },
+      { "id": "B", "letra": "B", "texto": "conscientizar os indivíduos sobre a passagem acelerada do tempo." },
+      { "id": "C", "letra": "C", "texto": "apresentar aos leitores os avanços tecnológicos na área da agricultura." },
+      { "id": "D", "letra": "D", "texto": "orientar os usuários sobre o emprego sustentável das novas tecnologias." },
+      { "id": "E", "letra": "E", "texto": "informar os interessados sobre o tempo de crescimento" }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "O texto usa comandos de programação como metáfora para alertar sobre a destruição da natureza."
+  },
+  {
+    "id": "enem-lin-04",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "Nessa letra de canção, que aborda um contexto de ódio e intolerância, o marcador 'instead of' introduz a ideia de",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "mudança de comportamento." },
+      { "id": "B", "letra": "B", "texto": "panorama de conflitos." },
+      { "id": "C", "letra": "C", "texto": "rotina de isolamento." },
+      { "id": "D", "letra": "D", "texto": "perspectiva bélica." },
+      { "id": "E", "letra": "E", "texto": "cenário religioso." }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "A expressão 'instead of' sugere uma mudança de comportamento, contrapondo o amor à guerra."
+  },
+  {
+    "id": "enem-lin-05",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "A relação entre as citações atribuídas ao físico Albert Einstein e ao cantor e compositor Bob Marley reside na crença de que é necessário",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "dar oportunidade a pessoas que parecem necessitadas." },
+      { "id": "B", "letra": "B", "texto": "identificar contextos que podem representar perigo." },
+      { "id": "C", "letra": "C", "texto": "tirar proveito de situações que podem ser adversas." },
+      { "id": "D", "letra": "D", "texto": "evitar dificuldades que parecem ser intransponíveis." },
+      { "id": "E", "letra": "E", "texto": "contestar circunstâncias que parecem ser harmônicas." }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "As citações destacam a capacidade de transformar situações adversas em oportunidades."
+  },
+  {
+    "id": "enem-lin-06",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "A carta da editora Stephanie Allen-Nichols à escritora Alice Walker tem o propósito de",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "problematizar o enredo de sua obra." },
+      { "id": "B", "letra": "B", "texto": "acusar o recebimento de seu manuscrito." },
+      { "id": "C", "letra": "C", "texto": "solicitar a revisão ortográfica de seu texto." },
+      { "id": "D", "letra": "D", "texto": "informar a transferência de seu livro a outra editora." },
+      { "id": "E", "letra": "E", "texto": "comunicar a recusa da publicação de seu romance." }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "A carta tem o propósito de comunicar a recusa da publicação do romance de Alice Walker."
+  },
+  {
+    "id": "enem-lin-07",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "O problema abordado nesse texto sobre imigrantes residentes nos Estados Unidos diz respeito aos prejuízos gerados pelo(a)",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "repúdio ao sotaque espanhol no uso do inglês." },
+      { "id": "B", "letra": "B", "texto": "resignação diante do apagamento da língua materna." },
+      { "id": "C", "letra": "C", "texto": "escassez de oportunidades de aprendizado do espanhol." },
+      { "id": "D", "letra": "D", "texto": "choque entre falantes de línguas distintas de diferentes gerações." },
+      { "id": "E", "letra": "E", "texto": "concorrência entre as variações linguísticas do inglês" }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "O texto aborda o preconceito contra o sotaque espanhol no uso do inglês por imigrantes."
+  },
+  {
+    "id": "enem-hum-04",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "História do Brasil",
+    "enunciado": "A Era Vargas foi marcada pelo incentivo à indústria nacional de base e pela consolidação das leis do trabalho. Entre as principais marcas desse período, destaca-se:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A descentralização administrativa com forte autonomia outorgada às oligarquias estaduais." },
+      { "id": "B", "letra": "B", "texto": "A criação de leis trabalhistas e o fomento estatal à industrialização de base." },
+      { "id": "C", "letra": "C", "texto": "A privatização imediata dos setores estratégicos de mineração e siderurgia." },
+      { "id": "D", "letra": "D", "texto": "A consolidação do modelo agrário exclusivamente cafeeiro sem interferência do Estado." },
+      { "id": "E", "letra": "E", "texto": "A abolição de qualquer intervenção do Executivo sobre as relações sindicais." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A Era Vargas foi marcada pelo incentivo à indústria nacional de base (CSN, Vale) e consolidação das leis do trabalho (CLT)."
+  },
+  {
+    "id": "enem-hum-05",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "História do Brasil",
+    "enunciado": "Durante o período da Primeira República no Brasil (1889-1930), a política coronelista baseava-se fortemente no controle eleitoral local. A prática de coagir eleitores a votar nos candidatos apoiados pelos fazendeiros locais ficou conhecida como:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Voto de cabresto." },
+      { "id": "B", "letra": "B", "texto": "Revolução Federalista." },
+      { "id": "C", "letra": "C", "texto": "Política dos Governadores." },
+      { "id": "D", "letra": "D", "texto": "República da Espada." },
+      { "id": "E", "letra": "E", "texto": "Pacto de Ouro Preto." }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "O voto de cabresto era o mecanismo de coerção e tutela eleitoral praticado pelos coronéis sobre os eleitores dependentes."
+  },
+  {
+    "id": "enem-hum-06",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "Cidadania e Filosofia Política",
+    "enunciado": "Para o filósofo contratualista John Locke, os seres humanos no estado de natureza possuem direitos fundamentais inalienáveis, entre os quais o Estado tem o dever primordial de proteger. São eles:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A submissão irrestrita ao soberano e a renúncia à liberdade civil." },
+      { "id": "B", "letra": "B", "texto": "A vida, a liberdade e a propriedade privada." },
+      { "id": "C", "letra": "C", "texto": "A igualdade material absoluta e a coletivização da terra." },
+      { "id": "D", "letra": "D", "texto": "O direito de guerra ilimitado contra o pacto social." },
+      { "id": "E", "letra": "E", "texto": "A honra militar e o voto estritamente censitário." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Locke defende o jusnaturalismo com ênfase na preservação da vida, da liberdade e da propriedade obtida pelo trabalho."
+  },
+  {
+    "id": "enem-nat-05",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Ecologia",
+    "enunciado": "Em uma cadeia alimentar, a energia disponível diminui a cada nível trófico que se avança a partir dos produtores. Esse fenômeno é explicado principalmente pelo fato de que parte considerável da energia é perdida:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Na forma de calor pela respiração e processos metabólicos dos organismos." },
+      { "id": "B", "letra": "B", "texto": "Exclusivamente através da ação de microrganismos fotossintetizantes." },
+      { "id": "C", "letra": "C", "texto": "Pela reflexão da luz solar nas camadas superiores da biosfera." },
+      { "id": "D", "letra": "D", "texto": "Na transformação direta de biomassa vegetal em combustíveis fósseis." },
+      { "id": "E", "letra": "E", "texto": "Pelo acúmulo de toxinas não biodegradáveis na cadeia alimentar." }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "De acordo com a 2ª Lei da Termodinâmica aplicada aos ecossistemas, cerca de 90% da energia é dissipada como calor na respiração celular e excreções."
+  },
+  {
+    "id": "enem-nat-06",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Ecologia",
+    "enunciado": "O despejo de efluentes domésticos ricos em matéria orgânica e fosfatos em corpos d'água pode provocar a proliferação excessiva de algas, seguida da morte de peixes por asfixia. Esse processo de degradação ambiental é conhecido como:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Magnificação trófica." },
+      { "id": "B", "letra": "B", "texto": "Eutrofização." },
+      { "id": "C", "letra": "C", "texto": "Biomagnificação." },
+      { "id": "D", "letra": "D", "texto": "Bioacumulação." },
+      { "id": "E", "letra": "E", "texto": "Inversão térmica." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A eutrofização ocorre pelo excesso de nutrientes que induz a proliferação de algas e consequente esgotamento do oxigênio dissolvido pela decomposição aeróbica."
+  },
+  {
+    "id": "enem-nat-07",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Termodinâmica e Ondulatória",
+    "enunciado": "Garrafas térmicas são projetadas para minimizar as três formas de transferência de calor entre seu interior e o ambiente externo. O vácuo existente entre as paredes duplas de vidro tem a função de impedir a transferência por:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Radiação e irradiação." },
+      { "id": "B", "letra": "B", "texto": "Condução e convecção." },
+      { "id": "C", "letra": "C", "texto": "Exclusivamente radiação." },
+      { "id": "D", "letra": "D", "texto": "Condução e reflexão metálica." },
+      { "id": "E", "letra": "E", "texto": "Convecção e dilatação térmica." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Condução e convecção exigem um meio material para propagar calor; portanto, o vácuo impede ambas. A radiação é reduzida pelo espelhamento das superfícies."
+  },
+  {
+    "id": "enem-nat-08",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Termodinâmica e Ondulatória",
+    "enunciado": "Ao ouvir uma ambulância se aproximando, um pedestre percebe o som da sirene mais agudo do que quando a ambulância se afasta. Esse fenômeno ondulatório associado à frequência aparente é denominado:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Difração sonora." },
+      { "id": "B", "letra": "B", "texto": "Efeito Doppler." },
+      { "id": "C", "letra": "C", "texto": "Ressonância harmônica." },
+      { "id": "D", "letra": "D", "texto": "Polarização acústica." },
+      { "id": "E", "letra": "E", "texto": "Refração ondulatória." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O Efeito Doppler descreve a alteração na frequência observada de uma onda quando a fonte e o observador estão em movimento relativo."
+  },
+  {
+    "id": "enem-mat-05",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Funções e Álgebra",
+    "enunciado": "O custo de produção C (em reais) de x unidades de um produto é dado pela função linear C(x) = 15x + 300, onde 300 representa os custos fixos. Se um microempreendedor produziu 40 unidades, qual foi o custo total incorrido?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "R$ 600,00" },
+      { "id": "B", "letra": "B", "texto": "R$ 750,00" },
+      { "id": "C", "letra": "C", "texto": "R$ 900,00" },
+      { "id": "D", "letra": "D", "texto": "R$ 1.050,00" },
+      { "id": "E", "letra": "E", "texto": "R$ 1.200,00" }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "C(40) = 15 · 40 + 300 = 600 + 300 = R$ 900,00."
+  },
+  {
+    "id": "enem-mat-06",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Funções e Álgebra",
+    "enunciado": "A trajetória de um projétil é modelada pela função quadrática h(t) = -5t² + 20t, onde h é a altura em metros e t é o tempo em segundos. Em quantos segundos o projétil atinge sua altura máxima?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "1 segundo" },
+      { "id": "B", "letra": "B", "texto": "2 segundos" },
+      { "id": "C", "letra": "C", "texto": "3 segundos" },
+      { "id": "D", "letra": "D", "texto": "4 segundos" },
+      { "id": "E", "letra": "E", "texto": "5 segundos" }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O tempo do vértice é dado por t_v = -b / (2a) = -20 / (2 · (-5)) = -20 / -10 = 2 segundos."
+  },
+  {
+    "id": "enem-lin-08",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "A variação linguística regional ou diatópica reflete a diversidade cultural e geográfica de um país. O reconhecimento dessas variações na prova de Linguagens do ENEM tem como princípio pedagógico:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Desqualificar falares regionais em favor do padrão formal único." },
+      { "id": "B", "letra": "B", "texto": "Valorizar a identidade sociocultural e combater o preconceito linguístico." },
+      { "id": "C", "letra": "C", "texto": "Eliminar o uso da norma culta em produções acadêmicas e profissionais." },
+      { "id": "D", "letra": "D", "texto": "Comprovar que variantes populares configuram incorreções gramaticais graves." },
+      { "id": "E", "letra": "E", "texto": "Uniformizar compulsoriamente os sotaques nas escolas brasileiras." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O estudo da variação linguística no ENEM valoriza a riqueza cultural dos diferentes falares e combate o preconceito linguístico."
+  },
+  {
+    "id": "enem-lin-09",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "A função da linguagem que visa primordialmente influenciar ou convencer o interlocutor, muito utilizada em textos publicitários e discursos persuasivos por meio de verbos no imperativo, é a função:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Metalinguística." },
+      { "id": "B", "letra": "B", "texto": "Referencial ou denotativa." },
+      { "id": "C", "letra": "C", "texto": "Conativa ou apelativa." },
+      { "id": "D", "letra": "D", "texto": "Fática." },
+      { "id": "E", "letra": "E", "texto": "Emotiva ou expressiva." }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "A função conativa (ou apelativa) foca no receptor para induzir uma ação ou comportamento, com verbos no imperativo e vocativos."
+  },
+  {
+    "id": "enem-lin-10",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Literatura",
+    "enunciado": "No poema 'A rosa de Hiroshima', de Vinicius de Moraes, a expressão 'rosa radioativa' e 'anti-rosa atômica' servem para:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Celebrar os avanços da física nuclear no século XX." },
+      { "id": "B", "letra": "B", "texto": "Criticar os efeitos devastadores da bomba atômica sobre a humanidade." },
+      { "id": "C", "letra": "C", "texto": "Exaltar a beleza das flores mesmo em contextos de guerra." },
+      { "id": "D", "letra": "D", "texto": "Descrever a paisagem natural do Japão após a guerra." },
+      { "id": "E", "letra": "E", "texto": "Comparar a bomba atômica a um fenômeno natural inofensivo." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Vinicius de Moraes usa metáforas para denunciar a devastação causada pela bomba atômica, contrapondo a beleza da rosa à destruição."
+  },
+  {
+    "id": "enem-lin-11",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "No texto sobre a língua da Tabatinga, falada em Bom Despacho (MG), a preservação dessa língua está relacionada principalmente:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "À sua semelhança com o português padrão." },
+      { "id": "B", "letra": "B", "texto": "Ao sentimento de identidade linguística e à transmissão entre gerações." },
+      { "id": "C", "letra": "C", "texto": "Ao seu uso exclusivo em documentos oficiais." },
+      { "id": "D", "letra": "D", "texto": "À sua adoção como língua oficial do estado de Minas Gerais." },
+      { "id": "E", "letra": "E", "texto": "Ao ensino obrigatório nas escolas brasileiras." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A preservação da Língua da Tabatinga está ligada à consciência da descendência africana e ao cuidado de transmiti-la às novas gerações."
+  },
+  {
+    "id": "enem-hum-07",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "Filosofia Política",
+    "enunciado": "O conceito de 'rizoma', proposto por Deleuze e Guattari, caracteriza-se por ser um sistema:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Hierárquico e centralizado, com um ponto de origem definido." },
+      { "id": "B", "letra": "B", "texto": "Acêntrico, não hierárquico e com conexões múltiplas entre quaisquer pontos." },
+      { "id": "C", "letra": "C", "texto": "Linear, com progressão sequencial e previsível." },
+      { "id": "D", "letra": "D", "texto": "Fechado em si mesmo, sem conexões externas." },
+      { "id": "E", "letra": "E", "texto": "Baseado em uma única raiz principal que sustenta todo o sistema." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O rizoma é um sistema acêntrico, não hierárquico, que conecta qualquer ponto a qualquer outro, valorizando a pluralidade de interações."
+  },
+  {
+    "id": "enem-hum-08",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "Sociologia",
+    "enunciado": "Para o filósofo Cornelius Castoriadis, o capitalismo só pode funcionar com a contribuição constante da atividade propriamente humana de seus subjugados, o que gera uma contradição interna caracterizada pela:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Obsolescência associada ao uso da tecnologia." },
+      { "id": "B", "letra": "B", "texto": "Orientação voltada à administração de conflitos." },
+      { "id": "C", "letra": "C", "texto": "Alienação decorrente da organização do trabalho." },
+      { "id": "D", "letra": "D", "texto": "Isonomia remanescente da geração de riquezas." },
+      { "id": "E", "letra": "E", "texto": "Produtividade vinculada ao fortalecimento da autonomia." }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Castoriadis aponta a contradição entre o capitalismo precisar da atividade humana e, ao mesmo tempo, tentar reduzi-la e desumanizá-la, gerando alienação."
+  },
+  {
+    "id": "enem-hum-09",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "Geografia",
+    "enunciado": "Segundo o texto sobre cartografia, a finalidade mais marcante em toda a história dos mapas, desde o seu início, teria sido a de estarem sempre voltados à prática, principalmente a serviço da:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Preservação de espaços naturais." },
+      { "id": "B", "letra": "B", "texto": "Emancipação de sujeitos marginais." },
+      { "id": "C", "letra": "C", "texto": "Revalorização de culturas reprimidas." },
+      { "id": "D", "letra": "D", "texto": "Inversão de hierarquias estabelecidas." },
+      { "id": "E", "letra": "E", "texto": "Sustentação de hegemonias territoriais." }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "O texto afirma que os mapas sempre registraram o que mais interessava a uma minoria, servindo à dominação e à sustentação de hegemonias territoriais."
+  },
+  {
+    "id": "enem-hum-10",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "Filosofia",
+    "enunciado": "A 'regra de ouro' — 'Trate os outros como gostaria de ser tratado' — é um princípio moral onipresente em diversas tradições. Na filosofia moral, esse princípio se traduz teoricamente como:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Doutrina teleológica." },
+      { "id": "B", "letra": "B", "texto": "Imperativo categórico." },
+      { "id": "C", "letra": "C", "texto": "Pensamento utilitarista." },
+      { "id": "D", "letra": "D", "texto": "Secularização inautêntica." },
+      { "id": "E", "letra": "E", "texto": "Raciocínio consequencialista." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A regra de ouro se aproxima do imperativo categórico de Kant, que propõe agir segundo máximas universalizáveis."
+  },
+  {
+    "id": "enem-nat-09",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Biologia",
+    "enunciado": "O texto sobre a pílula anticoncepcional, comercializada a partir de 1960, aponta que o avanço tecnológico resultou socialmente em:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Afastamento da autoridade médica na regulação da fecundidade." },
+      { "id": "B", "letra": "B", "texto": "Superação do discurso da moralidade pela ação da mídia estatal." },
+      { "id": "C", "letra": "C", "texto": "Ampliação do debate público sobre o planejamento familiar." },
+      { "id": "D", "letra": "D", "texto": "Centralização da pesquisa científica pelo sistema privado de saúde." },
+      { "id": "E", "letra": "E", "texto": "Enrijecimento das doutrinas religiosas sobre a sexualidade." }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "A chegada da pílula anticoncepcional ampliou o debate público sobre planejamento familiar, sexualidade e direitos reprodutivos."
+  },
+  {
+    "id": "enem-nat-10",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Biologia",
+    "enunciado": "Em relação aos biomas brasileiros, o Cerrado é caracterizado por:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Floresta densa e úmida, com árvores de grande porte e dossel fechado." },
+      { "id": "B", "letra": "B", "texto": "Savana com árvores tortuosas, arbustos e gramíneas, adaptada ao fogo." },
+      { "id": "C", "letra": "C", "texto": "Vegetação xerófila, com cactáceas e plantas adaptadas à seca extrema." },
+      { "id": "D", "letra": "D", "texto": "Vegetação de mangue, típica de áreas costeiras alagadas." },
+      { "id": "E", "letra": "E", "texto": "Campos de altitude, com vegetação rasteira e clima frio." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O Cerrado é uma savana com árvores tortuosas, arbustos e gramíneas, adaptado ao fogo e à sazonalidade hídrica."
+  },
+  {
+    "id": "enem-nat-11",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Química",
+    "enunciado": "A chuva ácida é um fenômeno causado principalmente pela emissão de poluentes como:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Gás carbônico (CO₂) e metano (CH₄)." },
+      { "id": "B", "letra": "B", "texto": "Dióxido de enxofre (SO₂) e óxidos de nitrogênio (NOₓ)." },
+      { "id": "C", "letra": "C", "texto": "Ozônio (O₃) e vapor d'água." },
+      { "id": "D", "letra": "D", "texto": "Hélio (He) e argônio (Ar)." },
+      { "id": "E", "letra": "E", "texto": "Oxigênio (O₂) e nitrogênio (N₂)." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "SO₂ e NOₓ reagem com vapor d'água na atmosfera, formando ácido sulfúrico e nítrico, que caem como chuva ácida."
+  },
+  {
+    "id": "enem-nat-12",
+    "ano": 2024,
+    "area": "Ciências da Natureza",
+    "assunto": "Física",
+    "enunciado": "O efeito estufa é um fenômeno natural que mantém a temperatura da Terra adequada à vida. No entanto, a intensificação desse efeito tem como principal causa:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A diminuição da camada de ozônio." },
+      { "id": "B", "letra": "B", "texto": "O aumento da emissão de gases como CO₂ e metano." },
+      { "id": "C", "letra": "C", "texto": "A redução da atividade solar." },
+      { "id": "D", "letra": "D", "texto": "O aumento da reflexão da luz solar." },
+      { "id": "E", "letra": "E", "texto": "A expansão das áreas de gelo polar." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "A intensificação do efeito estufa está ligada ao aumento de gases como CO₂ e metano, provenientes de atividades humanas."
+  },
+  {
+    "id": "enem-mat-07",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Geometria Plana",
+    "enunciado": "Um terreno retangular tem 30 metros de comprimento e 20 metros de largura. Qual é a área total desse terreno?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "50 m²" },
+      { "id": "B", "letra": "B", "texto": "100 m²" },
+      { "id": "C", "letra": "C", "texto": "300 m²" },
+      { "id": "D", "letra": "D", "texto": "600 m²" },
+      { "id": "E", "letra": "E", "texto": "1200 m²" }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "A área do retângulo é calculada por A = comprimento × largura = 30 × 20 = 600 m²."
+  },
+  {
+    "id": "enem-mat-08",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Probabilidade",
+    "enunciado": "Em uma urna há 5 bolas vermelhas, 3 bolas azuis e 2 bolas verdes. Qual é a probabilidade de se retirar uma bola vermelha?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "1/2" },
+      { "id": "B", "letra": "B", "texto": "1/3" },
+      { "id": "C", "letra": "C", "texto": "2/5" },
+      { "id": "D", "letra": "D", "texto": "3/10" },
+      { "id": "E", "letra": "E", "texto": "1/5" }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Total de bolas = 5 + 3 + 2 = 10. Probabilidade de vermelha = 5/10 = 1/2."
+  },
+  {
+    "id": "enem-mat-09",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Porcentagem",
+    "enunciado": "Um produto que custava R$ 200,00 sofreu um aumento de 15%. Qual é o novo preço do produto?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "R$ 215,00" },
+      { "id": "B", "letra": "B", "texto": "R$ 220,00" },
+      { "id": "C", "letra": "C", "texto": "R$ 230,00" },
+      { "id": "D", "letra": "D", "texto": "R$ 240,00" },
+      { "id": "E", "letra": "E", "texto": "R$ 250,00" }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Aumento de 15% sobre R$ 200,00 = 200 × 0,15 = R$ 30,00. Novo preço = 200 + 30 = R$ 230,00."
+  },
+  {
+    "id": "enem-mat-10",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Razão e Proporção",
+    "enunciado": "Se 3 kg de um produto custam R$ 45,00, quanto custarão 5 kg do mesmo produto?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "R$ 60,00" },
+      { "id": "B", "letra": "B", "texto": "R$ 65,00" },
+      { "id": "C", "letra": "C", "texto": "R$ 70,00" },
+      { "id": "D", "letra": "D", "texto": "R$ 75,00" },
+      { "id": "E", "letra": "E", "texto": "R$ 80,00" }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Preço por kg = 45/3 = R$ 15,00. Para 5 kg: 5 × 15 = R$ 75,00."
+  },
+  {
+    "id": "enem-mat-11",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Geometria Espacial",
+    "enunciado": "Um cubo tem aresta de 4 cm. Qual é o volume desse cubo?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "16 cm³" },
+      { "id": "B", "letra": "B", "texto": "32 cm³" },
+      { "id": "C", "letra": "C", "texto": "48 cm³" },
+      { "id": "D", "letra": "D", "texto": "64 cm³" },
+      { "id": "E", "letra": "E", "texto": "96 cm³" }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "O volume do cubo é V = a³ = 4³ = 4 × 4 × 4 = 64 cm³."
+  },
+  {
+    "id": "enem-mat-12",
+    "ano": 2024,
+    "area": "Matemática",
+    "assunto": "Estatística",
+    "enunciado": "As notas de um aluno em 5 provas foram: 6, 7, 8, 9 e 10. Qual é a média aritmética dessas notas?",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "7,0" },
+      { "id": "B", "letra": "B", "texto": "7,5" },
+      { "id": "C", "letra": "C", "texto": "8,0" },
+      { "id": "D", "letra": "D", "texto": "8,5" },
+      { "id": "E", "letra": "E", "texto": "9,0" }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Média = (6 + 7 + 8 + 9 + 10) / 5 = 40 / 5 = 8,0."
+  },
+  {
+    "id": "enem-lin-12",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "No texto sobre o aplicativo Linklado, desenvolvido para facilitar a escrita de línguas indígenas, a tecnologia contribuiu para:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A substituição das línguas indígenas pelo português." },
+      { "id": "B", "letra": "B", "texto": "A democratização do registro escrito de línguas dos povos originários." },
+      { "id": "C", "letra": "C", "texto": "A padronização das línguas indígenas em uma única língua." },
+      { "id": "D", "letra": "D", "texto": "A restrição do uso das línguas indígenas a contextos acadêmicos." },
+      { "id": "E", "letra": "E", "texto": "A tradução automática de todas as línguas indígenas para o inglês." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O aplicativo Linklado facilita a escrita de línguas indígenas, contribuindo para a democratização do registro escrito e a preservação dessas línguas."
+  },
+  {
+    "id": "enem-lin-13",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Literatura",
+    "enunciado": "No trecho do romance 'Senhora', de José de Alencar, a personagem Aurélia afirma que comprou o marido por 'cem contos de réis'. Essa passagem revela uma crítica:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "À defesa da igualdade de gêneros." },
+      { "id": "B", "letra": "B", "texto": "À importância atribuída à castidade." },
+      { "id": "C", "letra": "C", "texto": "À indignação com as injustiças sociais." },
+      { "id": "D", "letra": "D", "texto": "À interferência da riqueza sobre o amor." },
+      { "id": "E", "letra": "E", "texto": "À valorização das relações interpessoais." }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "A fala de Aurélia evidencia como o casamento na sociedade da época podia ser reduzido a uma transação comercial, criticando a interferência da riqueza sobre o amor."
+  },
+  {
+    "id": "enem-lin-14",
+    "ano": 2024,
+    "area": "Linguagens",
+    "assunto": "Interpretação Textual",
+    "enunciado": "No texto 'Falar errado é uma arte, Arnesto!', sobre Adoniran Barbosa, o compositor defendia que 'falar errado' era uma escolha artística porque:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Refletia a falta de estudo do compositor." },
+      { "id": "B", "letra": "B", "texto": "Aproximava sua obra da linguagem coloquial do povo brasileiro." },
+      { "id": "C", "letra": "C", "texto": "Era uma forma de desrespeitar a norma culta da língua." },
+      { "id": "D", "letra": "D", "texto": "Impediu que suas músicas fossem gravadas por outros artistas." },
+      { "id": "E", "letra": "E", "texto": "Foi uma estratégia para agradar apenas aos críticos literários." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Adoniran Barbosa usava a linguagem coloquial como escolha artística, aproximando suas composições da fala do povo brasileiro."
+  },
+  {
+    "id": "enem-hum-11",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "História",
+    "enunciado": "Sobre o movimento Black Lives Matter, o texto destaca que o movimento vai além do nacionalismo estreito ao:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "Defender apenas os direitos dos negros heterossexuais." },
+      { "id": "B", "letra": "B", "texto": "Integrar a diversidade do grupo identitário, incluindo pessoas LGBTQIA+, mulheres e pessoas com deficiência." },
+      { "id": "C", "letra": "C", "texto": "Priorizar a compra de produtos de empresas negras." },
+      { "id": "D", "letra": "D", "texto": "Restringir o movimento aos Estados Unidos." },
+      { "id": "E", "letra": "E", "texto": "Excluir a participação de pessoas com antecedentes criminais." }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "O movimento Black Lives Matter amplia sua atuação para incluir a diversidade do grupo identitário, defendendo os direitos de todos os negros, independentemente de gênero, sexualidade ou condição."
+  },
+  {
+    "id": "enem-hum-12",
+    "ano": 2024,
+    "area": "Ciências Humanas",
+    "assunto": "Geografia",
+    "enunciado": "Segundo o texto sobre espaços públicos, eles não são produtos dados e acabados, mas sim lugares onde os problemas aparecem e se transformam em debates. Essa característica é essencial para:",
+    "alternativas": [
+      { "id": "A", "letra": "A", "texto": "A prática do lazer." },
+      { "id": "B", "letra": "B", "texto": "A vigilância da sociedade." },
+      { "id": "C", "letra": "C", "texto": "A erradicação da violência." },
+      { "id": "D", "letra": "D", "texto": "A construção da democracia." },
+      { "id": "E", "letra": "E", "texto": "A diversificação do trabalho." }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Os espaços públicos são fundamentais para a construção da democracia, pois permitem o debate, o diálogo e a visibilidade de conflitos."
   }
+
 ]
