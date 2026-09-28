@@ -76,9 +76,7 @@ function startServer(port) {
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    const nextPort = Number(PORT) + 1;
-    console.log(`⚠️  Porta ${PORT} já está em uso. Tentando porta ${nextPort}...`);
-    startServer(nextPort);
+    console.error(`A porta ${PORT} já está em uso. Defina PORT para escolher outra porta para o frontend.`);
   } else {
     console.error('Erro no servidor:', err);
   }

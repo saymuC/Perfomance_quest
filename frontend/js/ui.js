@@ -210,7 +210,25 @@ export const UI = {
 
         // Enunciado (seguro com textContent)
         if (questionText) {
-            questionText.textContent = questao.enunciado || 'Enunciado não disponível.';
+            questionText.replaceChildren();
+            const enunciado = String(questao.enunciado || 'Enunciado não disponível.')
+                .replace(/\\n/g, '\n');
+            const imagemMarkdown = /!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
+            let inicio = 0;
+            let imagem;
+
+            while ((imagem = imagemMarkdown.exec(enunciado))) {
+                questionText.append(document.createTextNode(enunciado.slice(inicio, imagem.index)));
+                const img = document.createElement('img');
+                img.src = imagem[1];
+                img.alt = 'Imagem da questão';
+                img.loading = 'lazy';
+                img.onerror = () => img.remove();
+                questionText.append(img);
+                inicio = imagemMarkdown.lastIndex;
+            }
+
+            questionText.append(document.createTextNode(enunciado.slice(inicio)));
         }
 
         // Alternativas criadas com elementos DOM seguros
@@ -225,17 +243,29 @@ export const UI = {
                 const letterSpan = document.createElement('span');
                 letterSpan.className = 'alt-letter';
                 letterSpan.textContent = alt.letra || alt.id;
+                optEl.appendChild(letterSpan);
 
-                const textSpan = document.createElement('span');
-                textSpan.className = 'alt-text';
-                textSpan.textContent = alt.texto || '';
+                if (alt.texto) {
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'alt-text';
+                    textSpan.textContent = alt.texto;
+                    optEl.appendChild(textSpan);
+                }
+
+                if (alt.imagem) {
+                    const img = document.createElement('img');
+                    img.className = 'alt-image';
+                    img.src = alt.imagem;
+                    img.alt = `Imagem da alternativa ${alt.letra || alt.id}`;
+                    img.loading = 'lazy';
+                    img.onerror = () => optEl.remove();
+                    optEl.appendChild(img);
+                }
 
                 const hintSpan = document.createElement('span');
                 hintSpan.className = 'alt-key-hint';
                 hintSpan.textContent = `Tecla ${alt.letra || alt.id}`;
 
-                optEl.appendChild(letterSpan);
-                optEl.appendChild(textSpan);
                 optEl.appendChild(hintSpan);
 
                 optEl.addEventListener('click', () => {

@@ -92,15 +92,16 @@ export function normalizarQuestao(q) {
             }
             const letra = String(alt.letra || alt.letter || alt.id || '').toUpperCase();
             const texto = alt.texto || alt.text || '';
+            const imagem = alt.imagem || alt.file || null;
             const isCorrect = Boolean(alt.isCorrect || alt.correta);
-            return { letra, texto, id: letra, isCorrect };
+            return { letra, texto, imagem, id: letra, isCorrect };
         });
     } else if (altsArray && typeof altsArray === 'object') {
         alternativas = Object.entries(altsArray).map(([key, val]) => ({
             letra: String(key).toUpperCase(),
             texto: typeof val === 'string' ? val : (val.text || val.texto || ''),
-            id: String(key).toUpperCase(),
-            isCorrect: false
+            imagem: typeof val === 'object' ? (val.imagem || val.file || null) : null,
+            id: String(key).toUpperCase()
         }));
     }
 
@@ -119,6 +120,7 @@ export function normalizarQuestao(q) {
         area,
         assunto,
         enunciado,
+        imagens: q.imagens || q.images || [],
         alternativas,
         alternativaCorreta: gabarito,
         explicacao: q.explicacao || q.justification || `Gabarito oficial do ENEM: Alternativa ${gabarito}.`

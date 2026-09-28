@@ -24,29 +24,20 @@ O frontend não importa mais arquivos de `backend/`. A comunicação entre os do
 
 ## Executar localmente
 
-Requisitos: Node.js 20 ou superior. PostgreSQL é opcional no desenvolvimento; sem `DATABASE_URL`, a API usa memória e perde os rankings ao reiniciar.
+Requisitos: Node.js 20 ou superior. A API local mantém os resultados em memória; eles são perdidos ao reiniciar o backend.
 
 ```bash
 npm install
-cp backend/.env.example backend/.env
 npm run start:backend
 ```
 
-Em outro terminal:
+Em outro terminal, inicie o servidor estático:
 
 ```bash
 npm run start:frontend
 ```
 
-Acesse `http://localhost:3000/frontend/`. A API roda em `http://localhost:3001/api`.
-
-## Banco de dados
-
-Crie um banco PostgreSQL, configure `DATABASE_URL` em `backend/.env` e execute:
-
-```bash
-npm --workspace backend run db:migrate
-```
+Acesse `http://localhost:3000/frontend/`. A API roda em `http://localhost:3001/api`; ambos os serviços precisam estar ativos.
 
 ## API
 

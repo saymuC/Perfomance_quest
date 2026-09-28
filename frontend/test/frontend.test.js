@@ -105,9 +105,10 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
         assunto: 'Ciências Humanas e suas Tecnologias',
         statement: 'Qual o ano da Proclamação da República no Brasil colonial e império?',
         alternatives: [
-            { letter: 'A', text: '1889', isCorrect: true },
+            { letter: 'A', text: '1889', isCorrect: true, file: 'https://enem.dev/a.png' },
             { letter: 'B', text: '1822', isCorrect: false }
-        ]
+        ],
+        images: ['https://enem.dev/question.png']
     };
 
     const norm = normalizarQuestao(raw);
@@ -117,6 +118,8 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
     assert.equal(norm.alternativaCorreta, 'A');
     assert.equal(norm.enunciado, 'Qual o ano da Proclamação da República no Brasil colonial e império?');
     assert.equal(norm.alternativas.length, 2);
+    assert.equal(norm.alternativas[0].imagem, 'https://enem.dev/a.png');
+    assert.deepEqual(norm.imagens, ['https://enem.dev/question.png']);
 });
 
 test('Frontend - API: normalizarArea mapeia nomes compostos para as 4 áreas canônicas', () => {
