@@ -711,7 +711,7 @@ export const UI = {
             const matriculaAluno = item.registrationNumber || item.matricula || '';
             const acertos = item.score !== undefined ? item.score : (item.acertos || 0);
             const total = item.totalQuestions || item.total || 0;
-            const percentual = item.percentage !== undefined ? item.percentage : (item.taxaAcerto || 0);
+            const percentual = item.percentual !== undefined ? item.percentual : (item.percentage !== undefined ? item.percentage : (item.taxaAcerto || 0));
             const tempo = item.totalTimeSeconds !== undefined ? item.totalTimeSeconds : (item.tempoSegundos || 0);
 
             // Destaque para o aluno atual
