@@ -99,7 +99,7 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
       const year = Number(url.searchParams.get('year') || 2023);
       const quantity = Number(url.searchParams.get('quantity') || 10);
       const area = normalizar(url.searchParams.get('area') || 'Todas');
-      if (!Number.isInteger(year) || !Number.isInteger(quantity) || quantity < 1 || quantity > 50) {
+      if (!Number.isInteger(year) || !Number.isInteger(quantity) || quantity < 1 || quantity > 200) {
         return responder(res, 400, { error: 'Filtros year ou quantity inválidos.' }, requestOrigin, origins);
       }
 
