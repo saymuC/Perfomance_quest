@@ -14,13 +14,43 @@ function normalizar(valor) {
   return String(valor).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
+function normalizarOrigem(origin) {
+  try {
+    return new URL(origin).origin;
+  } catch {
+    return '';
+  }
+}
+
+function origemPermitida(origin, origins) {
+  if (!origin || origins.includes('*')) return true;
+  const requestOrigin = normalizarOrigem(origin);
+  if (!requestOrigin) return false;
+  const allowedOrigins = origins.map(normalizarOrigem);
+  if (allowedOrigins.includes(requestOrigin)) return true;
+
+  try {
+    const { hostname } = new URL(requestOrigin);
+    return allowedOrigins.some(allowedOrigin => {
+      if (!allowedOrigin) return false;
+      const { hostname: configuredHost } = new URL(allowedOrigin);
+      const projectSlug = configuredHost.endsWith('.vercel.app')
+        ? configuredHost.slice(0, -'.vercel.app'.length)
+        : '';
+      return projectSlug && hostname.startsWith(`${projectSlug}-`) && hostname.endsWith('.vercel.app');
+    });
+  } catch {
+    return false;
+  }
+}
+
 function responder(res, status, data, origin, origins) {
   const headers = {
     'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type'
   };
-  if (origin && origins.includes(origin)) {
+  if (origin && origemPermitida(origin, origins)) {
     headers['Access-Control-Allow-Origin'] = origin;
     headers.Vary = 'Origin';
   }
@@ -56,7 +86,7 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
   const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
     const requestOrigin = req.headers.origin;
-    if (requestOrigin && !origins.includes('*') && !origins.includes(requestOrigin)) {
+    if (!origemPermitida(requestOrigin, origins)) {
       return responder(res, 403, { error: 'Origem não permitida.' }, requestOrigin, origins);
     }
     if (req.method === 'OPTIONS') return responder(res, 204, {}, requestOrigin, origins);
