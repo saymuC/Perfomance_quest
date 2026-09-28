@@ -13,6 +13,11 @@ npm-debug.log*
 # Environment variables
 .env
 .env.local
+.env.*.local
+
+# Local persistent API data
+backend/data/results.jsonl
+backend/data/test-results-*.jsonl
 
 # Editor / IDE directories
 .vscode/

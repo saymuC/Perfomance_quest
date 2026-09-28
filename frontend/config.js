@@ -9,5 +9,5 @@
  */
 
 window.PERFORMANCE_QUEST_CONFIG = {
-  apiBaseUrl: 'http://localhost:3001/api'
+  apiBaseUrl: 'https://perfomance-quest-api.onrender.com/api'
 };

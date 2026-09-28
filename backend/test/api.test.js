@@ -1,15 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 import { createApiServer } from '../server.js';
 
 test('API local fornece saúde, questões, resultados e ranking', async t => {
-  const server = createApiServer();
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'performance-quest-api-'));
+  const server = await createApiServer({ dataFile: path.join(directory, 'results.jsonl') });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-  t.after(() => new Promise(resolve => server.close(resolve)));
+  t.after(async () => {
+    await new Promise(resolve => server.close(resolve));
+    await fs.rm(directory, { recursive: true, force: true });
+  });
   const baseUrl = `http://127.0.0.1:${server.address().port}`;
 
   const health = await fetch(`${baseUrl}/api/health`).then(response => response.json());
   assert.equal(health.status, 'ok');
+  assert.equal(health.persistence, 'file');
 
   const questions = await fetch(`${baseUrl}/api/questions?area=Linguagens&quantity=2&year=2023`).then(response => response.json());
   assert.equal(questions.questions.length, 2);
