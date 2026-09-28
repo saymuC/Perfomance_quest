@@ -29,6 +29,13 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   assert.ok(mathematics.questions.every(question => !question.enunciado.includes('broken-image.svg')));
   assert.ok(!mathematics.questions.some(question => question.id === 'enem-2023-132'));
 
+  const fullQuestionSetResponse = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=200&year=2023`);
+  assert.equal(fullQuestionSetResponse.status, 200);
+  const fullQuestionSet = await fullQuestionSetResponse.json();
+  assert.equal(fullQuestionSet.questions.length, fullQuestionSet.total);
+  assert.ok(fullQuestionSet.total > 50);
+  assert.equal((await fetch(`${baseUrl}/api/questions?quantity=201&year=2023`)).status, 400);
+
   const saved = await fetch(`${baseUrl}/api/results`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
