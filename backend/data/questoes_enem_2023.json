@@ -1060,8 +1060,8 @@
   {
     "id": "enem-2023-30",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Linguagens, Códigos e suas Tecnologias",
+    "assunto": "Linguagens, Códigos e suas Tecnologias",
     "titulo": "Questão 30 - ENEM 2023",
     "numero": 30,
     "enunciado": "Enquanto estivemos entretidos com os urubus outras coisas andaram acontecendo na cidade. A Companhia baixou novas proibições, umas inteiramente bobocas, só pelo prazer de proibir (ninguém podia cuspir pra cima, nem carregar água em jacá, nem tapar o sol com peneira, como se todo mundo estivesse abusando dessas esquisitices); mas outras bem irritantes, como a de pular muro pra cortar caminho, tática que quase todo mundo que não sofria de reumatismo vinha adotando ultimamente, principalmente os meninos. E não confiando na proibição só, nem na força dos castigos, que eram rigorosos, a Companhia ainda mandou fincar cacos de garrafa nos muros. Achei isso um exagero, e comentei o assunto com mamãe. Meu pai ouviu lá do quarto e veio explicar. Disse que em épocas normais bastava uma coisa ou outra; mas agora a Companhia não podia admitir nenhuma brecha em suas ordens; se alguém desobedecesse à proibição podia se cortar nos cacos; se alguém conseguisse pular um muro quebrando era apanhado pela proibição, nhoc – e fez o gesto de quem torce o pescoço de um frango.\nVEIGA, J. J. Sombras de reis barbudos. Rio de Janeiro: Civilização Brasileira, 1978.\nSob a perspectiva do menino que narra, os fatos ficcionais oferecem um esboço do momento político vigente na década de 1970, aqui representado pelo",
@@ -1632,50 +1632,6 @@
     "explicacao": "Gabarito oficial do ENEM: Alternativa A."
   },
   {
-    "id": "enem-2023-44",
-    "ano": 2023,
-    "area": "Linguagens, Códigos e suas Tecnologias",
-    "assunto": "Linguagens, Códigos e suas Tecnologias",
-    "titulo": "Questão 44 - ENEM 2023",
-    "numero": 44,
-    "enunciado": "![](https://enem.dev/broken-image.svg)\n\nEssa campanha publicitária do Ministério da Saúde visa",
-    "imagens": [],
-    "alternativas": [
-      {
-        "id": "A",
-        "letra": "A",
-        "texto": "Divulgar um conjunto de benefícios proporcionados pela amamentação.",
-        "imagem": null
-      },
-      {
-        "id": "B",
-        "letra": "B",
-        "texto": "Apresentar tratamentos para infecções respiratórias em bebês.",
-        "imagem": null
-      },
-      {
-        "id": "C",
-        "letra": "C",
-        "texto": "Defender o direito das mulheres de amamentar em público.",
-        "imagem": null
-      },
-      {
-        "id": "D",
-        "letra": "D",
-        "texto": "Orientar sobre os exercícios para uma boa amamentação.",
-        "imagem": null
-      },
-      {
-        "id": "E",
-        "letra": "E",
-        "texto": "Informar sobre o aumento de anticorpos nas mães.",
-        "imagem": null
-      }
-    ],
-    "alternativaCorreta": "A",
-    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
-  },
-  {
     "id": "enem-2023-45",
     "ano": 2023,
     "area": "Linguagens, Códigos e suas Tecnologias",
@@ -2162,50 +2118,6 @@
     "explicacao": "Gabarito oficial do ENEM: Alternativa A."
   },
   {
-    "id": "enem-2023-56",
-    "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
-    "titulo": "Questão 56 - ENEM 2023",
-    "numero": 56,
-    "enunciado": "![](https://enem.dev/broken-image.svg)\n\nLAERTE. Disponível em: www.laerte.art.br. Acesso em: 23 nov. 2021 (adaptado)\n\nA charge ilustra um anseio presente na sociedade contemporânea, que se caracteriza pela",
-    "imagens": [],
-    "alternativas": [
-      {
-        "id": "A",
-        "letra": "A",
-        "texto": "Situação de revolta individual.",
-        "imagem": null
-      },
-      {
-        "id": "B",
-        "letra": "B",
-        "texto": "Satisfação de desejos pessoais.",
-        "imagem": null
-      },
-      {
-        "id": "C",
-        "letra": "C",
-        "texto": "Participação em ações decisórias.",
-        "imagem": null
-      },
-      {
-        "id": "D",
-        "letra": "D",
-        "texto": "Permanência em passividade social.",
-        "imagem": null
-      },
-      {
-        "id": "E",
-        "letra": "E",
-        "texto": "Conivência em interesses partidários.",
-        "imagem": null
-      }
-    ],
-    "alternativaCorreta": "C",
-    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
-  },
-  {
     "id": "enem-2023-57",
     "ano": 2023,
     "area": "Ciências Humanas e suas Tecnologias",
@@ -2556,50 +2468,6 @@
     ],
     "alternativaCorreta": "D",
     "explicacao": "Gabarito oficial do ENEM: Alternativa D."
-  },
-  {
-    "id": "enem-2023-65",
-    "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
-    "titulo": "Questão 65 - ENEM 2023",
-    "numero": 65,
-    "enunciado": "![](https://enem.dev/broken-image.svg)\n\nNas reportagens publicadas sobre a inauguração de Museu de Arte de São Paulo, em 1947, quando ele ainda ocupava um edifício na rua Sete de Abril, Lina Bo Bardi não foi mencionada nenhuma vez. A arquiteta era responsável pelo projeto do museu que mudaria para sempre a posição de São Paulo no circuito mundial das artes. Mas não houve nenhum registro disso. O louvor se concentrou em seu marido e parceiro profissional, o respeitado crítico de arte Pietro Maria Bardi. Passados 75 anos, a mulher então ignorada recebeu um Leão de Ouro póstumo, a maior homenagem da Bienal de Arquitetura de Veneza, e tem agora sua história contada em duas biografias de peso, que procuram destrinchar uma carreira marcada pela ousadia e pela contradição.\n\nPORTO, W. L**ina Bo Bardi tem sua arquitetura contraditória destrinchada em biografias**. Disponível em: www1.folha.uol.com.br. Acesso em: 10 nov. 2021 (adaptado).\n\nAs transformações pelas quais passaram as sociedades ocidentais e que possibilitaram o reconhecimento recente do trabalho da arquiteta mencionada no texto foram resultado das mobilizações sociais pela",
-    "imagens": [],
-    "alternativas": [
-      {
-        "id": "A",
-        "letra": "A",
-        "texto": "Equidade de genêro.",
-        "imagem": null
-      },
-      {
-        "id": "B",
-        "letra": "B",
-        "texto": "Liberdade de expressão.",
-        "imagem": null
-      },
-      {
-        "id": "C",
-        "letra": "C",
-        "texto": "Admissibilidade de voto.",
-        "imagem": null
-      },
-      {
-        "id": "D",
-        "letra": "D",
-        "texto": "Igualdade de oportunidade.",
-        "imagem": null
-      },
-      {
-        "id": "E",
-        "letra": "E",
-        "texto": "Reciprocidade de tratamento.",
-        "imagem": null
-      }
-    ],
-    "alternativaCorreta": "A",
-    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
   },
   {
     "id": "enem-2023-66",
@@ -3268,8 +3136,8 @@
   {
     "id": "enem-2023-81",
     "ano": 2023,
-    "area": "Linguagens, Códigos e suas Tecnologias",
-    "assunto": "Linguagens, Códigos e suas Tecnologias",
+    "area": "Ciências Humanas e suas Tecnologias",
+    "assunto": "Ciências Humanas e suas Tecnologias",
     "titulo": "Questão 81 - ENEM 2023",
     "numero": 81,
     "enunciado": "A economia das ilegalidades se reestruturou com o desenvolvimento da sociedade capitalista. A ilegalidade dos bens foi separada da ilegalidade dos direitos. Divisão que corresponde a uma oposição de classes, pois, de um lado, a ilegalidade mais acessível às classes populares será a dos bens — transferência violenta das propriedades; de outro, à burguesia, então, se reservará a ilegalidade dos direitos: a possibilidade de desviar seus próprios regulamentos e suas próprias leis; e essa grande redistribuição das ilegalidades se traduzirá até por uma especialização dos circuitos judiciários; para as ilegalidades de bens — para o roubo — os tribunais ordinários e os castigos; para as ilegalidades de direitos — fraudes, evasões fiscais, operações comerciais irregulares — jurisdições especiais com transações, acomodações, multas atenuadas etc.\n FOUCAULT, M. Vigiar e punir: nascimento da prisão. Petropolis: Vozes, 1987 \nO texto apresenta uma relação de cálculo politico-econômico que caracteriza o poder punitivo por meio da • gestão das ilicitudes pelo sistema judicial. aplicação das sanções pelo modelo equânime. supressão dos crimes pela penalização severa. regulamentação dos privilégios pela justiça social. repartição de vantagens pela hierarquização cultural",
@@ -3798,8 +3666,8 @@
   {
     "id": "enem-2023-93",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
     "titulo": "Questão 93 - ENEM 2023",
     "numero": 93,
     "enunciado": "A utilização de tecnologia nuclear é um tema bastante controverso, por causa do risco de acidentes graves, como aqueles ocorridos em Chernobyl (1986), em Goiânia (1987) e em Fukushima (2011). Apesar de muitas desvantagens, como a geração de resíduos tóxicos, a descontaminação ambiental dispendiosa em caso de acidentes e a utilização em armas nucleares, a geração de energia nuclear apresenta vantagens em comparação a outras fontes de energia.\nA geração dessa energia tem como característica:",
@@ -3842,8 +3710,8 @@
   {
     "id": "enem-2023-94",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
     "titulo": "Questão 94 - ENEM 2023",
     "numero": 94,
     "enunciado": "Em uma indústria, o controle da dureza da água é importante quando ela é utilizada em caldeiras, uma vez que sais pouco solúveis, formados a partir de sulfatos e carbonatos, podem acumular-se no interior das tubulações, causando obstruções. Para avaliar a água utilizada nessa indústria, foram realizados testes de qualidade que consideraram os seauintes parâmetros:\n\n![](https://enem.dev/2023/questions/94/429989c0-d615-4e19-a5e6-838e81a6039c.png)\n\nQual teste deve ser considerado para controlar a formação desse tipo de obstrução de tubulações?",
@@ -3932,8 +3800,8 @@
   {
     "id": "enem-2023-96",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
     "titulo": "Questão 96 - ENEM 2023",
     "numero": 96,
     "enunciado": "Existe no comércio um produto antimofo constituído por uma embalagem com tampa perfurada contendo cloreto de cálcio anidro, CaCI,. Uma vez aberto o lacre, essa substância absorve a umidade ambiente, transformando-se em cloreto de cálcio di-hidratado, CaCI, 2H,0. Considere a massa molar da água igual a 18 g mol-1, e a massa molar do cloreto de cálcio anidro igual a 111 g mol-1.\nNa hidratação da substância presente no antimofo, o ganho percentual, em massa, é mais próximo de",
@@ -3976,8 +3844,8 @@
   {
     "id": "enem-2023-97",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
     "titulo": "Questão 97 - ENEM 2023",
     "numero": 97,
     "enunciado": "Um garoto comprou vários abacates na feira, mas descobriu que eles não estavam maduros o suficiente para serem consumidos. Sua mãe recomendou que ele colocasse os abacates em um recipiente fechado, pois isso aceleraria seu amadurecimento. Com certa dúvida, o garoto realizou esta experiência: colocou alguns abacates no recipiente e deixou os demais em uma fruteira aberta. Surpreendendo-se, ele percebeu que os frutos que estavam no recipiente fechado amadureceram mais rapidamente.\nA aceleração desse processo é causada por",
@@ -4020,8 +3888,8 @@
   {
     "id": "enem-2023-98",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
     "titulo": "Questão 98 - ENEM 2023",
     "numero": 98,
     "enunciado": "Há muito tempo são conhecidas espécies de lesmas-do-mar com uma capacidade impar: guardar parte da maquinaria das células das algas que consomem — os cloroplastos — e mantê-los funcionais dentro das suas próprias células, obtendo assim parte do seu alimento. Investigadores portugueses descobriram que essas lesmas-do-mar podem ser mais eficientes nesse processo do que as próprias algas que consomem.\n\nDisponível em: www.cienciahoje.pt. Acesso em: 10 fev. 2015 (adaptado).\n\nEssa adaptação confere a esse organismo a capacidade de obter primariamente",
@@ -4506,8 +4374,8 @@
   {
     "id": "enem-2023-109",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
     "titulo": "Questão 109 - ENEM 2023",
     "numero": 109,
     "enunciado": "Uma academia decide trocar gradualmente seus aparelhos de musculação. Agora, os frequentadores que utilizam os aparelhos do tipo 1 podem também utilizar os aparelhos do tipo 2, representados na figura, para elevar cargas correspondentes às massas M1 e M2 com velocidade constante. A fim de que o exercício seja realizado com a mesma força F, os usuários devem ser orientados a respeito da relação entre as cargas nos dois tipos de aparelhos, já que as polias fixas apenas mudam a direção das forças, enquanto a polia móvel divide as forças.\n\nEm ambos os aparelhos, considere as cordas inextensíveis, as massas das polias e das cordas desprezíveis e que não há dissipação de energia.\n\n![](https://enem.dev/2023/questions/109/e083688b-cc00-4c8b-9de6-01f07a7a6a5c.png)\n\nPara essa academia, qual deve ser a razão M2/M1 informada aos usuários?",
@@ -5367,6 +5235,138 @@
     "explicacao": "Gabarito oficial do ENEM: Alternativa C."
   },
   {
+    "id": "enem-2023-128",
+    "ano": 2023,
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
+    "titulo": "Questão 128 - ENEM 2023",
+    "numero": 128,
+    "enunciado": "É comum em viagens de avião sermos solicitados a desligar aparelhos cujo funcionamento envolva a emissão ou a recepção de ondas eletromagnéticas, como celulares. A justificativa dada para esse procedimento é, entre outras coisas, a necessidade de eliminar fontes de sinais eletromagnéticos que possam interferir nas comunicações, via rádio, dos pilotos com a torre de controle.\\n\\nEssa interferência poderá ocorrer somente se as ondas emitidas pelo celular e as recebidas pelo rádio do avião",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Forem ambas audíveis.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Tiverem a mesma potência.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Tiverem a mesma frequência.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Tiverem a mesma intensidade.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Propagarem-se com velocidades diferentes.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-130",
+    "ano": 2023,
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
+    "titulo": "Questão 130 - ENEM 2023",
+    "numero": 130,
+    "enunciado": "Uma cafeteria adotou copos fabricados a partir de uma composição de 50% de plástico reciclado não biodegradável e 50% de casca de café. O copo é reutilizável e retornável, pois o material, semelhante a uma cerâmica, suporta a lavagem. Embora ele seja comercializado por um preço considerado alto quando comparado ao de um copo de plástico descartável, essa cafeteria possibilita aos clientes retornarem o copo sujo e levarem o café quente servido em outro copo já limpo e higienizado. O material desse copo oferece também o conforto de não esquentar na parte externa.\n\n**Cafeteria adota copo reutilizável feito com casca de café.** Disponível em: www.gazetadopovo.com.br. Acesso em: 5 dez. 2019 (adaptado).\\n\\nQuais duas vantagens esse copo apresenta em comparação ao copo descartável?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Ter a durabilidade de uma cerâmica e ser totalmente biodegradável.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Ser tão durável quanto uma cerâmica e ter alta condutividade térmica.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Ser um mau condutor térmico e aumentar o resíduo biodegradável na natureza.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Ter baixa condutividade térmica e reduzir o resíduo não biodegradável na natureza.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Ter alta condutividade térmica e possibilitar a degradação do material no meio ambiente.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-131",
+    "ano": 2023,
+    "area": "Ciências da Natureza e suas Tecnologias",
+    "assunto": "Ciências da Natureza e suas Tecnologias",
+    "titulo": "Questão 131 - ENEM 2023",
+    "numero": 131,
+    "enunciado": "O consumo exagerado de refrigerantes é preocupante, pois contribui para o aumento de casos de obesidade e diabetes. Considere dois refrigerantes enlatados, um comum e um diet, e que ambos possuam a mesma quantidade de aditivos, exceto pela presença de açúcar. O refrigerante comum contém basicamente água carbonatada e grande quantidade de açúcar; já o refrigerante diet tem água carbonatada e adoçantes, cujas massas são muito pequenas.\n\nCAVAGIS, A. D. M.; PEREIRA, E. A.; OLIVEIRA, L. C. Um método simples para avaliar o teor de sacarose e CO2 em refrigerantes. **Química Nova na Escola**, n. 3, ago. 2014 (adaptado).\\n\\nEntre as duas versões apresentadas, o refrigerante comum possui",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Maior densidade.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Menor viscosidade.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Maior volume de gás dissolvido.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Menor massa de solutos dissolvidos.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Maior temperatura de congelamento.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
     "id": "enem-2023-133",
     "ano": 2023,
     "area": "Ciências da Natureza e suas Tecnologias",
@@ -5503,10 +5503,553 @@
     "explicacao": "Gabarito oficial do ENEM: Alternativa D."
   },
   {
+    "id": "enem-2023-136",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 136 - ENEM 2023",
+    "numero": 136,
+    "enunciado": "Um artista plástico esculpe uma escultura a partir de um bloco de madeira de lei, em etapas. Inicialmente, esculpe um cone reto com 36 cm de altura e diâmetro da base medindo 18 cm. Em seguida, remove desse cone um cone menor, cujo diâmetro da base mede 6 cm, obtendo, assim, um tronco de cone, conforme ilustrado na figura.\n\n![](https://enem.dev/2023/questions/136/565c2d5a-96a0-4468-9bb1-2710707a40fd.png)\n\nEm seguida, perfura esse tronco de cone, removendo um cilindro reto, de diâmetro 6 cm, cujo eixo de simetria é o mesmo do cone original. Dessa forma, ao final, a escultura tem a forma de um tronco de cone com uma perfuração cilíndrica de base a base.  \nO tipo de madeira utilizada para produzir essa escultura tem massa igual a 0,6 g por centímetro cúbico de volume. Utilize 3 como aproximação para π.\\n\\nQual é a massa, em grama, dessa escultura?",
+    "imagens": [
+      "https://enem.dev/2023/questions/136/565c2d5a-96a0-4468-9bb1-2710707a40fd.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "1.198,8",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "1.296,0",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "1.360,8",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "4.665,6",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "4.860,0",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-137",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 137 - ENEM 2023",
+    "numero": 137,
+    "enunciado": "Os 100 funcionários de uma empresa estão distribuídos em dois setores: Produção e Administração.\n\nOs funcionários de um mesmo setor recebem salários com valores iguais. O quadro apresenta a quantidade de funcionários por setor e seus respectivos salários.\n\n![](https://enem.dev/2023/questions/137/fc161c5c-10e9-46d8-a75d-09c59b21d5a4.png)\\n\\nA média dos salários dos 100 funcionários dessa empresa, em real, é",
+    "imagens": [
+      "https://enem.dev/2023/questions/137/fc161c5c-10e9-46d8-a75d-09c59b21d5a4.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "2.000,00.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "2.500,00.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "3.250,00.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "4.500,00.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "9.000,00.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-138",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 138 - ENEM 2023",
+    "numero": 138,
+    "enunciado": "Visando atrair mais clientes, o gerente de uma loja anunciou uma promoção em que cada cliente que realizar uma compra pode ganhar um voucher para ser usado em sua próxima compra. Para ganhar seu voucher, o cliente precisa retirar, ao acaso, uma bolinha de dentro de cada uma das duas urnas A e B disponibilizadas pelo gerente, nas quais há apenas bolinhas pretas e brancas. Atualmente, a probabilidade de se escolher, ao acaso, uma bolinha preta na urna A é igual a 20% e a probabilidade de se escolher uma bolinha preta na urna B é 25%. Ganha o voucher o cliente que retirar duas bolinhas pretas, uma de cada urna.\n\nCom o passar dos dias, o gerente percebeu que, para a promoção ser viável aos negócios, era preciso alterar a probabilidade de acerto do cliente sem alterar a regra da promoção. Para isso, resolveu alterar a quantidade de bolinhas brancas na urna B de forma que a probabilidade de um cliente ganhar o voucher passasse a ser menor ou igual a 1%. Sabe-se que a urna B tem 4 bolinhas pretas e que, em ambas as urnas, todas as bolinhas têm a mesma probabilidade de serem retiradas.\\n\\nQual é o número mínimo de bolinhas brancas que o gerente deve adicionar à urna B?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "20",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "60",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "64",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "68",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "80",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-139",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 139 - ENEM 2023",
+    "numero": 139,
+    "enunciado": "O gerente de uma fábrica pretende comparar a evolução das vendas de dois produtos similares (I e II). Para isso, passou a verificar o número de unidades vendidas de cada um desses produtos em cada mês. Os resultados dessa verificação, para os meses de abril a junho, são apresentados na tabela.\n\n![](https://enem.dev/2023/questions/139/abba5cb1-da9d-4899-bda7-97099ca51147.png)\n\nO gerente estava decidido a cessar a produção do produto II no mês seguinte àquele em que as vendas do produto I superassem as do produto II.  \nSuponha que a variação na quantidade de unidades vendidas dos produtos I e II se manteve, mês a mês, como no período representado na tabela.\\n\\nEm qual mês o produto II parou de ser produzido?",
+    "imagens": [
+      "https://enem.dev/2023/questions/139/abba5cb1-da9d-4899-bda7-97099ca51147.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Junho.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Julho.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Agosto.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Setembro.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Outubro.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-140",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 140 - ENEM 2023",
+    "numero": 140,
+    "enunciado": "Uma empresa de transporte faz regularmente um levantamento do número de viagens realizadas durante o dia por todos os 160 motoristas cadastrados em seu aplicativo. Em um certo dia, foi gerado um relatório, por meio de um gráfico de barras, no qual se relacionaram a quantidade de motoristas com a quantidade de viagens realizadas até aquele instante do dia.\n\n![](https://enem.dev/2023/questions/140/846c1155-c9f0-48ad-a862-f9bf883c3935.png)\\n\\nComparando os valores da média, da mediana e da moda da distribuição das quantidades de viagens realizadas pelos motoristas cadastrados nessa empresa, obtém-se",
+    "imagens": [
+      "https://enem.dev/2023/questions/140/846c1155-c9f0-48ad-a862-f9bf883c3935.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Mediana = média < moda.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Mediana = moda < média.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Mediana < média < moda.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Moda < média < mediana.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Moda < mediana < média.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa E."
+  },
+  {
+    "id": "enem-2023-141",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 141 - ENEM 2023",
+    "numero": 141,
+    "enunciado": "Qual a probabilidade de o vencedor do sorteio ser um estudante do terceiro ano?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/141/e698edb1-adc0-416b-9370-c20a7e878259.jpg"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/141/b5f5bdf5-2251-4326-9877-ce9c2d831600.jpg"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/141/d241fadb-6516-4ca8-aa9b-e72fff314881.jpg"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/141/1dcce683-4ef7-4862-b554-3e3c66de54c3.jpg"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/141/7b4de18d-92ca-488f-8419-ec95d852a135.jpg"
+      }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa E."
+  },
+  {
+    "id": "enem-2023-142",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 142 - ENEM 2023",
+    "numero": 142,
+    "enunciado": "Qual é a quantidade mínima de água, em litro, que cada morador, em média, deverá economizar por dia, de modo que o reservatório não fique sem água nos próximos 10 dias?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "50",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "60",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "80",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "140",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "150",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-143",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 143 - ENEM 2023",
+    "numero": 143,
+    "enunciado": "Em janeiro do ano passado, a direção de uma fábrica abriu uma creche para os filhos de seus funcionários, com 10 salas, cada uma com capacidade para atender 10 crianças a cada ano. As vagas são sorteadas entre os filhos dos funcionários inscritos, enquanto os não contemplados pelo sorteio formam uma lista de espera. No ano passado, a lista de espera teve 400 nomes e, neste ano, esse número cresceu 10%. A direção da fábrica realizou uma pesquisa e constatou que a lista de espera para o próximo ano terá a mesma quantidade de nomes da lista de espera deste ano. Decidiu, então, construir, ao longo desse ano, novas salas para a creche, também com capacidade de atendimento para 10 crianças cada, de modo que o número de nomes na lista de espera no próximo ano seja 25% menor que o deste ano.\\n\\nO número mínimo de salas que deverão ser construídas é",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "10",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "11",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "12",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "30",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "33",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-144",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 144 - ENEM 2023",
+    "numero": 144,
+    "enunciado": "A foto mostra a construção de uma cisterna destinada ao armazenamento de água. Uma cisterna como essa, na forma de cilindro circular reto com 3 m² de área da base, foi abastecida por um curso-d’água com vazão constante. O seu proprietário registrou a altura do nível da água no interior da cisterna durante o abastecimento em diferentes momentos de um mesmo dia, conforme o quadro.\n\n![](https://enem.dev/2023/questions/144/c606403f-fd10-4c02-8e46-736fece94b85.png)\n\n![](https://enem.dev/2023/questions/144/2107cabc-64d0-4a1f-9eab-fa7dce0e9ac2.png)\n\nDisponível em: www.paraibamix.com. Acesso em: 3 dez. 2012.\\n\\nQual foi a vazão, em metro cúbico por hora, do curso-d’água que abasteceu a cisterna?",
+    "imagens": [
+      "https://enem.dev/2023/questions/144/c606403f-fd10-4c02-8e46-736fece94b85.png",
+      "https://enem.dev/2023/questions/144/2107cabc-64d0-4a1f-9eab-fa7dce0e9ac2.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "0,3",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "0,5",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "0,9",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "1,8",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "2,7",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-145",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 145 - ENEM 2023",
+    "numero": 145,
+    "enunciado": "Num certo momento de um jogo digital, a tela apresenta a imagem representada na figura. O ponto Q1 representa a posição de um jogador que está com a bola, os pontos Q2, Q3, Q4 , Q5 e Q6  \ntambém indicam posições de jogadores da mesma equipe, e os pontos A e B indicam os dois pés da trave mais próxima deles. No momento da partida retratado, o jogador Q1 tem a posse da bola, que será passada para um dos outros jogadores das posições Qn, n ∈ {2, 3, 4, 5, 6}, cujo ângulo AQnB tenha a mesma medida do ângulo AQ1 B.\n\n![](https://enem.dev/2023/questions/145/f338280e-33fe-4896-b296-cfb94ca78430.png)\\n\\nQual é o jogador que receberá a bola?",
+    "imagens": [
+      "https://enem.dev/2023/questions/145/f338280e-33fe-4896-b296-cfb94ca78430.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/145/b794885b-0519-4e72-87e0-93de02461252.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/145/57b5461f-1924-4599-9914-4b148b722d7c.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/145/d7e46a12-9912-4fad-8d9d-225859b42312.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/145/7a03bf64-9ae1-4137-924d-e1c6110fd1a3.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/145/5be53460-7a9a-4138-8d62-ac01b26993d6.png"
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-146",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 146 - ENEM 2023",
+    "numero": 146,
+    "enunciado": "![](https://enem.dev/2023/questions/146/74e0c851-b2af-410d-9f19-3348dd8f883a.jpg)\\n\\nConsidere que os números colocados nos vértices do triângulo estejam em progressão aritmética de razão igual a 2.\nNas condições propostas, quais as possíveis soluções para as somas dos números que formam os lados do triângulo?",
+    "imagens": [
+      "https://enem.dev/2023/questions/146/74e0c851-b2af-410d-9f19-3348dd8f883a.jpg"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Há somente uma solução possível, e as somas em cada lado do triângulo são iguais a 7.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Há somente uma solução possível, e as somas em cada lado do triângulo são iguais a 9.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Há somente duas soluções possíveis, uma em que as somas em cada lado do triângulo são iguais a 7 e outra em que as somas são iguais a 9.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Há somente duas soluções possíveis, uma em que as somas em cada lado do triângulo são iguais a 9 e outra em que as somas são iguais a 12.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Há somente duas soluções possíveis, uma em que as somas em cada lado do triângulo são iguais a 10 e outra em que as somas são iguais a 11.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa E."
+  },
+  {
+    "id": "enem-2023-147",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 147 - ENEM 2023",
+    "numero": 147,
+    "enunciado": "Alguns estudos comprovam que os carboidratos fornecem energia ao corpo, preservam as proteínas estruturais dos músculos durante a prática de atividade física e ainda dão força para o cérebro coordenar os movimentos, o que de fato tem impacto positivo no desenvolvimento do praticante. O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada.\nCIRINO, C. Boa pergunta: consumir carboidratos antes dos exercícios melhora o desempenho do atleta? Revista Saúde! É Vital, n. 330, nov. 2010 (adaptado).\nUm casal realizará diariamente 30 minutos de caminhada, ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de pão de fôrma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\nA quantidade mínima de pacotes de pão de fôrma necessários para prover o suprimento a esse casal é",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "1",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "4",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "6",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "7",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "8",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
     "id": "enem-2023-148",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
     "titulo": "Questão 148 - ENEM 2023",
     "numero": 148,
     "enunciado": "O mastro de uma bandeira foi instalado perpendicularmente ao solo em uma região plana. Devido aos fortes ventos, três cabos de aço, de mesmo comprimento, serão instalados para dar sustentação ao mastro. Cada cabo de aço ficará perfeitamente esticado, com uma extremidade num ponto P do mastro, a uma altura h do solo, e a outra extremidade, num ponto no chão, como mostra a figura.\n\n![](https://enem.dev/2023/questions/148/c6c6b6c4-3fba-4a68-99c6-014bb190c456.png)\n\nOs cabos de aço formam um ângulo a com o plano do chão. Por medida de segurança, há apenas três opções de instalação:\n• opção I: h = 11 m e a = 30°\n• opção II: h = 12 m e a = 45°\n• opção III: h = 18 m e a = 60°\nA opção a ser escolhida é aquela em que a medida dos cabos seja a menor possível.\nQual será a medida, em metro, de cada um dos cabos a serem instalados?",
@@ -5551,8 +6094,8 @@
   {
     "id": "enem-2023-149",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
     "titulo": "Questão 149 - ENEM 2023",
     "numero": 149,
     "enunciado": "Um controlador de voo dispõe de um instrumento que descreve a altitude de uma aeronave em voo, em função da distância em solo. Essa distância em solo é a medida na horizontal entre o ponto de origem do voo até o ponto que representa a projeção ortogonal da posição da aeronave, em voo, no solo. Essas duas grandezas são dadas numa mesma unidade de medida.\n\nA tela do instrumento representa proporcionalmente as dimensões reais das distâncias associadas ao voo. A figura apresenta a tela do instrumento depois de concluída a viagem de um avião, sendo a medida do lado de cada quadradinho da malha igual a 1 cm.\n\n![](https://enem.dev/2023/questions/149/a88a534d-3ee0-4b70-aba7-1b3e7c46b5f3.png)\n\nEssa tela apresenta os dados de um voo cuja maior altitude alcançada foi de 5 km.\nA escala em que essa tela representa as medidas reais é",
@@ -5595,10 +6138,149 @@
     "explicacao": "Gabarito oficial do ENEM: Alternativa E."
   },
   {
+    "id": "enem-2023-150",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 150 - ENEM 2023",
+    "numero": 150,
+    "enunciado": "Dirigir após ingerir bebidas alcoólicas é uma atitude extremamente perigosa, uma vez que, a partir da primeira dose, a pessoa já começa a ter perda de sensibilidade de movimentos e de reflexos. Apesar de a eliminação e absorção do álcool depender de cada pessoa e de como o organismo consegue metabolizar a substância, ao final da primeira hora após a ingestão, a concentração de álcool (C) no sangue corresponde a aproximadamente 90% da quantidade (q) de álcool ingerida, e a eliminação total dessa concentração pode demorar até 12 horas.\n\nDisponível em: http://g1.globo.com. Acesso em: 1 dez. 2018 (adaptado).\\n\\nNessas condições, ao final da primeira hora após a ingestão da quantidade q de álcool, a concentração C dessa substância no sangue é expressa algebricamente por",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "C = 0,9q",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "C = 0,1q",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "C = 1 − 0,1q",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "C = 1 − 0,9q",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "C = q − 10",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-151",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 151 - ENEM 2023",
+    "numero": 151,
+    "enunciado": "Um investidor iniciante observou o gráfico que apresenta a evolução dos valores de duas criptomoedas A e B em relação ao tempo.\n\n![](https://enem.dev/2023/questions/151/276495a3-e5f2-4e4c-83b0-3473512a5274.png)\n\nDurante horas consecutivas, esses valores foram observados em nove instantes, representados por horas exatas.\\n\\nEm quantos desses instantes a criptomoeda A estava mais valorizada do que a criptomoeda B?",
+    "imagens": [
+      "https://enem.dev/2023/questions/151/276495a3-e5f2-4e4c-83b0-3473512a5274.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "3",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "4",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "6",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "7",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "9",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-152",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 152 - ENEM 2023",
+    "numero": 152,
+    "enunciado": "A exposição a alguns níveis sonoros pode causar lesões auditivas. Por isso, em uma indústria, são adotadas medidas preventivas de acordo com a máquina que o funcionário opera e o nível _N_ de intensidade do som, medido em decibel (dB), a que o operário é exposto, sendo ![](https://enem.dev/2023/questions/152/30b0ee85-ac44-4eca-a7c9-54bd70f9c069.png), _I_ a intensidade do som e ![](https://enem.dev/2023/questions/152/40f43a4f-f8da-44a9-a02c-f20ba89a48ce.png).\n\nDisponível em: www.sofisica.com.br. Acesso em: 8 jul. 2015 (adaptado).\n\nQuando o som é considerado baixo, ou seja, _N_ = 48 dB ou menos, deve ser utilizada a medida preventiva I. No caso de o som ser moderado, quando _N_ está no intervalo (48 dB, 55 dB), deve ser utilizada a medida preventiva II. Quando o som é moderado alto, que equivale a _N_ no intervalo (55 dB, 80 dB), a medida preventiva a ser usada é a III. Se _N_ estiver no intervalo (80 dB, 115 dB), quando o som é considerado alto, deve ser utilizada a medida preventiva IV. E se o som é considerado muito alto, com _N_ maior que 115 dB, deve-se utilizar a medida preventiva V.  \nUma nova máquina, com ![](https://enem.dev/2023/questions/152/13f26008-1dcf-404f-b3cf-aae104a036c1.png), foi adquirida e será classificada de acordo com o nível de ruído que produz.  \nConsidere 0,3 como aproximação para ![](https://enem.dev/2023/questions/152/717fdd2f-5eef-48c9-9211-8f62bdb2639c.png).\\n\\nO funcionário que operará a nova máquina deverá adotar a medida preventiva",
+    "imagens": [
+      "https://enem.dev/2023/questions/152/30b0ee85-ac44-4eca-a7c9-54bd70f9c069.png",
+      "https://enem.dev/2023/questions/152/40f43a4f-f8da-44a9-a02c-f20ba89a48ce.png",
+      "https://enem.dev/2023/questions/152/13f26008-1dcf-404f-b3cf-aae104a036c1.png",
+      "https://enem.dev/2023/questions/152/717fdd2f-5eef-48c9-9211-8f62bdb2639c.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "I.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "II.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "III.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "IV.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "V.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
     "id": "enem-2023-153",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
     "titulo": "Questão 153 - ENEM 2023",
     "numero": 153,
     "enunciado": "Um supermercado conta com cinco caixas disponíveis para pagamento. Foram instaladas telas que apresentam o tempo médio gasto por cada caixa para iniciar e finalizar o atendimento de cada cliente, e o número de pessoas presentes na fila de cada caixa em tempo real. Um cliente, na hora de passar sua compra, sabendo que cada um dos cinco caixas iniciará um novo atendimento naquele momento, pretende gastar o menor tempo possível de espera na fila. Ele observa que as telas apresentavam as informações a seguir.  \n• Caixa I: atendimento 12 minutos, 5 pessoas na fila.  \n• Caixa II: atendimento 6 minutos, 9 pessoas na fila.  \n• Caixa III: atendimento 5 minutos, 6 pessoas na fila.  \n• Caixa IV: atendimento 15 minutos, 2 pessoas na fila.  \n• Caixa V: atendimento 9 minutos, 3 pessoas na fila.\n\nPara alcançar seu objetivo, o cliente deverá escolher o caixa",
@@ -5641,8 +6323,8 @@
   {
     "id": "enem-2023-154",
     "ano": 2023,
-    "area": "Ciências Humanas e suas Tecnologias",
-    "assunto": "Ciências Humanas e suas Tecnologias",
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
     "titulo": "Questão 154 - ENEM 2023",
     "numero": 154,
     "enunciado": "As figuras pintadas no quadro da sala de estar de uma residência representam as silhuetas de parte das torres de um castelo e, ao fundo, a de uma lua cheia. A lua foi pintada na forma de um círculo, e o telhado da torre mais alta, na forma de triângulo equilátero, foi pintado sobrepondo parte da lua. O centro da lua coincide com um dos vértices do telhado da torre mais alta.\n\n![](https://enem.dev/2023/questions/154/d39268bf-82aa-4063-8bcf-dfdafa4a3aa8.png)\n\nNesse quadro, a parte da lua escondida atrás da torre mais alta do castelo pode ser representada por um",
@@ -5683,5 +6365,1138 @@
     ],
     "alternativaCorreta": "B",
     "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-155",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 155 - ENEM 2023",
+    "numero": 155,
+    "enunciado": "Na planta baixa de um clube, a piscina é representada por um quadrado cuja área real mede 400 m². Ao redor dessa piscina, será construída uma calçada, de largura constante igual a 5 m.\n\n![](https://enem.dev/2023/questions/155/05746583-c107-4dd6-8a3b-7e7d0da99377.png)\\n\\nQual é a medida da área, em metro quadrado, ocupada pela calçada?",
+    "imagens": [
+      "https://enem.dev/2023/questions/155/05746583-c107-4dd6-8a3b-7e7d0da99377.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "1.000",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "900",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "600",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "500",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "400",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-156",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 156 - ENEM 2023",
+    "numero": 156,
+    "enunciado": "Uma pessoa caminha por 30 minutos e utiliza um aplicativo instalado em seu celular para monitorar a variação da intensidade do sinal de internet recebido pelo aparelho durante o deslocamento. Chegando ao seu destino, o aplicativo forneceu este gráfico:\n\n![](https://enem.dev/2023/questions/156/e9e0b793-5535-48e6-87c6-5516e6d7c8cd.png)\\n\\nPor quantos minutos, durante essa caminhada, o celular dessa pessoa ficou sem receber sinal de internet?",
+    "imagens": [
+      "https://enem.dev/2023/questions/156/e9e0b793-5535-48e6-87c6-5516e6d7c8cd.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "6",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "8",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "10",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "14",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "24",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-157",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 157 - ENEM 2023",
+    "numero": 157,
+    "enunciado": "Um professor, para promover a aprendizagem dos estudantes em estatística, propôs uma atividade. O objetivo era verificar o percentual de estudantes com massa corporal abaixo da média e altura acima da média de um grupo de estudantes. Para isso, usando uma balança e uma fita métrica, avaliou uma amostra de dez estudantes, anotando as medidas observadas. O gráfico apresenta a massa corporal, em quilograma, e a altura, em metro, obtidas na atividade\n\n![](https://enem.dev/2023/questions/157/13cfbc97-0034-4904-9100-ff5ca3f6504e.png)\n\nApós a coleta dos dados, os estudantes calcularam a média dos valores obtidos, referentes à massa corporal e à altura, obtendo, respectivamente, 80 kg e 1,65 m.\\n\\nQual é o percentual de estudantes dessa amostra com massa corporal abaixo da média e altura acima da média?",
+    "imagens": [
+      "https://enem.dev/2023/questions/157/13cfbc97-0034-4904-9100-ff5ca3f6504e.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "10",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "20",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "30",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "50",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "70",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-158",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 158 - ENEM 2023",
+    "numero": 158,
+    "enunciado": "Um pescador tem um custo fixo diário de R$ 900,00 com combustível, iscas, manutenção de seu barco e outras pequenas despesas. Ele vende cada quilograma de peixe por R$ 5,00. Sua meta é obter um lucro mínimo de R$ 800,00 por dia. Sozinho, ele consegue, ao final de um dia de trabalho, pescar 180 kg de peixe, o que é suficiente apenas para cobrir o custo fixo diário. Portanto, precisa contratar ajudantes, pagando para cada um R$ 250,00 por dia de trabalho. Além desse valor, 4%dareceita obtida pela venda de peixe é repartida igualmente entre os ajudantes. Considerando o tamanho de seu barco, ele pode contratar até 5 ajudantes. Ele sabe que com um ajudante a pesca diária é de 300 kg e que, a partir do segundo ajudante contratado, aumenta-se em 100 kg a quantidade de peixe pescada por ajudante em um dia de trabalho.\\n\\nA quantidade mínima de ajudantes que esse pescador precisa contratar para conseguir o lucro diário pretendido é",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "1",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "2",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "3",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "4",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "5",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-159",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 159 - ENEM 2023",
+    "numero": 159,
+    "enunciado": "Um agricultor é informado sobre um método de proteção para sua lavoura que consiste em inserir larvas específicas, de rápida reprodução. A reprodução dessas larvas faz com que sua população multiplique-se por 10 a cada 3 dias e, para evitar eventuais desequilíbrios, é possível cessar essa reprodução aplicando-se um produto X. O agricultor decide iniciar esse método com 100 larvas e dispõe de 5 litros do produto X, cuja aplicação recomendada é de exatamente 1 litro para cada população de 200 000 larvas. A quantidade total do produto X de que ele dispõe deverá ser aplicada de uma única vez.\\n\\nQuantos dias após iniciado esse método o agricultor deverá aplicar o produto X?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "2",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "4",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "6",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "12",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "18",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-160",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 160 - ENEM 2023",
+    "numero": 160,
+    "enunciado": "Ao realizar o cadastro em um aplicativo de investimentos, foi solicitado ao usuário que criasse uma senha, sendo permitido o uso somente dos seguintes caracteres:\n\n• algarismos de 0 a 9;\n\n• 26 letras minúsculas do alfabeto;\n\n• 26 letras maiúsculas do alfabeto;\n\n• 6 caracteres especiais !, @, #, $, \\*, &.\n\nTrês tipos de estruturas para senha foram apresentadas ao usuário:\n\n• tipo I: formada por quaisquer quatro caracteres distintos, escolhidos dentre os permitidos;\n\n• tipo II: formada por cinco caracteres distintos, iniciando por três letras, seguidas por um algarismo e, ao final, um caractere especial;\n\n• tipo III: formada por seis caracteres distintos, iniciando por duas letras, seguidas por dois algarismos e, ao final, dois caracteres especiais.\n\nConsidere ![](https://enem.dev/2023/questions/160/a2d565c2-f39f-4b43-b261-087e349850fe.png) as probabilidades de se descobrirem ao acaso, na primeira tentativa, as senhas dos tipos I, II e III, respectivamente.\\n\\nNessas condições, o tipo de senha que apresenta a menor probabilidade de ser descoberta ao acaso, na primeira tentativa, é o",
+    "imagens": [
+      "https://enem.dev/2023/questions/160/a2d565c2-f39f-4b43-b261-087e349850fe.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Tipo I, pois p1 < p2 < p3.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Tipo I, pois tem menor quantidade de caracteres.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Tipo II, pois tem maior quantidade de letras.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Tipo III, pois p3 < p2 < p1",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Tipo III, pois tem maior quantidade de caracteres.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-161",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 161 - ENEM 2023",
+    "numero": 161,
+    "enunciado": "Uma loja vende seus produtos de duas formas: à vista ou financiado em três parcelas mensais iguais. Para definir o valor dessas parcelas nas vendas financiadas, a loja aumenta em 20% o valor do produto à vista e divide esse novo valor por 3. A primeira parcela deve ser paga no ato da compra, e as duas últimas, em 30 e 60 dias após a compra.\n\nUm cliente da loja decidiu comprar, de forma financiada, um produto cujo valor à vista é R$ 1 500,00.\n\nUtilize 5,29 como aproximação para 28.\\n\\nA taxa mensal de juros compostos praticada nesse financiamento é de",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "6,7%",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "10%",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "20%",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "21,5%",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "23,3%",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-162",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 162 - ENEM 2023",
+    "numero": 162,
+    "enunciado": "Para concretar a laje de sua residência, uma pessoa contratou uma construtora. Tal empresa informa que o preço _y_ do concreto bombeado é composto de duas partes: uma fixa, chamada de taxa de bombeamento, e uma variável, que depende do volume _x_ de concreto utilizado. Sabe-se que a taxa de bombeamento custa R$ 500,00 e que o metro cúbico do concreto bombeado é de R$ 250,00.\\n\\nA expressão que representa o preço y em função do volume x, em metro cúbico, é",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Y = 250x",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Y = 500x",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Y = 750x",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Y = 250x + 500",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Y = 500x + 250",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-163",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 163 - ENEM 2023",
+    "numero": 163,
+    "enunciado": "Uma empresa de segurança domiciliar oferece o serviço de patrulha noturna, no qual vigilantes em motocicletas fazem o monitoramento periódico de residências. A empresa conta com uma base, de onde acompanha o trajeto realizado pelos vigilantes durante as patrulhas e orienta o deslocamento de equipes de reforço quando necessário. Numa patrulha rotineira, sem ocorrências, um vigilante conduziu sua motocicleta a uma velocidade constante durante todo o itinerário estabelecido, levando 30 minutos para conclusão. De acordo com os registros do GPS alocado na motocicleta, a distância da posição do vigilante à base, ao longo do tempo de realização do trajeto, é descrita pelo gráfico.\n\n![](https://enem.dev/2023/questions/163/ff0caefb-56e7-4c17-bae7-b65b91037e9c.png)\\n\\nA vista superior da trajetória realizada pelo vigilante durante a patrulha registrada no gráfico é descrita pela representação",
+    "imagens": [
+      "https://enem.dev/2023/questions/163/ff0caefb-56e7-4c17-bae7-b65b91037e9c.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/163/71c51165-c400-4d10-bb4b-c03ed19ff5ad.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/163/e04c3016-712a-4e6b-a9e5-be3505a57d41.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/163/1706f84a-c72a-48c1-982b-708ed91bcc8a.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/163/d49e3db4-31ee-4123-9a19-599e0b473503.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/163/7f6e3bbf-ef4c-4a6f-9fdb-407513158e78.png"
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-164",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 164 - ENEM 2023",
+    "numero": 164,
+    "enunciado": "O gráfico expõe alguns números da gripe A-H1N1. Entre as categorias que estão em processo de imunização, uma já está completamente imunizada, a dos trabalhadores da saúde.\n\n![](https://enem.dev/2023/questions/164/194cf28a-b40d-493d-b106-8f71aee57f51.png)\n\nÉpoca, 26 abr. 2010 (adaptado).\\n\\nDe acordo com o gráfico, entre as demais categorias, a que está mais exposta ao vírus da gripe A-H1N1 é a categoria de",
+    "imagens": [
+      "https://enem.dev/2023/questions/164/194cf28a-b40d-493d-b106-8f71aee57f51.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Indígenas.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Gestantes.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Doentes crônicos.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Adultos entre 20 e 29 anos.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Crianças de 6 meses a 2 anos.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-165",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 165 - ENEM 2023",
+    "numero": 165,
+    "enunciado": "A figura representa uma escada com três degraus, construída em concreto maciço, com suas medidas especificadas.\n\n![](https://enem.dev/2023/questions/165/bf369224-eb93-4bba-98c4-ff7d1e17df36.png)\n\nNessa escada, pisos e espelhos têm formato retangular, e as paredes laterais têm formato de um polígono cujos lados adjacentes são perpendiculares. Pisos, espelhos e paredes laterais serão revestidos em cerâmica.\\n\\nA área a ser revestida em cerâmica, em metro quadrado, mede",
+    "imagens": [
+      "https://enem.dev/2023/questions/165/bf369224-eb93-4bba-98c4-ff7d1e17df36.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "1,20.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "1,35.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "1,65.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "1,80.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "1,95.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa E."
+  },
+  {
+    "id": "enem-2023-166",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 166 - ENEM 2023",
+    "numero": 166,
+    "enunciado": "Uma pessoa pratica quatro atividades físicas — caminhar, correr, andar de bicicleta e jogar futebol — como parte de seu programa de emagrecimento. Essas atividades são praticadas semanalmente de acordo com o quadro, que apresenta o número de horas diárias por atividade.\n\n![](https://enem.dev/2023/questions/166/80863c14-e426-4ae6-9ff0-03f5b3c71160.png)\n\nEla deseja comemorar seu aniversário e escolhe o dia da semana em que o gasto calórico com as atividades físicas  praticadas for o maior. Para tanto, considera que os valores dos gastos calóricos das atividades por hora (cal/h) são os seguintes:\n\n![](https://enem.dev/2023/questions/166/e3d70b62-2929-4694-ba58-cf45c0ac1374.png)\\n\\nO dia da semana em que será comemorado o aniversário é",
+    "imagens": [
+      "https://enem.dev/2023/questions/166/80863c14-e426-4ae6-9ff0-03f5b3c71160.png",
+      "https://enem.dev/2023/questions/166/e3d70b62-2929-4694-ba58-cf45c0ac1374.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Segunda-feira.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Terça-feira.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Quarta-feira.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Quinta-feira.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Sexta-feira.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-167",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 167 - ENEM 2023",
+    "numero": 167,
+    "enunciado": "A cada bimestre, a diretora de uma escola compra uma quantidade de folhas de papel ofício proporcional ao número de alunos matriculados. No bimestre passado, ela comprou 6 000 folhas para serem utilizadas pelos 1 200 alunos matriculados. Neste bimestre, alguns alunos cancelaram suas matrículas e a escola tem, agora, 1 150 alunos. A diretora só pode gastar R$ 220,00 nessa compra, e sabe que o fornecedor da escola vende as folhas de papel ofício em embalagens de 100 unidades a R$ 4,00 a embalagem. Assim, será preciso convencer o fornecedor a dar um desconto à escola, de modo que seja possível comprar a quantidade total de papel ofício necessária para o bimestre.\\n\\nO desconto necessário no preço final da compra, em porcentagem, pertence ao intervalo",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "(5,0 ; 5,5).",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "(8,0 ; 8,5).",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "(11,5 ; 12,5).",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "(19,5 ; 20,5).",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "(3,5 ; 4,0).",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-168",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 168 - ENEM 2023",
+    "numero": 168,
+    "enunciado": "Em um colégio público, a admissão no primeiro ano se dá por sorteio. Neste ano há 55 candidatos, cujas inscrições são numeradas de 01 a 55. O sorteio de cada número de inscrição será realizado em etapas, utilizando-se duas urnas. Da primeira urna será sorteada uma bola, dentre bolas numeradas de 0 a 9, que representará o algarismo das unidades do número de inscrição a ser sorteado e, em seguida, da segunda urna, será sorteada uma bola para representar o algarismo das dezenas desse número. Depois do primeiro sorteio, e antes de se sortear o algarismo das dezenas, as bolas que estarão presentes na segunda urna serão apenas aquelas cujos números formam, com o algarismo já sorteado, um número de 01 a 55.\\n\\nAs probabilidades de os candidatos de inscrição número 50 e 02 serem sorteados são, respectivamente,",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/168/a5689a77-7cbd-4f5f-b548-eef2a3fee87f.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/168/67248715-8948-439d-9770-a652c76ac110.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/168/4d9a67e0-9136-42e4-855e-c72b0b876d28.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/168/24184847-9c76-40d3-9c78-44a35f0600e8.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/168/adeb932f-030f-4190-9b20-33a4a5f968f5.png"
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-169",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 169 - ENEM 2023",
+    "numero": 169,
+    "enunciado": "O esquema mostra como a intensidade luminosa decresce com o aumento da profundidade em um rio, sendo ![](https://enem.dev/2023/questions/169/76239f15-d46d-4067-bb38-bb40ca2f87c0.png) a intensidade na sua superfície.\n\n![](https://enem.dev/2023/questions/169/3af229c8-e385-4ca2-891a-22bdf6b2d593.png)\n\nConsidere que a intensidade luminosa diminui, a cada metro acrescido na profundidade, segundo o mesmo padrão do esquema.\\n\\nA intensidade luminosa correspondente à profundidade de 6 m é igual a",
+    "imagens": [
+      "https://enem.dev/2023/questions/169/76239f15-d46d-4067-bb38-bb40ca2f87c0.png",
+      "https://enem.dev/2023/questions/169/3af229c8-e385-4ca2-891a-22bdf6b2d593.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/169/0ad62fa9-ccdd-40b7-95e6-024319a5c9bc.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/169/74afb699-867b-4b47-8fa9-9c0fddd6db14.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/169/23fe5ab4-dc1d-4693-8a62-c17abdd5c5cb.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/169/9394f679-b291-4e10-9384-b1f2c2dba975.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/169/5037e73b-aa7f-43fd-baa8-4f70d9f0f498.png"
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-170",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 170 - ENEM 2023",
+    "numero": 170,
+    "enunciado": "Analisando as vendas de uma empresa, o gerente concluiu que o montante diário arrecadado, em milhar de real, poderia ser calculado pela expressão ![](https://enem.dev/2023/questions/170/369b24e4-258e-4faf-b7df-0c2e3da3c22a.png) , em que os valores de x representam os dias do mês, variando de 1 a 30.\n\nUm dos fatores para avaliar o desempenho mensal da empresa é verificar qual é o menor montante diário ![](https://enem.dev/2023/questions/170/b158b079-eaf5-4f8c-84b1-99db8076a950.png) arrecadado ao longo do mês e classificar o desempenho conforme as categorias apresentadas a seguir, em que as quantidades estão expressas em milhar de real.\n\n![](https://enem.dev/2023/questions/170/e7404490-a2b4-46e1-b1e6-3a8c828050fe.png)\\n\\nNo caso analisado, qual seria a classificação do desempenho da empresa?",
+    "imagens": [
+      "https://enem.dev/2023/questions/170/369b24e4-258e-4faf-b7df-0c2e3da3c22a.png",
+      "https://enem.dev/2023/questions/170/b158b079-eaf5-4f8c-84b1-99db8076a950.png",
+      "https://enem.dev/2023/questions/170/e7404490-a2b4-46e1-b1e6-3a8c828050fe.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Ótimo.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Bom.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Normal.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Ruim.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Péssimo.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "D",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa D."
+  },
+  {
+    "id": "enem-2023-171",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 171 - ENEM 2023",
+    "numero": 171,
+    "enunciado": "O calendário maia apresenta duas contagens simultâneas de anos, o chamado ano Tzolkim, composto por 260 dias e que determinava o calendário religioso, e o ano Haab, composto por 365 dias e que determinava o calendário agrícola. Um historiador encontrou evidências de que gerações de uma mesma família governaram certa comunidade maia pelo período de 20 ciclos, sendo cada ciclo formado por 52 anos Haab.\n\nDisponível em: www.suapesquisa.com. Acesso em: 20 ago. 2014.\\n\\nDe acordo com as informações fornecidas, durante quantos anos Tzolkim aquela comunidade maia foi governada por tal família?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "741",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "1 040",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "1 460",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "2 100",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "5 200",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-172",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 172 - ENEM 2023",
+    "numero": 172,
+    "enunciado": "Sejam _a_, _b_ e _c_ as medidas dos lados de um triângulo retângulo, tendo a como medida da hipotenusa. Esses valores _a_, _b_ e _c_ são, respectivamente, os diâmetros dos círculos _C1_ , _C2_ e _C3_, como apresentados na figura.\n\n![](https://enem.dev/2023/questions/172/dcdd2743-6ad6-44e8-94ae-d2adec3a3400.png)\n\nObserve que essa construção assegura, pelo teorema de Pitágoras, que área (C1) = área (C2) + área (C3).\n\nUm professor de matemática era conhecedor dessa construção e, confraternizando com dois amigos em uma pizzaria onde são vendidas pizzas somente em formato de círculo, lançou um desafio: mesmo sem usar um instrumento de medição, poderia afirmar com certeza se a área do círculo correspondente à pizza que ele pedisse era maior, igual ou menor do que a soma das áreas das pizzas dos dois amigos. Assim, foram pedidas três pizzas. O professor as dividiu ao meio e formou um triângulo com os diâmetros das pizzas, conforme indicado na figura.\n\n![](https://enem.dev/2023/questions/172/8bd02f79-d5fb-4b8d-9321-c57434be3374.png)\n\nA partir da medida do ângulo a, o professor afirmou que a área de sua pizza é maior do que a soma das áreas das outras duas pizzas.\\n\\nA área da pizza do professor de matemática é maior do que a soma das áreas das outras duas pizzas, pois",
+    "imagens": [
+      "https://enem.dev/2023/questions/172/dcdd2743-6ad6-44e8-94ae-d2adec3a3400.png",
+      "https://enem.dev/2023/questions/172/8bd02f79-d5fb-4b8d-9321-c57434be3374.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "0° < a < 90°",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "A = 90°",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "90° < a < 180°",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "A = 180°",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "180° < a < 360°",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-173",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 173 - ENEM 2023",
+    "numero": 173,
+    "enunciado": "Entre maratonistas, um parâmetro utilizado é o de economia de corrida (EC). O valor desse parâmetro é calculado pela razão entre o consumo de oxigênio, em mililitro (mL) por minuto (min), e a massa, em quilograma (kg), do atleta correndo a uma velocidade constante.\n\nDisponível em: www.treinamentoonline.com.br. Acesso em: 23 out. 2019 (adaptado).\\n\\nUm maratonista, visando melhorar sua performance, auxiliado por um médico, mensura o seu consumo de oxigênio por minuto a velocidade constante. Com base nesse consumo e na massa do atleta, o médico calcula o EC do atleta.\nA unidade de medida da grandeza descrita pelo parâmetro EC é",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/173/58763f45-39e0-4355-b932-75233adbdf21.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/173/81adc538-3ad2-4ced-9a2f-9a7f5f247c20.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/173/5d5d774d-009d-44a6-a774-55719c5547bf.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/173/3464da35-f15a-4506-b75a-168a26ff4664.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/173/146d0f23-94de-4fd7-ae01-2d31285103d3.png"
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-175",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 175 - ENEM 2023",
+    "numero": 175,
+    "enunciado": "O metrô de um município oferece dois tipos de tíquetes com colorações diferentes, azul e vermelha, sendo vendidos em cartelas, cada qual com nove tíquetes da mesma cor e mesmo valor unitário. Duas cartelas de tíquetes azuis e uma cartela de tíquetes vermelhos são vendidas por R$ 32,40. Sabe-se que o preço de um tíquete azul menos o preço de um tíquete vermelho é igual ao preço de um tíquete vermelho mais cinco centavos.\\n\\nQual o preço, em real, de uma cartela de tíquetes vermelhos?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "4,68",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "6,30",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "9,30",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "10,50",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "10,65",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-176",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 176 - ENEM 2023",
+    "numero": 176,
+    "enunciado": "Os números figurados pentagonais provavelmente foram introduzidos pelos pitagóricos por volta do século V a.C. As figuras ilustram como obter os seis primeiros deles, sendo os demais obtidos seguindo o mesmo padrão geométrico.\n\n![](https://enem.dev/2023/questions/176/d21e916b-a5fc-441e-b782-d2d4aca3522b.png)\\n\\nO oitavo número pentagonal é",
+    "imagens": [
+      "https://enem.dev/2023/questions/176/d21e916b-a5fc-441e-b782-d2d4aca3522b.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "59",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "83",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "86",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "89",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "92",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "E",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa E."
+  },
+  {
+    "id": "enem-2023-177",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 177 - ENEM 2023",
+    "numero": 177,
+    "enunciado": "A figura ilustra uma roda-gigante no exato instante em que a cadeira onde se encontra a pessoa P está no ponto mais alto dessa roda-gigante.\n\n![](https://enem.dev/2023/questions/177/27c49bd5-ad8c-450c-9f56-970b9ca9c53c.png)\n\nCom o passar do tempo, à medida que a roda-gigante gira, com velocidade angular constante e no sentido horário, a altura da cadeira onde se encontra a pessoa P, em relação ao solo, vai se alterando.\\n\\nO gráfico que melhor representa a variação dessa altura, em função do tempo, contado a partir do instante em que a cadeira da pessoa P se encontra na posição mais alta da roda-gigante, é",
+    "imagens": [
+      "https://enem.dev/2023/questions/177/27c49bd5-ad8c-450c-9f56-970b9ca9c53c.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/177/3837d9d0-2ff6-49d7-affa-9bb60aacb00a.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/177/262c33a1-0c7b-494c-9bd4-92d308154b59.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/177/b9b5c23e-3ae9-4f92-9500-a1bda3ed5638.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/177/03cd2618-be50-4803-b159-da8033fdeb8d.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/177/0624eace-e934-40dc-895c-a505c0c9f183.png"
+      }
+    ],
+    "alternativaCorreta": "A",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa A."
+  },
+  {
+    "id": "enem-2023-178",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 178 - ENEM 2023",
+    "numero": 178,
+    "enunciado": "Estudantes trabalhando com robótica criaram uma “torneira inteligente” que automatiza sua abertura e seu fechamento durante a limpeza das mãos. A tecnologia funciona da seguinte forma: ao se colocarem as mãos sob a torneira, ela libera água durante 3 segundos para que a pessoa possa molhá-las. Em seguida, interrompe o fornecimento de água por 5 segundos, enquanto a pessoa ensaboa suas mãos, e finaliza o ciclo liberando água para o enxágue por mais 3 segundos. Considere o tempo (_t_), em segundo, contado a partir do instante em que se inicia o ciclo. A vazão de água nessa torneira é constante.\\n\\nUm esboço de gráfico que descreve o volume de água acumulado, em litro, liberado por essa torneira durante um ciclo de lavagem das mãos, em função do tempo (t), em segundo, é",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/178/ad5cc202-0c4f-44fb-aa1a-ec86c2f86da4.png"
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/178/c3b0946f-0e59-4928-858d-3f0a8887fb80.png"
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/178/f9e8ae9f-c9d6-4b83-9376-55b5ecba8a38.png"
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/178/46326c50-0f0b-42cf-a1d5-65299d39a4fd.png"
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": null,
+        "imagem": "https://enem.dev/2023/questions/178/7ebc0f53-95db-497b-bc23-30cf64649c3a.png"
+      }
+    ],
+    "alternativaCorreta": "B",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa B."
+  },
+  {
+    "id": "enem-2023-179",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 179 - ENEM 2023",
+    "numero": 179,
+    "enunciado": "As características culturais variam de povo para povo. Há notícias de um povo que possuía formas de contar diferentes das nossas, como indicado no quadrinho a seguir.\n\n![](https://enem.dev/2023/questions/179/d2b83dd3-33ef-40d6-944a-b98d17f6411b.png)\\n\\nSegundo o padrão de contagem indicado na figura, as representações dos numerais cinco e sete, nessa cultura, devem ser, respectivamente,",
+    "imagens": [
+      "https://enem.dev/2023/questions/179/d2b83dd3-33ef-40d6-944a-b98d17f6411b.png"
+    ],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Okosa urapum urapum urapum e okosa okosa urapum urapum urapum.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Okosa okosa urapum e okosa okosa okosa okosa urapum.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Okosa okosa urapum e okosa okosa okosa urapum.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Okosa urapum urapum e okosa urapum okosa urapum urapum.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Okosa okosa urapum e okosa okosa okosa okosa.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
+  },
+  {
+    "id": "enem-2023-180",
+    "ano": 2023,
+    "area": "Matemática e suas Tecnologias",
+    "assunto": "Matemática e suas Tecnologias",
+    "titulo": "Questão 180 - ENEM 2023",
+    "numero": 180,
+    "enunciado": "Um tipo de semente necessita de bastante água nos dois primeiros meses após o plantio. Um produtor pretende estabelecer o melhor momento para o plantio desse tipo de semente, nos meses de outubro a março. Após consultar a previsão do índice mensal de precipitação de chuva (ImPC) da região onde ocorrerá o plantio, para o período chuvoso de 2020-2021, ele obteve os seguintes dados:  \n• outubro/2020: ImPC = 250 mm;  \n• novembro/2020: ImPC = 150 mm;  \n• dezembro/2020: ImPC = 200 mm;  \n• janeiro/2021: ImPC = 450 mm;  \n• fevereiro/2021: ImPC = 100 mm;  \n• março/2021: ImPC = 200 mm.\n\nCom base nessas previsões, ele precisa escolher dois meses consecutivos em que a média mensal de precipitação seja a maior possível.\\n\\nNo início de qual desses meses o produtor deverá plantar esse tipo de semente?",
+    "imagens": [],
+    "alternativas": [
+      {
+        "id": "A",
+        "letra": "A",
+        "texto": "Outubro.",
+        "imagem": null
+      },
+      {
+        "id": "B",
+        "letra": "B",
+        "texto": "Novembro.",
+        "imagem": null
+      },
+      {
+        "id": "C",
+        "letra": "C",
+        "texto": "Dezembro.",
+        "imagem": null
+      },
+      {
+        "id": "D",
+        "letra": "D",
+        "texto": "Janeiro.",
+        "imagem": null
+      },
+      {
+        "id": "E",
+        "letra": "E",
+        "texto": "Fevereiro.",
+        "imagem": null
+      }
+    ],
+    "alternativaCorreta": "C",
+    "explicacao": "Gabarito oficial do ENEM: Alternativa C."
   }
 ]

@@ -182,7 +182,17 @@
   line-height: 1.65;
   color: var(--text-main);
   margin: 1.25rem 0 1.5rem 0;
-  white-space: pre-line;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.question-body img {
+  display: block;
+  max-width: 100%;
+  max-height: 55vh;
+  height: auto;
+  object-fit: contain;
+  margin: 0.75rem auto;
 }
 
 /* Alternativas */
@@ -245,6 +255,21 @@
   font-size: 0.95rem;
   color: var(--text-main);
   line-height: 1.45;
+  min-width: 0;
+}
+
+.alt-image {
+  display: block;
+  max-width: min(100%, 28rem);
+  max-height: 30vh;
+  height: auto;
+  object-fit: contain;
+  flex: 1 1 auto;
+}
+
+.alt-option .alt-key-hint {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 /* Estados de Correção Imediata (RF06) */

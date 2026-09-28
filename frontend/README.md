@@ -44,9 +44,10 @@ frontend/
    };
    ```
 
-2. Inicie o servidor local:
-   ```bash
-   npm start
+2. Inicie a API e o servidor estático em terminais separados, a partir da raiz do projeto:
+    ```bash
+    npm run start:backend
+    npm run start:frontend
    ```
 
 3. Acesse no navegador:

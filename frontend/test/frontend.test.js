@@ -102,9 +102,10 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
         assunto: 'História do Brasil',
         statement: 'Qual o ano da Proclamação?',
         alternatives: [
-            { letter: 'A', text: '1889', isCorrect: true },
+            { letter: 'A', text: '1889', isCorrect: true, file: 'https://enem.dev/a.png' },
             { letter: 'B', text: '1822', isCorrect: false }
-        ]
+        ],
+        images: ['https://enem.dev/question.png']
     };
 
     const norm = normalizarQuestao(raw);
@@ -112,6 +113,8 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
     assert.equal(norm.alternativaCorreta, 'A');
     assert.equal(norm.enunciado, 'Qual o ano da Proclamação?');
     assert.equal(norm.alternativas.length, 2);
+    assert.equal(norm.alternativas[0].imagem, 'https://enem.dev/a.png');
+    assert.deepEqual(norm.imagens, ['https://enem.dev/question.png']);
 });
 
 test('Frontend - UI: escapeHTML previne XSS em dados externos', () => {
