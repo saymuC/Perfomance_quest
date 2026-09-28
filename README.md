@@ -24,7 +24,7 @@ O frontend não importa mais arquivos de `backend/`. A comunicação entre os do
 
 ## Executar localmente
 
-Requisitos: Node.js 20 ou superior. A API local mantém os resultados em memória; eles são perdidos ao reiniciar o backend.
+Requisitos: Node.js 20 ou superior. Localmente, a API persiste resultados em `backend/data/results.jsonl` e os mantém após reiniciar. Esse modo usa um arquivo local e suporta apenas uma instância do backend; use PostgreSQL para produção ou múltiplas instâncias.
 
 ```bash
 npm install
@@ -38,6 +38,8 @@ npm run start:frontend
 ```
 
 Acesse `http://localhost:3000/frontend/`. A API roda em `http://localhost:3001/api`; ambos os serviços precisam estar ativos.
+
+Para usar o Supabase, copie `.env.example` para `.env`, preencha a URI PostgreSQL do projeto e aplique o schema com `npm run db:migrate`. O comando `npm run start:backend` carrega o `.env` automaticamente e o backend aplica migrations pendentes ao iniciar. No Supabase, use a URI em **Project Settings > Database > Connection string** e mantenha `DATABASE_SSL=true`. Nunca coloque essas credenciais no frontend ou no Git. Sem `DATABASE_URL`, o modo local continua usando `backend/data/results.jsonl`.
 
 ## API
 
@@ -54,14 +56,14 @@ O ranking usa: maior percentual, maior número de acertos, menor tempo e data ma
 
 ### Backend
 
-Publique como Web Service no Render, Railway, Fly.io ou outro provedor Node/Docker. Configure:
+Publique como Web Service no Render, Railway, Fly.io ou outro provedor Node. Configure:
 
-- `DATABASE_URL`: conexão do PostgreSQL;
-- `DATABASE_SSL=true`: quando o provedor exigir TLS;
+- `DATABASE_URL`: URI PostgreSQL do Supabase (preferencialmente Session Pooler para backend hospedado);
+- `DATABASE_SSL=true`: conexão TLS do Supabase;
 - `FRONTEND_ORIGIN=https://seu-frontend.com`: origens permitidas, separadas por vírgula;
 - `PORT`: normalmente fornecida automaticamente pelo provedor.
 
-Execute a migração uma vez e use `npm --workspace backend start` quando o deploy partir da raiz do monorepo. O `backend/Dockerfile` também permite publicar somente a API.
+O backend aplica migrations versionadas e cria tabela, restrições e índices ao iniciar. Use `npm run start:backend` como comando de início.
 
 ### Frontend
 
@@ -81,7 +83,7 @@ Não coloque tokens nem senhas nesse arquivo: tudo no frontend é público.
 npm test
 ```
 
-A suíte cobre o núcleo do quiz, validação/correção, seleção de questões, API de resultados e ranking em memória.
+A suíte cobre lógica do quiz, validação, persistência entre reinícios, concorrência HTTP, ordenação/filtros do ranking e limites de entrada. `npm run test:stress` executa também o teste de carga com centenas de gravações concorrentes.
 
 ## Trabalho da equipe
 
