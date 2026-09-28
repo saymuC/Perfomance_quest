@@ -74,7 +74,7 @@ test('stress: valida resultados ruins e respeita CORS configurado', async t => {
       insert: async result => result,
       rankings: async () => []
     },
-    frontendOrigins: ['https://app.example.test']
+    frontendOrigins: ['https://app.example.test/', 'https://performance-quest.vercel.app/']
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   t.after(() => new Promise(resolve => server.close(resolve)));
@@ -101,4 +101,15 @@ test('stress: valida resultados ruins e respeita CORS configurado', async t => {
   assert.equal(denied.status, 403);
   const allowed = await fetch(`${baseUrl}/api/health`, { headers: { Origin: 'https://app.example.test' } });
   assert.equal(allowed.headers.get('access-control-allow-origin'), 'https://app.example.test');
+
+  const vercelPreview = await fetch(`${baseUrl}/api/health`, {
+    headers: { Origin: 'https://performance-quest-feature-saymuc.vercel.app' }
+  });
+  assert.equal(vercelPreview.status, 200);
+  assert.equal(vercelPreview.headers.get('access-control-allow-origin'), 'https://performance-quest-feature-saymuc.vercel.app');
+
+  const unrelatedVercel = await fetch(`${baseUrl}/api/health`, {
+    headers: { Origin: 'https://unrelated-project.vercel.app' }
+  });
+  assert.equal(unrelatedVercel.status, 403);
 });
