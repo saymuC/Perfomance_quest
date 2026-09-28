@@ -37,7 +37,10 @@ import {
 
 import {
     getApiBaseUrl,
-    normalizarQuestao
+    normalizarQuestao,
+    normalizarArea,
+    inferirAssunto,
+    balancearQuestoesPorArea
 } from '../js/api.js';
 
 import { escapeHTML } from '../js/ui.js';
@@ -98,9 +101,9 @@ test('Frontend - API: consome url configurada em config.js', () => {
 test('Frontend - API: normaliza questões de diferentes formatos', () => {
     const raw = {
         id: 101,
-        area: 'Ciências Humanas',
-        assunto: 'História do Brasil',
-        statement: 'Qual o ano da Proclamação?',
+        area: 'Ciências Humanas e suas Tecnologias',
+        assunto: 'Ciências Humanas e suas Tecnologias',
+        statement: 'Qual o ano da Proclamação da República no Brasil colonial e império?',
         alternatives: [
             { letter: 'A', text: '1889', isCorrect: true },
             { letter: 'B', text: '1822', isCorrect: false }
@@ -109,9 +112,36 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
 
     const norm = normalizarQuestao(raw);
     assert.equal(norm.id, '101');
+    assert.equal(norm.area, 'Ciências Humanas');
+    assert.equal(norm.assunto, 'História do Brasil'); // Inferido pedagogicamente
     assert.equal(norm.alternativaCorreta, 'A');
-    assert.equal(norm.enunciado, 'Qual o ano da Proclamação?');
+    assert.equal(norm.enunciado, 'Qual o ano da Proclamação da República no Brasil colonial e império?');
     assert.equal(norm.alternativas.length, 2);
+});
+
+test('Frontend - API: normalizarArea mapeia nomes compostos para as 4 áreas canônicas', () => {
+    assert.equal(normalizarArea('Linguagens, Códigos e suas Tecnologias'), 'Linguagens');
+    assert.equal(normalizarArea('Ciências Humanas e suas Tecnologias'), 'Ciências Humanas');
+    assert.equal(normalizarArea('Ciências da Natureza e suas Tecnologias'), 'Ciências da Natureza');
+    assert.equal(normalizarArea('Matemática'), 'Matemática');
+});
+
+test('Frontend - API: balancearQuestoesPorArea equilibra as 4 áreas', () => {
+    const questoesMock = [
+        { id: '1', area: 'Matemática' },
+        { id: '2', area: 'Matemática' },
+        { id: '3', area: 'Linguagens' },
+        { id: '4', area: 'Linguagens' },
+        { id: '5', area: 'Ciências Humanas' },
+        { id: '6', area: 'Ciências Humanas' },
+        { id: '7', area: 'Ciências da Natureza' },
+        { id: '8', area: 'Ciências da Natureza' }
+    ];
+
+    const balanceadas = balancearQuestoesPorArea(questoesMock, 4);
+    assert.equal(balanceadas.length, 4);
+    const areasPresentes = new Set(balanceadas.map(q => q.area));
+    assert.equal(areasPresentes.size, 4); // Contém 1 de cada uma das 4 áreas
 });
 
 test('Frontend - UI: escapeHTML previne XSS em dados externos', () => {
