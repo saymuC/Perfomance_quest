@@ -71,7 +71,7 @@ Publique a pasta `frontend/` no Cloudflare Pages, Vercel, Netlify ou GitHub Page
 
 ```js
 window.PERFORMANCE_QUEST_CONFIG = {
-  apiBaseUrl: 'https://sua-api.com/api'
+  apiBaseUrl: 'https://perfomance-quest-api.onrender.com/api'
 };
 ```
 

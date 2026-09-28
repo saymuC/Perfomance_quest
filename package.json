@@ -3,11 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-
-    "start:api": "node backend/src/api.js",
     "start": "node server.js",
     "start:frontend": "node server.js",
-<<<<<<< HEAD
     "start:backend": "node --env-file-if-exists=.env backend/server.js",
     "db:migrate": "node --env-file-if-exists=.env backend/scripts/migrate.js",
     "test": "node --test --test-isolation=none",
@@ -18,13 +15,5 @@
   },
   "dependencies": {
     "pg": "^8.23.0"
-=======
-    "start:backend": "node backend/server.js",
-    "test": "node --test --test-isolation=none"
-  },
-  "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
->>>>>>> c648545688d0c9d860886af586ca3655a6c83c39
   }
 }

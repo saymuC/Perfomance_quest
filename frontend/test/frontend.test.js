@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 if (!globalThis.window) {
     globalThis.window = {
         PERFORMANCE_QUEST_CONFIG: {
-            apiBaseUrl: 'http://localhost:3001/api'
+            apiBaseUrl: 'https://perfomance-quest-api.onrender.com/api'
         }
     };
 }
@@ -95,7 +95,7 @@ test('Frontend - Storage: valida campos obrigatórios do cadastro', () => {
 });
 
 test('Frontend - API: consome url configurada em config.js', () => {
-    assert.equal(getApiBaseUrl(), 'http://localhost:3001/api');
+    assert.equal(getApiBaseUrl(), 'https://perfomance-quest-api.onrender.com/api');
 });
 
 test('Frontend - API: normaliza questões de diferentes formatos', () => {
