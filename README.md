@@ -54,6 +54,14 @@ Para usar o Supabase, copie `.env.example` para `.env`, preencha a URI PostgreSQ
 
 O ranking usa: maior percentual, maior número de acertos, menor tempo e data mais antiga como critérios sucessivos.
 
+## Operação e carga
+
+`GET /api/health` informa persistência, uptime e uso instantâneo do pool PostgreSQL. O Render recebe esses logs JSON do processo, incluindo latência por rota, erros, espera pelo lock de cadastro e conexões em uso/espera; o dashboard do Supabase mostra o consumo do banco. Vercel Analytics mede o frontend e Core Web Vitals, não conexões PostgreSQL nem latência interna do Render.
+
+Configure `PGPOOL_MAX` para que `PGPOOL_MAX * instâncias` fique abaixo do limite do plano PostgreSQL, reservando conexões para migrations e administração. O valor padrão é 5 por instância. O endpoint de cadastro e o envio de resultados têm limites locais por processo/IP (`RATE_LIMIT_STUDENTS`, `RATE_LIMIT_RESULTS`); com várias instâncias, use também rate limiting no proxy/WAF. No Render, configure `TRUST_PROXY_HOPS=1` para identificar IPs via proxy confiável. CORS não autentica chamadas: o app mantém fluxo público sem login, então abuso direcionado pode exigir autenticação ou CAPTCHA.
+
+Para testar a API com PostgreSQL de teste (não use o banco de produção), configure `PG_LOAD_TEST_DATABASE_URL` e execute `npm run test:postgres-load`. O teste escala concorrência 1, 5, 10 e 25, registra p50/p95/máximo e erros, e verifica que todas as tentativas aceitas existem no banco. Ajuste `PG_LOAD_TOTAL` e `PG_LOAD_CONCURRENCY` conforme o plano; ele é ignorado sem a variável de ambiente. O teste local `npm run test:stress` usa arquivo e não representa concorrência de PostgreSQL.
+
 ## Publicar separadamente
 
 ### Backend
@@ -85,7 +93,7 @@ Não coloque tokens nem senhas nesse arquivo: tudo no frontend é público.
 npm test
 ```
 
-A suíte cobre lógica do quiz, validação, persistência entre reinícios, concorrência HTTP, ordenação/filtros do ranking e limites de entrada. `npm run test:stress` executa também o teste de carga com centenas de gravações concorrentes.
+A suíte cobre lógica do quiz, validação, persistência entre reinícios, concorrência HTTP, ordenação/filtros do ranking, idempotência local e limites de entrada. `npm run test:stress` exercita centenas de gravações no armazenamento de arquivo local; somente `npm run test:postgres-load` valida concorrência e idempotência no PostgreSQL real.
 
 ## Trabalho da equipe
 

@@ -19,6 +19,7 @@ const estado = {
     tempoInicioQuestao: 0,
     intervaloTimer: null,
     historicoTentativa: [],
+    idempotencyKey: null,
     resultadoAtual: null,
     turmasConhecidas: new Set(['3A', '3B', '3C', '3º Ano 1', '3º Ano 2'])
 };
@@ -114,6 +115,7 @@ async function iniciarSimulado() {
         estado.questoes = questoes;
         estado.indiceAtual = 0;
         estado.historicoTentativa = [];
+        estado.idempotencyKey = null;
         estado.sessaoAtual = criarSessaoQuiz(questoes);
 
         UI.ocultarCarregando();
@@ -233,6 +235,7 @@ async function sincronizarResultadoAtual(relatorio) {
         total: relatorio.resumo.total,
         taxaAcerto: relatorio.resumo.taxaAcerto,
         tempoTotalSegundos: relatorio.resumo.tempoTotalSegundos,
+        idempotencyKey: estado.idempotencyKey || (estado.idempotencyKey = crypto.randomUUID()),
         respostas: estado.historicoTentativa.map(item => ({
             questaoId: item.questao.id,
             area: item.questao.area,

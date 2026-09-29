@@ -56,9 +56,16 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   const saved = await fetch(`${baseUrl}/api/results`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 4, totalQuestions: 5, totalTimeSeconds: 60 })
+    body: JSON.stringify({ idempotencyKey: '11111111-1111-4111-8111-111111111111', studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 4, totalQuestions: 5, totalTimeSeconds: 60 })
   });
   assert.equal(saved.status, 201);
+  const firstSaved = await saved.json();
+  const missingIdempotencyKey = await fetch(`${baseUrl}/api/results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 4, totalQuestions: 5, totalTimeSeconds: 60 })
+  });
+  assert.equal(missingIdempotencyKey.status, 400);
 
   const ranking = await fetch(`${baseUrl}/api/rankings?className=3A`).then(response => response.json());
   assert.equal(ranking.length, 1);
@@ -113,9 +120,25 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   const repeatResult = await fetch(`${baseUrl}/api/results`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 5, totalQuestions: 5, totalTimeSeconds: 40 })
+    body: JSON.stringify({ idempotencyKey: '22222222-2222-4222-8222-222222222222', studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 5, totalQuestions: 5, totalTimeSeconds: 40 })
   });
   assert.equal(repeatResult.status, 201);
+  const secondSaved = await repeatResult.json();
+  const replay = await fetch(`${baseUrl}/api/results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ idempotencyKey: '22222222-2222-4222-8222-222222222222', studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 5, totalQuestions: 5, totalTimeSeconds: 40 })
+  });
+  assert.equal(replay.status, 201);
+  assert.equal((await replay.json()).result.id, secondSaved.result.id);
+  assert.equal((await fs.readFile(path.join(directory, 'results.jsonl'), 'utf8')).trim().split('\n').length, 2);
+  const conflictingReplay = await fetch(`${baseUrl}/api/results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ idempotencyKey: '22222222-2222-4222-8222-222222222222', studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 3, totalQuestions: 5, totalTimeSeconds: 40 })
+  });
+  assert.equal(conflictingReplay.status, 409);
+  assert.notEqual(firstSaved.result.id, secondSaved.result.id);
   const uniqueRanking = await fetch(`${baseUrl}/api/rankings?className=3A`).then(response => response.json());
   assert.equal(uniqueRanking.length, 1);
   assert.equal(uniqueRanking[0].score, 5);

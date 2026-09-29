@@ -9,7 +9,8 @@
     "data:import-enem": "node backend/scripts/import-enem-questions.js",
     "db:migrate": "node --env-file-if-exists=.env backend/scripts/migrate.js",
     "test": "node --test",
-    "test:stress": "node --test backend/test/api.stress.test.js"
+    "test:stress": "node --test backend/test/api.stress.test.js",
+    "test:postgres-load": "node --test backend/test/postgres.load.test.js"
   },
   "engines": {
     "node": ">=22"

@@ -55,6 +55,63 @@ function responder(res, status, data, origin, origins) {
   res.end(JSON.stringify(data));
 }
 
+function criarLimitador({ limite, janelaMs }) {
+  const clientes = new Map();
+  return req => {
+    const forwarded = req.headers['x-forwarded-for'];
+    const hops = Number(process.env.TRUST_PROXY_HOPS || 1);
+    const chain = hops > 0 && typeof forwarded === 'string' ? forwarded.split(',').map(ip => ip.trim()) : [];
+    const ip = chain.length >= hops && hops > 0 ? chain[chain.length - hops] : req.socket.remoteAddress || 'unknown';
+    const agora = Date.now();
+    let registro = clientes.get(ip);
+    if (!registro || agora - registro.inicio >= janelaMs) {
+      registro = { inicio: agora, total: 0 };
+      clientes.set(ip, registro);
+    }
+    registro.total++;
+    if (clientes.size > 10_000) {
+      for (const [chave, valor] of clientes) if (agora - valor.inicio >= janelaMs) clientes.delete(chave);
+    }
+    return registro.total <= limite;
+  };
+}
+
+function limitePorMinuto(envName, fallback) {
+  const limite = Number(process.env[envName] || fallback);
+  if (!Number.isInteger(limite) || limite < 1) throw new Error(`${envName} deve ser um inteiro positivo.`);
+  return limite;
+}
+
+function embaralhar(items) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function selecionarQuestoes(questions, quantity, area) {
+  if (area !== 'todas') return embaralhar(questions).slice(0, quantity);
+  const groups = Map.groupBy(questions, question => {
+    const normalized = normalizar(question.area);
+    if (normalized.includes('matematica')) return 'matematica';
+    if (normalized.includes('linguagens')) return 'linguagens';
+    if (normalized.includes('humanas')) return 'humanas';
+    if (normalized.includes('natureza')) return 'natureza';
+    return normalized;
+  });
+  const pools = [...groups.values()].map(embaralhar);
+  const selected = [];
+  while (selected.length < quantity && pools.some(pool => pool.length)) {
+    for (const pool of pools) {
+      if (selected.length === quantity) break;
+      if (pool.length) selected.push(pool.pop());
+    }
+  }
+  return selected;
+}
+
 async function lerJson(req) {
   let body = '';
   for await (const chunk of req) {
@@ -68,7 +125,7 @@ async function lerJson(req) {
   }
 }
 
-export async function createApiServer({ store, frontendOrigins, dataFile } = {}) {
+export async function createApiServer({ store, frontendOrigins, dataFile, requestLimits } = {}) {
   const isProduction = process.env.NODE_ENV === 'production';
   const configuredOrigins = frontendOrigins || (process.env.FRONTEND_ORIGIN
     ? process.env.FRONTEND_ORIGIN.split(',').map(origin => origin.trim()).filter(Boolean)
@@ -84,8 +141,18 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
   const resultStore = store || (process.env.DATABASE_URL
     ? await createPostgresStore(process.env.DATABASE_URL, process.env.DATABASE_SSL === 'true')
     : new LocalResultStore(dataFile || process.env.RESULTS_FILE || path.join(__dirname, 'data/results.jsonl')));
+  const rateLimits = {
+    students: criarLimitador({ limite: requestLimits?.students || limitePorMinuto('RATE_LIMIT_STUDENTS', 500), janelaMs: 60_000 }),
+    results: criarLimitador({ limite: requestLimits?.results || limitePorMinuto('RATE_LIMIT_RESULTS', 500), janelaMs: 60_000 })
+  };
 
   const server = http.createServer(async (req, res) => {
+    const startedAt = performance.now();
+    res.on('finish', () => console.log(JSON.stringify({
+      type: 'http_request', method: req.method, path: new URL(req.url, 'http://localhost').pathname,
+      status: res.statusCode, durationMs: Math.round((performance.now() - startedAt) * 100) / 100,
+      ...(resultStore.poolStats ? { pool: resultStore.poolStats } : {})
+    })));
     const url = new URL(req.url, 'http://localhost');
     const requestOrigin = req.headers.origin;
     if (!origemPermitida(requestOrigin, origins)) {
@@ -94,7 +161,11 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
     if (req.method === 'OPTIONS') return responder(res, 204, {}, requestOrigin, origins);
 
     if (req.method === 'GET' && url.pathname === '/api/health') {
-      return responder(res, 200, { status: 'ok', persistence: resultStore.persistence }, requestOrigin, origins);
+      return responder(res, 200, {
+        status: 'ok', persistence: resultStore.persistence,
+        ...(resultStore.poolStats ? { pool: resultStore.poolStats } : {}),
+        uptimeSeconds: Math.floor(process.uptime())
+      }, requestOrigin, origins);
     }
 
     if (req.method === 'GET' && url.pathname === '/api/questions') {
@@ -108,10 +179,11 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
       const filtered = questions.filter(question => (
         (year === 'all' || question.ano === Number(year)) && (area === 'todas' || normalizar(question.area).includes(area))
       ));
-      return responder(res, 200, { questions: filtered.slice(0, quantity), total: filtered.length }, requestOrigin, origins);
+      return responder(res, 200, { questions: selecionarQuestoes(filtered, quantity, area), total: filtered.length }, requestOrigin, origins);
     }
 
     if (req.method === 'POST' && url.pathname === '/api/students') {
+      if (!rateLimits.students(req)) return responder(res, 429, { error: 'Muitas tentativas de cadastro. Tente novamente em um minuto.' }, requestOrigin, origins);
       try {
         const body = await lerJson(req);
         if (!body || typeof body !== 'object' || Array.isArray(body)) {
@@ -126,6 +198,7 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
     }
 
     if (req.method === 'POST' && url.pathname === '/api/results') {
+      if (!rateLimits.results(req)) return responder(res, 429, { error: 'Muitos envios de resultados. Tente novamente em um minuto.' }, requestOrigin, origins);
       try {
         const body = await lerJson(req);
         if (!body || typeof body !== 'object' || Array.isArray(body)) {
