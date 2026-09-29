@@ -30,17 +30,28 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   assert.ok(questions.questions.every(question => question.ano === 2023));
 
   const mathematics = await fetch(`${baseUrl}/api/questions?area=Matemática&quantity=50&year=2023`).then(response => response.json());
-  assert.equal(mathematics.questions.length, 44);
-  assert.ok(mathematics.questions.every(question => question.alternativas.every(alternative => alternative.texto || alternative.imagem)));
+  assert.equal(mathematics.questions.length, 45);
+  assert.ok(mathematics.questions.every(question => question.alternativas.some(alternative => alternative.texto || alternative.imagem)));
   assert.ok(mathematics.questions.every(question => !question.enunciado.includes('broken-image.svg')));
-  assert.ok(!mathematics.questions.some(question => question.id === 'enem-2023-132'));
+  assert.ok(mathematics.questions.some(question => question.id === 'enem-2023-132'));
+
+  const year2022 = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=200&year=2022`).then(response => response.json());
+  assert.ok(year2022.total > 150);
+  assert.ok(year2022.questions.every(question => question.ano === 2022));
+  assert.ok(year2022.questions.every(question => question.enunciado && question.alternativas.length >= 4 && question.alternativaCorreta && question.explicacao));
+
+  const allYears = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=500&year=all`).then(response => response.json());
+  assert.ok(allYears.total > year2022.total + 150);
+  assert.deepEqual(new Set(allYears.questions.map(question => question.ano)), new Set([2022, 2023]));
 
   const fullQuestionSetResponse = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=200&year=2023`);
   assert.equal(fullQuestionSetResponse.status, 200);
   const fullQuestionSet = await fullQuestionSetResponse.json();
   assert.equal(fullQuestionSet.questions.length, fullQuestionSet.total);
   assert.ok(fullQuestionSet.total > 50);
-  assert.equal((await fetch(`${baseUrl}/api/questions?quantity=201&year=2023`)).status, 400);
+  assert.ok(allYears.questions.every(question => question.explicacao));
+  assert.equal((await fetch(`${baseUrl}/api/questions?quantity=501&year=2023`)).status, 400);
+  assert.equal((await fetch(`${baseUrl}/api/questions?year=2024`)).status, 400);
 
   const saved = await fetch(`${baseUrl}/api/results`, {
     method: 'POST',

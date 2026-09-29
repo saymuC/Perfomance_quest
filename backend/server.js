@@ -5,10 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { LocalResultStore, createPostgresStore, createResult, createStudent } from './src/resultStore.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/questoes_enem_2023.json'), 'utf8'))
-  .filter(question => !question.enunciado.includes('broken-image.svg') && question.alternativas.every(alternative => (
-    String(alternative.texto || '').trim() || alternative.imagem
-  )));
+const questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/questoes_enem_2022_2023.json'), 'utf8'));
 
 function normalizar(valor) {
   return String(valor).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -96,15 +93,15 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
     }
 
     if (req.method === 'GET' && url.pathname === '/api/questions') {
-      const year = Number(url.searchParams.get('year') || 2023);
+      const year = url.searchParams.get('year') || 'all';
       const quantity = Number(url.searchParams.get('quantity') || 10);
       const area = normalizar(url.searchParams.get('area') || 'Todas');
-      if (!Number.isInteger(year) || !Number.isInteger(quantity) || quantity < 1 || quantity > 200) {
+      if ((year !== 'all' && ![2022, 2023].includes(Number(year))) || !Number.isInteger(quantity) || quantity < 1 || quantity > 500) {
         return responder(res, 400, { error: 'Filtros year ou quantity inválidos.' }, requestOrigin, origins);
       }
 
       const filtered = questions.filter(question => (
-        question.ano === year && (area === 'todas' || normalizar(question.area).includes(area))
+        (year === 'all' || question.ano === Number(year)) && (area === 'todas' || normalizar(question.area).includes(area))
       ));
       return responder(res, 200, { questions: filtered.slice(0, quantity), total: filtered.length }, requestOrigin, origins);
     }

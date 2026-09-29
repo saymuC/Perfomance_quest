@@ -48,7 +48,7 @@ Para usar o Supabase, copie `.env.example` para `.env`, preencha a URI PostgreSQ
 | Método | Rota | Finalidade |
 |---|---|---|
 | `GET` | `/api/health` | Saúde e tipo de persistência |
-| `GET` | `/api/questions?area=Todas&quantity=10&year=2023` | Questões normalizadas e balanceadas |
+| `GET` | `/api/questions?area=Todas&quantity=10&year=all` | Questões de 2022 e 2023; `year=2022` ou `year=2023` filtra um ano |
 | `POST` | `/api/results` | Salva uma tentativa concluída |
 | `GET` | `/api/rankings?className=3A&limit=20` | Ranking geral ou por turma |
 

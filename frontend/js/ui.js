@@ -308,7 +308,7 @@ export const UI = {
 
             const titleDiv = document.createElement('div');
             titleDiv.className = 'feedback-title';
-            titleDiv.textContent = acertou ? '✓ Resposta Correta!' : '✕ Resposta Incorreta!';
+            titleDiv.textContent = acertou ? '✓ Parabéns, resposta correta!' : '✕ Resposta incorreta';
 
             const expDiv = document.createElement('div');
             expDiv.className = 'feedback-explanation';
@@ -317,12 +317,10 @@ export const UI = {
             gabaritoStrong.textContent = `Gabarito oficial: Alternativa ${alternativaCorreta}.`;
             expDiv.appendChild(gabaritoStrong);
 
-            if (explicacao) {
-                const pExp = document.createElement('p');
-                pExp.style.marginTop = '4px';
-                pExp.textContent = explicacao;
-                expDiv.appendChild(pExp);
-            }
+            const pExp = document.createElement('p');
+            pExp.style.marginTop = '4px';
+            pExp.textContent = explicacao || 'Confira o enunciado e a alternativa correta para revisar o raciocínio desta questão.';
+            expDiv.appendChild(pExp);
 
             feedbackBanner.appendChild(titleDiv);
             feedbackBanner.appendChild(expDiv);
