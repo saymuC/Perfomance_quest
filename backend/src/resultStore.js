@@ -133,6 +133,13 @@ export class LocalResultStore {
 
   insert(result) {
     const write = this.pendingWrite.then(async () => {
+      const existing = this.results.find(item => item.idempotencyKey === result.idempotencyKey);
+      if (existing) {
+        const sameAttempt = ['studentId', 'score', 'totalQuestions', 'percentage', 'totalTimeSeconds']
+          .every(key => existing[key] === result[key]) && JSON.stringify(existing.answers) === JSON.stringify(result.answers);
+        if (!sameAttempt) throw Object.assign(new Error('A chave de idempotência já foi usada para outro resultado.'), { status: 409 });
+        return existing;
+      }
       const student = this.students.get(result.deviceId);
       if (!student || student.id !== result.studentId) {
         throw Object.assign(new Error('Cadastro do aluno não encontrado. Atualize o cadastro antes de enviar o resultado.'), { status: 409 });
@@ -199,20 +206,29 @@ export class LocalResultStore {
 
 export async function createPostgresStore(connectionString, ssl = false) {
   const { Pool } = await import('pg');
+  const max = Number(process.env.PGPOOL_MAX || 5);
+  if (!Number.isInteger(max) || max < 1 || max > 50) throw new Error('PGPOOL_MAX deve ser um inteiro entre 1 e 50.');
   const pool = new Pool({
     connectionString,
+    max,
     ...(ssl ? { ssl: { rejectUnauthorized: false } } : {})
   });
+  pool.on('error', error => console.error(JSON.stringify({ type: 'postgres_pool_error', message: error.message })));
   await runMigrations(pool);
 
   return {
     persistence: 'postgres',
+    get poolStats() {
+      return { total: pool.totalCount, idle: pool.idleCount, waiting: pool.waitingCount, max: pool.options.max };
+    },
     async registerStudent(input) {
       const client = await pool.connect();
       try {
         await client.query('BEGIN');
         const nameKey = input.nameKey;
+        const lockStartedAt = performance.now();
         await client.query('SELECT pg_advisory_xact_lock($1)', [721904282]);
+        console.log(JSON.stringify({ type: 'student_registration_lock', waitMs: Math.round((performance.now() - lockStartedAt) * 100) / 100 }));
         const own = await client.query('SELECT * FROM student_profiles WHERE device_id = $1 FOR UPDATE', [input.deviceId]);
         const named = await client.query('SELECT * FROM student_profiles WHERE name_key = $1 FOR UPDATE', [nameKey]);
         if (own.rowCount && named.rowCount && own.rows[0].id !== named.rows[0].id) {
@@ -254,13 +270,23 @@ export async function createPostgresStore(connectionString, ssl = false) {
     },
     async insert(result) {
       const { rows } = await pool.query(
-        `INSERT INTO quiz_results (id, student_id, student_name, class_name, registration_number, score, total_questions, percentage, total_time_seconds, answers, created_at)
-         SELECT $1, id, student_name, class_name, registration_number, $4, $5, $6, $7, $8, $9
+        `INSERT INTO quiz_results (id, student_id, student_name, class_name, registration_number, score, total_questions, percentage, total_time_seconds, answers, created_at, idempotency_key)
+         SELECT $1, id, student_name, class_name, registration_number, $4, $5, $6, $7, $8, $9, $10
          FROM student_profiles WHERE id = $2 AND device_id = $3
+         ON CONFLICT (idempotency_key) DO UPDATE SET idempotency_key = EXCLUDED.idempotency_key
+         WHERE quiz_results.student_id = EXCLUDED.student_id
+           AND quiz_results.score = EXCLUDED.score
+           AND quiz_results.total_questions = EXCLUDED.total_questions
+           AND quiz_results.percentage = EXCLUDED.percentage
+           AND quiz_results.total_time_seconds = EXCLUDED.total_time_seconds
+           AND quiz_results.answers = EXCLUDED.answers
          RETURNING *`,
-        [result.id, result.studentId, result.deviceId, result.score, result.totalQuestions, result.percentage, result.totalTimeSeconds, JSON.stringify(result.answers), result.createdAt]
+        [result.id, result.studentId, result.deviceId, result.score, result.totalQuestions, result.percentage, result.totalTimeSeconds, JSON.stringify(result.answers), result.createdAt, result.idempotencyKey]
       );
-      if (!rows.length) throw Object.assign(new Error('Cadastro do aluno não encontrado. Atualize o cadastro antes de enviar o resultado.'), { status: 409 });
+      if (!rows.length) {
+        const existing = await pool.query('SELECT 1 FROM student_profiles WHERE id = $1 AND device_id = $2', [result.studentId, result.deviceId]);
+        throw Object.assign(new Error(existing.rowCount ? 'A chave de idempotência já foi usada para outro resultado.' : 'Cadastro do aluno não encontrado. Atualize o cadastro antes de enviar o resultado.'), { status: 409 });
+      }
       return mapPostgresResult(rows[0]);
     },
     async rankings({ className, limit }) {
@@ -342,6 +368,7 @@ export function createResult(input) {
   const totalQuestions = Number(input.totalQuestions ?? input.total);
   const totalTimeSeconds = Number(input.totalTimeSeconds ?? input.tempoSegundos ?? 0);
   const createdAt = input.createdAt || new Date().toISOString();
+  const idempotencyKey = String(input.idempotencyKey || '').trim();
 
   if (!studentName || studentName.length > 120 || !className || className.length > 40 || !registrationNumber || registrationNumber.length > 40 || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(deviceId) || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(studentId)) {
     throw Object.assign(new Error('Nome, turma ou matrícula inválidos.'), { status: 400 });
@@ -355,12 +382,16 @@ export function createResult(input) {
   if (!Number.isFinite(Date.parse(createdAt))) {
     throw Object.assign(new Error('Data do resultado inválida.'), { status: 400 });
   }
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(idempotencyKey)) {
+    throw Object.assign(new Error('Chave de idempotência inválida.'), { status: 400 });
+  }
   if (input.answers !== undefined && (!Array.isArray(input.answers) || input.answers.length > 200)) {
     throw Object.assign(new Error('Lista de respostas inválida.'), { status: 400 });
   }
 
   return {
     id: randomUUID(),
+    idempotencyKey,
     studentName,
     name: studentName,
     className,

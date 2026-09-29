@@ -49,6 +49,7 @@ test('stress: conserva gravações concorrentes, filtros e persistência após r
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           studentName: `Aluno ${index}`,
+          idempotencyKey: randomUUID(),
           className: index % 2 ? '3A' : '3B',
           registrationNumber: String(index).padStart(3, '0'),
           deviceId: deviceIds[index],
@@ -177,4 +178,29 @@ test('stress: valida resultados ruins e respeita CORS configurado', async t => {
     headers: { Origin: 'https://unrelated-project.vercel.app' }
   });
   assert.equal(unrelatedVercel.status, 403);
+});
+
+test('limita cadastro e resultados por origem', async t => {
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'performance-quest-limits-'));
+  const server = await createApiServer({ dataFile: path.join(directory, 'results.jsonl'), requestLimits: { students: 1, results: 1 } });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  t.after(async () => {
+    await new Promise(resolve => server.close(resolve));
+    await fs.rm(directory, { recursive: true, force: true });
+  });
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+  const request = () => fetch(`${baseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: randomUUID(), studentName: `aluno ${randomUUID()}`, className: '3A', registrationNumber: randomUUID() })
+  });
+  const registered = await request();
+  assert.equal(registered.status, 200);
+  const { student } = await registered.json();
+  const resultRequest = () => fetch(`${baseUrl}/api/results`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ idempotencyKey: randomUUID(), deviceId: student.deviceId, studentId: student.id, studentName: student.studentName, className: student.className, registrationNumber: student.registrationNumber, score: 1, totalQuestions: 1, totalTimeSeconds: 1 })
+  });
+  assert.equal((await resultRequest()).status, 201);
+  assert.equal((await resultRequest()).status, 429);
+  assert.equal((await request()).status, 429);
 });

@@ -203,8 +203,8 @@ export async function verificarSaudeAPI() {
 export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 'all' } = {}) {
     const baseUrl = getApiBaseUrl();
     const query = new URLSearchParams({
-        area: 'Todas',
-        quantity: '500'
+        area,
+        quantity: String(quantidade)
     });
     if (ano) query.append('year', String(ano));
 
@@ -245,13 +245,9 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 
     const todasNormalizadas = listaBruta.map(normalizarQuestao);
 
-    let selecionadas = [];
-    if (area && area !== 'Todas') {
-        const filtradas = todasNormalizadas.filter(q => q.area === area);
-        selecionadas = embaralhar(filtradas).slice(0, quantidade);
-    } else {
-        selecionadas = balancearQuestoesPorArea(todasNormalizadas, quantidade);
-    }
+    const selecionadas = area && area !== 'Todas'
+        ? embaralhar(todasNormalizadas).slice(0, quantidade)
+        : balancearQuestoesPorArea(todasNormalizadas, quantidade);
 
     if (selecionadas.length === 0) {
         throw new Error(`Nenhuma questão disponível para a área "${area}".`);
@@ -260,7 +256,7 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
     return {
         questoes: selecionadas,
         fonte: 'api',
-        totalDisponivel: todasNormalizadas.length
+        totalDisponivel: data.total ?? listaBruta.length
     };
 }
 
@@ -312,7 +308,8 @@ export async function enviarResultadoAPI(resultado) {
         totalTimeSeconds: resultado.tempoTotalSegundos,
         tempoSegundos: resultado.tempoTotalSegundos,
         answers: resultado.respostas || [],
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        idempotencyKey: resultado.idempotencyKey
     };
 
     try {

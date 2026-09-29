@@ -41,7 +41,8 @@ import {
     normalizarQuestao,
     normalizarArea,
     inferirAssunto,
-    balancearQuestoesPorArea
+    balancearQuestoesPorArea,
+    obterQuestoesSimulado
 } from '../js/api.js';
 
 import { escapeHTML } from '../js/ui.js';
@@ -154,6 +155,31 @@ test('Frontend - API: normalizarArea mapeia nomes compostos para as 4 áreas can
     assert.equal(normalizarArea('Ciências Humanas e suas Tecnologias'), 'Ciências Humanas');
     assert.equal(normalizarArea('Ciências da Natureza e suas Tecnologias'), 'Ciências da Natureza');
     assert.equal(normalizarArea('Matemática'), 'Matemática');
+});
+
+test('Frontend - API: envia filtros e quantidade solicitados ao backend', async () => {
+    const originalFetch = globalThis.fetch;
+    let requestedUrl;
+    globalThis.fetch = async url => {
+        requestedUrl = new URL(url);
+        return new Response(JSON.stringify({
+            total: 20,
+            questions: [
+                { id: 'q1', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' },
+                { id: 'q2', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' }
+            ]
+        }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+    try {
+        const resultado = await obterQuestoesSimulado({ area: 'Ciências Humanas', quantidade: 2, ano: 2023 });
+        assert.equal(requestedUrl.searchParams.get('area'), 'Ciências Humanas');
+        assert.equal(requestedUrl.searchParams.get('quantity'), '2');
+        assert.equal(requestedUrl.searchParams.get('year'), '2023');
+        assert.equal(resultado.questoes.length, 2);
+        assert.equal(resultado.totalDisponivel, 20);
+    } finally {
+        globalThis.fetch = originalFetch;
+    }
 });
 
 test('Frontend - API: balancearQuestoesPorArea equilibra as 4 áreas', () => {
