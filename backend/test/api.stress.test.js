@@ -158,6 +158,15 @@ test('stress: valida resultados ruins e respeita CORS configurado', async t => {
   const allowed = await fetch(`${baseUrl}/api/health`, { headers: { Origin: 'https://app.example.test' } });
   assert.equal(allowed.headers.get('access-control-allow-origin'), 'https://app.example.test');
 
+  for (const origin of [
+    'https://performance-quest.vercel.app',
+    'https://perfomancequest-frontend.vercel.app'
+  ]) {
+    const productionFrontend = await fetch(`${baseUrl}/api/health`, { headers: { Origin: origin } });
+    assert.equal(productionFrontend.status, 200);
+    assert.equal(productionFrontend.headers.get('access-control-allow-origin'), origin);
+  }
+
   const vercelPreview = await fetch(`${baseUrl}/api/health`, {
     headers: { Origin: 'https://performance-quest-feature-saymuc.vercel.app' }
   });

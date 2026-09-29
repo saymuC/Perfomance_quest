@@ -70,9 +70,14 @@ async function lerJson(req) {
 
 export async function createApiServer({ store, frontendOrigins, dataFile } = {}) {
   const isProduction = process.env.NODE_ENV === 'production';
-  const origins = frontendOrigins || (process.env.FRONTEND_ORIGIN
+  const configuredOrigins = frontendOrigins || (process.env.FRONTEND_ORIGIN
     ? process.env.FRONTEND_ORIGIN.split(',').map(origin => origin.trim()).filter(Boolean)
     : ['http://localhost:3000', 'http://127.0.0.1:3000']);
+  const origins = [...new Set([
+    ...configuredOrigins,
+    'https://performance-quest.vercel.app',
+    'https://perfomancequest-frontend.vercel.app'
+  ])];
   if (isProduction && (!process.env.DATABASE_URL || origins.length === 0)) {
     throw new Error('Em produção, configure DATABASE_URL e FRONTEND_ORIGIN.');
   }
