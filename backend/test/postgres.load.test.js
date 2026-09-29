@@ -4,7 +4,9 @@ import { randomUUID } from 'node:crypto';
 import { createApiServer } from '../server.js';
 import { createPostgresStore } from '../src/resultStore.js';
 
-test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas', { skip: !process.env.PG_LOAD_TEST_DATABASE_URL }, async t => {
+test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas', {
+  skip: process.env.PG_LOAD_TEST_DATABASE_URL ? false : 'Configure PG_LOAD_TEST_DATABASE_URL no .env com a URL de um banco PostgreSQL de teste.'
+}, async t => {
   const { Client } = await import('pg');
   const connectionString = process.env.PG_LOAD_TEST_DATABASE_URL;
   const store = await createPostgresStore(connectionString, process.env.DATABASE_SSL === 'true');
@@ -54,6 +56,35 @@ test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas',
     console.log(JSON.stringify({ type: 'postgres_load_stage', concurrency, attempts: total, errors: failures.length, p50Ms: percentile(0.5), p95Ms: percentile(0.95), maxMs: Math.round(latencies.at(-1) || 0) }));
     assert.deepEqual(failures, []);
   }
+
+  const duplicateName = `load-duplicate-${randomUUID()}`;
+  const duplicateRegistrations = await Promise.all(Array.from({ length: 10 }, (_, index) => fetch(`${baseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: randomUUID(), studentName: duplicateName, className: 'LOAD', registrationNumber: `duplicate-${index}` })
+  })));
+  assert.equal(duplicateRegistrations.filter(response => response.status === 200).length, 1);
+  assert.equal(duplicateRegistrations.filter(response => response.status === 409).length, 9);
+
+  const competingDevice = randomUUID();
+  const existingDeviceRegistration = `load-device-existing-${randomUUID()}`;
+  const existingDeviceProfile = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: competingDevice, studentName: existingDeviceRegistration, className: 'LOAD', registrationNumber: randomUUID() })
+  });
+  assert.equal(existingDeviceProfile.status, 200);
+  const sameDeviceNames = ['load-device-one', 'load-device-two'];
+  const sameDeviceRegistrations = await Promise.all(sameDeviceNames.map(studentName => fetch(`${baseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: competingDevice, studentName, className: 'LOAD', registrationNumber: `other-${studentName}` })
+  })));
+  assert.ok(sameDeviceRegistrations.every(response => response.status === 409));
+  const { rows: deviceCount } = await (async () => {
+    const client = new Client({ connectionString, ...(process.env.DATABASE_SSL === 'true' ? { ssl: { rejectUnauthorized: false } } : {}) });
+    await client.connect();
+    try { return await client.query('SELECT count(*)::int AS count FROM public.student_profiles WHERE device_id = $1', [competingDevice]); }
+    finally { await client.end(); }
+  })();
+  assert.equal(deviceCount[0].count, 1, 'requisições simultâneas do mesmo dispositivo devem manter um perfil único');
 
   const deviceId = randomUUID();
   const registered = await fetch(`${baseUrl}/api/students`, {
