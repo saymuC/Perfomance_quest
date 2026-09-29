@@ -87,6 +87,7 @@ async function iniciarSimulado() {
     }
 
     const selectArea = document.getElementById('filtro-area');
+    const selectAno = document.getElementById('filtro-ano');
     const selectQtd = document.getElementById('filtro-quantidade');
     const btnIniciar = document.getElementById('btn-iniciar-simulado');
 
@@ -101,7 +102,7 @@ async function iniciarSimulado() {
     UI.mostrarCarregando('Carregando questões do servidor da API...');
 
     try {
-        const dados = await obterQuestoesSimulado({ area, quantidade });
+        const dados = await obterQuestoesSimulado({ area, quantidade, ano: selectAno?.value || 'all' });
         UI.atualizarStatusAPI('online');
 
         const { questoes } = dados;

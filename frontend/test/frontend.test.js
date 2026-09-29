@@ -135,6 +135,20 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
     assert.deepEqual(norm.imagens, ['https://enem.dev/question.png']);
 });
 
+test('Frontend - API: preserva ano da questão e não inventa explicação genérica', () => {
+    const norm = normalizarQuestao({
+        year: 2022,
+        context: 'Contexto da questão.',
+        alternativesIntroduction: 'Qual alternativa está correta?',
+        correctAlternative: 'B',
+        alternatives: [{ letter: 'A', text: 'Distrator' }, { letter: 'B', text: 'Resposta' }]
+    });
+
+    assert.equal(norm.ano, 2022);
+    assert.match(norm.enunciado, /Qual alternativa está correta/);
+    assert.equal(norm.explicacao, '');
+});
+
 test('Frontend - API: normalizarArea mapeia nomes compostos para as 4 áreas canônicas', () => {
     assert.equal(normalizarArea('Linguagens, Códigos e suas Tecnologias'), 'Linguagens');
     assert.equal(normalizarArea('Ciências Humanas e suas Tecnologias'), 'Ciências Humanas');

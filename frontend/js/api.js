@@ -74,7 +74,7 @@ export function normalizarQuestao(q) {
 
     const id = String(q.id || Math.random().toString(36).slice(2, 8));
     const area = normalizarArea(q.area || 'Geral');
-    const enunciado = q.enunciado || q.statement || q.texto || q.context || 'Enunciado não disponível.';
+    const enunciado = q.enunciado || q.statement || q.texto || [q.context, q.alternativesIntroduction].filter(Boolean).join('\n\n') || 'Enunciado não disponível.';
 
     // Infere assunto mais específico se o assunto for genérico ou igual à área
     let assunto = q.assunto;
@@ -116,14 +116,14 @@ export function normalizarQuestao(q) {
 
     return {
         id,
-        ano: q.ano || q.year || 2023,
+        ano: q.ano || q.year,
         area,
         assunto,
         enunciado,
         imagens: q.imagens || q.images || [],
         alternativas,
         alternativaCorreta: gabarito,
-        explicacao: q.explicacao || q.justification || `Gabarito oficial do ENEM: Alternativa ${gabarito}.`
+        explicacao: q.explicacao || q.justification || ''
     };
 }
 
@@ -200,11 +200,11 @@ export async function verificarSaudeAPI() {
 /**
  * Obtém questões através da API configurada (GET /api/questions)
  */
-export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 2023 } = {}) {
+export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 'all' } = {}) {
     const baseUrl = getApiBaseUrl();
     const query = new URLSearchParams({
         area: 'Todas',
-        quantity: '200'
+        quantity: '500'
     });
     if (ano) query.append('year', String(ano));
 
