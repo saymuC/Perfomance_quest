@@ -227,15 +227,30 @@ export async function createPostgresStore(connectionString, ssl = false) {
         await client.query('BEGIN');
         const nameKey = input.nameKey;
         const lockStartedAt = performance.now();
-        await client.query('SELECT pg_advisory_xact_lock($1)', [721904282]);
+        const lockKeys = [...new Set([`device:${input.deviceId}`, `name:${nameKey}`])].sort();
+        for (const key of lockKeys) {
+          await client.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 721904282))', [key]);
+        }
         console.log(JSON.stringify({ type: 'student_registration_lock', waitMs: Math.round((performance.now() - lockStartedAt) * 100) / 100 }));
         const own = await client.query('SELECT * FROM student_profiles WHERE device_id = $1 FOR UPDATE', [input.deviceId]);
         const named = await client.query('SELECT * FROM student_profiles WHERE name_key = $1 FOR UPDATE', [nameKey]);
         if (own.rowCount && named.rowCount && own.rows[0].id !== named.rows[0].id) {
           throw Object.assign(new Error('Esse dispositivo já está vinculado a outro aluno. Atualize a página para usar o cadastro já salvo.'), { status: 409 });
         }
-        if (named.rowCount && named.rows[0].device_id && named.rows[0].device_id !== input.deviceId && normalize(named.rows[0].registration_number) !== normalize(input.registrationNumber)) {
-          throw Object.assign(new Error('Esse nome já está cadastrado em outro dispositivo. Use o cadastro existente ou escolha outro nome.'), { status: 409 });
+        if (named.rowCount && named.rows[0].device_id && named.rows[0].device_id !== input.deviceId) {
+          if (normalize(named.rows[0].registration_number) !== normalize(input.registrationNumber)) {
+            throw Object.assign(new Error('Esse nome já está cadastrado em outro dispositivo. Use o cadastro existente ou escolha outro nome.'), { status: 409 });
+          }
+          const recovered = await client.query(
+            `UPDATE student_profiles SET device_id = $2, class_name = $3, registration_number = $4, updated_at = now()
+             WHERE id = $1
+             RETURNING id, device_id, student_name, class_name, registration_number`,
+            [named.rows[0].id, input.deviceId, input.className, input.registrationNumber]
+          );
+          if (recovered.rowCount) {
+            await client.query('COMMIT');
+            return mapStudent(recovered.rows[0]);
+          }
         }
         const current = own.rowCount ? own : named;
         const { rows } = current.rowCount

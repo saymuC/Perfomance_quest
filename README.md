@@ -56,11 +56,11 @@ O ranking usa: maior percentual, maior número de acertos, menor tempo e data ma
 
 ## Operação e carga
 
-`GET /api/health` informa persistência, uptime e uso instantâneo do pool PostgreSQL. O Render recebe esses logs JSON do processo, incluindo latência por rota, erros, espera pelo lock de cadastro e conexões em uso/espera; o dashboard do Supabase mostra o consumo do banco. Vercel Analytics mede o frontend e Core Web Vitals, não conexões PostgreSQL nem latência interna do Render.
+`GET /api/health` informa persistência, uptime e uso instantâneo do pool PostgreSQL. O Render recebe esses logs JSON do processo, incluindo latência por rota, erros, espera pelos locks por identidade no cadastro e conexões em uso/espera; o dashboard do Supabase mostra o consumo do banco. Vercel Analytics mede o frontend e Core Web Vitals, não conexões PostgreSQL nem latência interna do Render.
 
 Configure `PGPOOL_MAX` para que `PGPOOL_MAX * instâncias` fique abaixo do limite do plano PostgreSQL, reservando conexões para migrations e administração. O valor padrão é 5 por instância. O endpoint de cadastro e o envio de resultados têm limites locais por processo/IP (`RATE_LIMIT_STUDENTS`, `RATE_LIMIT_RESULTS`); com várias instâncias, use também rate limiting no proxy/WAF. No Render, configure `TRUST_PROXY_HOPS=1` para identificar IPs via proxy confiável. CORS não autentica chamadas: o app mantém fluxo público sem login, então abuso direcionado pode exigir autenticação ou CAPTCHA.
 
-Para testar a API com PostgreSQL de teste (não use o banco de produção), configure `PG_LOAD_TEST_DATABASE_URL` e execute `npm run test:postgres-load`. O teste escala concorrência 1, 5, 10 e 25, registra p50/p95/máximo e erros, e verifica que todas as tentativas aceitas existem no banco. Ajuste `PG_LOAD_TOTAL` e `PG_LOAD_CONCURRENCY` conforme o plano; ele é ignorado sem a variável de ambiente. O teste local `npm run test:stress` usa arquivo e não representa concorrência de PostgreSQL.
+Para testar a API com PostgreSQL de teste (não use o banco de produção), configure `PG_LOAD_TEST_DATABASE_URL` no `.env` com uma URL separada da `DATABASE_URL` e execute `npm run test:postgres-load`. O script carrega o `.env`; sem essa variável, o Node informa claramente que o teste foi ignorado. O teste escala concorrência 1, 5, 10 e 25, mede p50/p95/máximo e erros, provoca cadastro concorrente de identidades iguais e verifica reenvios idempotentes e gravações no banco. Ajuste `PG_LOAD_TOTAL` e `PG_LOAD_CONCURRENCY` conforme o plano. O teste local `npm run test:stress` usa arquivo e não representa concorrência de PostgreSQL.
 
 ## Publicar separadamente
 
