@@ -708,14 +708,14 @@ export const UI = {
 
             const nomeAluno = item.studentName || item.name || item.nome || 'Anônimo';
             const turmaAluno = item.className || item.turma || '-';
-            const matriculaAluno = item.registrationNumber || item.matricula || '';
+            const studentId = item.studentId || '';
             const acertos = item.score !== undefined ? item.score : (item.acertos || 0);
             const total = item.totalQuestions || item.total || 0;
             const percentual = item.percentual !== undefined ? item.percentual : (item.percentage !== undefined ? item.percentage : (item.taxaAcerto || 0));
             const tempo = item.totalTimeSeconds !== undefined ? item.totalTimeSeconds : (item.tempoSegundos || 0);
 
             // Destaque para o aluno atual
-            if (alunoAtual && matriculaAluno && String(alunoAtual.matricula) === String(matriculaAluno)) {
+            if (alunoAtual && studentId && String(alunoAtual.studentId) === String(studentId)) {
                 tr.className = 'current-student-row';
             }
 
@@ -734,7 +734,7 @@ export const UI = {
             // Coluna Estudante (protegido contra XSS)
             const tdNome = document.createElement('td');
             tdNome.textContent = nomeAluno;
-            if (alunoAtual && matriculaAluno && String(alunoAtual.matricula) === String(matriculaAluno)) {
+            if (alunoAtual && studentId && String(alunoAtual.studentId) === String(studentId)) {
                 const badgeVoce = document.createElement('span');
                 badgeVoce.className = 'badge badge-primary';
                 badgeVoce.style.marginLeft = '6px';

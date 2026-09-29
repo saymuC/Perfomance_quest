@@ -17,6 +17,7 @@ npm-debug.log*
 
 # Local persistent API data
 backend/data/results.jsonl
+backend/data/results.jsonl.students.json
 backend/data/test-results-*.jsonl
 
 # Editor / IDE directories

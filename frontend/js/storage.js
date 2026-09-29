@@ -7,6 +7,24 @@
 
 const CHAVE_ALUNO = 'performance_quest_aluno';
 const CHAVE_FILA_SYNC = 'performance_quest_sync_queue';
+const CHAVE_DISPOSITIVO = 'performance_quest_device_id';
+
+function novoIdentificador() {
+    if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0;
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+
+export function obterIdentificadorDispositivo() {
+    let id = localStorage.getItem(CHAVE_DISPOSITIVO);
+    if (!id) {
+        id = novoIdentificador();
+        localStorage.setItem(CHAVE_DISPOSITIVO, id);
+    }
+    return id;
+}
 
 /**
  * Recupera os dados do aluno cadastrado
@@ -18,10 +36,14 @@ export function obterDadosAluno() {
         if (!raw) return null;
         const dados = JSON.parse(raw);
         if (dados && dados.nome && dados.turma && dados.matricula) {
+            const deviceId = dados.deviceId || obterIdentificadorDispositivo();
+            if (!dados.deviceId) localStorage.setItem(CHAVE_ALUNO, JSON.stringify({ ...dados, deviceId }));
             return {
                 nome: String(dados.nome).trim(),
                 turma: String(dados.turma).trim().toUpperCase(),
-                matricula: String(dados.matricula).trim()
+                matricula: String(dados.matricula).trim(),
+                deviceId: dados.deviceId || obterIdentificadorDispositivo(),
+                studentId: dados.studentId || null
             };
         }
         return null;
@@ -33,7 +55,7 @@ export function obterDadosAluno() {
 /**
  * Salva ou atualiza os dados cadastrais do aluno
  */
-export function salvarDadosAluno({ nome, turma, matricula }) {
+export function salvarDadosAluno({ nome, turma, matricula, deviceId, studentId } = {}) {
     if (!nome || typeof nome !== 'string' || nome.trim().length < 2) {
         throw new Error('Informe um nome válido com ao menos 2 caracteres.');
     }
@@ -48,6 +70,8 @@ export function salvarDadosAluno({ nome, turma, matricula }) {
         nome: nome.trim(),
         turma: turma.trim().toUpperCase(),
         matricula: matricula.trim(),
+        deviceId: deviceId || obterIdentificadorDispositivo(),
+        studentId: studentId || obterDadosAluno()?.studentId || null,
         atualizadoEm: new Date().toISOString()
     };
 

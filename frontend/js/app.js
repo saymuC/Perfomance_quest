@@ -6,8 +6,8 @@
  */
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
-import { obterDadosAluno, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
-import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI } from './api.js';
+import { obterDadosAluno, obterIdentificadorDispositivo, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
+import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
 import { UI } from './ui.js';
 
 // Estado global da aplicação
@@ -199,8 +199,23 @@ async function proximaQuestao() {
  * e gerencia os estados de sincronização
  */
 async function sincronizarResultadoAtual(relatorio) {
-    const aluno = obterDadosAluno();
+    let aluno = obterDadosAluno();
     if (!aluno) return;
+
+    if (!aluno.studentId) {
+        try {
+            const registrado = await registrarAlunoAPI(aluno);
+            aluno = salvarDadosAluno({ ...aluno, studentId: registrado.id });
+        } catch (error) {
+            UI.atualizarStatusSincronizacao({ status: 'failed', mensagem: error.message });
+            return;
+        }
+    }
+
+    if (!aluno.studentId) {
+        UI.atualizarStatusSincronizacao({ status: 'failed', mensagem: 'O cadastro do aluno ainda não foi confirmado pela API. Atualize o cadastro e tente novamente.' });
+        return;
+    }
 
     UI.atualizarStatusSincronizacao({
         status: 'pending',
@@ -211,6 +226,8 @@ async function sincronizarResultadoAtual(relatorio) {
         nome: aluno.nome,
         turma: aluno.turma,
         matricula: aluno.matricula,
+        deviceId: aluno.deviceId,
+        studentId: aluno.studentId,
         acertos: relatorio.resumo.acertos,
         total: relatorio.resumo.total,
         taxaAcerto: relatorio.resumo.taxaAcerto,
@@ -253,10 +270,18 @@ async function sincronizarResultadoAtual(relatorio) {
 async function tentarSincronizarFilaPendente() {
     const fila = obterResultadosPendentes();
     if (!Array.isArray(fila) || fila.length === 0) return;
+    const aluno = obterDadosAluno();
+    if (!aluno?.studentId) return;
 
     for (const item of fila) {
         try {
-            await enviarResultadoAPI(item.payload);
+            if ((item.payload.deviceId && item.payload.deviceId !== aluno.deviceId) ||
+                (item.payload.studentId && item.payload.studentId !== aluno.studentId)) continue;
+            await enviarResultadoAPI({
+                ...item.payload,
+                deviceId: item.payload.deviceId || aluno.deviceId,
+                studentId: item.payload.studentId || aluno.studentId
+            });
             removerResultadoPendente(item.id);
         } catch {
             break; // Se a API continuar fora, interrompe
@@ -273,6 +298,17 @@ async function abrirRanking(turma = null) {
     const aluno = obterDadosAluno();
 
     if (modal) modal.classList.add('active');
+
+    if (aluno && !aluno.studentId) {
+        try {
+            const registrado = await registrarAlunoAPI(aluno);
+            aluno.studentId = registrado.id;
+            salvarDadosAluno({ ...aluno, studentId: registrado.id });
+        } catch (error) {
+            UI.mostrarErro(error.message);
+            return;
+        }
+    }
 
     // Turma padrão a consultar
     const turmaAlvo = turma !== null ? turma : (selectTurma ? selectTurma.value : (aluno ? aluno.turma : 'Todas'));
@@ -351,7 +387,7 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
 /**
  * Gerenciamento do Cadastro de Aluno
  */
-function salvarCadastroAluno(e) {
+async function salvarCadastroAluno(e) {
     if (e) e.preventDefault();
 
     const inputNome = document.getElementById('input-aluno-nome');
@@ -359,16 +395,20 @@ function salvarCadastroAluno(e) {
     const inputMatricula = document.getElementById('input-aluno-matricula');
 
     try {
-        const aluno = salvarDadosAluno({
+        const cadastro = {
             nome: inputNome ? inputNome.value : '',
             turma: inputTurma ? inputTurma.value : '',
-            matricula: inputMatricula ? inputMatricula.value : ''
-        });
+            matricula: inputMatricula ? inputMatricula.value : '',
+            deviceId: obterIdentificadorDispositivo(),
+            studentId: obterDadosAluno()?.studentId
+        };
+        const remoto = await registrarAlunoAPI(cadastro);
+        const aluno = salvarDadosAluno({ ...cadastro, studentId: remoto.id });
 
         UI.atualizarIdentificacaoAluno(aluno);
         estado.turmasConhecidas.add(aluno.turma);
     } catch (err) {
-        alert(err.message);
+        alert(err.status === 409 ? err.message : `Não foi possível registrar o aluno na API: ${err.message}`);
     }
 }
 
@@ -394,7 +434,7 @@ function fecharModalEdicaoAluno() {
     if (modal) modal.classList.remove('active');
 }
 
-function salvarEdicaoModalAluno(e) {
+async function salvarEdicaoModalAluno(e) {
     if (e) e.preventDefault();
 
     const inputNome = document.getElementById('input-modal-nome');
@@ -402,17 +442,21 @@ function salvarEdicaoModalAluno(e) {
     const inputMatricula = document.getElementById('input-modal-matricula');
 
     try {
-        const aluno = salvarDadosAluno({
+        const cadastro = {
             nome: inputNome ? inputNome.value : '',
             turma: inputTurma ? inputTurma.value : '',
-            matricula: inputMatricula ? inputMatricula.value : ''
-        });
+            matricula: inputMatricula ? inputMatricula.value : '',
+            deviceId: obterIdentificadorDispositivo(),
+            studentId: obterDadosAluno()?.studentId
+        };
+        const remoto = await registrarAlunoAPI(cadastro);
+        const aluno = salvarDadosAluno({ ...cadastro, studentId: remoto.id });
 
         UI.atualizarIdentificacaoAluno(aluno);
         estado.turmasConhecidas.add(aluno.turma);
         fecharModalEdicaoAluno();
     } catch (err) {
-        alert(err.message);
+        alert(err.status === 409 ? err.message : `Não foi possível atualizar o aluno na API: ${err.message}`);
     }
 }
 
@@ -512,6 +556,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     UI.atualizarIdentificacaoAluno(alunoSalvo);
     if (alunoSalvo && alunoSalvo.turma) {
         estado.turmasConhecidas.add(alunoSalvo.turma);
+        registrarAlunoAPI(alunoSalvo).then(remoto => {
+            salvarDadosAluno({ ...alunoSalvo, studentId: remoto.id });
+        }).catch(error => {
+            console.error('Falha ao sincronizar cadastro do aluno:', error);
+            UI.mostrarErro(error.message);
+        });
     }
 
     // 2. Verifica a saúde da API REST

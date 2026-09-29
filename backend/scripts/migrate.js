@@ -15,7 +15,7 @@ try {
   await runMigrations(pool);
   console.log('Banco Supabase pronto.');
 } catch (error) {
-  console.error('Falha ao aplicar migrations:', error.message);
+  console.error('Falha ao aplicar migrations:', error.message || error);
   process.exitCode = 1;
 } finally {
   await pool.end();

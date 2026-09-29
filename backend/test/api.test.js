@@ -19,6 +19,12 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   assert.equal(health.status, 'ok');
   assert.equal(health.persistence, 'file');
 
+  const student = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', studentName: 'Ana', className: '3A', registrationNumber: '12345' })
+  }).then(response => response.json());
+
   const questions = await fetch(`${baseUrl}/api/questions?area=Linguagens&quantity=2&year=2023`).then(response => response.json());
   assert.equal(questions.questions.length, 2);
   assert.ok(questions.questions.every(question => question.ano === 2023));
@@ -39,11 +45,103 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   const saved = await fetch(`${baseUrl}/api/results`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ studentName: 'Ana', className: '3A', registrationNumber: '12345', score: 4, totalQuestions: 5, totalTimeSeconds: 60 })
+    body: JSON.stringify({ studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 4, totalQuestions: 5, totalTimeSeconds: 60 })
   });
   assert.equal(saved.status, 201);
 
   const ranking = await fetch(`${baseUrl}/api/rankings?className=3A`).then(response => response.json());
   assert.equal(ranking.length, 1);
   assert.equal(ranking[0].percentage, 80);
+
+  const duplicateName = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', studentName: 'ANA', className: '3A', registrationNumber: '67890' })
+  });
+  assert.equal(duplicateName.status, 409);
+
+  const recoveredProfileResponse = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: '99999999-9999-4999-8999-999999999999', studentName: 'ANA', className: '3A', registrationNumber: '12345' })
+  });
+  assert.equal(recoveredProfileResponse.status, 200, await recoveredProfileResponse.clone().text());
+  const recoveredProfile = await recoveredProfileResponse.json();
+  assert.equal(recoveredProfile.success, true);
+  assert.ok(recoveredProfile.student.id);
+
+  const recoveredWithoutKnownStudent = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: '88888888-8888-4888-8888-888888888888', studentName: 'ANA', className: '3A', registrationNumber: '12345' })
+  }).then(response => response.json());
+  assert.equal(recoveredWithoutKnownStudent.success, true);
+  assert.ok(recoveredWithoutKnownStudent.student.id);
+
+  const nameTakeover = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'ffffffff-ffff-4fff-8fff-ffffffffffff', studentName: 'ANA', className: '3A', registrationNumber: 'different-matricula' })
+  });
+  assert.equal(nameTakeover.status, 409);
+
+  const duplicateNameAccent = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'cccccccc-cccc-4ccc-8ccc-cccccccccccc', studentName: 'ÁNA', className: '3A', registrationNumber: '87654' })
+  });
+  assert.equal(duplicateNameAccent.status, 409);
+
+  const sameStudent = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: student.student.deviceId, studentName: 'Ana', className: '3A', registrationNumber: '12345' })
+  }).then(response => response.json());
+  assert.equal(sameStudent.student.id, student.student.id);
+
+  const repeatResult = await fetch(`${baseUrl}/api/results`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studentName: 'Ana', className: '3A', registrationNumber: '12345', deviceId: student.student.deviceId, studentId: student.student.id, score: 5, totalQuestions: 5, totalTimeSeconds: 40 })
+  });
+  assert.equal(repeatResult.status, 201);
+  const uniqueRanking = await fetch(`${baseUrl}/api/rankings?className=3A`).then(response => response.json());
+  assert.equal(uniqueRanking.length, 1);
+  assert.equal(uniqueRanking[0].score, 5);
+
+  const editedProfile = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: student.student.deviceId, studentName: 'Ana Silva', className: '3B', registrationNumber: '12345' })
+  }).then(response => response.json());
+  assert.equal(editedProfile.student.id, student.student.id);
+  await new Promise(resolve => server.close(resolve));
+  const restartedServer = await createApiServer({ dataFile: path.join(directory, 'results.jsonl') });
+  await new Promise(resolve => restartedServer.listen(0, '127.0.0.1', resolve));
+  t.after(async () => {
+    await new Promise(resolve => restartedServer.close(resolve));
+    await fs.rm(directory, { recursive: true, force: true });
+  });
+  const restartedBaseUrl = `http://127.0.0.1:${restartedServer.address().port}`;
+  const sameDeviceAfterRestart = await fetch(`${restartedBaseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: student.student.deviceId, studentName: 'Ana Silva', className: '3B', registrationNumber: '12345' })
+  }).then(response => response.json());
+  assert.equal(sameDeviceAfterRestart.student.id, student.student.id);
+  const duplicateAfterRestart = await fetch(`${restartedBaseUrl}/api/students`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'dddddddd-dddd-4ddd-8ddd-dddddddddddd', studentName: 'Ana Silva', className: '3A', registrationNumber: '333' })
+  });
+  assert.equal(duplicateAfterRestart.status, 409);
+  const movedRanking = await fetch(`${restartedBaseUrl}/api/rankings?className=3B`).then(response => response.json());
+  assert.equal(movedRanking.length, 1);
+  assert.equal(movedRanking[0].studentName, 'Ana Silva');
+
+  const recoveredOnNewDevice = await fetch(`${restartedBaseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee', studentName: 'Ana Silva', className: '3B', registrationNumber: '12345' })
+  }).then(response => response.json());
+  assert.equal(recoveredOnNewDevice.student.id, student.student.id);
+  assert.equal((await fetch(`${restartedBaseUrl}/api/rankings?className=3B`).then(response => response.json())).length, 1);
 });

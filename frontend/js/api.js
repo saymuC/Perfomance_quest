@@ -267,6 +267,26 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 /**
  * Envia o resultado concluído para persistência no banco e ranking (POST /api/results)
  */
+export async function registrarAlunoAPI(aluno) {
+    const response = await fetch(`${getApiBaseUrl()}/students`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            deviceId: aluno.deviceId,
+            studentName: aluno.nome,
+            className: aluno.turma,
+            registrationNumber: aluno.matricula
+        })
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+        const error = new Error(data.error || `Erro ${response.status} ao registrar aluno.`);
+        error.status = response.status;
+        throw error;
+    }
+    return data.student;
+}
+
 export async function enviarResultadoAPI(resultado) {
     const baseUrl = getApiBaseUrl();
     const url = `${baseUrl}/results`;
@@ -281,6 +301,8 @@ export async function enviarResultadoAPI(resultado) {
         turma: resultado.turma,
         registrationNumber: resultado.matricula,
         matricula: resultado.matricula,
+        deviceId: resultado.deviceId,
+        studentId: resultado.studentId,
         score: resultado.acertos,
         acertos: resultado.acertos,
         totalQuestions: resultado.total,
