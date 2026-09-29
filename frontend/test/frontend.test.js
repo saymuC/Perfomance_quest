@@ -31,6 +31,7 @@ import {
 import {
     salvarDadosAluno,
     obterDadosAluno,
+    obterIdentificadorDispositivo,
     temCadastroValido,
     limparDadosAluno
 } from '../js/storage.js';
@@ -86,6 +87,11 @@ test('Frontend - Storage: gerencia cadastro simples do aluno (nome, turma, matr�
     assert.equal(recuperado.nome, 'André Luiz');
     assert.equal(recuperado.turma, '3A');
     assert.equal(temCadastroValido(), true);
+    assert.match(aluno.deviceId, /^[0-9a-f-]{36}$/i);
+    assert.equal(aluno.deviceId, obterIdentificadorDispositivo());
+    const atualizado = salvarDadosAluno({ ...aluno, nome: 'André Luiz Silva', studentId: 'student-profile-id' });
+    assert.equal(atualizado.deviceId, aluno.deviceId);
+    assert.equal(atualizado.studentId, 'student-profile-id');
 });
 
 test('Frontend - Storage: valida campos obrigatórios do cadastro', () => {
@@ -96,6 +102,13 @@ test('Frontend - Storage: valida campos obrigatórios do cadastro', () => {
 
 test('Frontend - API: consome url configurada em config.js', () => {
     assert.equal(getApiBaseUrl(), 'https://perfomance-quest-api.onrender.com/api');
+});
+
+test('Frontend - Storage: mantém identidade do dispositivo ao limpar e cadastrar novamente', () => {
+    const first = obterIdentificadorDispositivo();
+    limparDadosAluno();
+    const second = obterIdentificadorDispositivo();
+    assert.equal(second, first);
 });
 
 test('Frontend - API: normaliza questões de diferentes formatos', () => {

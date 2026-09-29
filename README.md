@@ -26,6 +26,8 @@ O frontend não importa mais arquivos de `backend/`. A comunicação entre os do
 
 Requisitos: Node.js 20 ou superior. Localmente, a API persiste resultados em `backend/data/results.jsonl` e os mantém após reiniciar. Esse modo usa um arquivo local e suporta apenas uma instância do backend; use PostgreSQL para produção ou múltiplas instâncias.
 
+O cadastro do ranking usa um identificador aleatório persistido no navegador (localStorage), não impressão digital do dispositivo. A API impede nomes duplicados sem diferenciar maiúsculas, acentos ou espaços, e guarda apenas a melhor tentativa de cada aluno no ranking. Se os dados do navegador forem limpos ou o aluno trocar de dispositivo, use o mesmo nome e a mesma matrícula para recuperar o perfil existente.
+
 ```bash
 npm install
 npm run start:backend

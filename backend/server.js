@@ -2,7 +2,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LocalResultStore, createPostgresStore, createResult } from './src/resultStore.js';
+import { LocalResultStore, createPostgresStore, createResult, createStudent } from './src/resultStore.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/questoes_enem_2023.json'), 'utf8'))
@@ -107,6 +107,20 @@ export async function createApiServer({ store, frontendOrigins, dataFile } = {})
         question.ano === year && (area === 'todas' || normalizar(question.area).includes(area))
       ));
       return responder(res, 200, { questions: filtered.slice(0, quantity), total: filtered.length }, requestOrigin, origins);
+    }
+
+    if (req.method === 'POST' && url.pathname === '/api/students') {
+      try {
+        const body = await lerJson(req);
+        if (!body || typeof body !== 'object' || Array.isArray(body)) {
+          return responder(res, 400, { error: 'O corpo deve ser um objeto JSON.' }, requestOrigin, origins);
+        }
+        const student = await resultStore.registerStudent(createStudent(body));
+        return responder(res, 200, { success: true, student }, requestOrigin, origins);
+      } catch (error) {
+        if (!error.status) console.error('Falha ao registrar aluno:', error);
+        return responder(res, error.status || 500, { error: error.status ? error.message : 'Não foi possível registrar o aluno.' }, requestOrigin, origins);
+      }
     }
 
     if (req.method === 'POST' && url.pathname === '/api/results') {
