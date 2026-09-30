@@ -148,13 +148,19 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
 
   const server = http.createServer(async (req, res) => {
     const startedAt = performance.now();
+    let url;
+    try {
+      url = new URL(req.url, 'http://localhost');
+    } catch {
+      url = null;
+    }
     res.on('finish', () => console.log(JSON.stringify({
-      type: 'http_request', method: req.method, path: new URL(req.url, 'http://localhost').pathname,
+      type: 'http_request', method: req.method, path: url?.pathname ?? '(invalid URL)',
       status: res.statusCode, durationMs: Math.round((performance.now() - startedAt) * 100) / 100,
       ...(resultStore.poolStats ? { pool: resultStore.poolStats } : {})
     })));
-    const url = new URL(req.url, 'http://localhost');
     const requestOrigin = req.headers.origin;
+    if (!url) return responder(res, 400, { error: 'URL inválida.' }, requestOrigin, origins);
     if (!origemPermitida(requestOrigin, origins)) {
       return responder(res, 403, { error: 'Origem não permitida.' }, requestOrigin, origins);
     }
