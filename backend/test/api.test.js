@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import net from 'node:net';
 import { createApiServer } from '../server.js';
 
 test('API local fornece saúde, questões, resultados e ranking', async t => {
@@ -18,6 +19,19 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   const health = await fetch(`${baseUrl}/api/health`).then(response => response.json());
   assert.equal(health.status, 'ok');
   assert.equal(health.persistence, 'file');
+
+  for (const target of ['//?page=..%2f..%2f..%2f..%2f..%2fwindows/win.ini', '//interactsh.com%2f..']) {
+    const response = await new Promise((resolve, reject) => {
+      const socket = net.connect(server.address().port, '127.0.0.1');
+      let data = '';
+      socket.on('connect', () => socket.write(`GET ${target} HTTP/1.0\r\nHost: localhost\r\n\r\n`));
+      socket.on('data', chunk => { data += chunk; });
+      socket.on('end', () => resolve(data));
+      socket.on('error', reject);
+    });
+    assert.match(response, /^HTTP\/1\.1 400 Bad Request/);
+  }
+  assert.equal((await fetch(`${baseUrl}/api/health`)).status, 200);
 
   const student = await fetch(`${baseUrl}/api/students`, {
     method: 'POST',
