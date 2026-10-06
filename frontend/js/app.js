@@ -6,7 +6,7 @@
  */
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
-import { obterDadosAluno, obterIdentificadorDispositivo, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
+import { obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
 import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
 import { UI, rotuloPrioridade } from './ui.js';
 import { MENSAGENS } from './mensagens.js';
@@ -20,7 +20,6 @@ const estado = {
     tempoInicioQuestao: 0,
     intervaloTimer: null,
     historicoTentativa: [],
-    idempotencyKey: null,
     resultadoAtual: null,
     turmasConhecidas: new Set(['3A', '3B', '3C', '3º Ano 1', '3º Ano 2'])
 };
@@ -115,7 +114,7 @@ async function iniciarSimulado() {
         estado.questoes = questoes;
         estado.indiceAtual = 0;
         estado.historicoTentativa = [];
-        estado.idempotencyKey = null;
+        estado.resultadoAtual = null;
         estado.sessaoAtual = criarSessaoQuiz(questoes);
 
         UI.ocultarCarregando();
@@ -186,14 +185,22 @@ async function proximaQuestao() {
     } else {
         // Finaliza o simulado
         const relatorio = estado.sessaoAtual.finalizar();
-        estado.resultadoAtual = relatorio;
+        const aluno = obterDadosAluno();
+        const payload = {
+            ...aluno,
+            ...relatorio.resumo,
+            createdAt: new Date().toISOString(),
+            idempotencyKey: novoIdentificador(),
+            respostas: estado.historicoTentativa.map(({ resposta }) => ({ ...resposta }))
+        };
+        estado.resultadoAtual = payload;
 
         UI.mostrarTela('result');
         UI.renderizarRelatorio(relatorio);
         UI.renderizarRevisaoQuestoes(estado.historicoTentativa);
 
         // Sincroniza resultado com a API REST
-        await sincronizarResultadoAtual(relatorio);
+        await sincronizarResultadoAtual(payload);
     }
 }
 
@@ -201,71 +208,48 @@ async function proximaQuestao() {
  * Envia o resultado do simulado para a API (POST /api/results)
  * e gerencia os estados de sincronização
  */
-async function sincronizarResultadoAtual(relatorio) {
+async function enviarPontuacao(payload) {
     let aluno = obterDadosAluno();
-    if (!aluno) return;
+    if (!aluno || (payload.deviceId && payload.deviceId !== aluno.deviceId) ||
+        (payload.studentId && payload.studentId !== aluno.studentId)) {
+        throw new Error('A tentativa pertence a outro cadastro.');
+    }
 
     if (!aluno.studentId) {
-        try {
-            const registrado = await registrarAlunoAPI(aluno);
-            aluno = salvarDadosAluno({ ...aluno, studentId: registrado.id });
-        } catch (error) {
-            console.warn('Falha ao confirmar perfil do aluno:', error);
-            UI.atualizarStatusSincronizacao({ status: 'failed', mensagem: MENSAGENS.pontuacaoPendente });
-            return;
+        const registrado = await registrarAlunoAPI(aluno);
+        const atual = obterDadosAluno();
+        if (!atual || ['deviceId', 'nome', 'turma', 'matricula'].some(campo => atual[campo] !== aluno[campo])) {
+            throw new Error('O cadastro mudou durante o envio.');
         }
+        aluno = salvarDadosAluno({ ...atual, studentId: registrado.id });
     }
 
-    if (!aluno.studentId) {
-        UI.atualizarStatusSincronizacao({ status: 'failed', mensagem: MENSAGENS.cadastroNaoConfirmado });
-        return;
+    await enviarResultadoAPI({ ...payload, deviceId: payload.deviceId || aluno.deviceId, studentId: payload.studentId || aluno.studentId });
+    const pendente = obterResultadosPendentes().find(item => item.payload.idempotencyKey === payload.idempotencyKey);
+    if (pendente) removerResultadoPendente(pendente.id);
+}
+
+async function sincronizarResultadoAtual(payload) {
+    const guardado = enfileirarResultadoPendente(payload);
+    if (estado.resultadoAtual === payload) {
+        UI.atualizarStatusSincronizacao({ status: 'pending', mensagem: MENSAGENS.salvandoPontuacao });
     }
-
-    UI.atualizarStatusSincronizacao({
-        status: 'pending',
-        mensagem: MENSAGENS.salvandoPontuacao
-    });
-
-    const payload = {
-        nome: aluno.nome,
-        turma: aluno.turma,
-        matricula: aluno.matricula,
-        deviceId: aluno.deviceId,
-        studentId: aluno.studentId,
-        acertos: relatorio.resumo.acertos,
-        total: relatorio.resumo.total,
-        taxaAcerto: relatorio.resumo.taxaAcerto,
-        tempoTotalSegundos: relatorio.resumo.tempoTotalSegundos,
-        idempotencyKey: estado.idempotencyKey || (estado.idempotencyKey = crypto.randomUUID()),
-        respostas: estado.historicoTentativa.map(item => ({
-            questaoId: item.questao.id,
-            area: item.questao.area,
-            assunto: item.questao.assunto,
-            alternativaEscolhida: item.resposta.alternativaEscolhida,
-            alternativaCorreta: item.resposta.alternativaCorreta,
-            acertou: item.resposta.acertou,
-            tempoSegundos: item.resposta.tempoSegundos
-        }))
-    };
 
     try {
-        await enviarResultadoAPI(payload);
-        UI.atualizarStatusSincronizacao({
-            status: 'synced',
-            mensagem: MENSAGENS.pontuacaoSalva(aluno.turma)
-        });
-
-        // Tenta enviar pendências offline anteriores se houver
+        await enviarPontuacao(payload);
+        if (estado.resultadoAtual === payload) {
+            UI.atualizarStatusSincronizacao({ status: 'synced', mensagem: MENSAGENS.pontuacaoSalva(payload.turma) });
+        }
         await tentarSincronizarFilaPendente();
     } catch (err) {
         console.warn('Falha ao enviar resultado para a API online:', err);
-        enfileirarResultadoPendente(payload);
-
-        UI.atualizarStatusSincronizacao({
-            status: 'failed',
-            mensagem: MENSAGENS.pontuacaoPendente,
-            onTentarSincronizar: () => sincronizarResultadoAtual(relatorio)
-        });
+        if (estado.resultadoAtual === payload) {
+            UI.atualizarStatusSincronizacao({
+                status: 'failed',
+                mensagem: guardado ? MENSAGENS.pontuacaoPendente : MENSAGENS.pontuacaoNaoGuardada,
+                onTentarSincronizar: () => sincronizarResultadoAtual(payload)
+            });
+        }
     }
 }
 
@@ -275,19 +259,16 @@ async function sincronizarResultadoAtual(relatorio) {
 async function tentarSincronizarFilaPendente() {
     const fila = obterResultadosPendentes();
     if (!Array.isArray(fila) || fila.length === 0) return;
-    const aluno = obterDadosAluno();
-    if (!aluno?.studentId) return;
-
     for (const item of fila) {
+        const aluno = obterDadosAluno();
+        if (!aluno) return;
         try {
             if ((item.payload.deviceId && item.payload.deviceId !== aluno.deviceId) ||
                 (item.payload.studentId && item.payload.studentId !== aluno.studentId)) continue;
-            await enviarResultadoAPI({
-                ...item.payload,
-                deviceId: item.payload.deviceId || aluno.deviceId,
-                studentId: item.payload.studentId || aluno.studentId
-            });
-            removerResultadoPendente(item.id);
+            await enviarPontuacao({ ...item.payload, createdAt: item.payload.createdAt || item.criadoEm });
+            if (estado.resultadoAtual?.idempotencyKey === item.payload.idempotencyKey) {
+                UI.atualizarStatusSincronizacao({ status: 'synced', mensagem: MENSAGENS.pontuacaoSalva(item.payload.turma) });
+            }
         } catch {
             break; // Se a API continuar fora, interrompe
         }
@@ -332,7 +313,6 @@ function fecharRanking() {
  */
 async function carregarDadosRanking(turmaFiltro = 'Todas') {
     const container = document.getElementById('ranking-conteudo-container');
-    const aluno = obterDadosAluno();
 
     if (container) {
         container.replaceChildren();
@@ -345,6 +325,8 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
     }
 
     try {
+        await tentarSincronizarFilaPendente();
+        const aluno = obterDadosAluno();
         const classNameParam = (turmaFiltro && turmaFiltro !== 'Todas') ? turmaFiltro : '';
         const dados = await obterRankingsAPI({ className: classNameParam, limit: 30 });
 
@@ -564,14 +546,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (alunoSalvo && alunoSalvo.turma) {
         estado.turmasConhecidas.add(alunoSalvo.turma);
         registrarAlunoAPI(alunoSalvo).then(remoto => {
-            salvarDadosAluno({ ...alunoSalvo, studentId: remoto.id });
+            const atual = obterDadosAluno();
+            if (atual && ['deviceId', 'nome', 'turma', 'matricula'].every(campo => atual[campo] === alunoSalvo[campo])) {
+                salvarDadosAluno({ ...atual, studentId: remoto.id });
+            }
+            return tentarSincronizarFilaPendente();
         }).catch(error => {
             console.warn('Falha ao sincronizar cadastro do aluno na inicialização:', error);
         });
     }
 
     // 2. Verifica a saúde da API REST
-    verificarSaudeAPI().catch(err => console.warn('Backend indisponível na inicialização:', err));
+    verificarSaudeAPI().then(() => tentarSincronizarFilaPendente()).catch(err => console.warn('Backend indisponível na inicialização:', err));
+    window.addEventListener('online', tentarSincronizarFilaPendente);
 
     // 3. Eventos de Cadastro de Aluno
     const formCadastro = document.getElementById('form-cadastro-aluno');

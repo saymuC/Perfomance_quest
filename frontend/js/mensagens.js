@@ -22,6 +22,7 @@ export const MENSAGENS = {
     salvandoPontuacao: 'Salvando sua pontuação no ranking...',
     pontuacaoSalva: (turma) => turma ? `Pontuação registrada com sucesso no ranking da Turma ${turma}!` : 'Pontuação registrada com sucesso no ranking da turma!',
     pontuacaoPendente: 'Não conseguimos salvar no ranking agora, mas sua pontuação está guardada. Vamos tentar de novo automaticamente.',
+    pontuacaoNaoGuardada: 'Não conseguimos guardar sua pontuação neste aparelho nem salvar no ranking agora. Mantenha esta tela aberta e tente novamente.',
 
     // Diagnóstico e Recomendações
     semQuestoesRecomendacao: 'Responda pelo menos 2 questões do mesmo assunto para receber recomendações de estudo.',

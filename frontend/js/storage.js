@@ -9,7 +9,7 @@ const CHAVE_ALUNO = 'performance_quest_aluno';
 const CHAVE_FILA_SYNC = 'performance_quest_sync_queue';
 const CHAVE_DISPOSITIVO = 'performance_quest_device_id';
 
-function novoIdentificador() {
+export function novoIdentificador() {
     if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
         const r = Math.random() * 16 | 0;
@@ -103,26 +103,30 @@ export function limparDadosAluno() {
 }
 
 /**
- * Enfileira um resultado que falhou ao enviar para a API (Sincronização Offline)
+ * Guarda a tentativa antes do envio e evita duplicatas nos reenvios.
  */
 export function enfileirarResultadoPendente(resultado) {
     try {
         const fila = obterResultadosPendentes();
+        if (resultado.idempotencyKey && fila.some(item => item.payload.idempotencyKey === resultado.idempotencyKey)) return true;
         fila.push({
             id: `sync-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
             criadoEm: new Date().toISOString(),
             payload: resultado
         });
         localStorage.setItem(CHAVE_FILA_SYNC, JSON.stringify(fila));
+        return true;
     } catch (e) {
         console.warn('Erro ao enfileirar resultado para sincronização:', e);
+        return false;
     }
 }
 
 export function obterResultadosPendentes() {
     try {
         const raw = localStorage.getItem(CHAVE_FILA_SYNC);
-        return raw ? JSON.parse(raw) : [];
+        const fila = raw ? JSON.parse(raw) : [];
+        return Array.isArray(fila) ? fila : [];
     } catch {
         return [];
     }

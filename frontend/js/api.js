@@ -308,7 +308,7 @@ export async function enviarResultadoAPI(resultado) {
         totalTimeSeconds: resultado.tempoTotalSegundos,
         tempoSegundos: resultado.tempoTotalSegundos,
         answers: resultado.respostas || [],
-        createdAt: new Date().toISOString(),
+        createdAt: resultado.createdAt,
         idempotencyKey: resultado.idempotencyKey
     };
 
