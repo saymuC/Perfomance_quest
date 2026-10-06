@@ -82,7 +82,6 @@ export const MENSAGENS = {
     campoFiltroTurma: "Filtrar por Turma:",
     filtroTodasTurmas: "Todas as Turmas (Geral)",
     carregandoClassificacao: "Carregando classificação...",
-    tituloCriteriosRanking: "Critérios do ranking:",
     tituloEditarCadastro: "👤 Meus Dados de Identificação",
     campoMatriculaEdicao: "Matrícula: *",
     tituloHistorico: "📈 Meu Histórico",
@@ -162,7 +161,6 @@ export const MENSAGENS = {
     rankingVazio: 'Nenhum resultado registrado para esta turma ainda. Seja o primeiro a completar o simulado!',
 
     // Cadastro de estudante
-    cadastroNaoConfirmado: 'Não foi possível confirmar seu cadastro para salvar no ranking agora. Atualize seus dados e tente novamente.',
     nomeJaCadastrado: 'Já existe um cadastro com esse nome. Confira seu nome completo e tente novamente.',
     erroSalvarCadastro: 'Não foi possível salvar seus dados no momento. Tente novamente.'
 };

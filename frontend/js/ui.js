@@ -670,7 +670,7 @@ export const UI = {
      * Renderiza o modal de ranking com tabela e cards responsivos
      * Seguro contra XSS (nomes de alunos são inseridos via textContent)
      */
-    renderizarRanking({ ranking = [], turmas = [], turmaSelecionada = 'Todas', alunoAtual = null, onFiltrarTurma = null } = {}) {
+    renderizarRanking({ ranking = [], turmas = [], turmaSelecionada = 'Todas', alunoAtual = null } = {}) {
         const container = document.getElementById('ranking-conteudo-container');
         const selectTurma = document.getElementById('ranking-filtro-turma');
         if (!container) return;

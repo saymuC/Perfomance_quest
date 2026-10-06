@@ -84,20 +84,6 @@ export class SessaoQuiz {
         return resultado;
     }
 
-    obterProgresso() {
-        const total = this.questoes.size;
-        const respondidas = this.respostas.length;
-        return {
-            questaoAtual: total === 0 ? 0 : Math.min(respondidas + 1, total),
-            total,
-            respondidas
-        };
-    }
-
-    obterRespostas() {
-        return [...this.respostas];
-    }
-
     finalizar() {
         if (this.finalizada) {
             throw new Error('A sessão do quiz já foi finalizada.');

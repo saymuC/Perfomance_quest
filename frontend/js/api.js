@@ -222,15 +222,12 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
             ? 'Tempo limite esgotado ao conectar com a API.'
             : `Falha de rede ao conectar com a API em ${baseUrl}.`;
         const erro = new Error(mensagemErro);
-        erro.tipo = 'CONEXAO_FALHOU';
-        erro.url = baseUrl;
         throw erro;
     }
 
     if (!response.ok) {
         const erro = new Error(`A API retornou erro HTTP ${response.status} (${response.statusText}).`);
         erro.status = response.status;
-        erro.tipo = 'RESPOSTA_INVALIDA';
         throw erro;
     }
 
@@ -239,7 +236,6 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 
     if (!Array.isArray(listaBruta) || listaBruta.length === 0) {
         const erro = new Error('A API não retornou questões.');
-        erro.tipo = 'SEM_QUESTOES';
         throw erro;
     }
 
@@ -292,21 +288,13 @@ export async function enviarResultadoAPI(resultado) {
     const payload = {
         // Campos em conformidade com o endpoint POST /api/results do backend
         studentName: resultado.nome,
-        name: resultado.nome,
         className: resultado.turma,
-        turma: resultado.turma,
         registrationNumber: resultado.matricula,
-        matricula: resultado.matricula,
         deviceId: resultado.deviceId,
         studentId: resultado.studentId,
         score: resultado.acertos,
-        acertos: resultado.acertos,
         totalQuestions: resultado.total,
-        total: resultado.total,
-        percentage: resultado.taxaAcerto,
-        taxaAcerto: resultado.taxaAcerto,
         totalTimeSeconds: resultado.tempoTotalSegundos,
-        tempoSegundos: resultado.tempoTotalSegundos,
         answers: resultado.respostas || [],
         createdAt: resultado.createdAt,
         idempotencyKey: resultado.idempotencyKey

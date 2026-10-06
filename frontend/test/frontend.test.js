@@ -42,10 +42,27 @@ import {
     normalizarArea,
     inferirAssunto,
     balancearQuestoesPorArea,
-    obterQuestoesSimulado
+    obterQuestoesSimulado,
+    enviarResultadoAPI
 } from '../js/api.js';
 
 import { escapeHTML, rotuloPrioridade } from '../js/ui.js';
+import { createResult } from '../../backend/src/resultStore.js';
+
+test('contrato de envio canônico é aceito pelo backend sem aliases redundantes', async t => {
+    const uuid = '12345678-1234-4234-9234-123456789abc';
+    let recebido;
+    t.mock.method(globalThis, 'fetch', async (url, opcoes) => {
+        recebido = createResult(JSON.parse(opcoes.body));
+        return Response.json(recebido, { status: 201 });
+    });
+    await enviarResultadoAPI({ nome: 'Aluno Teste', turma: '3A', matricula: '123', deviceId: uuid, studentId: uuid, idempotencyKey: uuid, acertos: 3, total: 5, tempoTotalSegundos: 60, createdAt: '2026-10-06T01:00:00.000Z', respostas: [{ questaoId: 'q1' }] });
+    assert.equal(recebido.percentage, 60);
+    assert.equal(recebido.totalTimeSeconds, 60);
+    assert.equal(recebido.studentName, 'Aluno Teste');
+    assert.equal(recebido.createdAt, '2026-10-06T01:00:00.000Z');
+    assert.deepEqual(recebido.answers, [{ questaoId: 'q1' }]);
+});
 
 test('Frontend - Quiz: corrigirResposta avalia acerto e normaliza gabarito', () => {
     const q = { id: 'q1', area: 'Matemática', assunto: 'Geometria', alternativaCorreta: 'C' };
