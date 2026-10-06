@@ -1,3 +1,5 @@
+import { MENSAGENS } from './mensagens.js';
+
 /**
  * Módulo de Lógica do Quiz e Diagnóstico Local (Client-Side)
  * 
@@ -222,7 +224,7 @@ export function gerarResumo(respostas = []) {
             acertos: 0,
             taxaAcerto: 0,
             tempoTotalSegundos: 0,
-            mensagem: 'Nenhuma questão respondida ainda.'
+            mensagem: MENSAGENS.semRespostas
         };
     }
 
@@ -231,11 +233,11 @@ export function gerarResumo(respostas = []) {
     const taxaAcerto = Math.round((acertos / total) * 100);
     const tempoTotalSegundos = respostas.reduce((acc, r) => acc + (r.tempoSegundos || 0), 0);
 
-    let mensagem = 'Continue praticando! Você está no caminho certo.';
+    let mensagem = MENSAGENS.incentivoPratica;
     if (taxaAcerto >= 80) {
-        mensagem = 'Excelente resultado! Seu domínio dos conteúdos do ENEM está ótimo!';
+        mensagem = MENSAGENS.resultadoExcelente;
     } else if (taxaAcerto >= 60) {
-        mensagem = 'Bom desempenho! Revise os tópicos recomendados abaixo para aumentar sua pontuação.';
+        mensagem = MENSAGENS.resultadoBom;
     }
 
     return {

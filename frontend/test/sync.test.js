@@ -16,6 +16,7 @@ const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-p
 }]));
 globalThis.document = {
     getElementById: id => botoes.get(id) ?? null,
+    querySelectorAll: () => [],
     addEventListener: (evento, callback) => eventos.set(evento, callback)
 };
 globalThis.window = {

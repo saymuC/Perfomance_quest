@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { UI } from '../js/ui.js';
+import { MENSAGENS } from '../js/mensagens.js';
+import { readFileSync } from 'node:fs';
 
 class Elemento {
     constructor(tag) {
@@ -74,4 +76,20 @@ test('relatório mostra todos os assuntos, inclusive os fora das três prioridad
     assert.equal(assuntos.children.length, 4);
     assert.equal(assuntos.children[0].children[1].children[0].style.width, '50%');
     assert.equal(areas.children[0].children[0].children[1].children[0].textContent, 'Ainda sem respostas');
+});
+
+test('textos do HTML usam mensagens existentes, incluindo rótulos acessíveis', () => {
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    const chaves = [...html.matchAll(/data-mensagem(?:-placeholder|-title|-aria-label)?="([^"]+)"/g)].map(item => item[1]);
+    assert.ok(chaves.length > 50);
+    for (const chave of chaves) assert.equal(typeof MENSAGENS[chave], 'string', chave);
+});
+
+test('inicialização aplica textos e rótulos acessíveis sem interpretar HTML', t => {
+    const texto = { dataset: { mensagem: 'botaoConfirmarResposta' } };
+    const atributo = { getAttribute: () => 'botaoFechar', setAttribute(nome, valor) { this[nome] = valor; } };
+    t.mock.method(document, 'querySelectorAll', seletor => seletor === '[data-mensagem]' ? [texto] : seletor === '[data-mensagem-aria-label]' ? [atributo] : []);
+    UI.inicializarTextos();
+    assert.equal(texto.textContent, MENSAGENS.botaoConfirmarResposta);
+    assert.equal(atributo['aria-label'], MENSAGENS.botaoFechar);
 });

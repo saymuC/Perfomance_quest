@@ -84,7 +84,7 @@ async function iniciarSimulado() {
             cardCadastro.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.4)';
             setTimeout(() => cardCadastro.style.boxShadow = '', 2000);
         }
-        alert('Por favor, preencha sua identificação (Nome, Turma e Matrícula) antes de iniciar o simulado para registrar sua pontuação no ranking.');
+        alert(MENSAGENS.identificarAntesSimulado);
         return;
     }
 
@@ -98,7 +98,7 @@ async function iniciarSimulado() {
 
     if (btnIniciar) {
         btnIniciar.disabled = true;
-        btnIniciar.textContent = '⏳ Carregando...';
+        btnIniciar.textContent = MENSAGENS.carregandoBotao;
     }
 
     UI.mostrarCarregando(MENSAGENS.carregandoQuestoes);
@@ -134,7 +134,7 @@ async function iniciarSimulado() {
     } finally {
         if (btnIniciar) {
             btnIniciar.disabled = false;
-            btnIniciar.textContent = 'Iniciar Simulado →';
+            btnIniciar.textContent = MENSAGENS.iniciarSimulado;
         }
     }
 }
@@ -144,7 +144,7 @@ async function iniciarSimulado() {
  */
 function confirmarResposta() {
     if (!estado.alternativaSelecionada) {
-        alert('Por favor, selecione uma alternativa antes de confirmar.');
+        alert(MENSAGENS.selecionarAlternativa);
         return;
     }
 
@@ -447,9 +447,9 @@ function abrirHistorico() {
         statsGrid.style.marginTop = '1rem';
 
         [
-            { valor: relatorio.resumo.total, label: 'Total Geral' },
-            { valor: relatorio.resumo.acertos, label: 'Acertos', cor: '#10b981' },
-            { valor: `${relatorio.resumo.taxaAcerto}%`, label: 'Aproveitamento' }
+            { valor: relatorio.resumo.total, label: MENSAGENS.totalGeral },
+            { valor: relatorio.resumo.acertos, label: MENSAGENS.acertos, cor: '#10b981' },
+            { valor: `${relatorio.resumo.taxaAcerto}%`, label: MENSAGENS.aproveitamento }
         ].forEach(box => {
             const div = document.createElement('div');
             div.className = 'stat-box';
@@ -490,7 +490,7 @@ function abrirHistorico() {
                 const strong = document.createElement('strong');
                 strong.textContent = item.assunto;
                 const prioridade = rotuloPrioridade(item.ipe);
-                const txt = document.createTextNode(` — Taxa de acerto: ${item.taxaAcerto.toFixed(0)}% • ${prioridade.texto}`);
+                const txt = document.createTextNode(MENSAGENS.prioridadeHistorico(item, prioridade.texto));
                 li.appendChild(strong);
                 li.appendChild(txt);
                 ul.appendChild(li);
@@ -514,6 +514,7 @@ function handleLimparHistorico() {
 // INICIALIZAÇÃO DA APLICAÇÃO NO DOM
 // ========================================================
 document.addEventListener('DOMContentLoaded', async () => {
+    UI.inicializarTextos();
     // 1. Inicializa identificação do aluno se já existir
     const alunoSalvo = obterDadosAluno();
     UI.atualizarIdentificacaoAluno(alunoSalvo);
