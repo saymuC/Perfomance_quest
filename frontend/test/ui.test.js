@@ -12,6 +12,7 @@ class Elemento {
     append(...els) { els.forEach(el => this.appendChild(el)); }
     replaceChildren(...els) { this.children = []; this.append(...els); }
     addEventListener(tipo, callback) { this.eventos[tipo] = callback; }
+    setAttribute(nome, valor) { this[nome] = valor; }
     querySelector(selector) { return this.children.find(el => selector === 'input' && el.tagName === 'INPUT'); }
     after(el) { el.parent = this.parent; this.parent.children.splice(this.parent.children.indexOf(this) + 1, 0, el); }
     get nextElementSibling() { return this.parent.children[this.parent.children.indexOf(this) + 1]; }
@@ -59,4 +60,18 @@ test('alternativas usam controles nativos e ficam bloqueadas após confirmar', (
     }
     UI.exibirFeedback({ acertou: true, alternativaCorreta: 'A' });
     assert.ok(opcoes.every(opcao => opcao.querySelector('input').disabled));
+});
+
+test('relatório mostra todos os assuntos, inclusive os fora das três prioridades', () => {
+    elementos.clear();
+    const assuntos = new Elemento('div');
+    const areas = new Elemento('div');
+    elementos.set('subject-breakdown-container', assuntos);
+    elementos.set('area-breakdown-container', areas);
+    UI.renderizarRelatorio({ resumo: {}, assuntosPrioritarios: [], desempenhoPorArea: { Linguagens: { total: 0, acertos: 0 } }, desempenhoPorAssunto: {
+        Geometria: { total: 2, acertos: 1 }, Álgebra: { total: 1, acertos: 1 }, Ecologia: { total: 1, acertos: 0 }, Literatura: { total: 1, acertos: 1 }
+    } });
+    assert.equal(assuntos.children.length, 4);
+    assert.equal(assuntos.children[0].children[1].children[0].style.width, '50%');
+    assert.equal(areas.children[0].children[0].children[1].children[0].textContent, 'Ainda sem respostas');
 });

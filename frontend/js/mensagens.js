@@ -29,6 +29,8 @@ export const MENSAGENS = {
     semQuestoesRecomendacao: 'Responda pelo menos 2 questões do mesmo assunto para receber recomendações de estudo.',
     dicaEstudo: '💡 Dica de estudo: Dedique seus próximos momentos de revisão para reforçar a teoria e resolver mais exercícios desse assunto.',
     assuntosRecomendadosTitulo: 'Assuntos recomendados para estudo:',
+    desempenhoPorAssunto: 'Desempenho por Assunto',
+    aindaSemRespostas: 'Ainda sem respostas',
 
     // Histórico e Ranking
     confirmarLimparHistorico: 'Tem certeza de que deseja limpar seu histórico de simulados salvos neste aparelho?',

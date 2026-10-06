@@ -398,7 +398,7 @@ export const UI = {
      * Renderiza o relatório final do quiz
      */
     renderizarRelatorio(relatorio) {
-        const { resumo, assuntosPrioritarios, desempenhoPorArea } = relatorio;
+        const { resumo, assuntosPrioritarios, desempenhoPorArea, desempenhoPorAssunto } = relatorio;
 
         const totalEl = document.getElementById('resumo-total');
         const acertosEl = document.getElementById('resumo-acertos');
@@ -466,21 +466,27 @@ export const UI = {
             }
         }
 
-        // Desempenho por Área do ENEM
-        const areaContainer = document.getElementById('area-breakdown-container');
-        if (areaContainer && desempenhoPorArea) {
+        // Mesma apresentação para áreas e todos os assuntos respondidos.
+        for (const [id, desempenho] of [['area-breakdown-container', desempenhoPorArea], ['subject-breakdown-container', desempenhoPorAssunto]]) {
+            const areaContainer = document.getElementById(id);
+            if (!areaContainer || !desempenho) continue;
             areaContainer.replaceChildren();
 
-            Object.entries(desempenhoPorArea).forEach(([area, dados]) => {
+            Object.entries(desempenho).forEach(([area, dados]) => {
+                const taxaAcerto = dados.total ? Math.round(dados.acertos / dados.total * 100) : 0;
                 let badgeClass = 'badge-success';
                 let badgeTexto = 'Alto Rendimento';
                 let fillColor = '#10b981';
 
-                if (dados.taxaAcerto < 50) {
+                if (!dados.total) {
+                    badgeClass = '';
+                    badgeTexto = MENSAGENS.aindaSemRespostas;
+                    fillColor = '#94a3b8';
+                } else if (taxaAcerto < 50) {
                     badgeClass = 'badge-error';
                     badgeTexto = 'Revisão Prioritária';
                     fillColor = '#ef4444';
-                } else if (dados.taxaAcerto < 70) {
+                } else if (taxaAcerto < 70) {
                     badgeClass = 'badge-warning';
                     badgeTexto = 'Rendimento Regular';
                     fillColor = '#f59e0b';
@@ -506,7 +512,7 @@ export const UI = {
                 badge.textContent = badgeTexto;
 
                 const percentSpan = document.createElement('span');
-                percentSpan.textContent = `${dados.taxaAcerto}% (${dados.acertos}/${dados.total})`;
+                percentSpan.textContent = `${taxaAcerto}% (${dados.acertos}/${dados.total})`;
 
                 detailsDiv.appendChild(badge);
                 detailsDiv.appendChild(percentSpan);
@@ -515,9 +521,10 @@ export const UI = {
 
                 const track = document.createElement('div');
                 track.className = 'area-track';
+                track.setAttribute('aria-hidden', 'true');
                 const fill = document.createElement('div');
                 fill.className = 'area-fill';
-                fill.style.width = `${dados.taxaAcerto}%`;
+                fill.style.width = `${taxaAcerto}%`;
                 fill.style.background = fillColor;
                 track.appendChild(fill);
 
