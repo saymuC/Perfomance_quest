@@ -36,5 +36,6 @@ export const MENSAGENS = {
 
     // Cadastro de estudante
     cadastroNaoConfirmado: 'Não foi possível confirmar seu cadastro para salvar no ranking agora. Atualize seus dados e tente novamente.',
+    nomeJaCadastrado: 'Já existe um cadastro com esse nome. Confira seu nome completo e tente novamente.',
     erroSalvarCadastro: 'Não foi possível salvar seus dados no momento. Tente novamente.'
 };

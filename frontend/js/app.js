@@ -21,6 +21,7 @@ const estado = {
     intervaloTimer: null,
     historicoTentativa: [],
     resultadoAtual: null,
+    consultaRanking: 0,
     turmasConhecidas: new Set(['3A', '3B', '3C', '3º Ano 1', '3º Ano 2'])
 };
 
@@ -285,25 +286,14 @@ async function abrirRanking(turma = null) {
 
     if (modal) modal.classList.add('active');
 
-    if (aluno && !aluno.studentId) {
-        try {
-            const registrado = await registrarAlunoAPI(aluno);
-            aluno.studentId = registrado.id;
-            salvarDadosAluno({ ...aluno, studentId: registrado.id });
-        } catch (error) {
-            console.warn('Falha ao obter perfil do aluno para ranking:', error);
-            UI.mostrarErro(MENSAGENS.erroCarregarRanking);
-            return;
-        }
-    }
-
     // Turma padrão a consultar
     const turmaAlvo = turma !== null ? turma : (selectTurma ? selectTurma.value : (aluno ? aluno.turma : 'Todas'));
 
-    carregarDadosRanking(turmaAlvo);
+    return carregarDadosRanking(turmaAlvo);
 }
 
 function fecharRanking() {
+    estado.consultaRanking++;
     const modal = document.getElementById('modal-ranking');
     if (modal) modal.classList.remove('active');
 }
@@ -312,6 +302,7 @@ function fecharRanking() {
  * Consulta a API e renderiza a tabela de ranking
  */
 async function carregarDadosRanking(turmaFiltro = 'Todas') {
+    const consulta = ++estado.consultaRanking;
     const container = document.getElementById('ranking-conteudo-container');
 
     if (container) {
@@ -326,9 +317,11 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
 
     try {
         await tentarSincronizarFilaPendente();
+        if (consulta !== estado.consultaRanking) return;
         const aluno = obterDadosAluno();
         const classNameParam = (turmaFiltro && turmaFiltro !== 'Todas') ? turmaFiltro : '';
         const dados = await obterRankingsAPI({ className: classNameParam, limit: 30 });
+        if (consulta !== estado.consultaRanking) return;
 
         // Coleta turmas retornadas para alimentar o filtro
         if (Array.isArray(dados)) {
@@ -348,6 +341,7 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
             alunoAtual: aluno
         });
     } catch (err) {
+        if (consulta !== estado.consultaRanking) return;
         console.error('Erro ao consultar ranking:', err);
         if (container) {
             container.replaceChildren();
@@ -375,12 +369,12 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
 /**
  * Gerenciamento do Cadastro de Aluno
  */
-async function salvarCadastroAluno(e) {
+async function salvarCadastroAluno(e, prefixo = 'input-aluno', fecharModal = false) {
     if (e) e.preventDefault();
 
-    const inputNome = document.getElementById('input-aluno-nome');
-    const inputTurma = document.getElementById('input-aluno-turma');
-    const inputMatricula = document.getElementById('input-aluno-matricula');
+    const inputNome = document.getElementById(`${prefixo}-nome`);
+    const inputTurma = document.getElementById(`${prefixo}-turma`);
+    const inputMatricula = document.getElementById(`${prefixo}-matricula`);
 
     try {
         const cadastro = {
@@ -395,8 +389,10 @@ async function salvarCadastroAluno(e) {
 
         UI.atualizarIdentificacaoAluno(aluno);
         estado.turmasConhecidas.add(aluno.turma);
+        if (fecharModal) fecharModalEdicaoAluno();
+        await tentarSincronizarFilaPendente();
     } catch (err) {
-        alert(err.status === 409 ? err.message : MENSAGENS.erroSalvarCadastro);
+        alert(err.status === 409 ? MENSAGENS.nomeJaCadastrado : MENSAGENS.erroSalvarCadastro);
     }
 }
 
@@ -422,30 +418,8 @@ function fecharModalEdicaoAluno() {
     if (modal) modal.classList.remove('active');
 }
 
-async function salvarEdicaoModalAluno(e) {
-    if (e) e.preventDefault();
-
-    const inputNome = document.getElementById('input-modal-nome');
-    const inputTurma = document.getElementById('input-modal-turma');
-    const inputMatricula = document.getElementById('input-modal-matricula');
-
-    try {
-        const cadastro = {
-            nome: inputNome ? inputNome.value : '',
-            turma: inputTurma ? inputTurma.value : '',
-            matricula: inputMatricula ? inputMatricula.value : '',
-            deviceId: obterIdentificadorDispositivo(),
-            studentId: obterDadosAluno()?.studentId
-        };
-        const remoto = await registrarAlunoAPI(cadastro);
-        const aluno = salvarDadosAluno({ ...cadastro, studentId: remoto.id });
-
-        UI.atualizarIdentificacaoAluno(aluno);
-        estado.turmasConhecidas.add(aluno.turma);
-        fecharModalEdicaoAluno();
-    } catch (err) {
-        alert(err.status === 409 ? err.message : MENSAGENS.erroSalvarCadastro);
-    }
+function salvarEdicaoModalAluno(e) {
+    return salvarCadastroAluno(e, 'input-modal', true);
 }
 
 /**
@@ -625,7 +599,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const selectTurmaRanking = document.getElementById('ranking-filtro-turma');
     if (selectTurmaRanking) {
         selectTurmaRanking.addEventListener('change', (e) => {
-            carregarDadosRanking(e.target.value);
+            return carregarDadosRanking(e.target.value);
         });
     }
 

@@ -11,7 +11,7 @@ Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: {
     removeItem: chave => memoria.delete(chave)
 } });
 const eventos = new Map();
-const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-proxima-questao'].map(id => [id, {
+const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-proxima-questao', 'ranking-filtro-turma', 'form-cadastro-aluno', 'form-modal-aluno'].map(id => [id, {
     style: {}, addEventListener: (evento, callback) => eventos.set(`${id}:${evento}`, callback)
 }]));
 globalThis.document = {
@@ -168,4 +168,30 @@ test('reenvio de uma tentativa antiga preserva respostas mesmo depois de outro s
     assert.deepEqual(antiga.answers, original.respostas);
     assert.equal(antiga.createdAt, original.createdAt);
     assert.equal(obterResultadosPendentes().length, 0);
+});
+
+test('ranking ignora a resposta atrasada do filtro anterior', async t => {
+    const respostas = new Map();
+    t.mock.method(globalThis, 'fetch', url => new Promise(resolve => respostas.set(new URL(url).searchParams.get('className'), resolve)));
+    const renderizados = [];
+    t.mock.method(UI, 'renderizarRanking', dados => renderizados.push(dados));
+    const antiga = eventos.get('ranking-filtro-turma:change')({ target: { value: '3A' } });
+    await new Promise(resolve => setImmediate(resolve));
+    const atual = eventos.get('ranking-filtro-turma:change')({ target: { value: '3B' } });
+    await new Promise(resolve => setImmediate(resolve));
+    respostas.get('3B')(Response.json([{ className: '3B' }]));
+    await atual;
+    respostas.get('3A')(Response.json([{ className: '3A' }]));
+    await antiga;
+    assert.deepEqual(renderizados.map(item => item.turmaSelecionada), ['3B']);
+});
+
+test('os dois formulários usam mensagem amigável para nome duplicado', async t => {
+    const alertas = [];
+    t.mock.method(globalThis, 'fetch', async () => Response.json({ error: 'HTTP backend 409' }, { status: 409 }));
+    globalThis.alert = mensagem => alertas.push(mensagem);
+    for (const formulario of ['form-cadastro-aluno', 'form-modal-aluno']) {
+        await eventos.get(`${formulario}:submit`)({ preventDefault() {} });
+    }
+    assert.deepEqual(alertas, [MENSAGENS.nomeJaCadastrado, MENSAGENS.nomeJaCadastrado]);
 });
