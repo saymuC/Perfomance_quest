@@ -8,7 +8,8 @@
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
 import { obterDadosAluno, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
 import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI } from './api.js';
-import { UI } from './ui.js';
+import { UI, rotuloPrioridade } from './ui.js';
+import { MENSAGENS } from './mensagens.js';
 
 // Estado global da aplicação
 const estado = {
@@ -98,11 +99,10 @@ async function iniciarSimulado() {
         btnIniciar.textContent = '⏳ Carregando...';
     }
 
-    UI.mostrarCarregando('Carregando questões do servidor da API...');
+    UI.mostrarCarregando(MENSAGENS.carregandoQuestoes);
 
     try {
         const dados = await obterQuestoesSimulado({ area, quantidade });
-        UI.atualizarStatusAPI('online');
 
         const { questoes } = dados;
 
@@ -123,7 +123,7 @@ async function iniciarSimulado() {
         console.error('Erro ao inicializar simulado:', err);
 
         UI.mostrarErro(
-            `Falha ao obter questões: ${err.message}`,
+            MENSAGENS.erroCarregarQuestoes,
             {
                 onTentarNovamente: () => iniciarSimulado()
             }
@@ -167,7 +167,7 @@ function confirmarResposta() {
         });
     } catch (err) {
         console.error('Erro ao corrigir resposta:', err);
-        alert(err.message);
+        alert(MENSAGENS.erroRegistrarResposta);
     }
 }
 
@@ -204,7 +204,7 @@ async function sincronizarResultadoAtual(relatorio) {
 
     UI.atualizarStatusSincronizacao({
         status: 'pending',
-        mensagem: 'Enviando pontuação para o ranking da turma...'
+        mensagem: MENSAGENS.salvandoPontuacao
     });
 
     const payload = {
@@ -230,7 +230,7 @@ async function sincronizarResultadoAtual(relatorio) {
         await enviarResultadoAPI(payload);
         UI.atualizarStatusSincronizacao({
             status: 'synced',
-            mensagem: `Pontuação registrada com sucesso no ranking da Turma ${aluno.turma}!`
+            mensagem: MENSAGENS.pontuacaoSalva(aluno.turma)
         });
 
         // Tenta enviar pendências offline anteriores se houver
@@ -241,7 +241,7 @@ async function sincronizarResultadoAtual(relatorio) {
 
         UI.atualizarStatusSincronizacao({
             status: 'failed',
-            mensagem: 'Servidor indisponível no momento. O resultado foi salvo localmente e será reenviado assim que a conexão restabelecer.',
+            mensagem: MENSAGENS.pontuacaoPendente,
             onTentarSincronizar: () => sincronizarResultadoAtual(relatorio)
         });
     }
@@ -298,7 +298,7 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
         p.style.color = '#64748b';
         p.style.textAlign = 'center';
         p.style.padding = '1.5rem';
-        p.textContent = 'Carregando ranking da API...';
+        p.textContent = MENSAGENS.carregandoRanking;
         container.appendChild(p);
     }
 
@@ -334,11 +334,11 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
             const pErro = document.createElement('p');
             pErro.style.color = '#dc2626';
             pErro.style.marginBottom = '0.75rem';
-            pErro.textContent = `Não foi possível carregar o ranking da API: ${err.message}`;
+            pErro.textContent = MENSAGENS.erroCarregarRanking;
 
             const btnRecarregar = document.createElement('button');
             btnRecarregar.className = 'btn btn-outline';
-            btnRecarregar.textContent = '🔄 Tentar Novamente';
+            btnRecarregar.textContent = MENSAGENS.botaoTentarNovamente;
             btnRecarregar.onclick = () => carregarDadosRanking(turmaFiltro);
 
             divErro.appendChild(pErro);
@@ -431,7 +431,7 @@ function abrirHistorico() {
     if (historico.length === 0) {
         const p = document.createElement('p');
         p.style.color = '#64748b';
-        p.textContent = 'Nenhuma questão respondida ainda no histórico local.';
+        p.textContent = MENSAGENS.historicoVazio;
         container.appendChild(p);
     } else {
         const relatorio = gerarRelatorioCompleto(historico);
@@ -461,7 +461,7 @@ function abrirHistorico() {
 
         const h4 = document.createElement('h4');
         h4.style.margin = '1.25rem 0 0.5rem 0';
-        h4.textContent = 'Assuntos mais críticos identificados pela IA:';
+        h4.textContent = MENSAGENS.assuntosRecomendadosTitulo;
 
         container.appendChild(statsGrid);
         container.appendChild(h4);
@@ -470,7 +470,7 @@ function abrirHistorico() {
             const p = document.createElement('p');
             p.style.color = '#64748b';
             p.style.fontSize = '0.9rem';
-            p.textContent = 'Acumule ao menos 2 questões por assunto para gerar o ranking da IA.';
+            p.textContent = MENSAGENS.semQuestoesRecomendacao;
             container.appendChild(p);
         } else {
             const ul = document.createElement('ul');
@@ -483,7 +483,8 @@ function abrirHistorico() {
                 li.style.marginBottom = '0.35rem';
                 const strong = document.createElement('strong');
                 strong.textContent = item.assunto;
-                const txt = document.createTextNode(` — Taxa: ${item.taxaAcerto.toFixed(0)}% (IPE: ${(item.ipe * 100).toFixed(0)})`);
+                const prioridade = rotuloPrioridade(item.ipe);
+                const txt = document.createTextNode(` — Taxa de acerto: ${item.taxaAcerto.toFixed(0)}% • ${prioridade.texto}`);
                 li.appendChild(strong);
                 li.appendChild(txt);
                 ul.appendChild(li);
@@ -497,7 +498,7 @@ function abrirHistorico() {
 }
 
 function handleLimparHistorico() {
-    if (confirm('Tem certeza que deseja limpar todo o histórico acumulado no navegador?')) {
+    if (confirm(MENSAGENS.confirmarLimparHistorico)) {
         limparHistoricoLocal();
         abrirHistorico();
     }
@@ -515,9 +516,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 2. Verifica a saúde da API REST
-    verificarSaudeAPI()
-        .then(() => UI.atualizarStatusAPI('online'))
-        .catch(() => UI.atualizarStatusAPI('offline'));
+    verificarSaudeAPI().catch(err => console.warn('Backend indisponível na inicialização:', err));
 
     // 3. Eventos de Cadastro de Aluno
     const formCadastro = document.getElementById('form-cadastro-aluno');
