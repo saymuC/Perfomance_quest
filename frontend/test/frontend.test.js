@@ -43,7 +43,7 @@ import {
     balancearQuestoesPorArea
 } from '../js/api.js';
 
-import { escapeHTML } from '../js/ui.js';
+import { escapeHTML, rotuloPrioridade } from '../js/ui.js';
 
 test('Frontend - Quiz: corrigirResposta avalia acerto e normaliza gabarito', () => {
     const q = { id: 'q1', area: 'Matemática', assunto: 'Geometria', alternativaCorreta: 'C' };
@@ -150,4 +150,18 @@ test('Frontend - UI: escapeHTML previne XSS em dados externos', () => {
 
     assert.equal(escaped.includes('<script>'), false);
     assert.equal(escaped, '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;&amp;&quot;&#039;');
+});
+
+test('Frontend - UI: rotuloPrioridade categoriza IPE qualitativamente em pt-BR', () => {
+    // ipe >= 0.7 -> Prioridade alta (badge-error)
+    assert.deepEqual(rotuloPrioridade(0.8), { texto: 'Prioridade alta', classe: 'badge-error' });
+    assert.deepEqual(rotuloPrioridade(0.7), { texto: 'Prioridade alta', classe: 'badge-error' });
+
+    // 0.4 <= ipe < 0.7 -> Prioridade média (badge-warning)
+    assert.deepEqual(rotuloPrioridade(0.5), { texto: 'Prioridade média', classe: 'badge-warning' });
+    assert.deepEqual(rotuloPrioridade(0.4), { texto: 'Prioridade média', classe: 'badge-warning' });
+
+    // ipe < 0.4 -> Prioridade baixa (badge-success)
+    assert.deepEqual(rotuloPrioridade(0.2), { texto: 'Prioridade baixa', classe: 'badge-success' });
+    assert.deepEqual(rotuloPrioridade(0), { texto: 'Prioridade baixa', classe: 'badge-success' });
 });

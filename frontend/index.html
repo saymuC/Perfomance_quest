@@ -38,8 +38,6 @@
         <button id="btn-abrir-ranking-header" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" title="Ver Ranking da Turma">
           🏆 Ranking
         </button>
-
-        <span id="api-status-badge" class="badge badge-primary">API: Conectando...</span>
       </div>
     </div>
   </header>
@@ -50,10 +48,10 @@
     <!-- Banner de Erro Global / Dismissible -->
     <div id="app-error-banner" class="error-banner" style="display: none;">
       <div class="error-banner-header">
-        <span id="error-banner-title">⚠️ Erro de Comunicação com a API</span>
+        <span id="error-banner-title">⚠️ Algo não saiu como esperado</span>
         <button id="btn-fechar-erro" class="btn btn-outline" style="padding: 0.1rem 0.4rem; font-size: 0.8rem;">✕</button>
       </div>
-      <p id="error-banner-message" class="error-banner-desc">Não foi possível conectar com o servidor.</p>
+      <p id="error-banner-message" class="error-banner-desc">Não conseguimos carregar o conteúdo agora. Tente novamente em instantes.</p>
       <div id="error-banner-actions" class="error-banner-actions"></div>
     </div>
 
@@ -149,9 +147,9 @@
       </div>
 
       <div class="card" style="background: #f8fafc;">
-        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;">ℹ️ Como funciona o diagnóstico por IA e o Ranking?</h3>
+        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;">ℹ️ Como funciona o diagnóstico e o Ranking?</h3>
         <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">
-          A cada simulado, nosso algoritmo calcula o <strong>Índice de Prioridade de Estudo (IPE)</strong> ponderando erros e tempo de resposta. O resultado final é enviado para a API para consolidar o <strong>Ranking da sua Turma</strong> (critérios: percentual, acertos e menor tempo).
+          A cada simulado, analisamos seus erros e o tempo de resposta para indicar os assuntos que você mais precisa estudar. Sua pontuação também entra no <strong>Ranking da sua Turma</strong> (critérios: maior aproveitamento, mais acertos e menor tempo).
         </p>
       </div>
     </section>
@@ -220,10 +218,10 @@
         <div id="result-sync-card" class="sync-card">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span id="sync-icon">⏳</span>
-            <span id="sync-status-texto">Sincronizando com o ranking online...</span>
+            <span id="sync-status-texto">Salvando sua pontuação no ranking...</span>
           </div>
           <button id="btn-tentar-sincronizar" class="btn btn-outline" style="display: none; font-size: 0.8rem; padding: 0.3rem 0.7rem;">
-            🔄 Sincronizar Agora
+            🔄 Tentar novamente
           </button>
         </div>
 
@@ -251,10 +249,10 @@
         <div class="ai-highlight-card">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span style="font-size: 1.3rem;">🧠</span>
-            <h3 style="font-size: 1.1rem; color: #0369a1;">Diagnóstico IA: Seus 3 Assuntos Mais Urgentes</h3>
+            <h3 style="font-size: 1.1rem; color: #0369a1;">Seus 3 Assuntos Prioritários de Estudo</h3>
           </div>
           <p style="font-size: 0.85rem; color: #0284c7; margin-top: 0.25rem;">
-            Calculado através do Índice de Prioridade de Estudo (IPE) com base em seus erros e tempo de resposta.
+            Com base nas questões que você errou e no tempo que levou para responder.
           </p>
           <div id="ai-priority-container" class="ai-priority-list"></div>
         </div>
@@ -366,7 +364,7 @@
   <div id="modal-history" class="modal-backdrop">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
-        <h3 style="font-size: 1.15rem; color: #0f172a;">📈 Meu Histórico Local (Navegador)</h3>
+        <h3 style="font-size: 1.15rem; color: #0f172a;">📈 Meu Histórico</h3>
         <button id="btn-fechar-historico" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
       </div>
 
@@ -387,7 +385,7 @@
   <footer class="app-footer">
     <p>Performance Quest: Rendimento por Assunto &copy; 2026 — UNINORTE / Manaus-AM</p>
     <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">
-      Atividades Práticas Interdisciplinares de Extensão II • API REST integrada
+      Atividades Práticas Interdisciplinares de Extensão II
     </p>
   </footer>
 

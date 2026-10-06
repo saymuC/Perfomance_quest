@@ -8,6 +8,8 @@
  * são inseridos de forma segura (via textContent ou escapeHTML) para prevenir XSS.
  */
 
+import { MENSAGENS } from './mensagens.js';
+
 /**
  * Utilitário para escapar caracteres perigosos de HTML
  */
@@ -21,6 +23,21 @@ export function escapeHTML(str) {
         .replace(/'/g, '&#039;');
 }
 
+/**
+ * Retorna o rótulo amigável e a classe CSS com base no IPE (Índice de Prioridade de Estudo)
+ * @param {number} ipe - Valor entre 0 e 1 (taxa de erro do assunto)
+ * @returns {{ texto: string, classe: string }}
+ */
+export function rotuloPrioridade(ipe) {
+    if (ipe >= 0.7) {
+        return { texto: 'Prioridade alta', classe: 'badge-error' };
+    }
+    if (ipe >= 0.4) {
+        return { texto: 'Prioridade média', classe: 'badge-warning' };
+    }
+    return { texto: 'Prioridade baixa', classe: 'badge-success' };
+}
+
 export const UI = {
     // Referências dinâmicas aos elementos principais
     screens: {
@@ -29,7 +46,6 @@ export const UI = {
         get result() { return typeof document !== 'undefined' ? document.getElementById('screen-result') : null; }
     },
 
-    get statusBadge() { return typeof document !== 'undefined' ? document.getElementById('api-status-badge') : null; },
     get loadingOverlay() { return typeof document !== 'undefined' ? document.getElementById('app-loading-overlay') : null; },
     get loadingText() { return typeof document !== 'undefined' ? document.getElementById('loading-overlay-text') : null; },
     get errorBanner() { return typeof document !== 'undefined' ? document.getElementById('app-error-banner') : null; },
@@ -44,26 +60,6 @@ export const UI = {
             }
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    },
-
-    /**
-     * Atualiza o indicador de status da API
-     */
-    atualizarStatusAPI(status, detalhe = '') {
-        if (!this.statusBadge) return;
-        if (status === 'online') {
-            this.statusBadge.className = 'badge badge-success';
-            this.statusBadge.textContent = detalhe ? `● API Online (${detalhe})` : '● API Conectada';
-        } else if (status === 'offline') {
-            this.statusBadge.className = 'badge badge-error';
-            this.statusBadge.textContent = '✕ API Inacessível';
-        } else if (status === 'fallback') {
-            this.statusBadge.className = 'badge badge-warning';
-            this.statusBadge.textContent = '▲ Modo Contingência Local';
-        } else {
-            this.statusBadge.className = 'badge badge-primary';
-            this.statusBadge.textContent = '● Conectando à API...';
-        }
     },
 
     /**
@@ -88,14 +84,14 @@ export const UI = {
     /**
      * Exibe banner de erro de forma segura com ações de recuperação
      */
-    mostrarErro(mensagem, { onTentarNovamente = null, onUsarContingencia = null } = {}) {
+    mostrarErro(mensagem, { onTentarNovamente = null } = {}) {
         if (!this.errorBanner) return;
 
         const messageEl = document.getElementById('error-banner-message');
         const actionsEl = document.getElementById('error-banner-actions');
 
         if (messageEl) {
-            messageEl.textContent = mensagem || 'Ocorreu um erro na comunicação.';
+            messageEl.textContent = mensagem || MENSAGENS.erroGenericoDesc;
         }
 
         if (actionsEl) {
@@ -106,25 +102,12 @@ export const UI = {
                 btnRetry.className = 'btn btn-outline';
                 btnRetry.style.fontSize = '0.8rem';
                 btnRetry.style.padding = '0.3rem 0.75rem';
-                btnRetry.textContent = '🔄 Tentar Conectar Novamente';
+                btnRetry.textContent = MENSAGENS.botaoTentarNovamente;
                 btnRetry.addEventListener('click', () => {
                     this.ocultarErro();
                     onTentarNovamente();
                 });
                 actionsEl.appendChild(btnRetry);
-            }
-
-            if (onUsarContingencia) {
-                const btnFallback = document.createElement('button');
-                btnFallback.className = 'btn btn-secondary';
-                btnFallback.style.fontSize = '0.8rem';
-                btnFallback.style.padding = '0.3rem 0.75rem';
-                btnFallback.textContent = '📁 Usar Modo Contingência Local';
-                btnFallback.addEventListener('click', () => {
-                    this.ocultarErro();
-                    onUsarContingencia();
-                });
-                actionsEl.appendChild(btnFallback);
             }
         }
 
@@ -339,11 +322,11 @@ export const UI = {
         if (status === 'synced') {
             card.classList.add('synced');
             if (iconEl) iconEl.textContent = '🟢';
-            textEl.textContent = mensagem || 'Resultado sincronizado com sucesso no ranking da turma!';
+            textEl.textContent = mensagem || MENSAGENS.pontuacaoSalva();
         } else if (status === 'failed') {
             card.classList.add('failed');
             if (iconEl) iconEl.textContent = '🔴';
-            textEl.textContent = mensagem || 'Falha na conexão com a API. O resultado foi salvo localmente.';
+            textEl.textContent = mensagem || MENSAGENS.pontuacaoPendente;
             if (btnRetry && onTentarSincronizar) {
                 btnRetry.style.display = 'inline-flex';
                 btnRetry.onclick = onTentarSincronizar;
@@ -351,7 +334,7 @@ export const UI = {
         } else if (status === 'pending') {
             card.classList.add('pending');
             if (iconEl) iconEl.textContent = '⏳';
-            textEl.textContent = mensagem || 'Enviando resultado para o ranking da turma...';
+            textEl.textContent = mensagem || MENSAGENS.salvandoPontuacao;
         }
     },
 
@@ -387,7 +370,7 @@ export const UI = {
                 p.style.color = '#64748b';
                 p.style.fontSize = '0.95rem';
                 p.style.marginTop = '0.5rem';
-                p.textContent = 'Responda a mais questões de um mesmo assunto para que o algoritmo de IA identifique com precisão seus 3 pontos prioritários de estudo (mínimo de 2 respostas por assunto).';
+                p.textContent = MENSAGENS.semQuestoesRecomendacao;
                 priorityContainer.appendChild(p);
             } else {
                 assuntosPrioritarios.forEach((item, idx) => {
@@ -401,9 +384,10 @@ export const UI = {
                     subjSpan.className = 'priority-subject';
                     subjSpan.textContent = `#${idx + 1} ${item.assunto}`;
 
+                    const prioridade = rotuloPrioridade(item.ipe);
                     const badgeIpe = document.createElement('span');
-                    badgeIpe.className = 'badge badge-error';
-                    badgeIpe.textContent = `IPE: ${(item.ipe * 100).toFixed(0)}`;
+                    badgeIpe.className = `badge ${prioridade.classe}`;
+                    badgeIpe.textContent = prioridade.texto;
 
                     header.appendChild(subjSpan);
                     header.appendChild(badgeIpe);
@@ -416,7 +400,7 @@ export const UI = {
                     tip.style.fontSize = '0.85rem';
                     tip.style.color = '#475569';
                     tip.style.marginTop = '2px';
-                    tip.textContent = '💡 Recomendação IA: Dedique seus próximos ciclos de revisão focado na teoria e resolução de exercícios desse tema.';
+                    tip.textContent = MENSAGENS.dicaEstudo;
 
                     div.appendChild(header);
                     div.appendChild(metric);
@@ -647,7 +631,7 @@ export const UI = {
             emptyP.style.color = '#64748b';
             emptyP.style.textAlign = 'center';
             emptyP.style.padding = '2rem 1rem';
-            emptyP.textContent = 'Nenhum resultado registrado para esta turma ainda. Seja o primeiro a completar o simulado!';
+            emptyP.textContent = MENSAGENS.rankingVazio;
             container.appendChild(emptyP);
             return;
         }
