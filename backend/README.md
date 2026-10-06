@@ -5,7 +5,7 @@ API REST que serve as questões do ENEM e gerencia o ranking dos alunos.
 ## Estrutura
 backend/
 ├── data/
-│ ├── questoes_enem_2023_2024.json # Banco de questões do ENEM
+│ ├── questoes_enem_2022_2023.json # Questões ENEM 2022 e 2023 com explicações
 │ └── resultados.json # Ranking (persistência dos resultados)
 ├── src/
 │ ├── api.js # Servidor Express (API REST)
@@ -25,7 +25,7 @@ Servidor Express que expõe os endpoints da API.
 
 **Endpoints:**
 - `GET /api/health` — Verifica se a API está no ar
-- `GET /api/questions?area=Todas&quantity=10&year=2023` — Busca questões
+- `GET /api/questions?area=Todas&quantity=10&year=all` — Busca questões de 2022 e 2023
 - `POST /api/results` — Salva um resultado concluído
 - `GET /api/rankings?className=4A&limit=20` — Consulta o ranking
 
@@ -68,7 +68,7 @@ npm run start:api
 A API roda em http://localhost:3001.
 Fonte de dados
 
-As questões são carregadas do arquivo local data/questoes_enem_2023_2024.json. O sistema não depende de API externa — as questões oficiais do ENEM estão salvas localmente.
+As questões são armazenadas localmente em `data/questoes_enem_2022_2023.json`; para atualizar a cópia a partir de api.enem.dev, execute `npm run data:import-enem` na raiz do projeto. A API do quiz não precisa consultar a fonte externa em tempo de execução.
 
 Autor
 

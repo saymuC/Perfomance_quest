@@ -193,7 +193,25 @@ export const UI = {
 
         // Enunciado (seguro com textContent)
         if (questionText) {
-            questionText.textContent = questao.enunciado || 'Enunciado não disponível.';
+            questionText.replaceChildren();
+            const enunciado = String(questao.enunciado || 'Enunciado não disponível.')
+                .replace(/\\n/g, '\n');
+            const imagemMarkdown = /!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
+            let inicio = 0;
+            let imagem;
+
+            while ((imagem = imagemMarkdown.exec(enunciado))) {
+                questionText.append(document.createTextNode(enunciado.slice(inicio, imagem.index)));
+                const img = document.createElement('img');
+                img.src = imagem[1];
+                img.alt = 'Imagem da questão';
+                img.loading = 'lazy';
+                img.onerror = () => img.remove();
+                questionText.append(img);
+                inicio = imagemMarkdown.lastIndex;
+            }
+
+            questionText.append(document.createTextNode(enunciado.slice(inicio)));
         }
 
         // Alternativas criadas com elementos DOM seguros
@@ -208,17 +226,29 @@ export const UI = {
                 const letterSpan = document.createElement('span');
                 letterSpan.className = 'alt-letter';
                 letterSpan.textContent = alt.letra || alt.id;
+                optEl.appendChild(letterSpan);
 
-                const textSpan = document.createElement('span');
-                textSpan.className = 'alt-text';
-                textSpan.textContent = alt.texto || '';
+                if (alt.texto) {
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'alt-text';
+                    textSpan.textContent = alt.texto;
+                    optEl.appendChild(textSpan);
+                }
+
+                if (alt.imagem) {
+                    const img = document.createElement('img');
+                    img.className = 'alt-image';
+                    img.src = alt.imagem;
+                    img.alt = `Imagem da alternativa ${alt.letra || alt.id}`;
+                    img.loading = 'lazy';
+                    img.onerror = () => optEl.remove();
+                    optEl.appendChild(img);
+                }
 
                 const hintSpan = document.createElement('span');
                 hintSpan.className = 'alt-key-hint';
                 hintSpan.textContent = `Tecla ${alt.letra || alt.id}`;
 
-                optEl.appendChild(letterSpan);
-                optEl.appendChild(textSpan);
                 optEl.appendChild(hintSpan);
 
                 optEl.addEventListener('click', () => {
@@ -261,7 +291,7 @@ export const UI = {
 
             const titleDiv = document.createElement('div');
             titleDiv.className = 'feedback-title';
-            titleDiv.textContent = acertou ? '✓ Resposta Correta!' : '✕ Resposta Incorreta!';
+            titleDiv.textContent = acertou ? '✓ Parabéns, resposta correta!' : '✕ Resposta incorreta';
 
             const expDiv = document.createElement('div');
             expDiv.className = 'feedback-explanation';
@@ -270,12 +300,10 @@ export const UI = {
             gabaritoStrong.textContent = `Gabarito oficial: Alternativa ${alternativaCorreta}.`;
             expDiv.appendChild(gabaritoStrong);
 
-            if (explicacao) {
-                const pExp = document.createElement('p');
-                pExp.style.marginTop = '4px';
-                pExp.textContent = explicacao;
-                expDiv.appendChild(pExp);
-            }
+            const pExp = document.createElement('p');
+            pExp.style.marginTop = '4px';
+            pExp.textContent = explicacao || 'Confira o enunciado e a alternativa correta para revisar o raciocínio desta questão.';
+            expDiv.appendChild(pExp);
 
             feedbackBanner.appendChild(titleDiv);
             feedbackBanner.appendChild(expDiv);
@@ -662,14 +690,14 @@ export const UI = {
 
             const nomeAluno = item.studentName || item.name || item.nome || 'Anônimo';
             const turmaAluno = item.className || item.turma || '-';
-            const matriculaAluno = item.registrationNumber || item.matricula || '';
+            const studentId = item.studentId || '';
             const acertos = item.score !== undefined ? item.score : (item.acertos || 0);
             const total = item.totalQuestions || item.total || 0;
             const percentual = item.percentual !== undefined ? item.percentual : (item.percentage !== undefined ? item.percentage : (item.taxaAcerto || 0));
             const tempo = item.totalTimeSeconds !== undefined ? item.totalTimeSeconds : (item.tempoSegundos || 0);
 
             // Destaque para o aluno atual
-            if (alunoAtual && matriculaAluno && String(alunoAtual.matricula) === String(matriculaAluno)) {
+            if (alunoAtual && studentId && String(alunoAtual.studentId) === String(studentId)) {
                 tr.className = 'current-student-row';
             }
 
@@ -688,7 +716,7 @@ export const UI = {
             // Coluna Estudante (protegido contra XSS)
             const tdNome = document.createElement('td');
             tdNome.textContent = nomeAluno;
-            if (alunoAtual && matriculaAluno && String(alunoAtual.matricula) === String(matriculaAluno)) {
+            if (alunoAtual && studentId && String(alunoAtual.studentId) === String(studentId)) {
                 const badgeVoce = document.createElement('span');
                 badgeVoce.className = 'badge badge-primary';
                 badgeVoce.style.marginLeft = '6px';

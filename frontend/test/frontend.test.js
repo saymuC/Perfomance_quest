@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 if (!globalThis.window) {
     globalThis.window = {
         PERFORMANCE_QUEST_CONFIG: {
-            apiBaseUrl: 'http://localhost:3001/api'
+            apiBaseUrl: 'https://perfomance-quest-api.onrender.com/api'
         }
     };
 }
@@ -31,6 +31,7 @@ import {
 import {
     salvarDadosAluno,
     obterDadosAluno,
+    obterIdentificadorDispositivo,
     temCadastroValido,
     limparDadosAluno
 } from '../js/storage.js';
@@ -40,7 +41,8 @@ import {
     normalizarQuestao,
     normalizarArea,
     inferirAssunto,
-    balancearQuestoesPorArea
+    balancearQuestoesPorArea,
+    obterQuestoesSimulado
 } from '../js/api.js';
 
 import { escapeHTML, rotuloPrioridade } from '../js/ui.js';
@@ -86,6 +88,11 @@ test('Frontend - Storage: gerencia cadastro simples do aluno (nome, turma, matr�
     assert.equal(recuperado.nome, 'André Luiz');
     assert.equal(recuperado.turma, '3A');
     assert.equal(temCadastroValido(), true);
+    assert.match(aluno.deviceId, /^[0-9a-f-]{36}$/i);
+    assert.equal(aluno.deviceId, obterIdentificadorDispositivo());
+    const atualizado = salvarDadosAluno({ ...aluno, nome: 'André Luiz Silva', studentId: 'student-profile-id' });
+    assert.equal(atualizado.deviceId, aluno.deviceId);
+    assert.equal(atualizado.studentId, 'student-profile-id');
 });
 
 test('Frontend - Storage: valida campos obrigatórios do cadastro', () => {
@@ -95,7 +102,14 @@ test('Frontend - Storage: valida campos obrigatórios do cadastro', () => {
 });
 
 test('Frontend - API: consome url configurada em config.js', () => {
-    assert.equal(getApiBaseUrl(), 'http://localhost:3001/api');
+    assert.equal(getApiBaseUrl(), 'https://perfomance-quest-api.onrender.com/api');
+});
+
+test('Frontend - Storage: mantém identidade do dispositivo ao limpar e cadastrar novamente', () => {
+    const first = obterIdentificadorDispositivo();
+    limparDadosAluno();
+    const second = obterIdentificadorDispositivo();
+    assert.equal(second, first);
 });
 
 test('Frontend - API: normaliza questões de diferentes formatos', () => {
@@ -105,9 +119,10 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
         assunto: 'Ciências Humanas e suas Tecnologias',
         statement: 'Qual o ano da Proclamação da República no Brasil colonial e império?',
         alternatives: [
-            { letter: 'A', text: '1889', isCorrect: true },
+            { letter: 'A', text: '1889', isCorrect: true, file: 'https://enem.dev/a.png' },
             { letter: 'B', text: '1822', isCorrect: false }
-        ]
+        ],
+        images: ['https://enem.dev/question.png']
     };
 
     const norm = normalizarQuestao(raw);
@@ -117,6 +132,22 @@ test('Frontend - API: normaliza questões de diferentes formatos', () => {
     assert.equal(norm.alternativaCorreta, 'A');
     assert.equal(norm.enunciado, 'Qual o ano da Proclamação da República no Brasil colonial e império?');
     assert.equal(norm.alternativas.length, 2);
+    assert.equal(norm.alternativas[0].imagem, 'https://enem.dev/a.png');
+    assert.deepEqual(norm.imagens, ['https://enem.dev/question.png']);
+});
+
+test('Frontend - API: preserva ano da questão e não inventa explicação genérica', () => {
+    const norm = normalizarQuestao({
+        year: 2022,
+        context: 'Contexto da questão.',
+        alternativesIntroduction: 'Qual alternativa está correta?',
+        correctAlternative: 'B',
+        alternatives: [{ letter: 'A', text: 'Distrator' }, { letter: 'B', text: 'Resposta' }]
+    });
+
+    assert.equal(norm.ano, 2022);
+    assert.match(norm.enunciado, /Qual alternativa está correta/);
+    assert.equal(norm.explicacao, '');
 });
 
 test('Frontend - API: normalizarArea mapeia nomes compostos para as 4 áreas canônicas', () => {
@@ -124,6 +155,31 @@ test('Frontend - API: normalizarArea mapeia nomes compostos para as 4 áreas can
     assert.equal(normalizarArea('Ciências Humanas e suas Tecnologias'), 'Ciências Humanas');
     assert.equal(normalizarArea('Ciências da Natureza e suas Tecnologias'), 'Ciências da Natureza');
     assert.equal(normalizarArea('Matemática'), 'Matemática');
+});
+
+test('Frontend - API: envia filtros e quantidade solicitados ao backend', async () => {
+    const originalFetch = globalThis.fetch;
+    let requestedUrl;
+    globalThis.fetch = async url => {
+        requestedUrl = new URL(url);
+        return new Response(JSON.stringify({
+            total: 20,
+            questions: [
+                { id: 'q1', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' },
+                { id: 'q2', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' }
+            ]
+        }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    };
+    try {
+        const resultado = await obterQuestoesSimulado({ area: 'Ciências Humanas', quantidade: 2, ano: 2023 });
+        assert.equal(requestedUrl.searchParams.get('area'), 'Ciências Humanas');
+        assert.equal(requestedUrl.searchParams.get('quantity'), '2');
+        assert.equal(requestedUrl.searchParams.get('year'), '2023');
+        assert.equal(resultado.questoes.length, 2);
+        assert.equal(resultado.totalDisponivel, 20);
+    } finally {
+        globalThis.fetch = originalFetch;
+    }
 });
 
 test('Frontend - API: balancearQuestoesPorArea equilibra as 4 áreas', () => {

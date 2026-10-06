@@ -74,7 +74,7 @@ export function normalizarQuestao(q) {
 
     const id = String(q.id || Math.random().toString(36).slice(2, 8));
     const area = normalizarArea(q.area || 'Geral');
-    const enunciado = q.enunciado || q.statement || q.texto || q.context || 'Enunciado não disponível.';
+    const enunciado = q.enunciado || q.statement || q.texto || [q.context, q.alternativesIntroduction].filter(Boolean).join('\n\n') || 'Enunciado não disponível.';
 
     // Infere assunto mais específico se o assunto for genérico ou igual à área
     let assunto = q.assunto;
@@ -92,15 +92,16 @@ export function normalizarQuestao(q) {
             }
             const letra = String(alt.letra || alt.letter || alt.id || '').toUpperCase();
             const texto = alt.texto || alt.text || '';
+            const imagem = alt.imagem || alt.file || null;
             const isCorrect = Boolean(alt.isCorrect || alt.correta);
-            return { letra, texto, id: letra, isCorrect };
+            return { letra, texto, imagem, id: letra, isCorrect };
         });
     } else if (altsArray && typeof altsArray === 'object') {
         alternativas = Object.entries(altsArray).map(([key, val]) => ({
             letra: String(key).toUpperCase(),
             texto: typeof val === 'string' ? val : (val.text || val.texto || ''),
-            id: String(key).toUpperCase(),
-            isCorrect: false
+            imagem: typeof val === 'object' ? (val.imagem || val.file || null) : null,
+            id: String(key).toUpperCase()
         }));
     }
 
@@ -115,13 +116,14 @@ export function normalizarQuestao(q) {
 
     return {
         id,
-        ano: q.ano || q.year || 2023,
+        ano: q.ano || q.year,
         area,
         assunto,
         enunciado,
+        imagens: q.imagens || q.images || [],
         alternativas,
         alternativaCorreta: gabarito,
-        explicacao: q.explicacao || q.justification || `Gabarito oficial do ENEM: Alternativa ${gabarito}.`
+        explicacao: q.explicacao || q.justification || ''
     };
 }
 
@@ -198,11 +200,11 @@ export async function verificarSaudeAPI() {
 /**
  * Obtém questões através da API configurada (GET /api/questions)
  */
-export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 2023 } = {}) {
+export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 'all' } = {}) {
     const baseUrl = getApiBaseUrl();
     const query = new URLSearchParams({
-        area: 'Todas',
-        quantity: '200'
+        area,
+        quantity: String(quantidade)
     });
     if (ano) query.append('year', String(ano));
 
@@ -243,13 +245,9 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 
     const todasNormalizadas = listaBruta.map(normalizarQuestao);
 
-    let selecionadas = [];
-    if (area && area !== 'Todas') {
-        const filtradas = todasNormalizadas.filter(q => q.area === area);
-        selecionadas = embaralhar(filtradas).slice(0, quantidade);
-    } else {
-        selecionadas = balancearQuestoesPorArea(todasNormalizadas, quantidade);
-    }
+    const selecionadas = area && area !== 'Todas'
+        ? embaralhar(todasNormalizadas).slice(0, quantidade)
+        : balancearQuestoesPorArea(todasNormalizadas, quantidade);
 
     if (selecionadas.length === 0) {
         throw new Error(`Nenhuma questão disponível para a área "${area}".`);
@@ -258,13 +256,33 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
     return {
         questoes: selecionadas,
         fonte: 'api',
-        totalDisponivel: todasNormalizadas.length
+        totalDisponivel: data.total ?? listaBruta.length
     };
 }
 
 /**
  * Envia o resultado concluído para persistência no banco e ranking (POST /api/results)
  */
+export async function registrarAlunoAPI(aluno) {
+    const response = await fetch(`${getApiBaseUrl()}/students`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            deviceId: aluno.deviceId,
+            studentName: aluno.nome,
+            className: aluno.turma,
+            registrationNumber: aluno.matricula
+        })
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+        const error = new Error(data.error || `Erro ${response.status} ao registrar aluno.`);
+        error.status = response.status;
+        throw error;
+    }
+    return data.student;
+}
+
 export async function enviarResultadoAPI(resultado) {
     const baseUrl = getApiBaseUrl();
     const url = `${baseUrl}/results`;
@@ -279,6 +297,8 @@ export async function enviarResultadoAPI(resultado) {
         turma: resultado.turma,
         registrationNumber: resultado.matricula,
         matricula: resultado.matricula,
+        deviceId: resultado.deviceId,
+        studentId: resultado.studentId,
         score: resultado.acertos,
         acertos: resultado.acertos,
         totalQuestions: resultado.total,
@@ -288,7 +308,8 @@ export async function enviarResultadoAPI(resultado) {
         totalTimeSeconds: resultado.tempoTotalSegundos,
         tempoSegundos: resultado.tempoTotalSegundos,
         answers: resultado.respostas || [],
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        idempotencyKey: resultado.idempotencyKey
     };
 
     try {

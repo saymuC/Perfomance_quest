@@ -31,5 +31,9 @@ export const MENSAGENS = {
     // Histórico e Ranking
     confirmarLimparHistorico: 'Tem certeza de que deseja limpar seu histórico de simulados salvos neste aparelho?',
     historicoVazio: 'Nenhuma questão respondida ainda no seu histórico.',
-    rankingVazio: 'Nenhum resultado registrado para esta turma ainda. Seja o primeiro a completar o simulado!'
+    rankingVazio: 'Nenhum resultado registrado para esta turma ainda. Seja o primeiro a completar o simulado!',
+
+    // Cadastro de estudante
+    cadastroNaoConfirmado: 'Não foi possível confirmar seu cadastro para salvar no ranking agora. Atualize seus dados e tente novamente.',
+    erroSalvarCadastro: 'Não foi possível salvar seus dados no momento. Tente novamente.'
 };

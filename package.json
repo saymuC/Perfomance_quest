@@ -3,13 +3,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-
-    "start:api": "node backend/src/api.js",
     "start": "node server.js",
-    "test": "node --test --test-isolation=none"
+    "start:frontend": "node server.js",
+    "start:backend": "node --env-file-if-exists=.env backend/server.js",
+    "data:import-enem": "node backend/scripts/import-enem-questions.js",
+    "db:migrate": "node --env-file-if-exists=.env backend/scripts/migrate.js",
+    "test": "node --test",
+    "test:stress": "node --test backend/test/api.stress.test.js",
+    "test:postgres-load": "node --env-file-if-exists=.env --test backend/test/postgres.load.test.js"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "pg": "^8.23.0"
   }
 }
