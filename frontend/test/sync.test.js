@@ -17,6 +17,7 @@ const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-p
 globalThis.document = {
     getElementById: id => botoes.get(id) ?? null,
     querySelectorAll: () => [],
+    querySelector: () => null,
     addEventListener: (evento, callback) => eventos.set(evento, callback)
 };
 globalThis.window = {
@@ -195,4 +196,19 @@ test('os dois formulários usam mensagem amigável para nome duplicado', async t
         await eventos.get(`${formulario}:submit`)({ preventDefault() {} });
     }
     assert.deepEqual(alertas, [MENSAGENS.nomeJaCadastrado, MENSAGENS.nomeJaCadastrado]);
+});
+
+test('atalhos de alternativas funcionam com foco no radio e não capturam digitação', t => {
+    let cliques = 0;
+    const radio = { tagName: 'INPUT', type: 'radio', focus() {} };
+    const opcao = { classList: { contains: () => false }, click() { cliques++; }, querySelector: () => radio };
+    botoes.set('screen-quiz', { classList: { contains: () => true } });
+    t.after(() => { botoes.delete('screen-quiz'); delete document.activeElement; });
+    t.mock.method(document, 'querySelector', seletor => seletor === 'dialog[open]' ? null : opcao);
+    document.activeElement = radio;
+    eventos.get('keydown')({ key: 'b' });
+    assert.equal(cliques, 1);
+    document.activeElement = { tagName: 'INPUT', type: 'text' };
+    eventos.get('keydown')({ key: 'a' });
+    assert.equal(cliques, 1);
 });

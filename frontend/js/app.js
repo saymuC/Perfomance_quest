@@ -629,7 +629,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (modalAtivo) return;
 
         // Se o foco estiver em um input de texto, não captura teclas de atalho
-        if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(document.activeElement?.tagName)) return;
+        const foco = document.activeElement;
+        if (['TEXTAREA', 'SELECT'].includes(foco?.tagName) || (foco?.tagName === 'INPUT' && foco.type !== 'radio')) return;
 
         const quizAtivo = UI.screens.quiz && UI.screens.quiz.classList.contains('active');
         if (!quizAtivo) return;
@@ -647,6 +648,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Tecla Enter para confirmar ou avançar
         if (e.key === 'Enter') {
+            if (foco?.tagName === 'BUTTON') return;
             const btnConfirmar = document.getElementById('btn-confirmar-resposta');
             const btnProxima = document.getElementById('btn-proxima-questao');
 
