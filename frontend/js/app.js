@@ -284,7 +284,7 @@ async function abrirRanking(turma = null) {
     const selectTurma = document.getElementById('ranking-filtro-turma');
     const aluno = obterDadosAluno();
 
-    if (modal) modal.classList.add('active');
+    if (modal) !modal.open && modal.showModal();
 
     // Turma padrão a consultar
     const turmaAlvo = turma !== null ? turma : (selectTurma ? selectTurma.value : (aluno ? aluno.turma : 'Todas'));
@@ -295,7 +295,7 @@ async function abrirRanking(turma = null) {
 function fecharRanking() {
     estado.consultaRanking++;
     const modal = document.getElementById('modal-ranking');
-    if (modal) modal.classList.remove('active');
+    if (modal) modal.close();
 }
 
 /**
@@ -410,12 +410,12 @@ function abrirModalEdicaoAluno() {
         if (inputMatricula) inputMatricula.value = aluno.matricula;
     }
 
-    if (modal) modal.classList.add('active');
+    if (modal) !modal.open && modal.showModal();
 }
 
 function fecharModalEdicaoAluno() {
     const modal = document.getElementById('modal-aluno');
-    if (modal) modal.classList.remove('active');
+    if (modal) modal.close();
 }
 
 function salvarEdicaoModalAluno(e) {
@@ -500,7 +500,7 @@ function abrirHistorico() {
         }
     }
 
-    modal.classList.add('active');
+    !modal.open && modal.showModal();
 }
 
 function handleLimparHistorico() {
@@ -610,8 +610,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnFecharHistorico = document.getElementById('btn-fechar-historico');
     if (btnFecharHistorico) btnFecharHistorico.addEventListener('click', () => {
         const modal = document.getElementById('modal-history');
-        if (modal) modal.classList.remove('active');
+        if (modal) modal.close();
     });
+
+    const btnFecharHistoricoRodape = document.getElementById('btn-fechar-historico-rodape');
+    if (btnFecharHistoricoRodape) btnFecharHistoricoRodape.addEventListener('click', () => document.getElementById('modal-history').close());
 
     const btnLimparHist = document.getElementById('btn-limpar-historico');
     if (btnLimparHist) btnLimparHist.addEventListener('click', handleLimparHistorico);
@@ -621,11 +624,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 7. Navegação e Acessibilidade por Teclado (RNF01, RNF05)
     window.addEventListener('keydown', (e) => {
-        const modalAtivo = document.querySelector('.modal-backdrop.active');
+        const modalAtivo = document.querySelector('dialog[open]');
         if (modalAtivo) return;
 
         // Se o foco estiver em um input de texto, não captura teclas de atalho
-        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+        if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(document.activeElement?.tagName)) return;
 
         const quizAtivo = UI.screens.quiz && UI.screens.quiz.classList.contains('active');
         if (!quizAtivo) return;

@@ -10,6 +10,27 @@
 
 import { MENSAGENS } from './mensagens.js';
 
+function permitirRecarregarImagem(img) {
+    img.onerror = () => {
+        img.hidden = true;
+        if (img.nextElementSibling?.className === 'imagem-indisponivel') return;
+        const aviso = document.createElement('span');
+        aviso.className = 'imagem-indisponivel';
+        aviso.textContent = MENSAGENS.imagemIndisponivel;
+        const tentar = document.createElement('button');
+        tentar.type = 'button';
+        tentar.className = 'btn btn-outline';
+        tentar.textContent = MENSAGENS.botaoTentarNovamente;
+        tentar.onclick = e => {
+            e.preventDefault();
+            img.src = img.src;
+        };
+        aviso.appendChild(tentar);
+        img.after(aviso);
+        img.onload = () => { img.hidden = false; aviso.remove(); };
+    };
+}
+
 /**
  * Utilitário para escapar caracteres perigosos de HTML
  */
@@ -206,7 +227,7 @@ export const UI = {
                 img.src = imagem[1];
                 img.alt = 'Imagem da questão';
                 img.loading = 'lazy';
-                img.onerror = () => img.remove();
+                permitirRecarregarImagem(img);
                 questionText.append(img);
                 inicio = imagemMarkdown.lastIndex;
             }
@@ -219,9 +240,14 @@ export const UI = {
             alternativesContainer.replaceChildren();
 
             (questao.alternativas || []).forEach(alt => {
-                const optEl = document.createElement('div');
+                const optEl = document.createElement('label');
                 optEl.className = 'alt-option';
                 optEl.dataset.letra = alt.letra || alt.id;
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'alternativa';
+                radio.value = alt.letra || alt.id;
+                optEl.appendChild(radio);
 
                 const letterSpan = document.createElement('span');
                 letterSpan.className = 'alt-letter';
@@ -241,7 +267,7 @@ export const UI = {
                     img.src = alt.imagem;
                     img.alt = `Imagem da alternativa ${alt.letra || alt.id}`;
                     img.loading = 'lazy';
-                    img.onerror = () => optEl.remove();
+                    permitirRecarregarImagem(img);
                     optEl.appendChild(img);
                 }
 
@@ -251,7 +277,7 @@ export const UI = {
 
                 optEl.appendChild(hintSpan);
 
-                optEl.addEventListener('click', () => {
+                radio.addEventListener('change', () => {
                     if (optEl.classList.contains('locked')) return;
 
                     document.querySelectorAll('.alt-option').forEach(el => el.classList.remove('selected'));
@@ -277,6 +303,7 @@ export const UI = {
         // Bloqueia as opções para cumprir RN03
         document.querySelectorAll('.alt-option').forEach(el => {
             el.classList.add('locked');
+            el.querySelector('input').disabled = true;
             const letra = el.dataset.letra;
             if (letra === alternativaCorreta) {
                 el.classList.add('correct');
@@ -319,6 +346,7 @@ export const UI = {
             kbd.textContent = 'Enter ↵';
             btnProxima.appendChild(btnText);
             btnProxima.appendChild(kbd);
+            btnProxima.focus();
         }
     },
 

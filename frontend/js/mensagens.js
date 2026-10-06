@@ -17,6 +17,7 @@ export const MENSAGENS = {
     erroGenericoTitulo: '⚠️ Algo não saiu como esperado',
     erroGenericoDesc: 'Não conseguimos carregar o conteúdo agora. Tente novamente em instantes.',
     botaoTentarNovamente: '🔄 Tentar novamente',
+    imagemIndisponivel: 'Não conseguimos carregar esta imagem. ',
 
     // Feedback de salvamento no ranking
     salvandoPontuacao: 'Salvando sua pontuação no ranking...',
