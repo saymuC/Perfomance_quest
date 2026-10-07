@@ -117,11 +117,52 @@ test('não promete uma gravação local que falhou', async t => {
     assert.equal(typeof feedback.onTentarSincronizar, 'function');
 });
 
-test('mantém na fila tentativas de outra identidade', async () => {
+test('envia a tentativa da identidade original após troca do cadastro', async () => {
     enfileirarResultadoPendente({ deviceId: 'outro-dispositivo', studentId: 'outro-aluno', idempotencyKey: 'outra-tentativa' });
+    const atual = obterDadosAluno();
+    await eventos.get('online')();
+    assert.equal(obterResultadosPendentes().length, 0);
+    assert.equal(requisicoes[0].studentId, 'outro-aluno');
+    assert.equal(requisicoes[0].deviceId, 'outro-dispositivo');
+    assert.deepEqual(obterDadosAluno(), atual);
+});
+
+test('rejeição permanente não bloqueia outras tentativas nem se repete automaticamente', async t => {
+    const { sincronizarPendencias } = await import('../js/sync.js');
+    let enviosRuins = 0;
+    t.mock.method(globalThis, 'fetch', async (url, opcoes) => {
+        const payload = JSON.parse(opcoes.body);
+        if (payload.idempotencyKey === 'ruim') {
+            enviosRuins++;
+            return Response.json({ error: 'Invalid result' }, { status: 400 });
+        }
+        return Response.json({ success: true });
+    });
+    for (const idempotencyKey of ['ruim', 'boa']) enfileirarResultadoPendente({ studentId, deviceId: 'dispositivo', idempotencyKey });
+    await sincronizarPendencias();
+    assert.equal(obterResultadosPendentes().length, 1);
+    assert.equal(obterResultadosPendentes()[0].requerAtencao, true);
+    await sincronizarPendencias();
+    assert.equal(enviosRuins, 1);
+    await sincronizarPendencias(undefined, true);
+    assert.equal(enviosRuins, 2);
+});
+
+test('tentativa confirmada continua enviável sem cadastro local', async () => {
+    const { limparDadosAluno } = await import('../js/storage.js');
+    enfileirarResultadoPendente({ studentId, deviceId: 'original', idempotencyKey: 'preservada' });
+    limparDadosAluno();
+    await eventos.get('online')();
+    assert.equal(obterResultadosPendentes().length, 0);
+    assert.equal(requisicoes[0].deviceId, 'original');
+});
+
+test('limite de envios mantém a tentativa disponível para nova reconexão', async t => {
+    t.mock.method(globalThis, 'fetch', async () => Response.json({ error: 'Rate limit' }, { status: 429 }));
+    enfileirarResultadoPendente({ studentId, deviceId: 'original', idempotencyKey: 'limitada' });
     await eventos.get('online')();
     assert.equal(obterResultadosPendentes().length, 1);
-    assert.equal(requisicoes.length, 0);
+    assert.equal(obterResultadosPendentes()[0].requerAtencao, undefined);
 });
 
 test('recarregar retoma uma tentativa guardada após falha de cadastro', async () => {
@@ -211,4 +252,32 @@ test('atalhos de alternativas funcionam com foco no radio e não capturam digita
     document.activeElement = { tagName: 'INPUT', type: 'text' };
     eventos.get('keydown')({ key: 'a' });
     assert.equal(cliques, 1);
+});
+
+test('histórico informa a retenção e só apaga pendências após confirmação explícita', async t => {
+    const criarElemento = () => ({ style: {}, children: [], appendChild(filho) { this.children.push(filho); }, replaceChildren() { this.children = []; } });
+    const container = criarElemento();
+    const modal = { open: false, showModal() { this.open = true; } };
+    botoes.set('history-content', container);
+    botoes.set('modal-history', modal);
+    botoes.set('btn-ver-historico', { addEventListener: (nome, callback) => eventos.set(`historico:${nome}`, callback) });
+    t.after(() => { for (const id of ['history-content', 'modal-history', 'btn-ver-historico']) botoes.delete(id); });
+    document.createElement = criarElemento;
+    let recargas = 0;
+    window.location = { reload() { recargas++; } };
+    globalThis.confirm = () => false;
+    await eventos.get('DOMContentLoaded')();
+    await new Promise(resolve => setImmediate(resolve));
+    enfileirarResultadoPendente({ idempotencyKey: 'preservar' });
+    eventos.get('historico:click')();
+    assert.ok(container.children.some(item => item.textContent === MENSAGENS.retencaoDados));
+    const apagar = container.children.at(-1);
+    assert.equal(apagar.textContent, MENSAGENS.apagarDadosAparelho);
+    apagar.onclick();
+    assert.equal(obterResultadosPendentes().length, 1);
+    globalThis.confirm = mensagem => { assert.equal(mensagem, MENSAGENS.confirmarApagarDados); return true; };
+    apagar.onclick();
+    assert.equal(obterResultadosPendentes().length, 0);
+    assert.equal(obterDadosAluno(), null);
+    assert.equal(recargas, 1);
 });

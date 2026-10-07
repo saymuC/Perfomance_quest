@@ -6,10 +6,11 @@
  */
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
-import { obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
-import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
+import { obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, aplicarRetencaoLocal, registrarAtividadeLocal, limparDadosLocais } from './storage.js';
+import { obterQuestoesSimulado, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
 import { UI, rotuloPrioridade } from './ui.js';
 import { MENSAGENS } from './mensagens.js';
+import { enviarPontuacao, sincronizarPendencias } from './sync.js';
 
 // Estado global da aplicação
 const estado = {
@@ -209,27 +210,6 @@ async function proximaQuestao() {
  * Envia o resultado do simulado para a API (POST /api/results)
  * e gerencia os estados de sincronização
  */
-async function enviarPontuacao(payload) {
-    let aluno = obterDadosAluno();
-    if (!aluno || (payload.deviceId && payload.deviceId !== aluno.deviceId) ||
-        (payload.studentId && payload.studentId !== aluno.studentId)) {
-        throw new Error('A tentativa pertence a outro cadastro.');
-    }
-
-    if (!aluno.studentId) {
-        const registrado = await registrarAlunoAPI(aluno);
-        const atual = obterDadosAluno();
-        if (!atual || ['deviceId', 'nome', 'turma', 'matricula'].some(campo => atual[campo] !== aluno[campo])) {
-            throw new Error('O cadastro mudou durante o envio.');
-        }
-        aluno = salvarDadosAluno({ ...atual, studentId: registrado.id });
-    }
-
-    await enviarResultadoAPI({ ...payload, deviceId: payload.deviceId || aluno.deviceId, studentId: payload.studentId || aluno.studentId });
-    const pendente = obterResultadosPendentes().find(item => item.payload.idempotencyKey === payload.idempotencyKey);
-    if (pendente) removerResultadoPendente(pendente.id);
-}
-
 async function sincronizarResultadoAtual(payload) {
     const guardado = enfileirarResultadoPendente(payload);
     if (estado.resultadoAtual === payload) {
@@ -247,7 +227,8 @@ async function sincronizarResultadoAtual(payload) {
         if (estado.resultadoAtual === payload) {
             UI.atualizarStatusSincronizacao({
                 status: 'failed',
-                mensagem: guardado ? MENSAGENS.pontuacaoPendente : MENSAGENS.pontuacaoNaoGuardada,
+                mensagem: !guardado ? MENSAGENS.pontuacaoNaoGuardada :
+                    (err.status >= 400 && err.status < 500 && ![408, 429].includes(err.status) ? MENSAGENS.pontuacaoRejeitada : MENSAGENS.pontuacaoPendente),
                 onTentarSincronizar: () => sincronizarResultadoAtual(payload)
             });
         }
@@ -257,23 +238,12 @@ async function sincronizarResultadoAtual(payload) {
 /**
  * Tenta enviar resultados que ficaram pendentes na fila offline
  */
-async function tentarSincronizarFilaPendente() {
-    const fila = obterResultadosPendentes();
-    if (!Array.isArray(fila) || fila.length === 0) return;
-    for (const item of fila) {
-        const aluno = obterDadosAluno();
-        if (!aluno) return;
-        try {
-            if ((item.payload.deviceId && item.payload.deviceId !== aluno.deviceId) ||
-                (item.payload.studentId && item.payload.studentId !== aluno.studentId)) continue;
-            await enviarPontuacao({ ...item.payload, createdAt: item.payload.createdAt || item.criadoEm });
-            if (estado.resultadoAtual?.idempotencyKey === item.payload.idempotencyKey) {
-                UI.atualizarStatusSincronizacao({ status: 'synced', mensagem: MENSAGENS.pontuacaoSalva(item.payload.turma) });
-            }
-        } catch {
-            break; // Se a API continuar fora, interrompe
+async function tentarSincronizarFilaPendente(incluirRejeitadas = false) {
+    await sincronizarPendencias(payload => {
+        if (estado.resultadoAtual?.idempotencyKey === payload.idempotencyKey) {
+            UI.atualizarStatusSincronizacao({ status: 'synced', mensagem: MENSAGENS.pontuacaoSalva(payload.turma) });
         }
-    }
+    }, incluirRejeitadas === true);
 }
 
 /**
@@ -500,6 +470,33 @@ function abrirHistorico() {
         }
     }
 
+    const politica = document.createElement('p');
+    politica.textContent = MENSAGENS.retencaoDados;
+    container.appendChild(politica);
+    const fila = obterResultadosPendentes();
+    if (fila.length) {
+        const aviso = document.createElement('p');
+        aviso.textContent = MENSAGENS.pendenciasHistorico(fila.length, fila.filter(item => item.requerAtencao).length);
+        container.appendChild(aviso);
+        const tentar = document.createElement('button');
+        tentar.className = 'btn btn-outline';
+        tentar.textContent = MENSAGENS.botaoTentarNovamente;
+        tentar.onclick = async () => {
+            tentar.disabled = true;
+            try { await tentarSincronizarFilaPendente(true); abrirHistorico(); }
+            finally { tentar.disabled = false; }
+        };
+        container.appendChild(tentar);
+    }
+    const apagar = document.createElement('button');
+    apagar.className = 'btn btn-outline';
+    apagar.textContent = MENSAGENS.apagarDadosAparelho;
+    apagar.onclick = () => {
+        if (!confirm(MENSAGENS.confirmarApagarDados)) return;
+        try { limparDadosLocais(); window.location.reload(); }
+        catch (erro) { console.warn('Falha ao apagar dados locais:', erro); alert(MENSAGENS.erroApagarDados); }
+    };
+    container.appendChild(apagar);
     !modal.open && modal.showModal();
 }
 
@@ -514,7 +511,10 @@ function handleLimparHistorico() {
 // INICIALIZAÇÃO DA APLICAÇÃO NO DOM
 // ========================================================
 document.addEventListener('DOMContentLoaded', async () => {
+    aplicarRetencaoLocal();
     UI.inicializarTextos();
+    document.addEventListener('pointerdown', registrarAtividadeLocal);
+    document.addEventListener('keydown', registrarAtividadeLocal);
     // 1. Inicializa identificação do aluno se já existir
     const alunoSalvo = obterDadosAluno();
     UI.atualizarIdentificacaoAluno(alunoSalvo);

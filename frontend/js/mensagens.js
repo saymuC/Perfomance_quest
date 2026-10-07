@@ -5,6 +5,12 @@
  */
 
 export const MENSAGENS = {
+    retencaoDados: 'Seu cadastro e histórico neste aparelho são apagados após 30 dias sem uso. Tentativas ainda não enviadas permanecem guardadas até o envio ou até você apagá-las.',
+    apagarDadosAparelho: 'Apagar dados deste aparelho',
+    confirmarApagarDados: 'Apagar cadastro, histórico e todas as tentativas ainda não enviadas deste aparelho? As pontuações já enviadas continuarão no ranking. Esta ação não pode ser desfeita.',
+    erroApagarDados: 'Não foi possível apagar seus dados. Tente novamente neste aparelho.',
+    pontuacaoRejeitada: 'Esta tentativa continua guardada, mas não pôde ser enviada. Confira seu cadastro e tente novamente pelo histórico. Se continuar, peça ajuda ao professor.',
+    pendenciasHistorico: (total, rejeitadas) => `${total} tentativa(s) aguardando envio. ${rejeitadas} precisam de atenção. Você pode tentar o envio novamente ou apagar os dados deste aparelho.`,
     rotuloTurma: 'Turma:',
     rotuloMatricula: 'Matrícula:',
     criteriosRanking: 'ℹ️ Critérios do ranking: 1º Maior percentual de acerto, 2º Mais acertos absolutos, 3º Menor tempo total, 4º Data de conclusão mais antiga.',

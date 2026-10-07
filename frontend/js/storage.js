@@ -148,3 +148,41 @@ export function limparFilaSincronizacao() {
         console.warn('Erro ao limpar fila de sincronização:', e);
     }
 }
+
+// Atualiza a confirmação da identidade e evita repetir rejeições permanentes.
+export function atualizarResultadoPendente(id, alteracoes) {
+    const fila = obterResultadosPendentes().map(item => item.id === id ? { ...item, ...alteracoes } : item);
+    localStorage.setItem(CHAVE_FILA_SYNC, JSON.stringify(fila));
+}
+
+const CHAVE_ATIVIDADE = 'performance_quest_ultima_atividade';
+const PRAZO_INATIVIDADE = 30 * 24 * 60 * 60 * 1000;
+
+export function registrarAtividadeLocal() {
+    try { localStorage.setItem(CHAVE_ATIVIDADE, String(Date.now())); }
+    catch (erro) { console.warn('Falha ao registrar atividade local:', erro); }
+}
+
+export function aplicarRetencaoLocal() {
+    try {
+        const ultima = Number(localStorage.getItem(CHAVE_ATIVIDADE));
+        const expirou = ultima > 0 && Date.now() - ultima >= PRAZO_INATIVIDADE;
+        if (expirou) {
+            localStorage.removeItem(CHAVE_ALUNO);
+            localStorage.removeItem('performance_quest_historico');
+            if (!obterResultadosPendentes().length) localStorage.removeItem(CHAVE_DISPOSITIVO);
+        }
+        // Cadastros anteriores à política recebem o prazo a partir da primeira visita.
+        registrarAtividadeLocal();
+        return expirou;
+    } catch (erro) {
+        console.warn('Falha ao aplicar retenção local:', erro);
+        return false;
+    }
+}
+
+export function limparDadosLocais() {
+    for (const chave of [CHAVE_ALUNO, CHAVE_FILA_SYNC, CHAVE_DISPOSITIVO, CHAVE_ATIVIDADE, 'performance_quest_historico']) {
+        localStorage.removeItem(chave);
+    }
+}
