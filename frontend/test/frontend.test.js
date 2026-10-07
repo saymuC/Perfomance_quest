@@ -65,7 +65,7 @@ test('contrato de envio canônico é aceito pelo backend sem aliases redundantes
 });
 
 test('Frontend - Quiz: corrigirResposta avalia acerto e normaliza gabarito', () => {
-    const q = { id: 'q1', area: 'Matemática', assunto: 'Geometria', alternativaCorreta: 'C' };
+    const q = { id: 'q1', area: 'Matemática', assunto: 'Geometria', alternativaCorreta: 'C', alternativas: [{ letra: 'A' }, { letra: 'C' }] };
     const res = corrigirResposta(q, 'c', 15);
 
     assert.equal(res.acertou, true);
@@ -182,8 +182,8 @@ test('Frontend - API: envia filtros e quantidade solicitados ao backend', async 
         return new Response(JSON.stringify({
             total: 20,
             questions: [
-                { id: 'q1', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' },
-                { id: 'q2', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' }
+                { id: 'q1', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [{ letra: 'A', texto: 'Resposta' }], alternativaCorreta: 'A' },
+                { id: 'q2', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [{ letra: 'A', texto: 'Resposta' }], alternativaCorreta: 'A' }
             ]
         }), { status: 200, headers: { 'Content-Type': 'application/json' } });
     };

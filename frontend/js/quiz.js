@@ -10,6 +10,14 @@ import { MENSAGENS } from './mensagens.js';
 
 const CHAVE_HISTORICO = 'performance_quest_historico';
 
+export function validarGabarito(questao) {
+    const correta = String(questao.alternativaCorreta || questao.respostaCorreta || questao.gabarito || '').trim().toUpperCase();
+    const letras = (questao.alternativas || []).map(alt => String(alt.letra || alt.id || alt).trim().toUpperCase());
+    if (!/^[A-E]$/.test(correta) || !letras.includes(correta)) throw new Error('Gabarito ausente ou fora das alternativas.');
+    if (letras.some(letra => !/^[A-E]$/.test(letra)) || new Set(letras).size !== letras.length) throw new Error('Alternativas inválidas ou duplicadas.');
+    return correta;
+}
+
 /**
  * Valida e corrige uma resposta escolhida pelo estudante
  */
@@ -27,9 +35,10 @@ export function corrigirResposta(questao, alternativaMarcada, tempoSegundos) {
     }
 
     const tempo = Number.isFinite(tempoSegundos) && tempoSegundos >= 0 ? tempoSegundos : 0;
-    const alternativaCorreta = questao.alternativaCorreta || questao.respostaCorreta || questao.gabarito || 'A';
+    const alternativaCorreta = validarGabarito(questao);
 
     const escolha = alternativaMarcada.trim().toUpperCase();
+    if (!questao.alternativas.some(alt => String(alt.letra || alt.id || alt).trim().toUpperCase() === escolha)) throw new Error('Alternativa escolhida inválida.');
     const correta = String(alternativaCorreta).trim().toUpperCase();
 
     return {
