@@ -154,6 +154,7 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   assert.equal(conflictingReplay.status, 409);
   assert.notEqual(firstSaved.result.id, secondSaved.result.id);
   const uniqueRanking = await fetch(`${baseUrl}/api/rankings?className=3A`).then(response => response.json());
+  assert.deepEqual(Object.keys(uniqueRanking[0]).sort(), ['studentId', 'studentName', 'className', 'score', 'totalQuestions', 'percentage', 'totalTimeSeconds', 'createdAt'].sort());
   assert.equal(uniqueRanking.length, 1);
   assert.equal(uniqueRanking[0].score, 5);
 

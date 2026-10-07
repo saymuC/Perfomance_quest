@@ -225,7 +225,11 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
       if (!Number.isInteger(limit) || limit < 1 || limit > 100) {
         return responder(res, 400, { error: 'O limite deve ser um inteiro entre 1 e 100.' }, requestOrigin, origins);
       }
-      return responder(res, 200, await resultStore.rankings({ className, limit }), requestOrigin, origins);
+      const ranking = await resultStore.rankings({ className, limit });
+      const publico = ranking.map(({ studentId, studentName, className, score, totalQuestions, percentage, totalTimeSeconds, createdAt }) => ({
+        studentId, studentName, className, score, totalQuestions, percentage, totalTimeSeconds, createdAt
+      }));
+      return responder(res, 200, publico, requestOrigin, origins);
     }
 
     return responder(res, 404, { error: 'Rota não encontrada.' }, requestOrigin, origins);
