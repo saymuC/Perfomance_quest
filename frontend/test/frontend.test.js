@@ -42,13 +42,30 @@ import {
     normalizarArea,
     inferirAssunto,
     balancearQuestoesPorArea,
-    obterQuestoesSimulado
+    obterQuestoesSimulado,
+    enviarResultadoAPI
 } from '../js/api.js';
 
-import { escapeHTML } from '../js/ui.js';
+import { escapeHTML, rotuloPrioridade } from '../js/ui.js';
+import { createResult } from '../../backend/src/resultStore.js';
+
+test('contrato de envio canônico é aceito pelo backend sem aliases redundantes', async t => {
+    const uuid = '12345678-1234-4234-9234-123456789abc';
+    let recebido;
+    t.mock.method(globalThis, 'fetch', async (url, opcoes) => {
+        recebido = createResult(JSON.parse(opcoes.body));
+        return Response.json(recebido, { status: 201 });
+    });
+    await enviarResultadoAPI({ nome: 'Aluno Teste', turma: '3A', matricula: '123', deviceId: uuid, studentId: uuid, idempotencyKey: uuid, acertos: 3, total: 5, tempoTotalSegundos: 60, createdAt: '2026-10-06T01:00:00.000Z', respostas: [{ questaoId: 'q1' }] });
+    assert.equal(recebido.percentage, 60);
+    assert.equal(recebido.totalTimeSeconds, 60);
+    assert.equal(recebido.studentName, 'Aluno Teste');
+    assert.equal(recebido.createdAt, '2026-10-06T01:00:00.000Z');
+    assert.deepEqual(recebido.answers, [{ questaoId: 'q1' }]);
+});
 
 test('Frontend - Quiz: corrigirResposta avalia acerto e normaliza gabarito', () => {
-    const q = { id: 'q1', area: 'Matemática', assunto: 'Geometria', alternativaCorreta: 'C' };
+    const q = { id: 'q1', area: 'Matemática', assunto: 'Geometria', alternativaCorreta: 'C', alternativas: [{ letra: 'A' }, { letra: 'C' }] };
     const res = corrigirResposta(q, 'c', 15);
 
     assert.equal(res.acertou, true);
@@ -165,8 +182,8 @@ test('Frontend - API: envia filtros e quantidade solicitados ao backend', async 
         return new Response(JSON.stringify({
             total: 20,
             questions: [
-                { id: 'q1', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' },
-                { id: 'q2', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [], alternativaCorreta: 'A' }
+                { id: 'q1', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [{ letra: 'A', texto: 'Resposta' }], alternativaCorreta: 'A' },
+                { id: 'q2', ano: 2023, area: 'Ciências Humanas e suas Tecnologias', alternativas: [{ letra: 'A', texto: 'Resposta' }], alternativaCorreta: 'A' }
             ]
         }), { status: 200, headers: { 'Content-Type': 'application/json' } });
     };
@@ -206,4 +223,18 @@ test('Frontend - UI: escapeHTML previne XSS em dados externos', () => {
 
     assert.equal(escaped.includes('<script>'), false);
     assert.equal(escaped, '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;&amp;&quot;&#039;');
+});
+
+test('Frontend - UI: rotuloPrioridade categoriza IPE qualitativamente em pt-BR', () => {
+    // ipe >= 0.7 -> Prioridade alta (badge-error)
+    assert.deepEqual(rotuloPrioridade(0.8), { texto: 'Prioridade alta', classe: 'badge-error' });
+    assert.deepEqual(rotuloPrioridade(0.7), { texto: 'Prioridade alta', classe: 'badge-error' });
+
+    // 0.4 <= ipe < 0.7 -> Prioridade média (badge-warning)
+    assert.deepEqual(rotuloPrioridade(0.5), { texto: 'Prioridade média', classe: 'badge-warning' });
+    assert.deepEqual(rotuloPrioridade(0.4), { texto: 'Prioridade média', classe: 'badge-warning' });
+
+    // ipe < 0.4 -> Prioridade baixa (badge-success)
+    assert.deepEqual(rotuloPrioridade(0.2), { texto: 'Prioridade baixa', classe: 'badge-success' });
+    assert.deepEqual(rotuloPrioridade(0), { texto: 'Prioridade baixa', classe: 'badge-success' });
 });

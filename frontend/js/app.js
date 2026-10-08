@@ -6,9 +6,11 @@
  */
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
-import { obterDadosAluno, obterIdentificadorDispositivo, salvarDadosAluno, temCadastroValido, enfileirarResultadoPendente, obterResultadosPendentes, removerResultadoPendente } from './storage.js';
-import { obterQuestoesSimulado, enviarResultadoAPI, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
-import { UI } from './ui.js';
+import { obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, aplicarRetencaoLocal, registrarAtividadeLocal, limparDadosLocais } from './storage.js';
+import { obterQuestoesSimulado, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
+import { UI, rotuloPrioridade } from './ui.js';
+import { MENSAGENS } from './mensagens.js';
+import { enviarPontuacao, sincronizarPendencias } from './sync.js';
 
 // Estado global da aplicação
 const estado = {
@@ -19,8 +21,8 @@ const estado = {
     tempoInicioQuestao: 0,
     intervaloTimer: null,
     historicoTentativa: [],
-    idempotencyKey: null,
     resultadoAtual: null,
+    consultaRanking: 0,
     turmasConhecidas: new Set(['3A', '3B', '3C', '3º Ano 1', '3º Ano 2'])
 };
 
@@ -83,7 +85,7 @@ async function iniciarSimulado() {
             cardCadastro.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.4)';
             setTimeout(() => cardCadastro.style.boxShadow = '', 2000);
         }
-        alert('Por favor, preencha sua identificação (Nome, Turma e Matrícula) antes de iniciar o simulado para registrar sua pontuação no ranking.');
+        alert(MENSAGENS.identificarAntesSimulado);
         return;
     }
 
@@ -97,14 +99,13 @@ async function iniciarSimulado() {
 
     if (btnIniciar) {
         btnIniciar.disabled = true;
-        btnIniciar.textContent = '⏳ Carregando...';
+        btnIniciar.textContent = MENSAGENS.carregandoBotao;
     }
 
-    UI.mostrarCarregando('Carregando questões do servidor da API...');
+    UI.mostrarCarregando(MENSAGENS.carregandoQuestoes);
 
     try {
         const dados = await obterQuestoesSimulado({ area, quantidade, ano: selectAno?.value || 'all' });
-        UI.atualizarStatusAPI('online');
 
         const { questoes } = dados;
 
@@ -115,7 +116,7 @@ async function iniciarSimulado() {
         estado.questoes = questoes;
         estado.indiceAtual = 0;
         estado.historicoTentativa = [];
-        estado.idempotencyKey = null;
+        estado.resultadoAtual = null;
         estado.sessaoAtual = criarSessaoQuiz(questoes);
 
         UI.ocultarCarregando();
@@ -126,7 +127,7 @@ async function iniciarSimulado() {
         console.error('Erro ao inicializar simulado:', err);
 
         UI.mostrarErro(
-            `Falha ao obter questões: ${err.message}`,
+            MENSAGENS.erroCarregarQuestoes,
             {
                 onTentarNovamente: () => iniciarSimulado()
             }
@@ -134,7 +135,7 @@ async function iniciarSimulado() {
     } finally {
         if (btnIniciar) {
             btnIniciar.disabled = false;
-            btnIniciar.textContent = 'Iniciar Simulado →';
+            btnIniciar.textContent = MENSAGENS.iniciarSimulado;
         }
     }
 }
@@ -144,7 +145,7 @@ async function iniciarSimulado() {
  */
 function confirmarResposta() {
     if (!estado.alternativaSelecionada) {
-        alert('Por favor, selecione uma alternativa antes de confirmar.');
+        alert(MENSAGENS.selecionarAlternativa);
         return;
     }
 
@@ -170,7 +171,7 @@ function confirmarResposta() {
         });
     } catch (err) {
         console.error('Erro ao corrigir resposta:', err);
-        alert(err.message);
+        alert(MENSAGENS.erroRegistrarResposta);
     }
 }
 
@@ -186,14 +187,22 @@ async function proximaQuestao() {
     } else {
         // Finaliza o simulado
         const relatorio = estado.sessaoAtual.finalizar();
-        estado.resultadoAtual = relatorio;
+        const aluno = obterDadosAluno();
+        const payload = {
+            ...aluno,
+            ...relatorio.resumo,
+            createdAt: new Date().toISOString(),
+            idempotencyKey: novoIdentificador(),
+            respostas: estado.historicoTentativa.map(({ resposta }) => ({ ...resposta }))
+        };
+        estado.resultadoAtual = payload;
 
         UI.mostrarTela('result');
         UI.renderizarRelatorio(relatorio);
         UI.renderizarRevisaoQuestoes(estado.historicoTentativa);
 
         // Sincroniza resultado com a API REST
-        await sincronizarResultadoAtual(relatorio);
+        await sincronizarResultadoAtual(payload);
     }
 }
 
@@ -201,96 +210,40 @@ async function proximaQuestao() {
  * Envia o resultado do simulado para a API (POST /api/results)
  * e gerencia os estados de sincronização
  */
-async function sincronizarResultadoAtual(relatorio) {
-    let aluno = obterDadosAluno();
-    if (!aluno) return;
-
-    if (!aluno.studentId) {
-        try {
-            const registrado = await registrarAlunoAPI(aluno);
-            aluno = salvarDadosAluno({ ...aluno, studentId: registrado.id });
-        } catch (error) {
-            UI.atualizarStatusSincronizacao({ status: 'failed', mensagem: error.message });
-            return;
-        }
+async function sincronizarResultadoAtual(payload) {
+    const guardado = enfileirarResultadoPendente(payload);
+    if (estado.resultadoAtual === payload) {
+        UI.atualizarStatusSincronizacao({ status: 'pending', mensagem: MENSAGENS.salvandoPontuacao });
     }
-
-    if (!aluno.studentId) {
-        UI.atualizarStatusSincronizacao({ status: 'failed', mensagem: 'O cadastro do aluno ainda não foi confirmado pela API. Atualize o cadastro e tente novamente.' });
-        return;
-    }
-
-    UI.atualizarStatusSincronizacao({
-        status: 'pending',
-        mensagem: 'Enviando pontuação para o ranking da turma...'
-    });
-
-    const payload = {
-        nome: aluno.nome,
-        turma: aluno.turma,
-        matricula: aluno.matricula,
-        deviceId: aluno.deviceId,
-        studentId: aluno.studentId,
-        acertos: relatorio.resumo.acertos,
-        total: relatorio.resumo.total,
-        taxaAcerto: relatorio.resumo.taxaAcerto,
-        tempoTotalSegundos: relatorio.resumo.tempoTotalSegundos,
-        idempotencyKey: estado.idempotencyKey || (estado.idempotencyKey = crypto.randomUUID()),
-        respostas: estado.historicoTentativa.map(item => ({
-            questaoId: item.questao.id,
-            area: item.questao.area,
-            assunto: item.questao.assunto,
-            alternativaEscolhida: item.resposta.alternativaEscolhida,
-            alternativaCorreta: item.resposta.alternativaCorreta,
-            acertou: item.resposta.acertou,
-            tempoSegundos: item.resposta.tempoSegundos
-        }))
-    };
 
     try {
-        await enviarResultadoAPI(payload);
-        UI.atualizarStatusSincronizacao({
-            status: 'synced',
-            mensagem: `Pontuação registrada com sucesso no ranking da Turma ${aluno.turma}!`
-        });
-
-        // Tenta enviar pendências offline anteriores se houver
+        await enviarPontuacao(payload);
+        if (estado.resultadoAtual === payload) {
+            UI.atualizarStatusSincronizacao({ status: 'synced', mensagem: MENSAGENS.pontuacaoSalva(payload.turma) });
+        }
         await tentarSincronizarFilaPendente();
     } catch (err) {
         console.warn('Falha ao enviar resultado para a API online:', err);
-        enfileirarResultadoPendente(payload);
-
-        UI.atualizarStatusSincronizacao({
-            status: 'failed',
-            mensagem: 'Servidor indisponível no momento. O resultado foi salvo localmente e será reenviado assim que a conexão restabelecer.',
-            onTentarSincronizar: () => sincronizarResultadoAtual(relatorio)
-        });
+        if (estado.resultadoAtual === payload) {
+            UI.atualizarStatusSincronizacao({
+                status: 'failed',
+                mensagem: !guardado ? MENSAGENS.pontuacaoNaoGuardada :
+                    (err.status >= 400 && err.status < 500 && ![408, 429].includes(err.status) ? MENSAGENS.pontuacaoRejeitada : MENSAGENS.pontuacaoPendente),
+                onTentarSincronizar: () => sincronizarResultadoAtual(payload)
+            });
+        }
     }
 }
 
 /**
  * Tenta enviar resultados que ficaram pendentes na fila offline
  */
-async function tentarSincronizarFilaPendente() {
-    const fila = obterResultadosPendentes();
-    if (!Array.isArray(fila) || fila.length === 0) return;
-    const aluno = obterDadosAluno();
-    if (!aluno?.studentId) return;
-
-    for (const item of fila) {
-        try {
-            if ((item.payload.deviceId && item.payload.deviceId !== aluno.deviceId) ||
-                (item.payload.studentId && item.payload.studentId !== aluno.studentId)) continue;
-            await enviarResultadoAPI({
-                ...item.payload,
-                deviceId: item.payload.deviceId || aluno.deviceId,
-                studentId: item.payload.studentId || aluno.studentId
-            });
-            removerResultadoPendente(item.id);
-        } catch {
-            break; // Se a API continuar fora, interrompe
+async function tentarSincronizarFilaPendente(incluirRejeitadas = false) {
+    await sincronizarPendencias(payload => {
+        if (estado.resultadoAtual?.idempotencyKey === payload.idempotencyKey) {
+            UI.atualizarStatusSincronizacao({ status: 'synced', mensagem: MENSAGENS.pontuacaoSalva(payload.turma) });
         }
-    }
+    }, incluirRejeitadas === true);
 }
 
 /**
@@ -301,36 +254,26 @@ async function abrirRanking(turma = null) {
     const selectTurma = document.getElementById('ranking-filtro-turma');
     const aluno = obterDadosAluno();
 
-    if (modal) modal.classList.add('active');
-
-    if (aluno && !aluno.studentId) {
-        try {
-            const registrado = await registrarAlunoAPI(aluno);
-            aluno.studentId = registrado.id;
-            salvarDadosAluno({ ...aluno, studentId: registrado.id });
-        } catch (error) {
-            UI.mostrarErro(error.message);
-            return;
-        }
-    }
+    if (modal) !modal.open && modal.showModal();
 
     // Turma padrão a consultar
     const turmaAlvo = turma !== null ? turma : (selectTurma ? selectTurma.value : (aluno ? aluno.turma : 'Todas'));
 
-    carregarDadosRanking(turmaAlvo);
+    return carregarDadosRanking(turmaAlvo);
 }
 
 function fecharRanking() {
+    estado.consultaRanking++;
     const modal = document.getElementById('modal-ranking');
-    if (modal) modal.classList.remove('active');
+    if (modal) modal.close();
 }
 
 /**
  * Consulta a API e renderiza a tabela de ranking
  */
 async function carregarDadosRanking(turmaFiltro = 'Todas') {
+    const consulta = ++estado.consultaRanking;
     const container = document.getElementById('ranking-conteudo-container');
-    const aluno = obterDadosAluno();
 
     if (container) {
         container.replaceChildren();
@@ -338,13 +281,17 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
         p.style.color = '#64748b';
         p.style.textAlign = 'center';
         p.style.padding = '1.5rem';
-        p.textContent = 'Carregando ranking da API...';
+        p.textContent = MENSAGENS.carregandoRanking;
         container.appendChild(p);
     }
 
     try {
+        await tentarSincronizarFilaPendente();
+        if (consulta !== estado.consultaRanking) return;
+        const aluno = obterDadosAluno();
         const classNameParam = (turmaFiltro && turmaFiltro !== 'Todas') ? turmaFiltro : '';
         const dados = await obterRankingsAPI({ className: classNameParam, limit: 30 });
+        if (consulta !== estado.consultaRanking) return;
 
         // Coleta turmas retornadas para alimentar o filtro
         if (Array.isArray(dados)) {
@@ -364,6 +311,7 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
             alunoAtual: aluno
         });
     } catch (err) {
+        if (consulta !== estado.consultaRanking) return;
         console.error('Erro ao consultar ranking:', err);
         if (container) {
             container.replaceChildren();
@@ -374,11 +322,11 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
             const pErro = document.createElement('p');
             pErro.style.color = '#dc2626';
             pErro.style.marginBottom = '0.75rem';
-            pErro.textContent = `Não foi possível carregar o ranking da API: ${err.message}`;
+            pErro.textContent = MENSAGENS.erroCarregarRanking;
 
             const btnRecarregar = document.createElement('button');
             btnRecarregar.className = 'btn btn-outline';
-            btnRecarregar.textContent = '🔄 Tentar Novamente';
+            btnRecarregar.textContent = MENSAGENS.botaoTentarNovamente;
             btnRecarregar.onclick = () => carregarDadosRanking(turmaFiltro);
 
             divErro.appendChild(pErro);
@@ -391,12 +339,12 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
 /**
  * Gerenciamento do Cadastro de Aluno
  */
-async function salvarCadastroAluno(e) {
+async function salvarCadastroAluno(e, prefixo = 'input-aluno', fecharModal = false) {
     if (e) e.preventDefault();
 
-    const inputNome = document.getElementById('input-aluno-nome');
-    const inputTurma = document.getElementById('input-aluno-turma');
-    const inputMatricula = document.getElementById('input-aluno-matricula');
+    const inputNome = document.getElementById(`${prefixo}-nome`);
+    const inputTurma = document.getElementById(`${prefixo}-turma`);
+    const inputMatricula = document.getElementById(`${prefixo}-matricula`);
 
     try {
         const cadastro = {
@@ -411,8 +359,10 @@ async function salvarCadastroAluno(e) {
 
         UI.atualizarIdentificacaoAluno(aluno);
         estado.turmasConhecidas.add(aluno.turma);
+        if (fecharModal) fecharModalEdicaoAluno();
+        await tentarSincronizarFilaPendente();
     } catch (err) {
-        alert(err.status === 409 ? err.message : `Não foi possível registrar o aluno na API: ${err.message}`);
+        alert(err.status === 409 ? MENSAGENS.nomeJaCadastrado : MENSAGENS.erroSalvarCadastro);
     }
 }
 
@@ -430,38 +380,16 @@ function abrirModalEdicaoAluno() {
         if (inputMatricula) inputMatricula.value = aluno.matricula;
     }
 
-    if (modal) modal.classList.add('active');
+    if (modal) !modal.open && modal.showModal();
 }
 
 function fecharModalEdicaoAluno() {
     const modal = document.getElementById('modal-aluno');
-    if (modal) modal.classList.remove('active');
+    if (modal) modal.close();
 }
 
-async function salvarEdicaoModalAluno(e) {
-    if (e) e.preventDefault();
-
-    const inputNome = document.getElementById('input-modal-nome');
-    const inputTurma = document.getElementById('input-modal-turma');
-    const inputMatricula = document.getElementById('input-modal-matricula');
-
-    try {
-        const cadastro = {
-            nome: inputNome ? inputNome.value : '',
-            turma: inputTurma ? inputTurma.value : '',
-            matricula: inputMatricula ? inputMatricula.value : '',
-            deviceId: obterIdentificadorDispositivo(),
-            studentId: obterDadosAluno()?.studentId
-        };
-        const remoto = await registrarAlunoAPI(cadastro);
-        const aluno = salvarDadosAluno({ ...cadastro, studentId: remoto.id });
-
-        UI.atualizarIdentificacaoAluno(aluno);
-        estado.turmasConhecidas.add(aluno.turma);
-        fecharModalEdicaoAluno();
-    } catch (err) {
-        alert(err.status === 409 ? err.message : `Não foi possível atualizar o aluno na API: ${err.message}`);
-    }
+function salvarEdicaoModalAluno(e) {
+    return salvarCadastroAluno(e, 'input-modal', true);
 }
 
 /**
@@ -479,7 +407,7 @@ function abrirHistorico() {
     if (historico.length === 0) {
         const p = document.createElement('p');
         p.style.color = '#64748b';
-        p.textContent = 'Nenhuma questão respondida ainda no histórico local.';
+        p.textContent = MENSAGENS.historicoVazio;
         container.appendChild(p);
     } else {
         const relatorio = gerarRelatorioCompleto(historico);
@@ -489,9 +417,9 @@ function abrirHistorico() {
         statsGrid.style.marginTop = '1rem';
 
         [
-            { valor: relatorio.resumo.total, label: 'Total Geral' },
-            { valor: relatorio.resumo.acertos, label: 'Acertos', cor: '#10b981' },
-            { valor: `${relatorio.resumo.taxaAcerto}%`, label: 'Aproveitamento' }
+            { valor: relatorio.resumo.total, label: MENSAGENS.totalGeral },
+            { valor: relatorio.resumo.acertos, label: MENSAGENS.acertos, cor: '#10b981' },
+            { valor: `${relatorio.resumo.taxaAcerto}%`, label: MENSAGENS.aproveitamento }
         ].forEach(box => {
             const div = document.createElement('div');
             div.className = 'stat-box';
@@ -509,7 +437,7 @@ function abrirHistorico() {
 
         const h4 = document.createElement('h4');
         h4.style.margin = '1.25rem 0 0.5rem 0';
-        h4.textContent = 'Assuntos mais críticos identificados pela IA:';
+        h4.textContent = MENSAGENS.assuntosRecomendadosTitulo;
 
         container.appendChild(statsGrid);
         container.appendChild(h4);
@@ -518,7 +446,7 @@ function abrirHistorico() {
             const p = document.createElement('p');
             p.style.color = '#64748b';
             p.style.fontSize = '0.9rem';
-            p.textContent = 'Acumule ao menos 2 questões por assunto para gerar o ranking da IA.';
+            p.textContent = MENSAGENS.semQuestoesRecomendacao;
             container.appendChild(p);
         } else {
             const ul = document.createElement('ul');
@@ -531,7 +459,8 @@ function abrirHistorico() {
                 li.style.marginBottom = '0.35rem';
                 const strong = document.createElement('strong');
                 strong.textContent = item.assunto;
-                const txt = document.createTextNode(` — Taxa: ${item.taxaAcerto.toFixed(0)}% (IPE: ${(item.ipe * 100).toFixed(0)})`);
+                const prioridade = rotuloPrioridade(item.ipe);
+                const txt = document.createTextNode(MENSAGENS.prioridadeHistorico(item, prioridade.texto));
                 li.appendChild(strong);
                 li.appendChild(txt);
                 ul.appendChild(li);
@@ -541,11 +470,38 @@ function abrirHistorico() {
         }
     }
 
-    modal.classList.add('active');
+    const politica = document.createElement('p');
+    politica.textContent = MENSAGENS.retencaoDados;
+    container.appendChild(politica);
+    const fila = obterResultadosPendentes();
+    if (fila.length) {
+        const aviso = document.createElement('p');
+        aviso.textContent = MENSAGENS.pendenciasHistorico(fila.length, fila.filter(item => item.requerAtencao).length);
+        container.appendChild(aviso);
+        const tentar = document.createElement('button');
+        tentar.className = 'btn btn-outline';
+        tentar.textContent = MENSAGENS.botaoTentarNovamente;
+        tentar.onclick = async () => {
+            tentar.disabled = true;
+            try { await tentarSincronizarFilaPendente(true); abrirHistorico(); }
+            finally { tentar.disabled = false; }
+        };
+        container.appendChild(tentar);
+    }
+    const apagar = document.createElement('button');
+    apagar.className = 'btn btn-outline';
+    apagar.textContent = MENSAGENS.apagarDadosAparelho;
+    apagar.onclick = () => {
+        if (!confirm(MENSAGENS.confirmarApagarDados)) return;
+        try { limparDadosLocais(); window.location.reload(); }
+        catch (erro) { console.warn('Falha ao apagar dados locais:', erro); alert(MENSAGENS.erroApagarDados); }
+    };
+    container.appendChild(apagar);
+    !modal.open && modal.showModal();
 }
 
 function handleLimparHistorico() {
-    if (confirm('Tem certeza que deseja limpar todo o histórico acumulado no navegador?')) {
+    if (confirm(MENSAGENS.confirmarLimparHistorico)) {
         limparHistoricoLocal();
         abrirHistorico();
     }
@@ -555,23 +511,29 @@ function handleLimparHistorico() {
 // INICIALIZAÇÃO DA APLICAÇÃO NO DOM
 // ========================================================
 document.addEventListener('DOMContentLoaded', async () => {
+    aplicarRetencaoLocal();
+    UI.inicializarTextos();
+    document.addEventListener('pointerdown', registrarAtividadeLocal);
+    document.addEventListener('keydown', registrarAtividadeLocal);
     // 1. Inicializa identificação do aluno se já existir
     const alunoSalvo = obterDadosAluno();
     UI.atualizarIdentificacaoAluno(alunoSalvo);
     if (alunoSalvo && alunoSalvo.turma) {
         estado.turmasConhecidas.add(alunoSalvo.turma);
         registrarAlunoAPI(alunoSalvo).then(remoto => {
-            salvarDadosAluno({ ...alunoSalvo, studentId: remoto.id });
+            const atual = obterDadosAluno();
+            if (atual && ['deviceId', 'nome', 'turma', 'matricula'].every(campo => atual[campo] === alunoSalvo[campo])) {
+                salvarDadosAluno({ ...atual, studentId: remoto.id });
+            }
+            return tentarSincronizarFilaPendente();
         }).catch(error => {
-            console.error('Falha ao sincronizar cadastro do aluno:', error);
-            UI.mostrarErro(error.message);
+            console.warn('Falha ao sincronizar cadastro do aluno na inicialização:', error);
         });
     }
 
     // 2. Verifica a saúde da API REST
-    verificarSaudeAPI()
-        .then(() => UI.atualizarStatusAPI('online'))
-        .catch(() => UI.atualizarStatusAPI('offline'));
+    verificarSaudeAPI().then(() => tentarSincronizarFilaPendente()).catch(err => console.warn('Backend indisponível na inicialização:', err));
+    window.addEventListener('online', tentarSincronizarFilaPendente);
 
     // 3. Eventos de Cadastro de Aluno
     const formCadastro = document.getElementById('form-cadastro-aluno');
@@ -638,7 +600,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const selectTurmaRanking = document.getElementById('ranking-filtro-turma');
     if (selectTurmaRanking) {
         selectTurmaRanking.addEventListener('change', (e) => {
-            carregarDadosRanking(e.target.value);
+            return carregarDadosRanking(e.target.value);
         });
     }
 
@@ -649,8 +611,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btnFecharHistorico = document.getElementById('btn-fechar-historico');
     if (btnFecharHistorico) btnFecharHistorico.addEventListener('click', () => {
         const modal = document.getElementById('modal-history');
-        if (modal) modal.classList.remove('active');
+        if (modal) modal.close();
     });
+
+    const btnFecharHistoricoRodape = document.getElementById('btn-fechar-historico-rodape');
+    if (btnFecharHistoricoRodape) btnFecharHistoricoRodape.addEventListener('click', () => document.getElementById('modal-history').close());
 
     const btnLimparHist = document.getElementById('btn-limpar-historico');
     if (btnLimparHist) btnLimparHist.addEventListener('click', handleLimparHistorico);
@@ -660,11 +625,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 7. Navegação e Acessibilidade por Teclado (RNF01, RNF05)
     window.addEventListener('keydown', (e) => {
-        const modalAtivo = document.querySelector('.modal-backdrop.active');
+        const modalAtivo = document.querySelector('dialog[open]');
         if (modalAtivo) return;
 
         // Se o foco estiver em um input de texto, não captura teclas de atalho
-        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+        const foco = document.activeElement;
+        if (['TEXTAREA', 'SELECT'].includes(foco?.tagName) || (foco?.tagName === 'INPUT' && foco.type !== 'radio')) return;
 
         const quizAtivo = UI.screens.quiz && UI.screens.quiz.classList.contains('active');
         if (!quizAtivo) return;
@@ -682,6 +648,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Tecla Enter para confirmar ou avançar
         if (e.key === 'Enter') {
+            if (foco?.tagName === 'BUTTON') return;
             const btnConfirmar = document.getElementById('btn-confirmar-resposta');
             const btnProxima = document.getElementById('btn-proxima-questao');
 

@@ -8,6 +8,29 @@
  * são inseridos de forma segura (via textContent ou escapeHTML) para prevenir XSS.
  */
 
+import { MENSAGENS } from './mensagens.js';
+
+function permitirRecarregarImagem(img) {
+    img.onerror = () => {
+        img.hidden = true;
+        if (img.nextElementSibling?.className === 'imagem-indisponivel') return;
+        const aviso = document.createElement('span');
+        aviso.className = 'imagem-indisponivel';
+        aviso.textContent = MENSAGENS.imagemIndisponivel;
+        const tentar = document.createElement('button');
+        tentar.type = 'button';
+        tentar.className = 'btn btn-outline';
+        tentar.textContent = MENSAGENS.botaoTentarNovamente;
+        tentar.onclick = e => {
+            e.preventDefault();
+            img.src = img.src;
+        };
+        aviso.appendChild(tentar);
+        img.after(aviso);
+        img.onload = () => { img.hidden = false; aviso.remove(); };
+    };
+}
+
 /**
  * Utilitário para escapar caracteres perigosos de HTML
  */
@@ -21,7 +44,30 @@ export function escapeHTML(str) {
         .replace(/'/g, '&#039;');
 }
 
+/**
+ * Retorna o rótulo amigável e a classe CSS com base no IPE (Índice de Prioridade de Estudo)
+ * @param {number} ipe - Valor entre 0 e 1 (taxa de erro do assunto)
+ * @returns {{ texto: string, classe: string }}
+ */
+export function rotuloPrioridade(ipe) {
+    if (ipe >= 0.7) {
+        return { texto: MENSAGENS.prioridadeAlta, classe: 'badge-error' };
+    }
+    if (ipe >= 0.4) {
+        return { texto: MENSAGENS.prioridadeMedia, classe: 'badge-warning' };
+    }
+    return { texto: MENSAGENS.prioridadeBaixa, classe: 'badge-success' };
+}
+
 export const UI = {
+    inicializarTextos() {
+        document.querySelectorAll('[data-mensagem]').forEach(el => { el.textContent = MENSAGENS[el.dataset.mensagem]; });
+        for (const atributo of ['placeholder', 'title', 'aria-label']) {
+            document.querySelectorAll(`[data-mensagem-${atributo}]`).forEach(el => {
+                el.setAttribute(atributo, MENSAGENS[el.getAttribute(`data-mensagem-${atributo}`)]);
+            });
+        }
+    },
     // Referências dinâmicas aos elementos principais
     screens: {
         get home() { return typeof document !== 'undefined' ? document.getElementById('screen-home') : null; },
@@ -29,7 +75,6 @@ export const UI = {
         get result() { return typeof document !== 'undefined' ? document.getElementById('screen-result') : null; }
     },
 
-    get statusBadge() { return typeof document !== 'undefined' ? document.getElementById('api-status-badge') : null; },
     get loadingOverlay() { return typeof document !== 'undefined' ? document.getElementById('app-loading-overlay') : null; },
     get loadingText() { return typeof document !== 'undefined' ? document.getElementById('loading-overlay-text') : null; },
     get errorBanner() { return typeof document !== 'undefined' ? document.getElementById('app-error-banner') : null; },
@@ -47,29 +92,9 @@ export const UI = {
     },
 
     /**
-     * Atualiza o indicador de status da API
-     */
-    atualizarStatusAPI(status, detalhe = '') {
-        if (!this.statusBadge) return;
-        if (status === 'online') {
-            this.statusBadge.className = 'badge badge-success';
-            this.statusBadge.textContent = detalhe ? `● API Online (${detalhe})` : '● API Conectada';
-        } else if (status === 'offline') {
-            this.statusBadge.className = 'badge badge-error';
-            this.statusBadge.textContent = '✕ API Inacessível';
-        } else if (status === 'fallback') {
-            this.statusBadge.className = 'badge badge-warning';
-            this.statusBadge.textContent = '▲ Modo Contingência Local';
-        } else {
-            this.statusBadge.className = 'badge badge-primary';
-            this.statusBadge.textContent = '● Conectando à API...';
-        }
-    },
-
-    /**
      * Exibe o overlay de carregamento global
      */
-    mostrarCarregando(mensagem = 'Carregando...') {
+    mostrarCarregando(mensagem = MENSAGENS.carregandoGeral) {
         if (this.loadingOverlay) {
             if (this.loadingText) this.loadingText.textContent = mensagem;
             this.loadingOverlay.style.display = 'flex';
@@ -88,14 +113,14 @@ export const UI = {
     /**
      * Exibe banner de erro de forma segura com ações de recuperação
      */
-    mostrarErro(mensagem, { onTentarNovamente = null, onUsarContingencia = null } = {}) {
+    mostrarErro(mensagem, { onTentarNovamente = null } = {}) {
         if (!this.errorBanner) return;
 
         const messageEl = document.getElementById('error-banner-message');
         const actionsEl = document.getElementById('error-banner-actions');
 
         if (messageEl) {
-            messageEl.textContent = mensagem || 'Ocorreu um erro na comunicação.';
+            messageEl.textContent = mensagem || MENSAGENS.erroGenericoDesc;
         }
 
         if (actionsEl) {
@@ -106,25 +131,12 @@ export const UI = {
                 btnRetry.className = 'btn btn-outline';
                 btnRetry.style.fontSize = '0.8rem';
                 btnRetry.style.padding = '0.3rem 0.75rem';
-                btnRetry.textContent = '🔄 Tentar Conectar Novamente';
+                btnRetry.textContent = MENSAGENS.botaoTentarNovamente;
                 btnRetry.addEventListener('click', () => {
                     this.ocultarErro();
                     onTentarNovamente();
                 });
                 actionsEl.appendChild(btnRetry);
-            }
-
-            if (onUsarContingencia) {
-                const btnFallback = document.createElement('button');
-                btnFallback.className = 'btn btn-secondary';
-                btnFallback.style.fontSize = '0.8rem';
-                btnFallback.style.padding = '0.3rem 0.75rem';
-                btnFallback.textContent = '📁 Usar Modo Contingência Local';
-                btnFallback.addEventListener('click', () => {
-                    this.ocultarErro();
-                    onUsarContingencia();
-                });
-                actionsEl.appendChild(btnFallback);
             }
         }
 
@@ -200,9 +212,9 @@ export const UI = {
         }
 
         // Metadados seguros
-        if (areaBadge) areaBadge.textContent = questao.area || 'ENEM';
-        if (assuntoBadge) assuntoBadge.textContent = questao.assunto || 'Geral';
-        if (counterText) counterText.textContent = `Questão ${indice} de ${total}`;
+        if (areaBadge) areaBadge.textContent = questao.area || MENSAGENS.enem;
+        if (assuntoBadge) assuntoBadge.textContent = questao.assunto || MENSAGENS.geral;
+        if (counterText) counterText.textContent = MENSAGENS.contadorQuestao(indice, total);
         if (progressFill) {
             const porcentagem = Math.round(((indice - 1) / total) * 100);
             progressFill.style.width = `${porcentagem}%`;
@@ -211,7 +223,7 @@ export const UI = {
         // Enunciado (seguro com textContent)
         if (questionText) {
             questionText.replaceChildren();
-            const enunciado = String(questao.enunciado || 'Enunciado não disponível.')
+            const enunciado = String(questao.enunciado || MENSAGENS.enunciadoIndisponivel)
                 .replace(/\\n/g, '\n');
             const imagemMarkdown = /!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
             let inicio = 0;
@@ -221,9 +233,9 @@ export const UI = {
                 questionText.append(document.createTextNode(enunciado.slice(inicio, imagem.index)));
                 const img = document.createElement('img');
                 img.src = imagem[1];
-                img.alt = 'Imagem da questão';
+                img.alt = MENSAGENS.imagemQuestao;
                 img.loading = 'lazy';
-                img.onerror = () => img.remove();
+                permitirRecarregarImagem(img);
                 questionText.append(img);
                 inicio = imagemMarkdown.lastIndex;
             }
@@ -236,9 +248,14 @@ export const UI = {
             alternativesContainer.replaceChildren();
 
             (questao.alternativas || []).forEach(alt => {
-                const optEl = document.createElement('div');
+                const optEl = document.createElement('label');
                 optEl.className = 'alt-option';
                 optEl.dataset.letra = alt.letra || alt.id;
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'alternativa';
+                radio.value = alt.letra || alt.id;
+                optEl.appendChild(radio);
 
                 const letterSpan = document.createElement('span');
                 letterSpan.className = 'alt-letter';
@@ -256,19 +273,19 @@ export const UI = {
                     const img = document.createElement('img');
                     img.className = 'alt-image';
                     img.src = alt.imagem;
-                    img.alt = `Imagem da alternativa ${alt.letra || alt.id}`;
+                    img.alt = MENSAGENS.imagemAlternativa(alt.letra || alt.id);
                     img.loading = 'lazy';
-                    img.onerror = () => optEl.remove();
+                    permitirRecarregarImagem(img);
                     optEl.appendChild(img);
                 }
 
                 const hintSpan = document.createElement('span');
                 hintSpan.className = 'alt-key-hint';
-                hintSpan.textContent = `Tecla ${alt.letra || alt.id}`;
+                hintSpan.textContent = MENSAGENS.teclaAlternativa(alt.letra || alt.id);
 
                 optEl.appendChild(hintSpan);
 
-                optEl.addEventListener('click', () => {
+                radio.addEventListener('change', () => {
                     if (optEl.classList.contains('locked')) return;
 
                     document.querySelectorAll('.alt-option').forEach(el => el.classList.remove('selected'));
@@ -294,6 +311,7 @@ export const UI = {
         // Bloqueia as opções para cumprir RN03
         document.querySelectorAll('.alt-option').forEach(el => {
             el.classList.add('locked');
+            el.querySelector('input').disabled = true;
             const letra = el.dataset.letra;
             if (letra === alternativaCorreta) {
                 el.classList.add('correct');
@@ -308,18 +326,18 @@ export const UI = {
 
             const titleDiv = document.createElement('div');
             titleDiv.className = 'feedback-title';
-            titleDiv.textContent = acertou ? '✓ Parabéns, resposta correta!' : '✕ Resposta incorreta';
+            titleDiv.textContent = acertou ? MENSAGENS.respostaCorreta : MENSAGENS.respostaIncorreta;
 
             const expDiv = document.createElement('div');
             expDiv.className = 'feedback-explanation';
 
             const gabaritoStrong = document.createElement('strong');
-            gabaritoStrong.textContent = `Gabarito oficial: Alternativa ${alternativaCorreta}.`;
+            gabaritoStrong.textContent = MENSAGENS.gabarito(alternativaCorreta);
             expDiv.appendChild(gabaritoStrong);
 
             const pExp = document.createElement('p');
             pExp.style.marginTop = '4px';
-            pExp.textContent = explicacao || 'Confira o enunciado e a alternativa correta para revisar o raciocínio desta questão.';
+            pExp.textContent = explicacao || MENSAGENS.revisarRaciocinio;
             expDiv.appendChild(pExp);
 
             feedbackBanner.appendChild(titleDiv);
@@ -330,12 +348,13 @@ export const UI = {
         if (btnProxima) {
             btnProxima.style.display = 'inline-flex';
             btnProxima.replaceChildren();
-            const btnText = document.createTextNode(ehUltimaQuestao ? 'Ver Diagnóstico Completo → ' : 'Próxima Questão → ');
+            const btnText = document.createTextNode(ehUltimaQuestao ? MENSAGENS.verDiagnostico : MENSAGENS.proximaQuestao);
             const kbd = document.createElement('kbd');
             kbd.className = 'kbd-hint';
-            kbd.textContent = 'Enter ↵';
+            kbd.textContent = MENSAGENS.teclaEnter;
             btnProxima.appendChild(btnText);
             btnProxima.appendChild(kbd);
+            btnProxima.focus();
         }
     },
 
@@ -367,11 +386,11 @@ export const UI = {
         if (status === 'synced') {
             card.classList.add('synced');
             if (iconEl) iconEl.textContent = '🟢';
-            textEl.textContent = mensagem || 'Resultado sincronizado com sucesso no ranking da turma!';
+            textEl.textContent = mensagem || MENSAGENS.pontuacaoSalva();
         } else if (status === 'failed') {
             card.classList.add('failed');
             if (iconEl) iconEl.textContent = '🔴';
-            textEl.textContent = mensagem || 'Falha na conexão com a API. O resultado foi salvo localmente.';
+            textEl.textContent = mensagem || MENSAGENS.pontuacaoPendente;
             if (btnRetry && onTentarSincronizar) {
                 btnRetry.style.display = 'inline-flex';
                 btnRetry.onclick = onTentarSincronizar;
@@ -379,7 +398,7 @@ export const UI = {
         } else if (status === 'pending') {
             card.classList.add('pending');
             if (iconEl) iconEl.textContent = '⏳';
-            textEl.textContent = mensagem || 'Enviando resultado para o ranking da turma...';
+            textEl.textContent = mensagem || MENSAGENS.salvandoPontuacao;
         }
     },
 
@@ -387,7 +406,7 @@ export const UI = {
      * Renderiza o relatório final do quiz
      */
     renderizarRelatorio(relatorio) {
-        const { resumo, assuntosPrioritarios, desempenhoPorArea } = relatorio;
+        const { resumo, assuntosPrioritarios, desempenhoPorArea, desempenhoPorAssunto } = relatorio;
 
         const totalEl = document.getElementById('resumo-total');
         const acertosEl = document.getElementById('resumo-acertos');
@@ -415,7 +434,7 @@ export const UI = {
                 p.style.color = '#64748b';
                 p.style.fontSize = '0.95rem';
                 p.style.marginTop = '0.5rem';
-                p.textContent = 'Responda a mais questões de um mesmo assunto para que o algoritmo de IA identifique com precisão seus 3 pontos prioritários de estudo (mínimo de 2 respostas por assunto).';
+                p.textContent = MENSAGENS.semQuestoesRecomendacao;
                 priorityContainer.appendChild(p);
             } else {
                 assuntosPrioritarios.forEach((item, idx) => {
@@ -429,22 +448,23 @@ export const UI = {
                     subjSpan.className = 'priority-subject';
                     subjSpan.textContent = `#${idx + 1} ${item.assunto}`;
 
+                    const prioridade = rotuloPrioridade(item.ipe);
                     const badgeIpe = document.createElement('span');
-                    badgeIpe.className = 'badge badge-error';
-                    badgeIpe.textContent = `IPE: ${(item.ipe * 100).toFixed(0)}`;
+                    badgeIpe.className = `badge ${prioridade.classe}`;
+                    badgeIpe.textContent = prioridade.texto;
 
                     header.appendChild(subjSpan);
                     header.appendChild(badgeIpe);
 
                     const metric = document.createElement('div');
                     metric.className = 'priority-metric';
-                    metric.textContent = `Taxa de acerto: ${item.taxaAcerto.toFixed(0)}% (${item.acertos}/${item.total} acertos) • Tempo médio: ${Math.round(item.tempoMedio)}s/questão`;
+                    metric.textContent = MENSAGENS.metricasAssunto(item);
 
                     const tip = document.createElement('p');
                     tip.style.fontSize = '0.85rem';
                     tip.style.color = '#475569';
                     tip.style.marginTop = '2px';
-                    tip.textContent = '💡 Recomendação IA: Dedique seus próximos ciclos de revisão focado na teoria e resolução de exercícios desse tema.';
+                    tip.textContent = MENSAGENS.dicaEstudo;
 
                     div.appendChild(header);
                     div.appendChild(metric);
@@ -454,23 +474,29 @@ export const UI = {
             }
         }
 
-        // Desempenho por Área do ENEM
-        const areaContainer = document.getElementById('area-breakdown-container');
-        if (areaContainer && desempenhoPorArea) {
+        // Mesma apresentação para áreas e todos os assuntos respondidos.
+        for (const [id, desempenho] of [['area-breakdown-container', desempenhoPorArea], ['subject-breakdown-container', desempenhoPorAssunto]]) {
+            const areaContainer = document.getElementById(id);
+            if (!areaContainer || !desempenho) continue;
             areaContainer.replaceChildren();
 
-            Object.entries(desempenhoPorArea).forEach(([area, dados]) => {
+            Object.entries(desempenho).forEach(([area, dados]) => {
+                const taxaAcerto = dados.total ? Math.round(dados.acertos / dados.total * 100) : 0;
                 let badgeClass = 'badge-success';
-                let badgeTexto = 'Alto Rendimento';
+                let badgeTexto = MENSAGENS.rendimentoAlto;
                 let fillColor = '#10b981';
 
-                if (dados.taxaAcerto < 50) {
+                if (!dados.total) {
+                    badgeClass = '';
+                    badgeTexto = MENSAGENS.aindaSemRespostas;
+                    fillColor = '#94a3b8';
+                } else if (taxaAcerto < 50) {
                     badgeClass = 'badge-error';
-                    badgeTexto = 'Revisão Prioritária';
+                    badgeTexto = MENSAGENS.revisaoPrioritaria;
                     fillColor = '#ef4444';
-                } else if (dados.taxaAcerto < 70) {
+                } else if (taxaAcerto < 70) {
                     badgeClass = 'badge-warning';
-                    badgeTexto = 'Rendimento Regular';
+                    badgeTexto = MENSAGENS.rendimentoRegular;
                     fillColor = '#f59e0b';
                 }
 
@@ -494,7 +520,7 @@ export const UI = {
                 badge.textContent = badgeTexto;
 
                 const percentSpan = document.createElement('span');
-                percentSpan.textContent = `${dados.taxaAcerto}% (${dados.acertos}/${dados.total})`;
+                percentSpan.textContent = `${taxaAcerto}% (${dados.acertos}/${dados.total})`;
 
                 detailsDiv.appendChild(badge);
                 detailsDiv.appendChild(percentSpan);
@@ -503,9 +529,10 @@ export const UI = {
 
                 const track = document.createElement('div');
                 track.className = 'area-track';
+                track.setAttribute('aria-hidden', 'true');
                 const fill = document.createElement('div');
                 fill.className = 'area-fill';
-                fill.style.width = `${dados.taxaAcerto}%`;
+                fill.style.width = `${taxaAcerto}%`;
                 fill.style.background = fillColor;
                 track.appendChild(fill);
 
@@ -526,7 +553,7 @@ export const UI = {
 
         if (tagResumo) {
             const acertos = tentativaDetalhada.filter(item => item.resposta && item.resposta.acertou).length;
-            tagResumo.textContent = `${acertos}/${tentativaDetalhada.length} Acertos`;
+            tagResumo.textContent = MENSAGENS.resumoAcertos(acertos, tentativaDetalhada.length);
         }
 
         container.replaceChildren();
@@ -535,7 +562,7 @@ export const UI = {
             const p = document.createElement('p');
             p.style.color = '#64748b';
             p.style.fontSize = '0.9rem';
-            p.textContent = 'Nenhuma questão respondida para revisão.';
+            p.textContent = MENSAGENS.revisaoVazia;
             container.appendChild(p);
             return;
         }
@@ -558,15 +585,15 @@ export const UI = {
             headerLeft.style.flexWrap = 'wrap';
 
             const strongQ = document.createElement('strong');
-            strongQ.textContent = `Questão ${index + 1}`;
+            strongQ.textContent = MENSAGENS.questaoNumero(index + 1);
 
             const badgeArea = document.createElement('span');
             badgeArea.className = 'badge badge-primary';
-            badgeArea.textContent = questao.area || 'ENEM';
+            badgeArea.textContent = questao.area || MENSAGENS.enem;
 
             const badgeAssunto = document.createElement('span');
             badgeAssunto.className = 'badge badge-warning';
-            badgeAssunto.textContent = questao.assunto || 'Geral';
+            badgeAssunto.textContent = questao.assunto || MENSAGENS.geral;
 
             headerLeft.appendChild(strongQ);
             headerLeft.appendChild(badgeArea);
@@ -576,13 +603,13 @@ export const UI = {
                 const badgeAno = document.createElement('span');
                 badgeAno.className = 'badge';
                 badgeAno.style.background = '#f1f5f9';
-                badgeAno.textContent = `ENEM ${questao.ano}`;
+                badgeAno.textContent = MENSAGENS.anoEnem(questao.ano);
                 headerLeft.appendChild(badgeAno);
             }
 
             const badgeStatus = document.createElement('span');
             badgeStatus.className = `badge ${acertou ? 'badge-success' : 'badge-error'}`;
-            badgeStatus.textContent = `${acertou ? '✓ Acertou' : '✕ Errou'} (${resposta.tempoSegundos || 0}s)`;
+            badgeStatus.textContent = MENSAGENS.statusResposta(acertou, resposta.tempoSegundos || 0);
 
             header.appendChild(headerLeft);
             header.appendChild(badgeStatus);
@@ -598,12 +625,12 @@ export const UI = {
 
             const suaResp = document.createElement('div');
             const strongSua = document.createElement('strong');
-            strongSua.textContent = 'Sua resposta: ';
-            const txtSua = document.createTextNode(`Alternativa ${resposta.alternativaEscolhida} `);
+            strongSua.textContent = MENSAGENS.suaResposta;
+            const txtSua = document.createTextNode(MENSAGENS.alternativa(resposta.alternativaEscolhida) + " ");
             const spanStatus = document.createElement('span');
             spanStatus.style.color = acertou ? '#10b981' : '#ef4444';
             spanStatus.style.fontWeight = '600';
-            spanStatus.textContent = acertou ? '(Correta)' : '(Incorreta)';
+            spanStatus.textContent = acertou ? MENSAGENS.correta : MENSAGENS.incorreta;
 
             suaResp.appendChild(strongSua);
             suaResp.appendChild(txtSua);
@@ -613,8 +640,8 @@ export const UI = {
             if (!acertou) {
                 const corretaDiv = document.createElement('div');
                 const strongCorreta = document.createElement('strong');
-                strongCorreta.textContent = 'Gabarito Oficial: ';
-                const txtCorreta = document.createTextNode(`Alternativa ${resposta.alternativaCorreta}`);
+                strongCorreta.textContent = MENSAGENS.gabaritoOficial;
+                const txtCorreta = document.createTextNode(MENSAGENS.alternativa(resposta.alternativaCorreta));
                 corretaDiv.appendChild(strongCorreta);
                 corretaDiv.appendChild(txtCorreta);
                 respDiv.appendChild(corretaDiv);
@@ -628,7 +655,7 @@ export const UI = {
                 const expDiv = document.createElement('div');
                 expDiv.className = 'revisao-explicacao';
                 const strongExp = document.createElement('strong');
-                strongExp.textContent = '💡 Explicação Pedagógica: ';
+                strongExp.textContent = MENSAGENS.explicacaoPedagogica;
                 const txtExp = document.createTextNode(questao.explicacao);
                 expDiv.appendChild(strongExp);
                 expDiv.appendChild(txtExp);
@@ -643,7 +670,7 @@ export const UI = {
      * Renderiza o modal de ranking com tabela e cards responsivos
      * Seguro contra XSS (nomes de alunos são inseridos via textContent)
      */
-    renderizarRanking({ ranking = [], turmas = [], turmaSelecionada = 'Todas', alunoAtual = null, onFiltrarTurma = null } = {}) {
+    renderizarRanking({ ranking = [], turmas = [], turmaSelecionada = 'Todas', alunoAtual = null } = {}) {
         const container = document.getElementById('ranking-conteudo-container');
         const selectTurma = document.getElementById('ranking-filtro-turma');
         if (!container) return;
@@ -655,13 +682,13 @@ export const UI = {
 
             const optGeral = document.createElement('option');
             optGeral.value = 'Todas';
-            optGeral.textContent = 'Todas as Turmas (Ranking Geral)';
+            optGeral.textContent = MENSAGENS.todasTurmas;
             selectTurma.appendChild(optGeral);
 
             turmas.forEach(t => {
                 const opt = document.createElement('option');
                 opt.value = t;
-                opt.textContent = `Turma ${t}`;
+                opt.textContent = MENSAGENS.turma(t);
                 selectTurma.appendChild(opt);
             });
 
@@ -675,7 +702,7 @@ export const UI = {
             emptyP.style.color = '#64748b';
             emptyP.style.textAlign = 'center';
             emptyP.style.padding = '2rem 1rem';
-            emptyP.textContent = 'Nenhum resultado registrado para esta turma ainda. Seja o primeiro a completar o simulado!';
+            emptyP.textContent = MENSAGENS.rankingVazio;
             container.appendChild(emptyP);
             return;
         }
@@ -689,7 +716,7 @@ export const UI = {
         // Cabeçalho da tabela
         const thead = document.createElement('thead');
         const trHead = document.createElement('tr');
-        ['#', 'Estudante', 'Turma', 'Acertos', 'Aproveitamento', 'Tempo Total'].forEach(col => {
+        MENSAGENS.colunasRanking.forEach(col => {
             const th = document.createElement('th');
             th.textContent = col;
             trHead.appendChild(th);
@@ -704,7 +731,7 @@ export const UI = {
             const tr = document.createElement('tr');
             const pos = idx + 1;
 
-            const nomeAluno = item.studentName || item.name || item.nome || 'Anônimo';
+            const nomeAluno = item.studentName || item.name || item.nome || MENSAGENS.anonimo;
             const turmaAluno = item.className || item.turma || '-';
             const studentId = item.studentId || '';
             const acertos = item.score !== undefined ? item.score : (item.acertos || 0);
@@ -737,7 +764,7 @@ export const UI = {
                 badgeVoce.className = 'badge badge-primary';
                 badgeVoce.style.marginLeft = '6px';
                 badgeVoce.style.fontSize = '0.7rem';
-                badgeVoce.textContent = 'Você';
+                badgeVoce.textContent = MENSAGENS.voce;
                 tdNome.appendChild(badgeVoce);
             }
 
