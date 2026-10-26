@@ -43,6 +43,8 @@ Acesse `http://localhost:3000/frontend/`. A API roda em `http://localhost:3001/a
 
 Para usar o Supabase, copie `.env.example` para `.env`, preencha a URI PostgreSQL do projeto e aplique o schema com `npm run db:migrate`. O comando `npm run start:backend` carrega o `.env` automaticamente e o backend aplica migrations pendentes ao iniciar. No Supabase, use a URI em **Project Settings > Database > Connection string** e mantenha `DATABASE_SSL=true`. Nunca coloque essas credenciais no frontend ou no Git. Sem `DATABASE_URL`, o modo local continua usando `backend/data/results.jsonl`.
 
+Se o pooler responder `tenant/user postgres.<project-ref> not found`, confira no Render a variável `DATABASE_URL` (o `.env` local não configura o serviço remoto). Copie novamente a URI do **Session Pooler** do projeto Supabase ativo: host/região do pooler e usuário `postgres.<project-ref>` devem pertencer ao mesmo projeto. Atualize a senha no painel se necessário e reinicie o serviço. Não substitua o usuário por `postgres` ao usar o pooler; não publique a URI em logs ou issues.
+
 ## API
 
 | Método | Rota | Finalidade |
@@ -56,7 +58,7 @@ O ranking usa: maior percentual, maior número de acertos, menor tempo e data ma
 
 ## Operação e carga
 
-`GET /api/health` informa persistência, uptime e uso instantâneo do pool PostgreSQL. O Render recebe esses logs JSON do processo, incluindo latência por rota, erros, espera pelos locks por identidade no cadastro e conexões em uso/espera; o dashboard do Supabase mostra o consumo do banco. Vercel Analytics mede o frontend e Core Web Vitals, não conexões PostgreSQL nem latência interna do Render.
+`GET /api/health` verifica a conexão ao PostgreSQL em cada chamada (503 se indisponível) e informa persistência, uptime e uso instantâneo do pool. O Render recebe esses logs JSON do processo, incluindo latência por rota, erros, espera pelos locks por identidade no cadastro e conexões em uso/espera; o dashboard do Supabase mostra o consumo do banco. Vercel Analytics mede o frontend e Core Web Vitals, não conexões PostgreSQL nem latência interna do Render.
 
 Configure `PGPOOL_MAX` para que `PGPOOL_MAX * instâncias` fique abaixo do limite do plano PostgreSQL, reservando conexões para migrations e administração. O valor padrão é 5 por instância. O endpoint de cadastro e o envio de resultados têm limites locais por processo/IP (`RATE_LIMIT_STUDENTS`, `RATE_LIMIT_RESULTS`); com várias instâncias, use também rate limiting no proxy/WAF. No Render, configure `TRUST_PROXY_HOPS=1` para identificar IPs via proxy confiável. CORS não autentica chamadas: o app mantém fluxo público sem login, então abuso direcionado pode exigir autenticação ou CAPTCHA.
 

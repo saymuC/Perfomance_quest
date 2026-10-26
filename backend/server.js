@@ -82,6 +82,12 @@ function limitePorMinuto(envName, fallback) {
   return limite;
 }
 
+function statusErro(error) {
+  if (error.status) return error.status;
+  if (/tenant\/user .* not found/i.test(error.message) || ['ECONNREFUSED', 'ETIMEDOUT', 'ENOTFOUND', 'EAI_AGAIN', '57P01', '08006'].includes(error.code)) return 503;
+  return 500;
+}
+
 function embaralhar(items) {
   const result = [...items];
   for (let i = result.length - 1; i > 0; i--) {
@@ -167,11 +173,17 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
     if (req.method === 'OPTIONS') return responder(res, 204, {}, requestOrigin, origins);
 
     if (req.method === 'GET' && url.pathname === '/api/health') {
-      return responder(res, 200, {
-        status: 'ok', persistence: resultStore.persistence,
-        ...(resultStore.poolStats ? { pool: resultStore.poolStats } : {}),
-        uptimeSeconds: Math.floor(process.uptime())
-      }, requestOrigin, origins);
+      try {
+        await resultStore.checkHealth?.();
+        return responder(res, 200, {
+          status: 'ok', persistence: resultStore.persistence,
+          ...(resultStore.poolStats ? { pool: resultStore.poolStats } : {}),
+          uptimeSeconds: Math.floor(process.uptime())
+        }, requestOrigin, origins);
+      } catch (error) {
+        console.error('Falha ao verificar banco de dados:', error);
+        return responder(res, 503, { status: 'unavailable', error: 'Banco de dados indisponível.' }, requestOrigin, origins);
+      }
     }
 
     if (req.method === 'GET' && url.pathname === '/api/questions') {
@@ -199,7 +211,7 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
         return responder(res, 200, { success: true, student }, requestOrigin, origins);
       } catch (error) {
         if (!error.status) console.error('Falha ao registrar aluno:', error);
-        return responder(res, error.status || 500, { error: error.status ? error.message : 'Não foi possível registrar o aluno.' }, requestOrigin, origins);
+        return responder(res, statusErro(error), { error: error.status ? error.message : 'Não foi possível registrar o aluno.' }, requestOrigin, origins);
       }
     }
 
@@ -214,7 +226,7 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
         return responder(res, 201, { success: true, result }, requestOrigin, origins);
       } catch (error) {
         if (!error.status) console.error('Falha ao persistir resultado:', error);
-        return responder(res, error.status || 500, { error: error.status ? error.message : 'Não foi possível salvar o resultado.' }, requestOrigin, origins);
+        return responder(res, statusErro(error), { error: error.status ? error.message : 'Não foi possível salvar o resultado.' }, requestOrigin, origins);
       }
     }
 
@@ -225,7 +237,12 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
       if (!Number.isInteger(limit) || limit < 1 || limit > 100) {
         return responder(res, 400, { error: 'O limite deve ser um inteiro entre 1 e 100.' }, requestOrigin, origins);
       }
-      return responder(res, 200, await resultStore.rankings({ className, limit }), requestOrigin, origins);
+      try {
+        return responder(res, 200, await resultStore.rankings({ className, limit }), requestOrigin, origins);
+      } catch (error) {
+        console.error('Falha ao consultar ranking:', error);
+        return responder(res, 503, { error: 'Não foi possível consultar o ranking.' }, requestOrigin, origins);
+      }
     }
 
     return responder(res, 404, { error: 'Rota não encontrada.' }, requestOrigin, origins);

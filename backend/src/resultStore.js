@@ -214,12 +214,20 @@ export async function createPostgresStore(connectionString, ssl = false) {
     ...(ssl ? { ssl: { rejectUnauthorized: false } } : {})
   });
   pool.on('error', error => console.error(JSON.stringify({ type: 'postgres_pool_error', message: error.message })));
-  await runMigrations(pool);
+  try {
+    await runMigrations(pool);
+  } catch (error) {
+    await pool.end();
+    throw error;
+  }
 
   return {
     persistence: 'postgres',
     get poolStats() {
       return { total: pool.totalCount, idle: pool.idleCount, waiting: pool.waitingCount, max: pool.options.max };
+    },
+    async checkHealth() {
+      await pool.query('SELECT 1');
     },
     async registerStudent(input) {
       const client = await pool.connect();

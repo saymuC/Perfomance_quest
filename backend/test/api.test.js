@@ -6,6 +6,36 @@ import path from 'node:path';
 import net from 'node:net';
 import { createApiServer } from '../server.js';
 
+test('saúde reflete falha posterior do banco e ranking responde sem derrubar servidor', async t => {
+  let available = true;
+  const server = await createApiServer({ store: {
+    persistence: 'postgres',
+    poolStats: { total: 0, idle: 0, waiting: 0, max: 5 },
+    checkHealth: async () => { if (!available) throw new Error('tenant not found'); },
+    rankings: async () => { throw new Error('tenant not found'); },
+    registerStudent: async () => { throw new Error('(ENOTFOUND) tenant/user postgres.invalid not found'); }
+  } });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const baseUrl = `http://127.0.0.1:${server.address().port}`;
+
+  assert.equal((await fetch(`${baseUrl}/api/health`)).status, 200);
+  available = false;
+  const health = await fetch(`${baseUrl}/api/health`);
+  assert.equal(health.status, 503);
+  assert.equal((await health.json()).status, 'unavailable');
+  const rankings = await fetch(`${baseUrl}/api/rankings`);
+  assert.equal(rankings.status, 503);
+  assert.deepEqual(await rankings.json(), { error: 'Não foi possível consultar o ranking.' });
+  const registration = await fetch(`${baseUrl}/api/students`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ deviceId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', studentName: 'Ana', className: '3A', registrationNumber: '12345' })
+  });
+  assert.equal(registration.status, 503);
+  assert.deepEqual(await registration.json(), { error: 'Não foi possível registrar o aluno.' });
+  assert.equal((await fetch(`${baseUrl}/api/questions?quantity=1`)).status, 200);
+});
+
 test('API local fornece saúde, questões, resultados e ranking', async t => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'performance-quest-api-'));
   const server = await createApiServer({ dataFile: path.join(directory, 'results.jsonl') });
