@@ -1,3 +1,5 @@
+import { validarGabarito } from './quiz.js';
+
 /**
  * Módulo de Integração com a API REST do Backend
  * 
@@ -110,9 +112,9 @@ export function normalizarQuestao(q) {
         q.correctAlternative ||
         q.respostaCorreta ||
         q.gabarito ||
-        (alternativas.find(a => a.isCorrect)?.letra) ||
-        'A'
-    ).toUpperCase();
+        (alternativas.find(a => a.isCorrect)?.letra) || ''
+    ).trim().toUpperCase();
+    validarGabarito({ alternativaCorreta: gabarito, alternativas });
 
     return {
         id,
@@ -222,15 +224,12 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
             ? 'Tempo limite esgotado ao conectar com a API.'
             : `Falha de rede ao conectar com a API em ${baseUrl}.`;
         const erro = new Error(mensagemErro);
-        erro.tipo = 'CONEXAO_FALHOU';
-        erro.url = baseUrl;
         throw erro;
     }
 
     if (!response.ok) {
         const erro = new Error(`A API retornou erro HTTP ${response.status} (${response.statusText}).`);
         erro.status = response.status;
-        erro.tipo = 'RESPOSTA_INVALIDA';
         throw erro;
     }
 
@@ -239,7 +238,6 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 
     if (!Array.isArray(listaBruta) || listaBruta.length === 0) {
         const erro = new Error('A API não retornou questões.');
-        erro.tipo = 'SEM_QUESTOES';
         throw erro;
     }
 
@@ -263,75 +261,43 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
 /**
  * Envia o resultado concluído para persistência no banco e ranking (POST /api/results)
  */
-export async function registrarAlunoAPI(aluno) {
-    const response = await fetch(`${getApiBaseUrl()}/students`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            deviceId: aluno.deviceId,
-            studentName: aluno.nome,
-            className: aluno.turma,
-            registrationNumber: aluno.matricula
-        })
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-        const error = new Error(data.error || `Erro ${response.status} ao registrar aluno.`);
-        error.status = response.status;
-        throw error;
+async function enviarJSON(caminho, payload) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+    try {
+        const response = await fetch(`${getApiBaseUrl()}/${caminho}`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload), signal: controller.signal
+        });
+        const data = await response.json().catch(erro => {
+            if (controller.signal.aborted) throw erro;
+            return {};
+        });
+        if (!response.ok) throw Object.assign(new Error(typeof data?.error === 'string' ? data.error : `Falha no envio (${response.status}).`), { status: response.status });
+        return data;
+    } finally {
+        clearTimeout(timeout);
     }
+}
+
+export async function registrarAlunoAPI(aluno) {
+    const data = await enviarJSON('students', {
+        deviceId: aluno.deviceId, studentName: aluno.nome,
+        className: aluno.turma, registrationNumber: aluno.matricula
+    });
+    if (!data?.student?.id) throw new Error('Resposta de cadastro inválida.');
     return data.student;
 }
 
 export async function enviarResultadoAPI(resultado) {
-    const baseUrl = getApiBaseUrl();
-    const url = `${baseUrl}/results`;
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 6000);
-
-    const payload = {
-        // Campos em conformidade com o endpoint POST /api/results do backend
-        studentName: resultado.nome,
-        name: resultado.nome,
-        className: resultado.turma,
-        turma: resultado.turma,
-        registrationNumber: resultado.matricula,
-        matricula: resultado.matricula,
-        deviceId: resultado.deviceId,
-        studentId: resultado.studentId,
-        score: resultado.acertos,
-        acertos: resultado.acertos,
-        totalQuestions: resultado.total,
-        total: resultado.total,
-        percentage: resultado.taxaAcerto,
-        taxaAcerto: resultado.taxaAcerto,
-        totalTimeSeconds: resultado.tempoTotalSegundos,
-        tempoSegundos: resultado.tempoTotalSegundos,
-        answers: resultado.respostas || [],
-        createdAt: new Date().toISOString(),
+    return enviarJSON('results', {
+        studentName: resultado.nome, className: resultado.turma,
+        registrationNumber: resultado.matricula, deviceId: resultado.deviceId,
+        studentId: resultado.studentId, score: resultado.acertos,
+        totalQuestions: resultado.total, totalTimeSeconds: resultado.tempoTotalSegundos,
+        answers: resultado.respostas || [], createdAt: resultado.createdAt,
         idempotencyKey: resultado.idempotencyKey
-    };
-
-    try {
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload),
-            signal: controller.signal
-        });
-        clearTimeout(timeout);
-
-        if (!res.ok) {
-            throw new Error(`Erro do servidor ao registrar resultado (${res.status}).`);
-        }
-
-        return await res.json().catch(() => ({ sucesso: true }));
-    } catch (err) {
-        clearTimeout(timeout);
-        throw err;
-    }
+    });
 }
 
 /**

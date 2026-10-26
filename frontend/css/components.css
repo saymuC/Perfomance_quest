@@ -444,19 +444,37 @@
 
 /* Modal */
 .modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 100;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  width: calc(100% - 2rem);
+  max-width: 750px;
+  max-height: 90vh;
+  margin: auto;
 }
 
-.modal-backdrop.active {
-  display: flex;
+.modal-backdrop::backdrop {
+  background: rgba(0, 0, 0, 0.5);
 }
+
+.alt-option:focus-within {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.alt-option input {
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.imagem-indisponivel {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+[hidden] { display: none !important; }
 
 .modal-content {
   background: white;

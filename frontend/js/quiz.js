@@ -1,3 +1,5 @@
+import { MENSAGENS } from './mensagens.js';
+
 /**
  * Módulo de Lógica do Quiz e Diagnóstico Local (Client-Side)
  * 
@@ -7,6 +9,14 @@
  */
 
 const CHAVE_HISTORICO = 'performance_quest_historico';
+
+export function validarGabarito(questao) {
+    const correta = String(questao.alternativaCorreta || questao.respostaCorreta || questao.gabarito || '').trim().toUpperCase();
+    const letras = (questao.alternativas || []).map(alt => String(alt.letra || alt.id || alt).trim().toUpperCase());
+    if (!/^[A-E]$/.test(correta) || !letras.includes(correta)) throw new Error('Gabarito ausente ou fora das alternativas.');
+    if (letras.some(letra => !/^[A-E]$/.test(letra)) || new Set(letras).size !== letras.length) throw new Error('Alternativas inválidas ou duplicadas.');
+    return correta;
+}
 
 /**
  * Valida e corrige uma resposta escolhida pelo estudante
@@ -25,9 +35,10 @@ export function corrigirResposta(questao, alternativaMarcada, tempoSegundos) {
     }
 
     const tempo = Number.isFinite(tempoSegundos) && tempoSegundos >= 0 ? tempoSegundos : 0;
-    const alternativaCorreta = questao.alternativaCorreta || questao.respostaCorreta || questao.gabarito || 'A';
+    const alternativaCorreta = validarGabarito(questao);
 
     const escolha = alternativaMarcada.trim().toUpperCase();
+    if (!questao.alternativas.some(alt => String(alt.letra || alt.id || alt).trim().toUpperCase() === escolha)) throw new Error('Alternativa escolhida inválida.');
     const correta = String(alternativaCorreta).trim().toUpperCase();
 
     return {
@@ -80,20 +91,6 @@ export class SessaoQuiz {
         const resultado = corrigirResposta(questao, alternativaMarcada, tempoSegundos);
         this.respostas.push(resultado);
         return resultado;
-    }
-
-    obterProgresso() {
-        const total = this.questoes.size;
-        const respondidas = this.respostas.length;
-        return {
-            questaoAtual: total === 0 ? 0 : Math.min(respondidas + 1, total),
-            total,
-            respondidas
-        };
-    }
-
-    obterRespostas() {
-        return [...this.respostas];
     }
 
     finalizar() {
@@ -222,7 +219,7 @@ export function gerarResumo(respostas = []) {
             acertos: 0,
             taxaAcerto: 0,
             tempoTotalSegundos: 0,
-            mensagem: 'Nenhuma questão respondida ainda.'
+            mensagem: MENSAGENS.semRespostas
         };
     }
 
@@ -231,11 +228,11 @@ export function gerarResumo(respostas = []) {
     const taxaAcerto = Math.round((acertos / total) * 100);
     const tempoTotalSegundos = respostas.reduce((acc, r) => acc + (r.tempoSegundos || 0), 0);
 
-    let mensagem = 'Continue praticando! Você está no caminho certo.';
+    let mensagem = MENSAGENS.incentivoPratica;
     if (taxaAcerto >= 80) {
-        mensagem = 'Excelente resultado! Seu domínio dos conteúdos do ENEM está ótimo!';
+        mensagem = MENSAGENS.resultadoExcelente;
     } else if (taxaAcerto >= 60) {
-        mensagem = 'Bom desempenho! Revise os tópicos recomendados abaixo para aumentar sua pontuação.';
+        mensagem = MENSAGENS.resultadoBom;
     }
 
     return {

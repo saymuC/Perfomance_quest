@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Performance Quest — Rendimento por Assunto (ENEM)</title>
+  <title data-mensagem="tituloPagina"></title>
   <!-- Configuração da API (README.md requirement) -->
   <script src="config.js"></script>
   <link rel="stylesheet" href="css/style.css">
@@ -14,7 +14,7 @@
   <!-- Overlay de Carregamento Global -->
   <div id="app-loading-overlay" class="loading-overlay" style="display: none;">
     <div class="spinner"></div>
-    <p id="loading-overlay-text" style="font-weight: 600; font-size: 1.05rem;">Carregando...</p>
+    <p id="loading-overlay-text" style="font-weight: 600; font-size: 1.05rem;" data-mensagem="carregandoGeral"></p>
   </div>
 
   <!-- Cabeçalho da Aplicação -->
@@ -23,23 +23,19 @@
       <div class="brand">
         <span class="brand-icon">🎯</span>
         <div>
-          <h1 class="brand-title">Performance Quest</h1>
-          <p class="brand-subtitle">Simulador & Diagnóstico Inteligente de Rendimento para o ENEM</p>
+          <h1 class="brand-title" data-mensagem="nomeProjeto"></h1>
+          <p class="brand-subtitle" data-mensagem="subtituloProjeto"></p>
         </div>
       </div>
       <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
         <!-- Badge de Identificação do Aluno -->
         <div id="header-aluno-container" class="aluno-header-badge" style="display: none;">
           <span>👤</span>
-          <span id="header-aluno-texto">Aluno</span>
-          <button id="btn-editar-aluno-header" class="btn btn-outline" style="padding: 0.15rem 0.45rem; font-size: 0.75rem; border-radius: 9999px;" title="Alterar meus dados">✏️</button>
+          <span id="header-aluno-texto" data-mensagem="aluno"></span>
+          <button id="btn-editar-aluno-header" class="btn btn-outline" style="padding: 0.15rem 0.45rem; font-size: 0.75rem; border-radius: 9999px;" title="" data-mensagem-title="tituloAlterarDados">✏️</button>
         </div>
 
-        <button id="btn-abrir-ranking-header" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" title="Ver Ranking da Turma">
-          🏆 Ranking
-        </button>
-
-        <span id="api-status-badge" class="badge badge-primary">API: Conectando...</span>
+        <button id="btn-abrir-ranking-header" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;" title="" data-mensagem-title="tituloVerRanking" data-mensagem="botaoRanking"></button>
       </div>
     </div>
   </header>
@@ -50,10 +46,10 @@
     <!-- Banner de Erro Global / Dismissible -->
     <div id="app-error-banner" class="error-banner" style="display: none;">
       <div class="error-banner-header">
-        <span id="error-banner-title">⚠️ Erro de Comunicação com a API</span>
-        <button id="btn-fechar-erro" class="btn btn-outline" style="padding: 0.1rem 0.4rem; font-size: 0.8rem;">✕</button>
+        <span id="error-banner-title" data-mensagem="erroGenericoTitulo"></span>
+        <button id="btn-fechar-erro" aria-label="" data-mensagem-aria-label="botaoFechar" class="btn btn-outline" style="padding: 0.1rem 0.4rem; font-size: 0.8rem;">✕</button>
       </div>
-      <p id="error-banner-message" class="error-banner-desc">Não foi possível conectar com o servidor.</p>
+      <p id="error-banner-message" class="error-banner-desc" data-mensagem="erroGenericoDesc"></p>
       <div id="error-banner-actions" class="error-banner-actions"></div>
     </div>
 
@@ -64,104 +60,88 @@
       
       <!-- Card de Identificação do Estudante (Requisito Tech Lead) -->
       <div class="card" id="card-identificacao-aluno">
-        <h3 class="card-title">👤 Identificação do Estudante</h3>
+        <h3 class="card-title" data-mensagem="tituloCadastro"></h3>
         
         <!-- Estado: Aluno Já Cadastrado -->
         <div id="aluno-cadastrado-view" style="display: none;">
           <div class="aluno-card-info">
             <div>
-              <strong id="card-aluno-nome" style="font-size: 1.05rem; color: #1e3a8a;">Nome do Aluno</strong>
+              <strong id="card-aluno-nome" style="font-size: 1.05rem; color: #1e3a8a;" data-mensagem="nomeAluno"></strong>
               <div style="font-size: 0.85rem; color: #475569; margin-top: 2px;">
-                Turma: <span id="card-aluno-turma" style="font-weight: 700; color: #2563eb;">3A</span> • 
-                Matrícula: <span id="card-aluno-matricula" style="font-family: monospace;">12345</span>
+                <span data-mensagem="rotuloTurma"></span> <span id="card-aluno-turma" style="font-weight: 700; color: #2563eb;" data-mensagem="exemploTurma"></span> •
+                <span data-mensagem="rotuloMatricula"></span> <span id="card-aluno-matricula" style="font-family: monospace;">12345</span>
               </div>
             </div>
-            <button id="btn-alterar-cadastro-home" class="btn btn-outline" style="font-size: 0.825rem; padding: 0.4rem 0.8rem;">
-              ✏️ Alterar Dados
-            </button>
+            <button id="btn-alterar-cadastro-home" class="btn btn-outline" style="font-size: 0.825rem; padding: 0.4rem 0.8rem;" data-mensagem="botaoAlterarDados"></button>
           </div>
         </div>
 
         <!-- Estado: Primeiro Acesso (Formulário Simples) -->
+        <p data-mensagem="retencaoDados"></p>
         <form id="form-cadastro-aluno">
-          <p style="font-size: 0.875rem; color: #475569; margin-bottom: 0.85rem;">
-            Preencha seus dados para salvar suas tentativas e participar do ranking da sua turma:
-          </p>
+          <p style="font-size: 0.875rem; color: #475569; margin-bottom: 0.85rem;" data-mensagem="orientacaoCadastro"></p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem;">
             <div>
-              <label class="form-label" for="input-aluno-nome">Nome Completo: *</label>
-              <input type="text" id="input-aluno-nome" class="form-input" placeholder="Ex: André Luiz" required>
+              <label class="form-label" for="input-aluno-nome" data-mensagem="campoNome"></label>
+              <input type="text" id="input-aluno-nome" class="form-input" placeholder="" data-mensagem-placeholder="exemploNome" required>
             </div>
             <div>
-              <label class="form-label" for="input-aluno-turma">Turma: *</label>
-              <input type="text" id="input-aluno-turma" class="form-input" placeholder="Ex: 3A, 3B, 3º Ano 1" required>
+              <label class="form-label" for="input-aluno-turma" data-mensagem="campoTurma"></label>
+              <input type="text" id="input-aluno-turma" class="form-input" placeholder="" data-mensagem-placeholder="exemplosTurmas" required>
             </div>
             <div>
-              <label class="form-label" for="input-aluno-matricula">Matrícula / ID: *</label>
-              <input type="text" id="input-aluno-matricula" class="form-input" placeholder="Ex: 202601" required>
+              <label class="form-label" for="input-aluno-matricula" data-mensagem="campoMatricula"></label>
+              <input type="text" id="input-aluno-matricula" class="form-input" placeholder="" data-mensagem-placeholder="exemploMatricula" required>
             </div>
           </div>
-          <button type="submit" id="btn-salvar-aluno" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.5rem 1rem;">
-            Salvar Identificação
-          </button>
+          <button type="submit" id="btn-salvar-aluno" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.5rem 1rem;" data-mensagem="botaoSalvarCadastro"></button>
         </form>
       </div>
 
       <!-- Card de Configuração do Simulado -->
       <div class="card">
-        <h2 class="card-title">🚀 Configuração do Simulado</h2>
-        <p style="color: #475569; margin-bottom: 1.25rem;">
-          Prepare-se com questões oficiais do ENEM e receba o diagnóstico por IA 
-          com os <strong>3 assuntos prioritários</strong> que você mais precisa focar.
-        </p>
+        <h2 class="card-title" data-mensagem="tituloConfiguracao"></h2>
+        <p style="color: #475569; margin-bottom: 1.25rem;" data-mensagem="orientacaoSimulado"></p>
 
         <div class="form-group">
-          <label class="form-label" for="filtro-area">Área do Conhecimento:</label>
+          <label class="form-label" for="filtro-area" data-mensagem="campoArea"></label>
           <select id="filtro-area" class="form-select">
-            <option value="Todas" selected>Todas as Áreas (Simulado Geral)</option>
-            <option value="Matemática">Matemática e suas Tecnologias</option>
-            <option value="Ciências da Natureza">Ciências da Natureza (Física, Química, Biologia)</option>
-            <option value="Ciências Humanas">Ciências Humanas (História, Geografia, Filosofia)</option>
-            <option value="Linguagens">Linguagens, Códigos e suas Tecnologias</option>
+            <option value="Todas" selected data-mensagem="todasAreas"></option>
+            <option value="Matemática" data-mensagem="areaMatematica"></option>
+            <option value="Ciências da Natureza" data-mensagem="areaNatureza"></option>
+            <option value="Ciências Humanas" data-mensagem="areaHumanas"></option>
+            <option value="Linguagens" data-mensagem="areaLinguagens"></option>
           </select>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="filtro-ano">Ano das Questões:</label>
+          <label class="form-label" for="filtro-ano" data-mensagem="campoAno"></label>
           <select id="filtro-ano" class="form-select">
-            <option value="all" selected>2022 e 2023 (misturado)</option>
-            <option value="2022">ENEM 2022</option>
-            <option value="2023">ENEM 2023</option>
+            <option value="all" selected data-mensagem="todosAnos"></option>
+            <option value="2022" data-mensagem="ano2022"></option>
+            <option value="2023" data-mensagem="ano2023"></option>
           </select>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="filtro-quantidade">Quantidade de Questões:</label>
+          <label class="form-label" for="filtro-quantidade" data-mensagem="campoQuantidade"></label>
           <select id="filtro-quantidade" class="form-select">
-            <option value="5" selected>5 questões (Diagnóstico Rápido)</option>
-            <option value="10">10 questões (Recomendado)</option>
-            <option value="15">15 questões (Completo)</option>
+            <option value="5" selected data-mensagem="quantidadeRapida"></option>
+            <option value="10" data-mensagem="quantidadeRecomendada"></option>
+            <option value="15" data-mensagem="quantidadeCompleta"></option>
           </select>
         </div>
 
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <button id="btn-iniciar-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;">
-            Iniciar Simulado →
-          </button>
-          <button id="btn-abrir-ranking-home" class="btn btn-outline" style="flex: 1; min-width: 130px;">
-            🏆 Ver Ranking
-          </button>
-          <button id="btn-ver-historico" class="btn btn-outline" style="flex: 1; min-width: 130px;">
-            Meu Histórico
-          </button>
+          <button id="btn-iniciar-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;" data-mensagem="iniciarSimulado"></button>
+          <button id="btn-abrir-ranking-home" class="btn btn-outline" style="flex: 1; min-width: 130px;" data-mensagem="botaoVerRanking"></button>
+          <button id="btn-ver-historico" class="btn btn-outline" style="flex: 1; min-width: 130px;" data-mensagem="botaoHistorico"></button>
         </div>
       </div>
 
       <div class="card" style="background: #f8fafc;">
-        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;">ℹ️ Como funciona o diagnóstico por IA e o Ranking?</h3>
-        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">
-          A cada simulado, nosso algoritmo calcula o <strong>Índice de Prioridade de Estudo (IPE)</strong> ponderando erros e tempo de resposta. O resultado final é enviado para a API para consolidar o <strong>Ranking da sua Turma</strong> (critérios: percentual, acertos e menor tempo).
-        </p>
+        <h3 style="font-size: 0.95rem; color: #334155; margin-bottom: 0.5rem;" data-mensagem="tituloComoFunciona"></h3>
+        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5;" data-mensagem="comoFunciona"></p>
       </div>
     </section>
 
@@ -173,8 +153,8 @@
         <!-- Barra de Metadados e Progresso -->
         <div class="quiz-header-bar">
           <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-            <span id="quiz-area-badge" class="badge badge-primary">Área</span>
-            <span id="quiz-assunto-badge" class="badge badge-warning">Assunto</span>
+            <span id="quiz-area-badge" class="badge badge-primary" data-mensagem="area"></span>
+            <span id="quiz-assunto-badge" class="badge badge-warning" data-mensagem="assunto"></span>
           </div>
 
           <div class="quiz-timer">
@@ -185,7 +165,7 @@
 
         <div class="progress-container">
           <div style="display: flex; justify-content: space-between; font-size: 0.825rem; color: #64748b;">
-            <span id="quiz-counter">Questão 1 de 5</span>
+            <span id="quiz-counter" data-mensagem="contadorInicial"></span>
           </div>
           <div class="progress-track">
             <div id="quiz-progress-fill" class="progress-fill"></div>
@@ -194,22 +174,20 @@
 
         <!-- Enunciado -->
         <div id="quiz-question-text" class="question-body">
-          Carregando enunciado da questão...
+          <span data-mensagem="carregandoQuestoes"></span>
         </div>
 
         <!-- Lista de Alternativas -->
-        <div id="quiz-alternatives" class="alternatives-list"></div>
+        <div id="quiz-alternatives" class="alternatives-list" role="group" aria-labelledby="quiz-question-text"></div>
 
         <!-- Banner de Correção Imediata -->
-        <div id="quiz-feedback" class="feedback-banner"></div>
+        <div id="quiz-feedback" class="feedback-banner" role="status"></div>
 
         <!-- Ações do Quiz -->
         <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
-          <button id="btn-confirmar-resposta" class="btn btn-primary" disabled>
-            Confirmar Resposta <kbd class="kbd-hint">Enter ↵</kbd>
+          <button id="btn-confirmar-resposta" class="btn btn-primary" disabled><span data-mensagem="botaoConfirmarResposta"></span> <kbd class="kbd-hint" data-mensagem="teclaEnter"></kbd>
           </button>
-          <button id="btn-proxima-questao" class="btn btn-primary" style="display: none;">
-            Próxima Questão → <kbd class="kbd-hint">Enter ↵</kbd>
+          <button id="btn-proxima-questao" class="btn btn-primary" style="display: none;"><span data-mensagem="botaoProximaQuestao"></span> <kbd class="kbd-hint" data-mensagem="teclaEnter"></kbd>
           </button>
         </div>
       </div>
@@ -220,39 +198,35 @@
          ======================================================== -->
     <section id="screen-result" class="screen">
       <div class="card">
-        <h2 class="card-title">📊 Resultado do Simulado</h2>
-        <p id="resumo-mensagem" style="font-size: 1.05rem; color: #334155; margin-bottom: 1.25rem;">
-          Carregando diagnóstico...
-        </p>
+        <h2 class="card-title" data-mensagem="tituloResultado"></h2>
+        <p id="resumo-mensagem" style="font-size: 1.05rem; color: #334155; margin-bottom: 1.25rem;" data-mensagem="carregandoDiagnostico"></p>
 
         <!-- Card de Status de Sincronização com o Backend (Requisito Tech Lead) -->
-        <div id="result-sync-card" class="sync-card">
+        <div id="result-sync-card" class="sync-card" role="status">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span id="sync-icon">⏳</span>
-            <span id="sync-status-texto">Sincronizando com o ranking online...</span>
+            <span id="sync-status-texto" data-mensagem="salvandoPontuacao"></span>
           </div>
-          <button id="btn-tentar-sincronizar" class="btn btn-outline" style="display: none; font-size: 0.8rem; padding: 0.3rem 0.7rem;">
-            🔄 Sincronizar Agora
-          </button>
+          <button id="btn-tentar-sincronizar" class="btn btn-outline" style="display: none; font-size: 0.8rem; padding: 0.3rem 0.7rem;" data-mensagem="botaoTentarNovamente"></button>
         </div>
 
         <!-- Indicadores Numéricos -->
         <div class="stats-grid">
           <div class="stat-box">
             <div id="resumo-total" class="stat-value">0</div>
-            <div class="stat-label">Questões</div>
+            <div class="stat-label" data-mensagem="questoes"></div>
           </div>
           <div class="stat-box">
             <div id="resumo-acertos" class="stat-value" style="color: #10b981;">0</div>
-            <div class="stat-label">Acertos</div>
+            <div class="stat-label" data-mensagem="acertos"></div>
           </div>
           <div class="stat-box">
             <div id="resumo-taxa" class="stat-value">0%</div>
-            <div class="stat-label">Aproveitamento</div>
+            <div class="stat-label" data-mensagem="aproveitamento"></div>
           </div>
           <div class="stat-box">
             <div id="resumo-tempo" class="stat-value">0s</div>
-            <div class="stat-label">Tempo Total</div>
+            <div class="stat-label" data-mensagem="tempoTotal"></div>
           </div>
         </div>
 
@@ -260,42 +234,37 @@
         <div class="ai-highlight-card">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span style="font-size: 1.3rem;">🧠</span>
-            <h3 style="font-size: 1.1rem; color: #0369a1;">Diagnóstico IA: Seus 3 Assuntos Mais Urgentes</h3>
+            <h3 style="font-size: 1.1rem; color: #0369a1;" data-mensagem="tituloPrioridades"></h3>
           </div>
-          <p style="font-size: 0.85rem; color: #0284c7; margin-top: 0.25rem;">
-            Calculado através do Índice de Prioridade de Estudo (IPE) com base em seus erros e tempo de resposta.
-          </p>
+          <p style="font-size: 0.85rem; color: #0284c7; margin-top: 0.25rem;" data-mensagem="orientacaoPrioridades"></p>
           <div id="ai-priority-container" class="ai-priority-list"></div>
         </div>
 
         <!-- Desempenho por Área do ENEM -->
         <div style="margin-top: 1.5rem;">
-          <h3 style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem;">Desempenho por Área de Conhecimento</h3>
+          <h3 style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem;" data-mensagem="tituloDesempenhoArea"></h3>
           <div id="area-breakdown-container" class="area-breakdown-list"></div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <h3 data-mensagem="desempenhoPorAssunto" style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem;">Desempenho por Assunto</h3>
+          <div id="subject-breakdown-container" class="area-breakdown-list"></div>
         </div>
 
         <!-- Revisão Detalhada das Questões Respondidas (RF10) -->
         <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
-            <h3 style="font-size: 1.1rem; color: #1e293b; display: flex; align-items: center; gap: 0.4rem;">
-              <span>📝</span> Revisão Detalhada do Gabarito
-            </h3>
-            <span id="revisao-resumo-tag" class="badge badge-primary">Resumo da Tentativa</span>
+            <h3 style="font-size: 1.1rem; color: #1e293b; display: flex; align-items: center; gap: 0.4rem;" data-mensagem="tituloRevisao"></h3>
+            <span id="revisao-resumo-tag" class="badge badge-primary" data-mensagem="resumoTentativa"></span>
           </div>
-          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">
-            Confira abaixo cada questão respondida nesta sessão, a alternativa marcada, o gabarito oficial e a explicação pedagógica.
-          </p>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;" data-mensagem="orientacaoRevisao"></p>
           <div id="revisao-questoes-container" class="revisao-list"></div>
         </div>
 
         <!-- Ações Pós-Quiz -->
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem;">
-          <button id="btn-novo-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;">
-            Fazer Novo Simulado
-          </button>
-          <button id="btn-abrir-ranking-resultado" class="btn btn-outline" style="flex: 1; min-width: 160px;">
-            🏆 Ver Ranking da Turma
-          </button>
+          <button id="btn-novo-simulado" class="btn btn-primary" style="flex: 2; min-width: 180px;" data-mensagem="botaoNovoSimulado"></button>
+          <button id="btn-abrir-ranking-resultado" class="btn btn-outline" style="flex: 1; min-width: 160px;" data-mensagem="botaoRankingTurma"></button>
         </div>
       </div>
     </section>
@@ -305,99 +274,88 @@
   <!-- ========================================================
        MODAL 1: RANKING DOS ESTUDANTES (Requisito Tech Lead)
        ======================================================== -->
-  <div id="modal-ranking" class="modal-backdrop">
+  <dialog id="modal-ranking" class="modal-backdrop" aria-labelledby="modal-ranking-titulo">
     <div class="modal-content" style="max-width: 750px;">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
-        <h3 style="font-size: 1.2rem; color: #0f172a; display: flex; align-items: center; gap: 0.4rem;">
-          <span>🏆</span> Ranking dos Estudantes
-        </h3>
-        <button id="btn-fechar-ranking" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
+        <h3 id="modal-ranking-titulo" style="font-size: 1.2rem; color: #0f172a; display: flex; align-items: center; gap: 0.4rem;" data-mensagem="tituloRanking"></h3>
+        <button id="btn-fechar-ranking" aria-label="" data-mensagem-aria-label="botaoFechar" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
       </div>
 
       <!-- Filtros do Ranking -->
       <div style="display: flex; gap: 0.75rem; align-items: flex-end; margin-top: 1rem; flex-wrap: wrap;">
         <div style="flex: 2; min-width: 180px;">
-          <label class="form-label" for="ranking-filtro-turma">Filtrar por Turma:</label>
+          <label class="form-label" for="ranking-filtro-turma" data-mensagem="campoFiltroTurma"></label>
           <select id="ranking-filtro-turma" class="form-select">
-            <option value="Todas" selected>Todas as Turmas (Geral)</option>
+            <option value="Todas" selected data-mensagem="filtroTodasTurmas"></option>
           </select>
         </div>
-        <button id="btn-atualizar-ranking" class="btn btn-outline" style="padding: 0.65rem 1rem;">
-          🔄 Atualizar
-        </button>
+        <button id="btn-atualizar-ranking" class="btn btn-outline" style="padding: 0.65rem 1rem;" data-mensagem="botaoAtualizar"></button>
       </div>
 
       <!-- Container da Tabela / Cards de Ranking -->
       <div id="ranking-conteudo-container" style="padding: 1rem 0; min-height: 150px;">
-        <p style="color: #64748b; font-size: 0.95rem;">Carregando classificação...</p>
+        <p style="color: #64748b; font-size: 0.95rem;" data-mensagem="carregandoClassificacao"></p>
       </div>
 
       <div style="border-top: 1px solid #e2e8f0; padding-top: 0.75rem; margin-top: 0.5rem; font-size: 0.775rem; color: #64748b; line-height: 1.4;">
-        ℹ️ <em>Critérios do ranking:</em> 1º Maior percentual de acerto, 2º Mais acertos absolutos, 3º Menor tempo total, 4º Data mais antiga.
-      </div>
+        <span data-mensagem="criteriosRanking"></span></div>
     </div>
-  </div>
+  </dialog>
 
   <!-- ========================================================
        MODAL 2: EDIÇÃO DE IDENTIFICAÇÃO DO ALUNO
        ======================================================== -->
-  <div id="modal-aluno" class="modal-backdrop">
+  <dialog id="modal-aluno" class="modal-backdrop" aria-labelledby="modal-aluno-titulo">
     <div class="modal-content" style="max-width: 500px;">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
-        <h3 style="font-size: 1.15rem; color: #0f172a;">👤 Meus Dados de Identificação</h3>
-        <button id="btn-fechar-modal-aluno" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
+        <h3 id="modal-aluno-titulo" style="font-size: 1.15rem; color: #0f172a;" data-mensagem="tituloEditarCadastro"></h3>
+        <button id="btn-fechar-modal-aluno" aria-label="" data-mensagem-aria-label="botaoFechar" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
       </div>
 
       <form id="form-modal-aluno" style="padding-top: 1rem;">
         <div class="form-group">
-          <label class="form-label" for="input-modal-nome">Nome Completo: *</label>
+          <label class="form-label" for="input-modal-nome" data-mensagem="campoNome"></label>
           <input type="text" id="input-modal-nome" class="form-input" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="input-modal-turma">Turma: *</label>
+          <label class="form-label" for="input-modal-turma" data-mensagem="campoTurma"></label>
           <input type="text" id="input-modal-turma" class="form-input" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="input-modal-matricula">Matrícula: *</label>
+          <label class="form-label" for="input-modal-matricula" data-mensagem="campoMatriculaEdicao"></label>
           <input type="text" id="input-modal-matricula" class="form-input" required>
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.25rem;">
-          <button type="button" id="btn-cancelar-modal-aluno" class="btn btn-secondary">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+          <button type="button" id="btn-cancelar-modal-aluno" class="btn btn-secondary" data-mensagem="botaoCancelar"></button>
+          <button type="submit" class="btn btn-primary" data-mensagem="botaoSalvarAlteracoes"></button>
         </div>
       </form>
     </div>
-  </div>
+  </dialog>
 
   <!-- ========================================================
        MODAL 3: HISTÓRICO LOCAL ACUMULADO
        ======================================================== -->
-  <div id="modal-history" class="modal-backdrop">
+  <dialog id="modal-history" class="modal-backdrop" aria-labelledby="modal-history-titulo">
     <div class="modal-content">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.75rem;">
-        <h3 style="font-size: 1.15rem; color: #0f172a;">📈 Meu Histórico Local (Navegador)</h3>
-        <button id="btn-fechar-historico" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
+        <h3 id="modal-history-titulo" style="font-size: 1.15rem; color: #0f172a;" data-mensagem="tituloHistorico"></h3>
+        <button id="btn-fechar-historico" aria-label="" data-mensagem-aria-label="botaoFechar" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
       </div>
 
       <div id="history-content" style="padding: 1rem 0;"></div>
 
       <div style="display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
-        <button id="btn-limpar-historico" class="btn btn-danger" style="font-size: 0.85rem;">
-          Limpar Histórico
-        </button>
-        <button onclick="document.getElementById('modal-history').classList.remove('active')" class="btn btn-secondary" style="font-size: 0.85rem;">
-          Fechar
-        </button>
+        <button id="btn-limpar-historico" class="btn btn-danger" style="font-size: 0.85rem;" data-mensagem="botaoLimparHistorico"></button>
+        <button id="btn-fechar-historico-rodape" class="btn btn-secondary" style="font-size: 0.85rem;" data-mensagem="botaoFechar"></button>
       </div>
     </div>
-  </div>
+  </dialog>
 
   <!-- Rodapé -->
   <footer class="app-footer">
-    <p>Performance Quest: Rendimento por Assunto &copy; 2026 — UNINORTE / Manaus-AM</p>
-    <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">
-      Atividades Práticas Interdisciplinares de Extensão II • API REST integrada
-    </p>
+    <p data-mensagem="rodapeProjeto"></p>
+    <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;" data-mensagem="rodapeDisciplina"></p>
   </footer>
 
   <!-- Carregador da Aplicação -->

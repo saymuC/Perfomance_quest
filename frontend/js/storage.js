@@ -9,7 +9,7 @@ const CHAVE_ALUNO = 'performance_quest_aluno';
 const CHAVE_FILA_SYNC = 'performance_quest_sync_queue';
 const CHAVE_DISPOSITIVO = 'performance_quest_device_id';
 
-function novoIdentificador() {
+export function novoIdentificador() {
     if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
         const r = Math.random() * 16 | 0;
@@ -103,26 +103,30 @@ export function limparDadosAluno() {
 }
 
 /**
- * Enfileira um resultado que falhou ao enviar para a API (Sincronização Offline)
+ * Guarda a tentativa antes do envio e evita duplicatas nos reenvios.
  */
 export function enfileirarResultadoPendente(resultado) {
     try {
         const fila = obterResultadosPendentes();
+        if (resultado.idempotencyKey && fila.some(item => item.payload.idempotencyKey === resultado.idempotencyKey)) return true;
         fila.push({
             id: `sync-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
             criadoEm: new Date().toISOString(),
             payload: resultado
         });
         localStorage.setItem(CHAVE_FILA_SYNC, JSON.stringify(fila));
+        return true;
     } catch (e) {
         console.warn('Erro ao enfileirar resultado para sincronização:', e);
+        return false;
     }
 }
 
 export function obterResultadosPendentes() {
     try {
         const raw = localStorage.getItem(CHAVE_FILA_SYNC);
-        return raw ? JSON.parse(raw) : [];
+        const fila = raw ? JSON.parse(raw) : [];
+        return Array.isArray(fila) ? fila : [];
     } catch {
         return [];
     }
@@ -142,5 +146,43 @@ export function limparFilaSincronizacao() {
         localStorage.removeItem(CHAVE_FILA_SYNC);
     } catch (e) {
         console.warn('Erro ao limpar fila de sincronização:', e);
+    }
+}
+
+// Atualiza a confirmação da identidade e evita repetir rejeições permanentes.
+export function atualizarResultadoPendente(id, alteracoes) {
+    const fila = obterResultadosPendentes().map(item => item.id === id ? { ...item, ...alteracoes } : item);
+    localStorage.setItem(CHAVE_FILA_SYNC, JSON.stringify(fila));
+}
+
+const CHAVE_ATIVIDADE = 'performance_quest_ultima_atividade';
+const PRAZO_INATIVIDADE = 30 * 24 * 60 * 60 * 1000;
+
+export function registrarAtividadeLocal() {
+    try { localStorage.setItem(CHAVE_ATIVIDADE, String(Date.now())); }
+    catch (erro) { console.warn('Falha ao registrar atividade local:', erro); }
+}
+
+export function aplicarRetencaoLocal() {
+    try {
+        const ultima = Number(localStorage.getItem(CHAVE_ATIVIDADE));
+        const expirou = ultima > 0 && Date.now() - ultima >= PRAZO_INATIVIDADE;
+        if (expirou) {
+            localStorage.removeItem(CHAVE_ALUNO);
+            localStorage.removeItem('performance_quest_historico');
+            if (!obterResultadosPendentes().length) localStorage.removeItem(CHAVE_DISPOSITIVO);
+        }
+        // Cadastros anteriores à política recebem o prazo a partir da primeira visita.
+        registrarAtividadeLocal();
+        return expirou;
+    } catch (erro) {
+        console.warn('Falha ao aplicar retenção local:', erro);
+        return false;
+    }
+}
+
+export function limparDadosLocais() {
+    for (const chave of [CHAVE_ALUNO, CHAVE_FILA_SYNC, CHAVE_DISPOSITIVO, CHAVE_ATIVIDADE, 'performance_quest_historico']) {
+        localStorage.removeItem(chave);
     }
 }
