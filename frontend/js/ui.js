@@ -225,7 +225,7 @@ export const UI = {
             questionText.replaceChildren();
             const enunciado = String(questao.enunciado || MENSAGENS.enunciadoIndisponivel)
                 .replace(/\\n/g, '\n');
-            const imagemMarkdown = /!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g;
+            const imagemMarkdown = /!\[[^\]]*\]\(((?:https?:\/\/|\.\/)[^\s)]+)\)/g;
             let inicio = 0;
             let imagem;
 

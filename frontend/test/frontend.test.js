@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 // Mock do ambiente de navegador para testes unitários em Node.js
 if (!globalThis.window) {
@@ -56,6 +57,22 @@ test('as 17 turmas do formulário são aceitas no cadastro e as demais recusadas
     for (const className of ['3A', '1° ano 10', '2° ano 6', '3° ano 4', '4° ano 1']) {
         assert.throws(() => createStudent({ ...cadastro, className }), /turma/i);
     }
+});
+
+test('a edição do aluno usa o mesmo dropdown obrigatório de turmas do cadastro', () => {
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    const select = id => new RegExp(`<select id="${id}" class="form-select turma-select" required>[\\s\\S]*?<\\/select>`);
+    assert.match(html, select('input-aluno-turma'));
+    assert.match(html, select('input-modal-turma'));
+    assert.doesNotMatch(html, /<input[^>]+id="input-modal-turma"/);
+});
+
+test('o modal de edição não converte o select de turma em campo texto', () => {
+    const app = readFileSync(new URL('../js/app.js', import.meta.url), 'utf8');
+    assert.match(app, /document\.getElementById\('input-modal-turma'\)/);
+    assert.match(app, /if \(inputTurma\?\.tagName === 'SELECT'\)/);
+    assert.match(app, /inputTurma\.value = aluno\.turma/);
+    assert.match(app, /inputTurma\.add\(new Option\(turma, turma\)\)/);
 });
 
 test('contrato de envio canônico é aceito pelo backend sem aliases redundantes', async t => {

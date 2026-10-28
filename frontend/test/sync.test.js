@@ -2,7 +2,7 @@ import test, { beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { UI } from '../js/ui.js';
 import { MENSAGENS } from '../js/mensagens.js';
-import { salvarDadosAluno, obterDadosAluno, obterResultadosPendentes, enfileirarResultadoPendente } from '../js/storage.js';
+import { TURMAS, salvarDadosAluno, obterDadosAluno, obterResultadosPendentes, enfileirarResultadoPendente } from '../js/storage.js';
 
 const memoria = new Map();
 Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: {
@@ -11,7 +11,7 @@ Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: {
     removeItem: chave => memoria.delete(chave)
 } });
 const eventos = new Map();
-const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-proxima-questao', 'ranking-filtro-turma', 'form-cadastro-aluno', 'form-modal-aluno'].map(id => [id, {
+const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-proxima-questao', 'ranking-filtro-turma', 'form-cadastro-aluno', 'form-modal-aluno', 'btn-alterar-cadastro-home'].map(id => [id, {
     style: {}, addEventListener: (evento, callback) => eventos.set(`${id}:${evento}`, callback)
 }]));
 globalThis.document = {
@@ -237,6 +237,43 @@ test('os dois formulários usam mensagem amigável para nome duplicado', async t
         await eventos.get(`${formulario}:submit`)({ preventDefault() {} });
     }
     assert.deepEqual(alertas, [MENSAGENS.nomeJaCadastrado, MENSAGENS.nomeJaCadastrado]);
+});
+
+test('editar aluno oferece as turmas válidas e salva a turma selecionada localmente e na API', async t => {
+    const opcoes = [];
+    const select = { tagName: 'SELECT', options: opcoes, value: '', add(opcao) { opcoes.push(opcao); } };
+    const modal = { open: false, showModal() { this.open = true; }, close() { this.open = false; } };
+    const previousOption = globalThis.Option;
+    globalThis.Option = function (text, value) { return { text, value }; };
+    for (const [id, elemento] of [
+        ['input-modal-nome', { value: '' }], ['input-modal-turma', select],
+        ['input-modal-matricula', { value: '' }], ['modal-aluno', modal]
+    ]) botoes.set(id, elemento);
+    t.after(() => {
+        for (const id of ['input-modal-nome', 'input-modal-turma', 'input-modal-matricula', 'modal-aluno']) botoes.delete(id);
+        if (previousOption === undefined) delete globalThis.Option;
+        else globalThis.Option = previousOption;
+    });
+
+    const cadastroEnviado = {};
+    t.mock.method(globalThis, 'fetch', async (url, opcoesFetch) => {
+        if (new URL(url).pathname.endsWith('/students')) {
+            Object.assign(cadastroEnviado, JSON.parse(opcoesFetch.body));
+            return Response.json({ student: { id: studentId } });
+        }
+        return Response.json({ status: 'ok' });
+    });
+
+    eventos.get('btn-alterar-cadastro-home:click')();
+    assert.equal(modal.open, true);
+    assert.equal(select.value, '3° ano 1');
+    assert.equal(opcoes.length, 17);
+    assert.ok(opcoes.every(opcao => TURMAS.includes(opcao.value)));
+
+    select.value = '2° ano 2';
+    await eventos.get('form-modal-aluno:submit')({ preventDefault() {} });
+    assert.equal(cadastroEnviado.className, '2° ano 2');
+    assert.equal(obterDadosAluno().turma, '2° ano 2');
 });
 
 test('atalhos de alternativas funcionam com foco no radio e não capturam digitação', t => {

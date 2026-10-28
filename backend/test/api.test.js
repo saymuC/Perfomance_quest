@@ -86,7 +86,7 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
 
   const allYears = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=500&year=all`).then(response => response.json());
   assert.ok(allYears.total > year2022.total + 150);
-  assert.equal(allYears.total, 2711);
+  assert.equal(allYears.total, 2721);
   assert.ok(allYears.questions.every(question => question.ano >= 2009 && question.ano <= 2023));
 
   const oldYear = await fetch(`${baseUrl}/api/questions?area=Linguagens&quantity=200&year=2021`).then(response => response.json());
@@ -105,6 +105,35 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   assert.equal(year2021.total, 184);
   assert.ok(year2021.questions.every(question => question.id !== 'enem-2021-138'));
   assert.ok(year2021.questions.every(question => question.area === ['Linguagens', 'Ciências Humanas', 'Ciências da Natureza', 'Matemática'][Math.ceil(Number(question.id.match(/enem-2021-(\d+)/)[1]) / 45) - 1]));
+  const year2020 = await fetch(`${baseUrl}/api/questions?quantity=200&year=2020`).then(response => response.json());
+  assert.equal(year2020.total, 183);
+  assert.ok(year2020.questions.every(question => question.alternativaCorreta && question.explicacao));
+  assert.ok(year2020.questions.every(question => !['enem-2020-135', 'enem-2020-157'].includes(question.id)));
+  const year2019 = await fetch(`${baseUrl}/api/questions?quantity=200&year=2019`).then(response => response.json());
+  assert.equal(year2019.total, 184);
+  assert.ok(year2019.questions.every(question => question.alternativaCorreta && question.explicacao));
+  assert.ok(year2019.questions.every(question => question.id !== 'enem-2019-90'));
+  assert.ok(year2019.questions.some(question => question.id === 'enem-2019-5-ingles'));
+  const year2019Again = await fetch(`${baseUrl}/api/questions?quantity=200&year=2019`).then(response => response.json());
+  assert.notDeepEqual(year2019.questions.map(question => question.id), year2019Again.questions.map(question => question.id));
+  const year2018 = await fetch(`${baseUrl}/api/questions?quantity=200&year=2018`).then(response => response.json());
+  assert.equal(year2018.total, 184);
+  assert.ok(year2018.questions.every(question => question.alternativaCorreta && question.explicacao));
+  assert.ok(year2018.questions.every(question => question.id !== 'enem-2018-163'));
+  const year2018Again = await fetch(`${baseUrl}/api/questions?quantity=200&year=2018`).then(response => response.json());
+  assert.notDeepEqual(year2018.questions.map(question => question.id), year2018Again.questions.map(question => question.id));
+  const year2017 = await fetch(`${baseUrl}/api/questions?quantity=200&year=2017`).then(response => response.json());
+  assert.equal(year2017.total, 185);
+  assert.ok(year2017.questions.every(question => question.enunciado && question.alternativaCorreta && question.explicacao));
+  const year2017Again = await fetch(`${baseUrl}/api/questions?quantity=200&year=2017`).then(response => response.json());
+  assert.notDeepEqual(year2017.questions.map(question => question.id), year2017Again.questions.map(question => question.id));
+  const year2016 = await fetch(`${baseUrl}/api/questions?quantity=200&year=2016`).then(response => response.json());
+  assert.equal(year2016.total, 185);
+  assert.ok(year2016.questions.every(question => question.enunciado && question.alternativaCorreta && question.explicacao && question.alternativas.length === 5));
+  assert.ok(year2016.questions.some(question => question.id === 'enem-2016-93-espanhol'));
+  assert.ok(year2016.questions.some(question => question.id === 'enem-2016-93-ingles'));
+  const year2016Again = await fetch(`${baseUrl}/api/questions?quantity=200&year=2016`).then(response => response.json());
+  assert.notDeepEqual(year2016.questions.map(question => question.id), year2016Again.questions.map(question => question.id));
 
   const fullQuestionSetResponse = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=200&year=2023`);
   assert.equal(fullQuestionSetResponse.status, 200);

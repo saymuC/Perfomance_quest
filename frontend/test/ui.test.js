@@ -52,6 +52,14 @@ test('imagem com falha mantém alternativa selecionável e permite recarregar', 
     assert.equal(opcoes[0].children.filter(el => el.className === 'imagem-indisponivel').length, 0);
 });
 
+test('enunciado exibe imagem local da base ENEM', () => {
+    elementos.clear();
+    elementos.set('quiz-question-text', new Elemento('div'));
+    UI.renderizarQuestao({ questao: { enunciado: 'Figura: ![](./assets/enem/2018/exemplo.png)', alternativas: [] }, indice: 1, total: 1, onSelecionarAlternativa: () => {} });
+    const imagem = elementos.get('quiz-question-text').children.find(el => el.tagName === 'IMG');
+    assert.equal(imagem?.src, './assets/enem/2018/exemplo.png');
+});
+
 test('alternativas usam controles nativos e ficam bloqueadas após confirmar', () => {
     const { opcoes } = renderizarAlternativas();
     for (const opcao of opcoes) {

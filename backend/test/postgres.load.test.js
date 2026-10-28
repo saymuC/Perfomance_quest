@@ -32,13 +32,13 @@ test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas',
         try {
           const registered = await fetch(`${baseUrl}/api/students`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ deviceId, studentName: `load-${randomUUID()}`, className: 'LOAD', registrationNumber: randomUUID() })
+            body: JSON.stringify({ deviceId, studentName: `load-${randomUUID()}`, className: '3° ano 1', registrationNumber: randomUUID() })
           });
           const profile = await registered.json();
           if (!registered.ok) throw new Error(`cadastro HTTP ${registered.status}: ${profile.error}`);
           const result = await fetch(`${baseUrl}/api/results`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idempotencyKey, deviceId, studentId: profile.student.id, studentName: profile.student.studentName, className: 'LOAD', registrationNumber: profile.student.registrationNumber, score: 1, totalQuestions: 1, totalTimeSeconds: 1 })
+            body: JSON.stringify({ idempotencyKey, deviceId, studentId: profile.student.id, studentName: profile.student.studentName, className: profile.student.className, registrationNumber: profile.student.registrationNumber, score: 1, totalQuestions: 1, totalTimeSeconds: 1 })
           });
           const saved = await result.json();
           if (!result.ok) throw new Error(`resultado HTTP ${result.status}: ${saved.error}`);
@@ -60,7 +60,7 @@ test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas',
   const duplicateName = `load-duplicate-${randomUUID()}`;
   const duplicateRegistrations = await Promise.all(Array.from({ length: 10 }, (_, index) => fetch(`${baseUrl}/api/students`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ deviceId: randomUUID(), studentName: duplicateName, className: 'LOAD', registrationNumber: `duplicate-${index}` })
+    body: JSON.stringify({ deviceId: randomUUID(), studentName: duplicateName, className: '3° ano 1', registrationNumber: `duplicate-${index}` })
   })));
   assert.equal(duplicateRegistrations.filter(response => response.status === 200).length, 1);
   assert.equal(duplicateRegistrations.filter(response => response.status === 409).length, 9);
@@ -69,13 +69,13 @@ test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas',
   const existingDeviceRegistration = `load-device-existing-${randomUUID()}`;
   const existingDeviceProfile = await fetch(`${baseUrl}/api/students`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ deviceId: competingDevice, studentName: existingDeviceRegistration, className: 'LOAD', registrationNumber: randomUUID() })
+    body: JSON.stringify({ deviceId: competingDevice, studentName: existingDeviceRegistration, className: '3° ano 1', registrationNumber: randomUUID() })
   });
   assert.equal(existingDeviceProfile.status, 200);
   const sameDeviceNames = ['load-device-one', 'load-device-two'];
   const sameDeviceRegistrations = await Promise.all(sameDeviceNames.map(studentName => fetch(`${baseUrl}/api/students`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ deviceId: competingDevice, studentName, className: 'LOAD', registrationNumber: `other-${studentName}` })
+    body: JSON.stringify({ deviceId: competingDevice, studentName, className: '3° ano 1', registrationNumber: `other-${studentName}` })
   })));
   assert.ok(sameDeviceRegistrations.every(response => response.status === 409));
   const { rows: deviceCount } = await (async () => {
@@ -89,7 +89,7 @@ test('PostgreSQL load: concorrência gradual sem erros ou gravações perdidas',
   const deviceId = randomUUID();
   const registered = await fetch(`${baseUrl}/api/students`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ deviceId, studentName: `retry-${randomUUID()}`, className: 'LOAD', registrationNumber: randomUUID() })
+    body: JSON.stringify({ deviceId, studentName: `retry-${randomUUID()}`, className: '3° ano 1', registrationNumber: randomUUID() })
   });
   const { student } = await registered.json();
   const idempotencyKey = randomUUID();

@@ -376,7 +376,12 @@ function abrirModalEdicaoAluno() {
 
     if (aluno) {
         if (inputNome) inputNome.value = aluno.nome;
-        if (inputTurma) inputTurma.value = aluno.turma;
+        if (inputTurma?.tagName === 'SELECT') {
+            for (const turma of TURMAS) {
+                if (![...inputTurma.options].some(opcao => opcao.value === turma)) inputTurma.add(new Option(turma, turma));
+            }
+            inputTurma.value = aluno.turma;
+        }
         if (inputMatricula) inputMatricula.value = aluno.matricula;
     }
 

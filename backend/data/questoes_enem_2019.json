@@ -41,7 +41,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O eu lírico se identifica com a herança moura e árabe presente em sua terra. Essa referência a diferentes origens compõe uma identidade cultural plural."
+  },
+  {
+    "title": "Questão 1 - ENEM 2019",
+    "index": 1,
+    "discipline": "linguagens",
+    "language": "ingles",
+    "year": 2019,
+    "context": "**5 Ways Pets Can Improve Your Health**\n\nA pet is certainly a great friend. After a difficult day, pet owners quite literally feel the love. In fact, for nearly 25 years, research has shown that living with pets provides certain health benefits. Pets help lower blood pressure and lessen anxiety. They boost our immunity. They can even help you get dates.\n\n**Allergy Fighters:** A growing number of studies have suggested that kids growing up in a home with “furred animals” will have less risk of allergies and asthma.\n\n**Date Magnets:** Dogs are great for making love connections. Forget Internet matchmaking — a dog is a natural conversation starter.\n\n**Dogs for the Aged:** Walking a dog or just caring for a pet — for elderly people who are able — can provide exercise and companionship.\n\n**Good for Mind and Soul:** Like any enjoyable activity, playing with a dog can elevate levels of serotonin and dopamine — nerve transmitters that are known to have pleasurable and calming properties.\n\n**Good for the Heart:** Heart attack patients who have pets survive longer than those without, according to several studies.\n\n**DAVIS, J. L.** Disponível em: www.webmd.com. Acesso em: 21 abr. 2013 (adaptado).",
+    "files": [],
+    "correctAlternative": "B",
+    "alternativaCorreta": "B",
+    "alternativesIntroduction": "Ao discutir sobre a influência de animais de estimação no bem-estar do ser humano, a autora, a fim de fortalecer\nseus argumentos, utiliza palavras e expressões como research, a growing number of research e several studies com o objetivo de",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "Mostrar que animais de estimação ajudam na cura de doenças como alergias e asma.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "Convencer sobre os benefícios da adoção de animais de estimação para a saúde.",
+        "file": null,
+        "isCorrect": true
+      },
+      {
+        "letter": "C",
+        "text": "Fornecer dados sobre os impactos de animais de estimação nas relações amorosas.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "Explicar como o contato com animais de estimação pode prevenir ataques cardíacos.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "E",
+        "text": "Esclarecer sobre o modo como idosos devem se relacionar com animais de estimação.",
+        "file": null,
+        "isCorrect": false
+      }
+    ],
+    "explicacao": "A autora menciona pesquisas e estudos para dar credibilidade à lista de benefícios dos animais de estimação. Esse apelo a evidências busca convencer o leitor dos efeitos positivos sobre a saúde."
   },
   {
     "title": "Questão 2 - ENEM 2019",
@@ -85,7 +131,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Dejar su huella significa deixar sua marca. No contexto, os jovens desejam transformar a sociedade e fazer diferença no mundo."
+  },
+  {
+    "title": "Questão 2 - ENEM 2019",
+    "index": 2,
+    "discipline": "linguagens",
+    "language": "ingles",
+    "year": 2019,
+    "context": "LETTER TO THE EDITOR: Sugar fear-mongering unhelpful\n\nBy The Washington Times Tuesday, June 25, 2013\n\nIn his recent piece “Is obesity a disease?” (Web, June 19), Dr. Peter Lind refers to high-fructose corn syrup and other “manufactured sugars” as “poison” that will “guarantee storage of fat in the body.” Current scientific research strongly indicates that obesity results from excessive calorie intake combined with a sedentary lifestyle. The fact is Americans are consuming more total calories now than ever before. According to the U.S. Department of Agriculture, our total per-capita daily caloric intake increased by 22 percent from 2,076 calories per day in 1970 to 2,534 calories per day in 2010 — an additional 458 calories, only 34 of which come from increased added sugar intake. A vast majority of these calories come from increased fats and flour/ cereals. Surprisingly, the amount of caloric sweeteners (i.e. sugar, high-fructose, corn syrup, honey, etc.). Americans consume has actually decreased over the past decade. We need to continue to study the obesity epidemic to see what more can be done, but demonizing one specific ingredient accomplishes nothing and raises unnecessary fears that get in the way of real solutions.\n\nJAMES M. RIPPE Shrewsbury, Mass.\n\n<p style=”text-align: right;”><strong>Dispon&iacute;vel em:</strong> www.washingtontimes.com. Acesso em: 29 jul. 2013 (adaptado).</p>",
+    "files": [],
+    "correctAlternative": "D",
+    "alternativaCorreta": "D",
+    "alternativesIntroduction": "Ao abordar o assunto “obesidade”, em uma seção de jornal, o autor",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "Defende o consumo liberado de açúcar.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "Aponta a gordura como o grande vilão da saúde.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "C",
+        "text": "Demonstra acreditar que a obesidade não é preocupante.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "Indica a necessidade de mais pesquisas sobre o assunto.",
+        "file": null,
+        "isCorrect": true
+      },
+      {
+        "letter": "E",
+        "text": "Enfatiza a redução de ingestão de calorias pelos americanos.",
+        "file": null,
+        "isCorrect": false
+      }
+    ],
+    "explicacao": "A carta contesta a ideia de que o açúcar isoladamente explique a obesidade e discute limites das evidências disponíveis. O autor defende mais investigação antes de atribuir a causa a um ingrediente específico."
   },
   {
     "title": "Questão 3 - ENEM 2019",
@@ -129,7 +221,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O texto usa a fábula como ponto de partida para discutir fatos sobre formigas, como o cultivo de fungos e a divisão de tarefas na colônia. O foco é descrever o comportamento real desses insetos."
+  },
+  {
+    "title": "Questão 3 - ENEM 2019",
+    "index": 3,
+    "discipline": "linguagens",
+    "language": "ingles",
+    "year": 2019,
+    "context": "**In this life**\n\nSitting on a park bench\n\nThinking about a friend of mine\n\nHe was only twenty-three\n\nGone before he had his time.\n\nIt came without a warning\n\nDidnꞌt want his friends to see him cry\n\nHe knew the day was dawning\n\nAnd I didnꞌt have a chance to say goodbye.\n\nMADONNA. **Erotica**. Estados Unidos: Maverick, 1992.",
+    "files": [],
+    "correctAlternative": "A",
+    "alternativaCorreta": "A",
+    "alternativesIntroduction": "A canção, muitas vezes, é uma forma de manifestar sentimentos e emoções da vida cotidiana. Por exemplo, o sofrimento retratado nessa canção foi causado",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "Pela morte precoce de um amigo jovem.",
+        "file": null,
+        "isCorrect": true
+      },
+      {
+        "letter": "B",
+        "text": "Pelo término de um relacionamento amoroso.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "C",
+        "text": "Pela mudança de um amigo para outro país.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "Pelo fim de uma amizade de mais de vinte anos.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "E",
+        "text": "Pela traição por parte de pessoa próxima.",
+        "file": null,
+        "isCorrect": false
+      }
+    ],
+    "explicacao": "A letra lamenta um amigo que morreu aos 23 anos, antes de seu tempo, sem que a narradora pudesse se despedir. O sofrimento decorre dessa morte precoce."
   },
   {
     "title": "Questão 4 - ENEM 2019",
@@ -173,7 +311,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O poema dirige-se à empanada como se fosse uma pessoa e celebra seus ingredientes e o prazer de comê-la. A personificação enaltece o prato da culinária hispânica."
+  },
+  {
+    "title": "Questão 4 - ENEM 2019",
+    "index": 4,
+    "discipline": "linguagens",
+    "language": "ingles",
+    "year": 2019,
+    "context": "If children live with criticism, they learn to condemn.\n\nIf children live with fear, they learn to be apprehensive.\n\nIf children live with pity, they learn to feel sorry for themselves.\n\nIf children live with ridicule, they learn to feel shy.\n\nIf children live with tolerance, they learn patience.\n\nIf children live with praise, they learn appreciation.\n\nIf children live with acceptance, they learn to love.\n\nIf children live with approval, they learn to like themselves.\n\nIf children live with recognition, they learn it is good to have a goal.\n\nIf children live with sharing, they learn generosity. If children live with fairness, they learn justice.\n\nIf children live with kindness and consideration, they learn respect.\n\nIf children live with friendliness, they learn the world is a nice place in which to live.\n\n**NOLTE, D. L**. Disponível em: www.americanfamilytraditions.com. Acesso em: 30 jul. 2012.",
+    "files": [],
+    "correctAlternative": "B",
+    "alternativaCorreta": "B",
+    "alternativesIntroduction": "Valores culturais de um povo revelam sua forma de ser, agir e pensar. Na concepção da autora, as diferentes formas de educar crianças nos Estados Unidos confirmam que as crianças",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "Temem quem as amedronta.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "Aprendem com o que vivem.",
+        "file": null,
+        "isCorrect": true
+      },
+      {
+        "letter": "C",
+        "text": "Amam aqueles que as aceitam.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "São gentis quando respeitadas.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "E",
+        "text": "Ridicularizam quem as intimida.",
+        "file": null,
+        "isCorrect": false
+      }
+    ],
+    "explicacao": "A repetição de estruturas como crianças que vivem com determinada experiência aprendem determinada atitude sustenta a ideia central: as crianças aprendem com aquilo que vivenciam."
   },
   {
     "title": "Questão 5 - ENEM 2019",
@@ -207,7 +391,7 @@
       },
       {
         "letter": "D",
-        "text": "D problematizar o descarte inconsequente de equipamentos.",
+        "text": "Problematizar o descarte inconsequente de equipamentos.",
         "file": null,
         "isCorrect": true
       },
@@ -217,7 +401,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A escultura reúne o volume de resíduos eletrônicos que uma pessoa pode descartar ao longo da vida. Sua escala chama atenção para o descarte inconsequente desses equipamentos."
+  },
+  {
+    "title": "Questão 5 - ENEM 2019",
+    "index": 5,
+    "discipline": "linguagens",
+    "language": "ingles",
+    "year": 2019,
+    "context": "Cartum de M. Keefer: em uma sala de aula, diante de um livro impresso, um estudante pergunta ao colega: “Pssst. How do you turn this thing on?” (Como se liga essa coisa?). Fonte: www.nj.com, acesso em 3 dez. 2018.",
+    "files": [],
+    "correctAlternative": "E",
+    "alternativaCorreta": "E",
+    "alternativesIntroduction": "No cartum, o estudante faz uma pergunta usando turn this thing on por",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "suspeitar que o colega está com seu material por engano.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "duvidar que o colega possa se tornar um bom aluno.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "C",
+        "text": "desconfiar que o livro levado é de outra matéria.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "entender como desligada a postura do colega.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "E",
+        "text": "desconhecer como usar um livro impresso.",
+        "file": null,
+        "isCorrect": true
+      }
+    ],
+    "explicacao": "A expressão “turn this thing on” significa ligar um aparelho. Ao aplicá-la ao livro de papel, o estudante mostra que não sabe como usar um livro impresso."
   },
   {
     "title": "Questão 6 - ENEM 2019",
@@ -263,7 +493,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A campanha associa o exercício de direitos ao cumprimento de deveres na convivência social. Sua função é conscientizar a população dessa relação."
   },
   {
     "title": "Questão 7 - ENEM 2019",
@@ -307,7 +538,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A letra usa expressões que podem indicar tanto intensidade amorosa quanto controle e sofrimento. Esse duplo sentido ajuda a mostrar que dominação e violência não constituem amor."
   },
   {
     "title": "Questão 8 - ENEM 2019",
@@ -351,7 +583,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As negativas informam o que não foi encontrado na cena, como ferimentos ou sinais de roubo. Ao eliminar hipóteses, elas ajudam Sherlock Holmes a investigar a morte."
   },
   {
     "title": "Questão 9 - ENEM 2019",
@@ -395,7 +628,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A mediação da TV recorta e edita o esporte, privilegiando o espetáculo em detrimento da vivência integral do atleta. A reflexão trata dessa distorção transmitida ao espectador."
   },
   {
     "title": "Questão 10 - ENEM 2019",
@@ -441,7 +675,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A campanha convoca pessoas diferentes a agir contra o bullying por meio de verbos no imperativo. O uso repetido dessas estruturas injuntivas faz o chamamento social."
   },
   {
     "title": "Questão 11 - ENEM 2019",
@@ -485,7 +720,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A regulamentação e a padronização das práticas tradicionais transformam atividades indígenas em modalidades de competição. Isso legitima sua apresentação como esporte nos Jogos."
   },
   {
     "title": "Questão 12 - ENEM 2019",
@@ -531,7 +767,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As narrativas em imagens, compreensíveis sem texto verbal, ampliam as possibilidades de leitura para pessoas com diferentes línguas e condições auditivas. Os dois textos evidenciam a acessibilidade."
   },
   {
     "title": "Questão 13 - ENEM 2019",
@@ -575,7 +812,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pinote abandona a proposta futurista após ser rejeitado e passa a adotar formas antigas para ser aceito. A ironia critica a preferência conservadora do público por modelos consagrados."
   },
   {
     "title": "Questão 14 - ENEM 2019",
@@ -619,7 +857,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A voz lírica apresenta a partida e a permanência como travessias do desconhecido. A solidão e a ausência abrem novos rumos e experiências para quem parte e para quem fica."
   },
   {
     "title": "Questão 15 - ENEM 2019",
@@ -663,7 +902,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O texto apresenta informações sobre a coleção digital e descreve como pesquisar, ampliar e baixar as imagens. Predomina a função referencial, voltada a informar."
   },
   {
     "title": "Questão 16 - ENEM 2019",
@@ -707,7 +947,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O narrador relata situações absurdas como baratas que disputam seu escritório e roubam máscaras. A sequência desses acontecimentos improváveis cria o efeito de humor."
   },
   {
     "title": "Questão 17 - ENEM 2019",
@@ -753,7 +994,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O infográfico retrata tipos de usuários que expõem excessivamente a própria vida e imagem nas redes sociais. Essa exibição exagerada é o comportamento comum destacado."
   },
   {
     "title": "Questão 18 - ENEM 2019",
@@ -797,7 +1039,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O código aberto permite que usuários e desenvolvedores compartilhem e aprimorem coletivamente os programas. Assim, o software livre democratiza o acesso a produtos e conhecimentos construídos em comunidade."
   },
   {
     "title": "Questão 19 - ENEM 2019",
@@ -841,7 +1084,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Ao publicar imagens dos filhos sem que eles possam consentir, os pais criam um registro público que pode constrangê-los no futuro. O impacto apontado é a violação da intimidade das crianças."
   },
   {
     "title": "Questão 20 - ENEM 2019",
@@ -885,7 +1129,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A plataforma organiza dados públicos de exportações, trabalho e renda de maneira acessível e interativa. Isso possibilita obter informações úteis para análise e decisões estratégicas."
   },
   {
     "title": "Questão 21 - ENEM 2019",
@@ -929,7 +1174,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A pergunta da menina sobre o significado de desquitada revela o peso do julgamento social sobre a condição da mãe. A narrativa apresenta esse estigma pela percepção infantil."
   },
   {
     "title": "Questão 22 - ENEM 2019",
@@ -973,7 +1219,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A personagem primeiro se fecha e se arma de espinhos, mas depois se abre para o abraço. A imagem metaforiza a passagem da firmeza defensiva para a brandura."
   },
   {
     "title": "Questão 23 - ENEM 2019",
@@ -1019,7 +1266,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A imagem do calçado funciona como símbolo de colocar-se no lugar do refugiado. Associada ao texto, convida o público a aderir à causa dessas pessoas."
   },
   {
     "title": "Questão 24 - ENEM 2019",
@@ -1063,7 +1311,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A repetição de pedidos e apelos a um interlocutor aproxima a canção de uma ladainha. Predomina a sequência injuntiva, que chama à participação."
   },
   {
     "title": "Questão 25 - ENEM 2019",
@@ -1107,7 +1356,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A escola de samba homenageou Luiz Gonzaga, ligado ao baião e à música nordestina, por meio de um samba-enredo. O evento aproxima dois gêneros musicais brasileiros."
   },
   {
     "title": "Questão 26 - ENEM 2019",
@@ -1153,7 +1403,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O primeiro texto informa denúncias de violência e carência de proteção aos idosos, enquanto o segundo apresenta direitos garantidos pelo Estatuto. A comparação evidencia o contraste entre as regras e as condições de vida efetivas."
   },
   {
     "title": "Questão 27 - ENEM 2019",
@@ -1197,7 +1448,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O texto define saúde como processo contínuo que integra alimentação, lazer, atividade física e resposta ao estresse. A educação para a saúde busca formar hábitos saudáveis, e não uma única conduta isolada."
   },
   {
     "title": "Questão 28 - ENEM 2019",
@@ -1241,7 +1493,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Ao imaginar o subúrbio surgindo antes de tudo e descrevê-lo com poeira, barracos e objetos cotidianos, o narrador caricatura uma paisagem marcada por deterioração."
   },
   {
     "title": "Questão 29 - ENEM 2019",
@@ -1285,7 +1538,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A rede liga pessoas que aprendem, pesquisam e avaliam informações. A circulação de saberes exige participação e esforço dos próprios usuários, pois a tecnologia não pensa por eles."
   },
   {
     "title": "Questão 30 - ENEM 2019",
@@ -1307,7 +1561,7 @@
       },
       {
         "letter": "B",
-        "text": "B o estudioso da língua pode identificar com precisão os elementos deixados por outras línguas na transformação da língua portuguesa.",
+        "text": "O estudioso da língua pode identificar com precisão os elementos deixados por outras línguas na transformação da língua portuguesa.",
         "file": null,
         "isCorrect": false
       },
@@ -1329,7 +1583,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os textos apresentam a língua como resultado de camadas históricas. O português incorpora influências de outros idiomas e conserva marcas dessas relações em sua formação."
   },
   {
     "title": "Questão 31 - ENEM 2019",
@@ -1375,7 +1630,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Picasso combina um guidão e um selim de bicicleta para formar a imagem de uma cabeça de touro. A integração dos objetos muda sua função original e produz a obra de arte."
   },
   {
     "title": "Questão 32 - ENEM 2019",
@@ -1419,7 +1675,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O texto informa que a irisina pode reproduzir em ratos parte dos efeitos da atividade física, mas destaca que o exercício produz outros hormônios e traz benefícios adicionais. Esse argumento sustenta sua importância."
   },
   {
     "title": "Questão 33 - ENEM 2019",
@@ -1463,7 +1720,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "As imagens sensoriais do inverno são articuladas a repetições e ritmo na prosa. A plasticidade das palavras se liga à cadência melódica característica da escrita impressionista."
   },
   {
     "title": "Questão 34 - ENEM 2019",
@@ -1497,7 +1755,7 @@
       },
       {
         "letter": "D",
-        "text": "D segue a reformulação da norma da língua proposta por Júlio César.",
+        "text": "Segue a reformulação da norma da língua proposta por Júlio César.",
         "file": null,
         "isCorrect": false
       },
@@ -1507,7 +1765,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os nomes atuais dos meses derivam de formas latinas usadas no calendário romano. A semelhança entre as palavras reflete a origem latina do português."
   },
   {
     "title": "Questão 35 - ENEM 2019",
@@ -1551,7 +1810,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A pressão social por um corpo magro e a insatisfação com a própria imagem podem contribuir para transtornos alimentares como anorexia e bulimia."
   },
   {
     "title": "Questão 36 - ENEM 2019",
@@ -1598,7 +1858,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Vik Muniz recria uma fotografia de Pollock usando chocolate, material inesperado que dialoga com a ação de pintar. A releitura se apropria de técnicas e materiais de modo paródico."
   },
   {
     "title": "Questão 37 - ENEM 2019",
@@ -1642,7 +1903,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os alunos usam a rede social para organizar uma ação coletiva contra o preço da cantina, que ganha repercussão fora da escola. O exemplo mostra o potencial de mobilização e fortalecimento de grupos."
   },
   {
     "title": "Questão 38 - ENEM 2019",
@@ -1686,7 +1948,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O computador seguiu diretrizes e produziu um conto bem estruturado, mas os juízes consideraram fraca a descrição dos personagens. Isso evidencia a diferença entre domínio da estrutura e criatividade da linguagem."
   },
   {
     "title": "Questão 39 - ENEM 2019",
@@ -1730,7 +1993,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Ao rever planos amorosos que se desfizeram, a voz poética reconhece as marcas dessa experiência no presente. O inventário sugere amadurecimento acompanhado de ironia e distanciamento."
   },
   {
     "title": "Questão 40 - ENEM 2019",
@@ -1774,7 +2038,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O manifesto exalta automóveis, velocidade, máquinas e movimento, rompendo com a reverência à arte antiga. Esses elementos expressam a valorização futurista da inovação tecnológica."
   },
   {
     "title": "Questão 41 - ENEM 2019",
@@ -1818,7 +2083,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A lesma sonha tornar-se um escargot prestigioso, apesar de isso implicar ser comida. A alegoria representa o desejo de realizar uma condição idealizada e utópica."
   },
   {
     "title": "Questão 42 - ENEM 2019",
@@ -1862,7 +2128,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O autor faz uma pergunta sobre a diferença entre os pelos humanos e os das aranhas para conduzir a explicação. Essa pergunta retórica simula conversa com o leitor."
   },
   {
     "title": "Questão 43 - ENEM 2019",
@@ -1908,7 +2175,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A carta usa o formato de um jogo para apresentar dados sobre a vida e a carreira de Marcelo Gleiser. A mistura de elemento lúdico e biografia subverte o gênero da carta de jogo."
   },
   {
     "title": "Questão 44 - ENEM 2019",
@@ -1952,7 +2220,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "As formas verbais e pronominais dirigidas à trabalhadora organizam o foco do poema e distinguem quem age e a quem o texto se dirige. Seu uso serve ao projeto poético."
   },
   {
     "title": "Questão 45 - ENEM 2019",
@@ -1996,7 +2265,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Formas como cantadô, amô e alembrá reproduzem traços da fala popular e ajudam a criar a ambientação sertaneja. A exaltação do Cariri se apoia nessa variedade do português."
   },
   {
     "title": "Questão 46 - ENEM 2019",
@@ -2040,7 +2310,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A ideia de Antropoceno associa a ação humana a transformações na superfície terrestre, como alterações climáticas, erosão e mudanças ambientais. Esses são processos exógenos, que atuam externamente na dinâmica do planeta."
   },
   {
     "title": "Questão 47 - ENEM 2019",
@@ -2086,7 +2357,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A tecnologia de sensoriamento remoto registra diferenças na radiação refletida pelos materiais da superfície. Essa refletividade, chamada albedo, permite distinguir os corpos e compor a imagem."
   },
   {
     "title": "Questão 48 - ENEM 2019",
@@ -2130,7 +2402,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Ao enxergar a natureza como reserva de recursos disponíveis à exploração humana, a visão descrita separa sujeito e objeto e expressa a herança do racionalismo cartesiano."
   },
   {
     "title": "Questão 49 - ENEM 2019",
@@ -2174,7 +2447,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O controle biológico utiliza organismos para reduzir populações de pragas agrícolas, diminuindo o uso de inseticidas que intoxicam abelhas. Assim, preserva polinizadores essenciais à produtividade."
   },
   {
     "title": "Questão 50 - ENEM 2019",
@@ -2218,7 +2492,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Derrida propõe acolher o outro em sua singularidade, sem transformar identidade e origem em condições prévias. Essa hospitalidade exige reconhecer e incorporar a alteridade."
   },
   {
     "title": "Questão 51 - ENEM 2019",
@@ -2262,7 +2537,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O texto define o Direito como conjunto de regras para orientar relações recíprocas entre pessoas. Seu sentido fundamental é regular o convívio social."
   },
   {
     "title": "Questão 52 - ENEM 2019",
@@ -2306,7 +2582,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A farinha de mandioca, produzida inicialmente por povos indígenas, circulou pela colônia e chegou à África por redes atlânticas. O percurso mostra a difusão de hábitos alimentares."
   },
   {
     "title": "Questão 53 - ENEM 2019",
@@ -2350,7 +2627,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Brasil, Alemanha, Índia e Japão exercem influência em suas respectivas regiões e reivindicam representação permanente compatível com esse protagonismo regional."
   },
   {
     "title": "Questão 54 - ENEM 2019",
@@ -2394,7 +2672,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os incêndios ligados à revolta de trabalhadores rurais expressam resistência à perda do uso coletivo da terra. O processo foi a expropriação de terras comunais pelos cercamentos."
   },
   {
     "title": "Questão 55 - ENEM 2019",
@@ -2438,7 +2717,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Maria Quitéria precisou disfarçar-se de homem para ingressar em um batalhão que proibia mulheres. O episódio revela a rigidez das posições e regras da estrutura social da época."
   },
   {
     "title": "Questão 56 - ENEM 2019",
@@ -2482,7 +2762,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A produção industrial se dispersa por vários países, mas o controle das cadeias globais permanece com grandes grupos transnacionais. Há dispersão espacial combinada com concentração econômica."
   },
   {
     "title": "Questão 57 - ENEM 2019",
@@ -2528,7 +2809,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A umidade transportada das áreas florestais brasileiras contribui para chuvas e interrompe a faixa de desertos subtropicais observada em outras partes do Hemisfério Sul."
   },
   {
     "title": "Questão 58 - ENEM 2019",
@@ -2572,7 +2854,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para Agostinho, a vontade livre permite agir corretamente, mas também escolher o pecado. A punição se justifica pelo uso moralmente inadequado dessa autonomia concedida ao ser humano."
   },
   {
     "title": "Questão 59 - ENEM 2019",
@@ -2618,7 +2901,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A imagem sugere uma divisão política baseada em continentes que permaneceriam imóveis. Isso dependeria da estabilidade da estrutura geológica, apesar do movimento real das placas tectônicas."
   },
   {
     "title": "Questão 60 - ENEM 2019",
@@ -2662,7 +2946,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A cidade medieval reúne comércio, artesanato e vida monetária, mas conserva muralhas, portas e torres. O crescimento urbano convive com elementos arquitetônicos de proteção."
   },
   {
     "title": "Questão 61 - ENEM 2019",
@@ -2706,7 +2991,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A canção apresenta o rio como fonte de lembrança e consolo, idealizando a natureza. O texto sobre ecoturismo transforma paisagens e animais em atrações consumidas como espetáculo, caracterizando mercantilização."
   },
   {
     "title": "Questão 62 - ENEM 2019",
@@ -2750,7 +3036,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "As agressões a praticantes de religiões de matriz africana impedem que manifestem sua fé livremente em espaços públicos. Isso contraria a liberdade de credo de uma sociedade laica."
   },
   {
     "title": "Questão 63 - ENEM 2019",
@@ -2794,7 +3081,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O primeiro texto descreve o mercantilismo e os monopólios favorecidos pelo Estado; Adam Smith critica o exclusivismo e defende a livre concorrência. As concepções são opostas nesse ponto."
   },
   {
     "title": "Questão 64 - ENEM 2019",
@@ -2838,7 +3126,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Newton observa a queda da maçã e formula uma explicação provisória sobre a força que a causa. A ciência moderna avança pela proposição e investigação de hipóteses."
   },
   {
     "title": "Questão 65 - ENEM 2019",
@@ -2882,7 +3171,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Maquiavel diferencia a moral individual ideal da ação política efetiva, cujas consequências atingem a coletividade. Um governante deve considerar circunstâncias e resultados concretos."
   },
   {
     "title": "Questão 66 - ENEM 2019",
@@ -2926,7 +3216,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O SUS foi concebido para atender a todos e reduzir desigualdades no acesso à saúde. Esses princípios expressam universalismo e igualitarismo."
   },
   {
     "title": "Questão 67 - ENEM 2019",
@@ -2970,7 +3261,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os dois textos discutem a crença em Deus por meio da reflexão filosófica e da busca de razões. Essa abordagem é centrada na razão humana, traço da modernidade."
   },
   {
     "title": "Questão 68 - ENEM 2019",
@@ -3014,7 +3306,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A produção de alimentos, artesanato e serviços turísticos conecta as comunidades quilombolas aos mercados das cidades vizinhas. Suas estratégias favorecem inserção econômica regional."
   },
   {
     "title": "Questão 69 - ENEM 2019",
@@ -3058,7 +3351,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Camponeses, madeireiros e pecuaristas avançaram sobre áreas de reserva e terra indígena sem ordenamento estatal. A ocupação corresponde à expansão de frentes pioneiras."
   },
   {
     "title": "Questão 70 - ENEM 2019",
@@ -3102,7 +3396,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O texto questiona a associação automática entre magreza e saúde, bem como o estigma atribuído a pessoas gordas. A crítica contesta estereótipos consolidados pela mídia."
   },
   {
     "title": "Questão 71 - ENEM 2019",
@@ -3146,7 +3441,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Crises capitalistas levam a mudanças técnicas e organizacionais na produção. Para integrar-se às novas exigências do trabalho, é necessária qualificação profissional."
   },
   {
     "title": "Questão 72 - ENEM 2019",
@@ -3190,7 +3486,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os cidadãos votavam em eleitores de província, que escolhiam representantes: o voto era indireto. A exigência de renda para votar expressa o caráter censitário."
   },
   {
     "title": "Questão 73 - ENEM 2019",
@@ -3234,7 +3531,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A Igreja incorporou festas ligadas ao solstício e ao fogo, dando-lhes significado cristão nas celebrações de São João. Trata-se da apropriação de cerimônias seculares."
   },
   {
     "title": "Questão 74 - ENEM 2019",
@@ -3278,7 +3576,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para Foucault, o sujeito se forma por práticas de sujeição e liberdade em contextos culturais específicos. A subjetivação é contingente e ocorre nas relações sociais."
   },
   {
     "title": "Questão 75 - ENEM 2019",
@@ -3322,7 +3621,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Bacon propõe submeter a natureza ao experimento, enquanto o segundo texto critica a ação humana desarmônica. Em ambos, a natureza aparece tratada como objeto separado do ser humano."
   },
   {
     "title": "Questão 76 - ENEM 2019",
@@ -3366,7 +3666,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Arendt mostra como a separação dos prisioneiros do mundo comum tornou aceitável sua eliminação. Sua crítica dirige-se à naturalização da segregação humana usada pelos projetos de controle totalitário."
   },
   {
     "title": "Questão 77 - ENEM 2019",
@@ -3412,7 +3713,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A arte de rua utiliza muros e outros locais de circulação cotidiana como suporte e espaço de expressão. Isso representa apropriação dos espaços públicos por artistas e moradores."
   },
   {
     "title": "Questão 78 - ENEM 2019",
@@ -3456,7 +3758,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Kant situa a lei moral no interior do sujeito e o céu estrelado no mundo observado. O poema inverte essas posições, trocando a interioridade da norma pela exterioridade da lei e a fenomenalidade do céu pelo interior."
   },
   {
     "title": "Questão 79 - ENEM 2019",
@@ -3500,7 +3803,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na Antiguidade clássica, a cidadania plena era restrita e frequentemente vinculada à posse de terras. Esse critério ajuda a explicar a proporção variável de participantes políticos."
   },
   {
     "title": "Questão 80 - ENEM 2019",
@@ -3544,7 +3848,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A população reagiu à intervenção estatal imposta sem respeito a direitos que considerava seus. A Revolta da Vacina questionou o arbítrio governamental."
   },
   {
     "title": "Questão 81 - ENEM 2019",
@@ -3588,7 +3893,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O crescimento da chegada de escravizados pelo Rio de Janeiro se relaciona à expansão da mineração no interior, que demandou mão de obra para a extração de metais preciosos."
   },
   {
     "title": "Questão 82 - ENEM 2019",
@@ -3632,7 +3938,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A convocação para construir a nova capital usa símbolos de esperança e grandeza nacional. A chegada de trabalhadores de várias partes do país expressa migração inter-regional."
   },
   {
     "title": "Questão 83 - ENEM 2019",
@@ -3676,7 +3983,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A fala contrapõe esperança popular à globalização da exclusão, criticando a desigualdade entre grupos sociais e a disparidade econômica."
   },
   {
     "title": "Questão 84 - ENEM 2019",
@@ -3720,7 +4028,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A Declaração Universal afirma direitos de toda pessoa como preocupação internacional. Isso fortalece a defesa de populações vulneráveis diante de violações."
   },
   {
     "title": "Questão 85 - ENEM 2019",
@@ -3766,7 +4075,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A frase da imagem contesta a seleção de objetos e práticas culturais que os museus consideram dignos de integrar seus acervos. O conflito envolve os critérios de criação das coleções."
   },
   {
     "title": "Questão 86 - ENEM 2019",
@@ -3810,7 +4120,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Com apoio da Coroa inglesa, Francis Drake atacou rotas e possessões ibéricas e saqueou ouro vindo da América. A pirataria foi um meio de obter riquezas desses territórios."
   },
   {
     "title": "Questão 87 - ENEM 2019",
@@ -3854,7 +4165,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O combate ao trabalho análogo à escravidão foi realizado por ações conjuntas de diferentes instituições. A estratégia é articular órgãos públicos."
   },
   {
     "title": "Questão 88 - ENEM 2019",
@@ -3898,7 +4210,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Com maior proporção de pessoas em idade ativa, investir em formação profissional ajuda a transformar o bônus demográfico em produtividade e crescimento econômico."
   },
   {
     "title": "Questão 89 - ENEM 2019",
@@ -3942,7 +4255,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Utqiagvik fica em latitude muito elevada, próxima à região polar. A inclinação do eixo terrestre provoca ali um longo período sem nascer do sol durante o inverno."
   },
   {
     "title": "Questão 90 - ENEM 2019",
@@ -3952,8 +4266,8 @@
     "year": 2019,
     "context": "A fome não é um problema técnico, pois ela não se deve à falta de alimentos, isso porque a fome convive hoje com as condições materiais para resolvê-la.\n\n**PORTO-GONÇALVES, C. W. Geografia da riqueza, fome e meio ambiente. In: OLIVEIRA, A. U.; MARQUES, M. I. M. (Org.).O campo no século XXI: território de vida, de luta e de construção da justiça social. São Paulo: Casa Amarela; Paz e Terra, 2004 (adaptado).**",
     "files": [],
-    "correctAlternative": "B",
-    "alternativaCorreta": "B",
+    "correctAlternative": null,
+    "alternativaCorreta": null,
     "alternativesIntroduction": "O texto demonstra que o problema alimentar apresentado tem uma dimensão política por estar associado ao(à):",
     "alternatives": [
       {
@@ -3966,7 +4280,7 @@
         "letter": "B",
         "text": "Padrão de distribuição de renda.",
         "file": null,
-        "isCorrect": true
+        "isCorrect": false
       },
       {
         "letter": "C",
@@ -3986,7 +4300,9 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Questão anulada pelo Inep após a divulgação inicial do gabarito de 2019, pois já havia sido usada em uma prova acessível de 2018. Não deve ser sorteada nem pontuada.",
+    "anulada": true
   },
   {
     "title": "Questão 91 - ENEM 2019",
@@ -4032,7 +4348,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O alumínio é oxidado em meio básico enquanto a água é reduzida, liberando hidrogênio e calor. Entre as espécies do quadro, seu potencial permite essa reação espontânea."
   },
   {
     "title": "Questão 92 - ENEM 2019",
@@ -4076,7 +4393,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O aterramento oferece à corrente induzida no arame um caminho para o solo e reduz a diferença de potencial capaz de causar choque em quem toca a cerca."
   },
   {
     "title": "Questão 93 - ENEM 2019",
@@ -4120,7 +4438,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A vacina estimula a produção prévia de anticorpos contra proteína do verme. Assim, o organismo pode combater o esquistossomo após a infecção e antes de surgirem sintomas."
   },
   {
     "title": "Questão 94 - ENEM 2019",
@@ -4164,7 +4483,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Frio não é uma substância que entra na casa; há transferência de calor do corpo mais quente para o meio mais frio. Porta e cobertores atuam reduzindo a perda de calor da casa e das pessoas."
   },
   {
     "title": "Questão 95 - ENEM 2019",
@@ -4210,7 +4530,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na falta de oxigênio, a glicose é convertida em ácido lático sem oxidação completa. Pela diferença entre as entalpias de combustão apresentadas, a energia liberada é apenas 112 kJ por mol de glicose."
   },
   {
     "title": "Questão 96 - ENEM 2019",
@@ -4256,7 +4577,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Áreas recém-desmatadas exigem espécies capazes de se instalar e multiplicar rapidamente. A estratégia 1 apresenta elevado potencial biótico e favorece essa recolonização inicial."
   },
   {
     "title": "Questão 97 - ENEM 2019",
@@ -4300,7 +4622,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As cutias disputam entre si as sementes enterradas para alimentação. Como indivíduos da mesma espécie usam um recurso limitado, a relação é de competição intraespecífica."
+  },
+  {
+    "title": "Questão 98 - ENEM 2019",
+    "index": 98,
+    "discipline": "ciencias-natureza",
+    "language": null,
+    "year": 2019,
+    "context": "Os olhos humanos têm cones sensíveis a vermelho, azul e verde; a combinação dos sinais permite perceber as demais cores. Na protanopia severa, faltam receptores para o vermelho. Duas pessoas, uma com visão normal e outra com protanopia, devem identificar a cor de cartões apresentados.",
+    "files": [],
+    "correctAlternative": "E",
+    "alternativaCorreta": "E",
+    "alternativesIntroduction": "Para qual cartão os dois voluntários identificarão a mesma cor?",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "Vermelho.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "Magenta.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "C",
+        "text": "Amarelo.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "Branco.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "E",
+        "text": "Azul.",
+        "file": null,
+        "isCorrect": true
+      }
+    ],
+    "explicacao": "A percepção do azul depende dos cones sensíveis a essa cor, preservados na protanopia. As demais opções envolvem componente vermelho e serão percebidas de forma diferente."
   },
   {
     "title": "Questão 99 - ENEM 2019",
@@ -4334,7 +4702,7 @@
       },
       {
         "letter": "D",
-        "text": "D eleva o pH do solo em função da degradação dos componentes do resíduo.",
+        "text": "eleva o pH do solo em função da degradação dos componentes do resíduo.",
         "file": null,
         "isCorrect": false
       },
@@ -4344,7 +4712,53 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pectina e açúcares fornecem carbono, enquanto os compostos aminados fornecem nitrogênio. A decomposição do resíduo devolve esses elementos ao solo."
+  },
+  {
+    "title": "Questão 100 - ENEM 2019",
+    "index": 100,
+    "discipline": "ciencias-natureza",
+    "language": null,
+    "year": 2019,
+    "context": "Alimentos orgânicos certificados são produzidos sem agrotóxicos e com técnicas planejadas para reduzir os impactos sobre os recursos naturais.",
+    "files": [],
+    "correctAlternative": "D",
+    "alternativaCorreta": "D",
+    "alternativesIntroduction": "Nesse sistema de produção de alimentos vegetais, o controle de insetos é manejado por meio do(a)",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "prática de adubação verde.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "emprego da compostagem.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "C",
+        "text": "controle da irrigação do solo.",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "utilização de predadores naturais.",
+        "file": null,
+        "isCorrect": true
+      },
+      {
+        "letter": "E",
+        "text": "uso de sementes inoculadas com Rhizobium.",
+        "file": null,
+        "isCorrect": false
+      }
+    ],
+    "explicacao": "Predadores naturais controlam as populações de insetos por meio de uma relação ecológica, sem uso de agrotóxicos. As demais práticas tratam do solo ou da nutrição das plantas."
   },
   {
     "title": "Questão 101 - ENEM 2019",
@@ -4378,7 +4792,7 @@
       },
       {
         "letter": "D",
-        "text": "D proteínas, para aumento da massa muscular.",
+        "text": "proteínas, para aumento da massa muscular.",
         "file": null,
         "isCorrect": false
       },
@@ -4388,7 +4802,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A EPO estimula a formação de eritrócitos, que transportam oxigênio no sangue. Mais oxigênio disponível favorece a respiração aeróbica e a produção de ATP durante exercícios de resistência."
   },
   {
     "title": "Questão 102 - ENEM 2019",
@@ -4432,7 +4847,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A área total da caixa A é 6 × 0,4² = 0,96 m²; a da caixa B é 2(0,6×0,4 + 0,6×0,4 + 0,4×0,4) = 1,28 m². Como B recebe o dobro de calor no mesmo tempo, 2 = kB×1,28/(kA×0,96), logo kA/kB ≈ 0,67."
   },
   {
     "title": "Questão 103 - ENEM 2019",
@@ -4479,7 +4895,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na primeira reação, a glicose é oxidada e o oxigênio dá origem a peróxido; na segunda, o peróxido reage com iodeto, oxidando-o. Há transferência de elétrons nas duas etapas, caracterizando oxirredução."
   },
   {
     "title": "Questão 104 - ENEM 2019",
@@ -4523,7 +4940,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Fármacos podem persistir após o tratamento convencional de esgoto. Novos processos nas estações de tratamento podem removê-los ou degradá-los antes de os efluentes alcançarem os recursos hídricos."
   },
   {
     "title": "Questão 105 - ENEM 2019",
@@ -4567,7 +4985,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A chama excita os elétrons dos cátions. Ao retornarem de níveis mais energéticos para níveis internos, eles emitem fótons de energias específicas, percebidos como cores características."
   },
   {
     "title": "Questão 106 - ENEM 2019",
@@ -4613,7 +5032,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O peso da atleta é 80 × 10 = 800 N. As componentes verticais das duas trações equilibram esse peso: 2T sen 10° = 800. Com sen 10° = 0,17, cada tração é cerca de 2,4 × 10³ N."
   },
   {
     "title": "Questão 107 - ENEM 2019",
@@ -4657,7 +5077,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As larvas se deslocam em direção à luz colocada na boca da garrafa. Essa resposta orientada para um estímulo luminoso é fototropismo positivo."
   },
   {
     "title": "Questão 108 - ENEM 2019",
@@ -4701,7 +5122,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "No XeF₂, o xenônio forma duas ligações covalentes com flúor e conserva três pares de elétrons não ligantes. Ao seu redor há 4 elétrons de ligação e 6 isolados, totalizando 10 elétrons de valência."
   },
   {
     "title": "Questão 109 - ENEM 2019",
@@ -4747,7 +5169,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O foguete avançava sobre a superfície terrestre no mesmo sentido da rotação da Terra, pois cairia mais adiante se a reentrada atrasasse. Para ultrapassar a posição da cidade, sua velocidade angular era superior à terrestre."
   },
   {
     "title": "Questão 110 - ENEM 2019",
@@ -4791,7 +5214,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Genes próximos no mesmo cromossomo estão ligados e tendem a passar juntos aos gametas. A distribuição independente é mais provável para genes em cromossomos diferentes ou afastados."
   },
   {
     "title": "Questão 111 - ENEM 2019",
@@ -4835,7 +5259,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Da altura de 5 m, o tijolo chega ao capacete a 10 m/s. Sua variação de quantidade de movimento é 2,5 × 10 = 25 kg·m/s; em 0,5 s, a força impulsiva média é 50 N, equivalente ao peso de dois tijolos de 2,5 kg."
   },
   {
     "title": "Questão 112 - ENEM 2019",
@@ -4881,7 +5306,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As moléculas da fração 4 são maiores e têm forças de dispersão mais intensas. É preciso elevar mais a temperatura para vencer essas interações intermoleculares na destilação."
   },
   {
     "title": "Questão 113 - ENEM 2019",
@@ -4927,7 +5353,8 @@
         "file": "https://enem.dev/2019/questions/113/cbf0771b-53f9-45cd-a27c-d92e7bf5a0fe.png",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A força magnética fornece a força centrípeta: qvB = mv²/r e ω = qB/m. Para N voltas em tempo t, ω = 2πN/t; logo, m = qBt/(2πN), expressão da alternativa A."
   },
   {
     "title": "Questão 114 - ENEM 2019",
@@ -4971,7 +5398,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Antirretrovirais dificultam etapas da multiplicação dos vírus que convertem RNA em DNA. Por isso, são úteis ao tratamento das infecções descritas."
   },
   {
     "title": "Questão 115 - ENEM 2019",
@@ -5015,7 +5443,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Substituir a brita por concreto reciclado moído reaproveita resíduos de construção e reduz a necessidade de extrair rochas para produzir brita nova."
   },
   {
     "title": "Questão 116 - ENEM 2019",
@@ -5061,7 +5490,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Caudas mais curtas e com insaturações se empacotam com menos força, permitindo maior movimento dos fosfolipídios. A bicamada II apresenta essas características e é a mais fluida."
   },
   {
     "title": "Questão 117 - ENEM 2019",
@@ -5107,7 +5537,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pela tabela nutricional, 2,5 g de castanha fornecem cerca de 17,5 kcal. Metade aproveitada aquece a água com 8 750 cal; como Q = mcΔT, ΔT = 8750/350 = 25 °C. A temperatura final é 20 + 25 = 45 °C."
   },
   {
     "title": "Questão 118 - ENEM 2019",
@@ -5153,7 +5584,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "No ânodo ocorre oxidação do zinco. Em meio alcalino, o metal reage com íons hidróxido e forma o complexo solúvel Zn(OH)₄²⁻, liberando elétrons."
   },
   {
     "title": "Questão 119 - ENEM 2019",
@@ -5197,7 +5629,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A menor deformação do pneu A sob o mesmo esforço indica maior pressão interna. Por ser mais estreito, seu volume e a massa de ar comprimido são menores: pA > pB e mA < mB."
   },
   {
     "title": "Questão 120 - ENEM 2019",
@@ -5243,7 +5676,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As estruturas possuem sequência de ligações duplas e simples alternadas. Essa conjugação permite a absorção de luz em faixas que produzem as cores observadas."
   },
   {
     "title": "Questão 121 - ENEM 2019",
@@ -5289,7 +5723,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "No ponto mais baixo, desprezando a energia cinética de translação e as perdas, a energia potencial gravitacional perdida pelo disco se transforma em energia cinética de rotação. Substituindo a massa e a queda de altura indicadas no manual em mgh, obtêm-se 8,20 × 10⁻² J."
   },
   {
     "title": "Questão 122 - ENEM 2019",
@@ -5335,7 +5770,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O aço facilita a transformação da alicina responsável pelo odor sem ser consumido, conforme a permanência do sabonete ao longo dos usos. Essa é a função de um catalisador."
   },
   {
     "title": "Questão 123 - ENEM 2019",
@@ -5379,7 +5815,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O estrôncio tem comportamento químico semelhante ao do cálcio e pode substituí-lo na mineralização do esqueleto. Por isso, tende a acumular-se no tecido ósseo."
   },
   {
     "title": "Questão 124 - ENEM 2019",
@@ -5421,11 +5858,12 @@
       },
       {
         "letter": "E",
-        "text": "Ácido etanoico.",
+        "text": "Anidrido etanoico.",
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na transesterificação do PET, o grupo metila do éster produzido vem do álcool usado na reação. O reagente A é o metanol."
   },
   {
     "title": "Questão 125 - ENEM 2019",
@@ -5471,7 +5909,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A característica indicada pelo número 3 permite a reprodução das plantas sem depender de água externa para o encontro dos gametas. Essa independência foi decisiva para a ocupação definitiva do ambiente terrestre."
   },
   {
     "title": "Questão 126 - ENEM 2019",
@@ -5517,7 +5956,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O cabo de 10 Ω está em série com a associação paralela da TV de 50 Ω e das lâmpadas de 200 Ω. Com duas lâmpadas, a carga equivalente é 1/(1/50+2/200) = 33,3 Ω, e a tensão na casa é 120×33,3/(33,3+10) ≈ 92,3 V. Com três, cai abaixo dos 90 V exigidos pela TV."
   },
   {
     "title": "Questão 127 - ENEM 2019",
@@ -5561,7 +6001,53 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O DNP devolve prótons à matriz sem passar pela ATP sintase, dissipando o gradiente usado para produzir ATP. As células precisam consumir mais nutrientes para compensar a menor produção de energia útil."
+  },
+  {
+    "title": "Questão 128 - ENEM 2019",
+    "index": 128,
+    "discipline": "ciencias-natureza",
+    "language": null,
+    "year": 2019,
+    "context": "Em 1808, Dalton formulou cinco postulados: (1) a matéria é feita de átomos indivisíveis; (2) átomos do mesmo elemento são idênticos em massa e propriedades; (3) elementos diferentes têm átomos de tipos e massas diferentes; (4) átomos são indestrutíveis e mantêm sua identidade nas reações químicas; (5) átomos de elementos diferentes se combinam em proporções de números inteiros pequenos para formar compostos. Modelos posteriores revelaram a estrutura elétrica do átomo e a quantização da energia.",
+    "files": [],
+    "correctAlternative": "E",
+    "alternativaCorreta": "E",
+    "alternativesIntroduction": "Com base no modelo atual que descreve o átomo, qual dos postulados de Dalton ainda é considerado correto?",
+    "alternatives": [
+      {
+        "letter": "A",
+        "text": "1",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "B",
+        "text": "2",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "C",
+        "text": "3",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "D",
+        "text": "4",
+        "file": null,
+        "isCorrect": false
+      },
+      {
+        "letter": "E",
+        "text": "5",
+        "file": null,
+        "isCorrect": true
+      }
+    ],
+    "explicacao": "O postulado 5 permanece válido: as fórmulas dos compostos indicam proporções inteiras entre os átomos. A descoberta de partículas subatômicas, isótopos e reações nucleares contrariou os demais postulados em sua formulação original."
   },
   {
     "title": "Questão 129 - ENEM 2019",
@@ -5607,7 +6093,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A titulação consumiu 0,024×0,01 = 2,4×10⁻⁴ mol de NaOH. Como o ácido cítrico libera três H⁺, havia 8×10⁻⁵ mol, ou 0,01536 g, em 2,2 g de polpa. Isso corresponde a cerca de 0,70 g por 100 g, valor compatível com caju ou graviola na tabela."
   },
   {
     "title": "Questão 130 - ENEM 2019",
@@ -5651,7 +6138,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O sal dissolvido move-se do caldo mais concentrado para o interior menos concentrado da batata, a favor do gradiente de concentração. Esse transporte do soluto é difusão."
   },
   {
     "title": "Questão 131 - ENEM 2019",
@@ -5697,7 +6185,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A câmera cobre 2×1000×tan45° = 2000 m no solo. Para sobreposição frontal de 20%, o vant avança 80% desse comprimento, 1600 m. A 50 m/s, o intervalo é 1600/50 = 32 s."
   },
   {
     "title": "Questão 132 - ENEM 2019",
@@ -5741,7 +6230,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A pupila menor deixa passar raios próximos ao eixo óptico, que sofrem menores desvios ao atravessar as estruturas refrativas do olho. Isso melhora a nitidez da imagem sob a água."
   },
   {
     "title": "Questão 133 - ENEM 2019",
@@ -5785,7 +6275,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Uma função essencial do rim é filtrar o sangue e eliminar ureia, resíduo nitrogenado do metabolismo. O dispositivo biônico deverá realizar diretamente essa remoção."
   },
   {
     "title": "Questão 134 - ENEM 2019",
@@ -5831,7 +6322,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os poros estreitos do papel agem como capilares. A adesão do etanol às fibras e a tensão superficial permitem que o líquido suba contra a gravidade."
   },
   {
     "title": "Questão 135 - ENEM 2019",
@@ -5875,7 +6367,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Huygens rejeita a ideia de que a luz seja matéria transportada em partículas, como projéteis. O texto contesta o modelo corpuscular de propagação da luz."
   },
   {
     "title": "Questão 136 - ENEM 2019",
@@ -5922,7 +6415,8 @@
         "file": "https://enem.dev/2019/questions/136/f977a763-5a7d-4e53-a44e-90c12026ba73.png",
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Com o Sol a pino, a projeção no chão é vertical: cada ponto da escultura aparece diretamente abaixo de sua posição. A vista superior das letras espessas e separadas coincide com a figura E."
   },
   {
     "title": "Questão 137 - ENEM 2019",
@@ -5966,7 +6460,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Para a flor ser rosa, o pH deve ser maior que 7; para ter maior valor, deve ser menor que 8. De 7 < −log₁₀x < 8 resulta 10⁻⁸ < x < 10⁻⁷."
   },
   {
     "title": "Questão 138 - ENEM 2019",
@@ -6010,7 +6505,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O transporte custa um quinto, ou 20%, do valor do objeto. Para que o gasto total não ultrapasse 100%, a maior recompensa possível é 100% − 20% = 80%."
   },
   {
     "title": "Questão 139 - ENEM 2019",
@@ -6018,7 +6514,7 @@
     "discipline": "matematica",
     "language": null,
     "year": 2019,
-    "context": "Uma empresa presta serviço de abastecimento de água em uma cidade. O valor mensal a pagar por esse serviço é determinado pela aplicação de tarifas, por faixas de consumo de água, sendo obtido pela adição dos valores correspondentes a cada faixa.\n\n**•** Faixa 1: para consumo de até 6 m², valor fixo de R$12,00;\n\n**•** Faixa 2: para consumo superior a 6 m³ e até 10 m³, tarifa de R$ 3,00 por metro cúbico ao que exceder a 6m³;\n\n**•** Faixa 3: para consumo superior a 10 m³, tarifa de R$ 6,00 por metro cúbico ao que exceder a 10 m³. Sabe-se que nessa cidade o consumo máximo de água por residência é de 15 m² por mês.",
+    "context": "Uma empresa presta serviço de abastecimento de água em uma cidade. O valor mensal a pagar por esse serviço é determinado pela aplicação de tarifas, por faixas de consumo de água, sendo obtido pela adição dos valores correspondentes a cada faixa.\n\n**•** Faixa 1: para consumo de até 6 m³, valor fixo de R$12,00;\n\n**•** Faixa 2: para consumo superior a 6 m³ e até 10 m³, tarifa de R$ 3,00 por metro cúbico ao que exceder a 6m³;\n\n**•** Faixa 3: para consumo superior a 10 m³, tarifa de R$ 6,00 por metro cúbico ao que exceder a 10 m³. Sabe-se que nessa cidade o consumo máximo de água por residência é de 15 m³ por mês.",
     "files": [],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -6054,7 +6550,8 @@
         "file": "https://enem.dev/2019/questions/139/8ebb5528-ddb8-4a6a-b8e7-c15a497c088c.png",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Até 6 m³, o preço é R$ 12. De 6 a 10 m³, cresce R$ 3 por m³, chegando a R$ 24. Acima de 10 m³, cresce R$ 6 por m³. O gráfico A mostra esses três trechos contínuos."
   },
   {
     "title": "Questão 140 - ENEM 2019",
@@ -6098,7 +6595,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Escrevendo 0,00011 mm como um número entre 1 e 10 multiplicado por potência de dez, obtém-se 1,1 × 10⁻⁴ mm."
   },
   {
     "title": "Questão 141 - ENEM 2019",
@@ -6142,7 +6640,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pelos valores iniciais, ataque = 2×experiência×nível² e defesa = nível×experiência². J1 ataca com 2×5×4² = 160; J2 defende com 2×6² = 72. A diferença é 88."
   },
   {
     "title": "Questão 142 - ENEM 2019",
@@ -6186,7 +6685,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O raio passa de 3 m para 7 m. A área adicional é π(7² − 3²) ≈ 3×40 = 120 m², maior que os 100 m² disponíveis."
   },
   {
     "title": "Questão 143 - ENEM 2019",
@@ -6232,7 +6732,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O consumo por minuto é a inclinação da reta que representa cada atividade no gráfico. A reta II tem a maior inclinação e, portanto, o maior gasto de quilocalorias por minuto."
   },
   {
     "title": "Questão 144 - ENEM 2019",
@@ -6278,7 +6779,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Cada coluna da matriz corresponde a um dia. Somando os acertos dos cinco alunos em cada coluna, a primeira coluna, segunda-feira, apresenta o maior total."
   },
   {
     "title": "Questão 145 - ENEM 2019",
@@ -6324,7 +6826,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Com a mesma coroa, a distância percorrida por pedalada é inversamente proporcional ao diâmetro da catraca. Para avançar 50% a mais, a nova catraca deve medir 7/1,5 ≈ 4,7 cm."
   },
   {
     "title": "Questão 146 - ENEM 2019",
@@ -6368,7 +6871,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Cada alerta exige que temperatura e umidade satisfaçam simultaneamente seus limites. Conferindo os pontos do gráfico para os dias 1, 12 e 13, somente o dia 1 atende aos dois critérios do alerta emitido."
   },
   {
     "title": "Questão 147 - ENEM 2019",
@@ -6414,7 +6918,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A placa reúne um retângulo de 40 × 40 cm e um semicírculo de raio 20 cm. Cada área é 1600 + (3,14×20²)/2 = 2228 cm²; dez placas somam 22 280 cm²."
   },
   {
     "title": "Questão 148 - ENEM 2019",
@@ -6458,7 +6963,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A banheira recebe 80% de 0,3 m³ = 0,24 m³ = 240 L. Dividindo por 2,7 L por embalagem, 240/2,7 ≈ 88,89; é preciso comprar 89 embalagens inteiras."
   },
   {
     "title": "Questão 149 - ENEM 2019",
@@ -6504,7 +7010,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A tabela mostra a redução absoluta entre 2014 e 2015. Subtraindo essa mesma quantidade sucessivamente para 2016, 2017 e 2018, chega-se a 700 acidentes."
   },
   {
     "title": "Questão 150 - ENEM 2019",
@@ -6548,7 +7055,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Cada parcela deve ser trazida à data da compra pela taxa de 1% ao mês: 202/1,01 = 200 e 204,02/(1,01)² = 200. O preço à vista é R$ 400,00."
   },
   {
     "title": "Questão 151 - ENEM 2019",
@@ -6592,7 +7100,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Cada sócio inicial responde por 1 000 000/3 + 800 000/4 ≈ R$ 533 333,33; o quarto investiu R$ 200 000. Sobre o total de R$ 1 800 000, as participações são aproximadamente 29,63% para cada antigo e 11,11% para o novo."
   },
   {
     "title": "Questão 152 - ENEM 2019",
@@ -6636,7 +7145,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As parcelas são inversamente proporcionais a 2, 3 e 5, na razão 1/2 : 1/3 : 1/5 = 15:10:6. A soma é 31 partes para R$ 31 000; a máquina de 5 anos recebe 6 partes, ou R$ 6 000."
   },
   {
     "title": "Questão 153 - ENEM 2019",
@@ -6680,7 +7190,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Os aumentos são sucessivos: R$ 1 250 × 1,072 × 1,10 = R$ 1 474. Não se deve apenas somar os percentuais porque o segundo incide sobre o valor de 2010."
   },
   {
     "title": "Questão 154 - ENEM 2019",
@@ -6726,7 +7237,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A amplitude vezes a frequência é 2000 × 0,2 = 400. Logo, Ms = 3,30 + log 400 = 3,30 + 2 + 2log 2 ≈ 5,9, classificado como moderado na tabela."
   },
   {
     "title": "Questão 155 - ENEM 2019",
@@ -6770,7 +7282,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O bloco repetido tem oito números: 5, 4, 3, 2, 1, 2, 3, 4. Como 2015 deixa resto 7 ao dividir por 8, o item ocupa a sétima posição do bloco, cujo número 3 representa caixa de direção."
   },
   {
     "title": "Questão 156 - ENEM 2019",
@@ -6814,7 +7327,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Sem restrição, há 7×5×3×1 = 105 formas de dividir oito pessoas em quatro duplas. Se os dois canhotos ficam juntos, restam 5×3×1 = 15 formas de parear os seis demais. Portanto, 105 − 15 = 90."
   },
   {
     "title": "Questão 157 - ENEM 2019",
@@ -6860,7 +7374,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Ao cortar cada um dos quatro vértices do tetraedro, surgem quatro faces triangulares. Cada face triangular original perde seus três cantos e vira um hexágono regular; são quatro hexágonos e quatro triângulos."
   },
   {
     "title": "Questão 158 - ENEM 2019",
@@ -6904,7 +7419,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A escala linear 1:200 implica escala de volume 1:200³. O reservatório real tem 45×200³ cm³ = 360 000 000 cm³ = 360 000 L. Dividindo por 30 000 L ao dia, dura 12 dias."
   },
   {
     "title": "Questão 159 - ENEM 2019",
@@ -6948,7 +7464,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Com n placas independentes, a chance de não perceber nenhuma é (1/2)ⁿ. Para perceber ao menos uma com probabilidade maior que 0,99, é preciso n = 7, pois 1 − 1/128 > 0,99. Como já havia uma placa, devem ser instaladas seis novas."
   },
   {
     "title": "Questão 160 - ENEM 2019",
@@ -6992,7 +7509,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A soma inicial das alturas é 20×1,80 = 36 m. A substituição reduz essa soma em 0,20 m, ficando 35,80 m; a nova média é 35,80/20 = 1,79 m."
   },
   {
     "title": "Questão 161 - ENEM 2019",
@@ -7038,7 +7556,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A média diária é a soma das quantidades de garrafas fora da especificação registradas na tabela, dividida pelos 60 dias observados. O resultado é 0,2 garrafa por dia."
   },
   {
     "title": "Questão 162 - ENEM 2019",
@@ -7084,7 +7603,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pela equivalência de unidades do quadro, 1 pé = 12 polegadas. A conversão pedida é 12,0000."
   },
   {
     "title": "Questão 163 - ENEM 2019",
@@ -7131,7 +7651,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Como 0 < X < 1, elevar X a potências maiores reduz seu valor, enquanto a transformação indicada para o terceiro país o aumenta mais que as demais. Por isso, o terceiro apresenta o maior IDH."
   },
   {
     "title": "Questão 164 - ENEM 2019",
@@ -7177,7 +7698,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Multiplica-se a área da planta pela espessura de 5 cm, ou 0,05 m, para obter o volume da laje. O valor ultrapassa 2 m³ e cabe em um único caminhão de 5 m³, a menor quantidade de veículos possível."
   },
   {
     "title": "Questão 165 - ENEM 2019",
@@ -7221,7 +7743,8 @@
         "file": "https://enem.dev/2019/questions/165/1a1d1fc2-bbc4-4442-a821-86875297945d.jpg",
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O volume de sangue, em litros, é 0,08m. A concentração é q/(0,08m) g/L. Para ser prejudicial, deve superar 0,4 g/L; assim, q/(0,08m) > 0,4, equivalente a q > 0,032m."
   },
   {
     "title": "Questão 166 - ENEM 2019",
@@ -7267,7 +7790,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A primeira dobra produz um triângulo retângulo cujos catetos, identificados na figura a partir da folha de 18 por 12 cm, medem 12 cm e 6 cm. Pelo teorema de Pitágoras, AE = √(12² + 6²) = 6√5 cm."
   },
   {
     "title": "Questão 167 - ENEM 2019",
@@ -7313,7 +7837,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A turma é dividida ao meio, com um aluno a mais no basquete; os mais altos vão para esse grupo. A posição mediana na distribuição de alturas fica entre J, de 1,66 m, e F, de 1,67 m. Assim, P e J jogam futebol, e F e M jogam basquete."
   },
   {
     "title": "Questão 168 - ENEM 2019",
@@ -7357,7 +7882,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Há X − 1 diaristas, pois um dos X funcionários é gerente. Cada diarista recebe 2×80 = R$ 160 por semana. O gasto total é Y = 1000 + 160(X − 1) = 160X + 840."
   },
   {
     "title": "Questão 169 - ENEM 2019",
@@ -7371,7 +7897,7 @@
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
-    "alternativesIntroduction": "Com base no gráfico e nas afirmações anteriores, em qual bar o usuário P teria a possibilidade de um match com os usuários R, R e S, simultaneamente?",
+    "alternativesIntroduction": "Com base no gráfico e nas afirmações anteriores, em qual bar o usuário P teria a possibilidade de um match com os usuários Q, R e S, simultaneamente?",
     "alternatives": [
       {
         "letter": "A",
@@ -7403,7 +7929,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para ocorrer match, cada pessoa deve estar dentro do raio definido pela outra. No gráfico, somente o bar I fica simultaneamente a até 3 km de Q, 2 km de R e 5 km de S, além de respeitar o raio de 3 km de P."
   },
   {
     "title": "Questão 170 - ENEM 2019",
@@ -7447,7 +7974,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A dose diária máxima é 500 mg/kg × 20 kg = 10 000 mg = 10 g. Em cinco dias são 50 g, que ocupam 50 cm³ = 50 mL. O frasco adequado é o de 50 mL."
   },
   {
     "title": "Questão 171 - ENEM 2019",
@@ -7493,7 +8021,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Escolhem-se 4 das 12 posições para os vagões vermelhos, 3 das 8 restantes para os azuis, 3 das 5 restantes para os verdes e 2 das 2 finais para os amarelos. O produto é C(12,4)×C(8,3)×C(5,3)×C(2,2)."
   },
   {
     "title": "Questão 172 - ENEM 2019",
@@ -7539,7 +8068,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Calcula-se a média das vendas de julho a novembro para obter dezembro; a queda de novembro para dezembro passa a se repetir mensalmente. Seguindo essa progressão, as vendas ficam abaixo das de julho em abril."
   },
   {
     "title": "Questão 173 - ENEM 2019",
@@ -7583,7 +8113,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A probabilidade conjunta de fraude e inconsistência é 0,20×0,25 = 0,05. Entre as declarações consistentes, a parcela fraudulenta é 0,80×0,0625 = 0,05. Entre todas as fraudulentas, metade é inconsistente: 0,05/(0,05+0,05) = 0,5."
   },
   {
     "title": "Questão 174 - ENEM 2019",
@@ -7629,7 +8160,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A taxa de cada município é população urbana dividida pela soma das populações urbana e rural. Ao aplicar essa razão aos valores dos gráficos, o município III tem a maior proporção urbana."
   },
   {
     "title": "Questão 175 - ENEM 2019",
@@ -7675,7 +8207,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O volume inicial é π×2²×3,30 = 13,2π m³. Os quatro canos armazenam 4π×0,05²×20 = 0,2π m³; a área total das bases dos cinco reservatórios é π(2² + 4×1,5²) = 13π m². Resta 13π m³ nos reservatórios, que atingem altura comum de 1 m."
   },
   {
     "title": "Questão 176 - ENEM 2019",
@@ -7719,7 +8252,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O orçamento inicial é 10 000 + 40 000 + 40×2500 = R$ 150 000; a meta com redução de 10% é R$ 135 000. No novo preço, projeto custa R$ 5 000 e área construída R$ 125 000. Sobram R$ 5 000 para custos fixos, redução de R$ 35 000 sobre R$ 40 000, ou 87,5%."
   },
   {
     "title": "Questão 177 - ENEM 2019",
@@ -7765,7 +8299,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A altura oscila segundo a expressão da figura, e os instantes em que a base atinge 6 cm dependem do parâmetro β. Contando as três ocorrências exigidas antes de 4 segundos, o menor inteiro que satisfaz a condição é β = 5."
   },
   {
     "title": "Questão 178 - ENEM 2019",
@@ -7811,7 +8346,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Somando, em cada dia, as vendas antigas de refrigerante e caldo, obtém-se a previsão de refrigerantes e também de pastéis da semana seguinte. Comparando o total previsto de pastéis com o total anterior do gráfico, o acréscimo é de 27 unidades."
   },
   {
     "title": "Questão 179 - ENEM 2019",
@@ -7857,7 +8393,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Em cada trecho de um minuto, a inclinação do gráfico de energia acumulada é a potência da lâmpada acesa naquele cômodo. Comparando a sequência das inclinações com as potências na planta, obtém-se 1 → 4 → 5 → 4 → 1 → 6 → 1 → 4."
   },
   {
     "title": "Questão 180 - ENEM 2019",
@@ -7903,182 +8440,7 @@
         "file": null,
         "isCorrect": false
       }
-    ]
-  },
-  {
-    "title": "Questão 1 - ENEM 2019",
-    "index": 1,
-    "discipline": "linguagens",
-    "language": "ingles",
-    "year": 2019,
-    "context": "**5 Ways Pets Can Improve Your Health**\n\nA pet is certainly a great friend. After a difficult day, pet owners quite literally feel the love. In fact, for nearly 25 years, research has shown that living with pets provides certain health benefits. Pets help lower blood pressure and lessen anxiety. They boost our immunity. They can even help you get dates.\n\n**Allergy Fighters:** A growing number of studies have suggested that kids growing up in a home with “furred animals” will have less risk of allergies and asthma.\n\n**Date Magnets:** Dogs are great for making love connections. Forget Internet matchmaking — a dog is a natural conversation starter.\n\n**Dogs for the Aged:** Walking a dog or just caring for a pet — for elderly people who are able — can provide exercise and companionship.\n\n**Good for Mind and Soul:** Like any enjoyable activity, playing with a dog can elevate levels of serotonin and dopamine — nerve transmitters that are known to have pleasurable and calming properties.\n\n**Good for the Heart:** Heart attack patients who have pets survive longer than those without, according to several studies.\n\n**DAVIS, J. L.** Disponível em: www.webmd.com. Acesso em: 21 abr. 2013 (adaptado).",
-    "files": [],
-    "correctAlternative": "B",
-    "alternativaCorreta": "B",
-    "alternativesIntroduction": "Ao discutir sobre a influência de animais de estimação no bem-estar do ser humano, a autora, a fim de fortalecer\nseus argumentos, utiliza palavras e expressões como research, a growing number of research e several studies com o objetivo de",
-    "alternatives": [
-      {
-        "letter": "A",
-        "text": "Mostrar que animais de estimação ajudam na cura de doenças como alergias e asma.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "B",
-        "text": "Convencer sobre os benefícios da adoção de animais de estimação para a saúde.",
-        "file": null,
-        "isCorrect": true
-      },
-      {
-        "letter": "C",
-        "text": "Fornecer dados sobre os impactos de animais de estimação nas relações amorosas.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "D",
-        "text": "Explicar como o contato com animais de estimação pode prevenir ataques cardíacos.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "E",
-        "text": "Esclarecer sobre o modo como idosos devem se relacionar com animais de estimação.",
-        "file": null,
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "title": "Questão 2 - ENEM 2019",
-    "index": 2,
-    "discipline": "linguagens",
-    "language": "ingles",
-    "year": 2019,
-    "context": "LETTER TO THE EDITOR: Sugar fear-mongering unhelpful\n\nBy The Washington Times Tuesday, June 25, 2013\n\nIn his recent piece “Is obesity a disease?” (Web, June 19), Dr. Peter Lind refers to high-fructose corn syrup and other “manufactured sugars” as “poison” that will “guarantee storage of fat in the body.” Current scientific research strongly indicates that obesity results from excessive calorie intake combined with a sedentary lifestyle. The fact is Americans are consuming more total calories now than ever before. According to the U.S. Department of Agriculture, our total per-capita daily caloric intake increased by 22 percent from 2,076 calories per day in 1970 to 2,534 calories per day in 2010 — an additional 458 calories, only 34 of which come from increased added sugar intake. A vast majority of these calories come from increased fats and flour/ cereals. Surprisingly, the amount of caloric sweeteners (i.e. sugar, high-fructose, corn syrup, honey, etc.). Americans consume has actually decreased over the past decade. We need to continue to study the obesity epidemic to see what more can be done, but demonizing one specific ingredient accomplishes nothing and raises unnecessary fears that get in the way of real solutions.\n\nJAMES M. RIPPE Shrewsbury, Mass.\n\n<p style=”text-align: right;”><strong>Dispon&iacute;vel em:</strong> www.washingtontimes.com. Acesso em: 29 jul. 2013 (adaptado).</p>",
-    "files": [],
-    "correctAlternative": "D",
-    "alternativaCorreta": "D",
-    "alternativesIntroduction": "Ao abordar o assunto “obesidade”, em uma seção de jornal, o autor",
-    "alternatives": [
-      {
-        "letter": "A",
-        "text": "Defende o consumo liberado de açúcar.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "B",
-        "text": "Aponta a gordura como o grande vilão da saúde.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "C",
-        "text": "Demonstra acreditar que a obesidade não é preocupante.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "D",
-        "text": "Indica a necessidade de mais pesquisas sobre o assunto.",
-        "file": null,
-        "isCorrect": true
-      },
-      {
-        "letter": "E",
-        "text": "Enfatiza a redução de ingestão de calorias pelos americanos.",
-        "file": null,
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "title": "Questão 3 - ENEM 2019",
-    "index": 3,
-    "discipline": "linguagens",
-    "language": "ingles",
-    "year": 2019,
-    "context": "**In this life**\n\nSitting on a park bench\n\nThinking about a friend of mine\n\nHe was only twenty-three\n\nGone before he had his time.\n\nIt came without a warning\n\nDidnꞌt want his friends to see him cry\n\nHe knew the day was dawning\n\nAnd I didnꞌt have a chance to say goodbye.\n\nMADONNA. **Erotica**. Estados Unidos: Maverick, 1992.",
-    "files": [],
-    "correctAlternative": "A",
-    "alternativaCorreta": "A",
-    "alternativesIntroduction": "A canção, muitas vezes, é uma forma de manifestar sentimentos e emoções da vida cotidiana. Por exemplo, o sofrimento retratado nessa canção foi causado",
-    "alternatives": [
-      {
-        "letter": "A",
-        "text": "Pela morte precoce de um amigo jovem.",
-        "file": null,
-        "isCorrect": true
-      },
-      {
-        "letter": "B",
-        "text": "Pelo término de um relacionamento amoroso.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "C",
-        "text": "Pela mudança de um amigo para outro país.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "D",
-        "text": "Pelo fim de uma amizade de mais de vinte anos.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "E",
-        "text": "Pela traição por parte de pessoa próxima.",
-        "file": null,
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "title": "Questão 4 - ENEM 2019",
-    "index": 4,
-    "discipline": "linguagens",
-    "language": "ingles",
-    "year": 2019,
-    "context": "If children live with criticism, they learn to condemn.\n\nIf children live with fear, they learn to be apprehensive.\n\nIf children live with pity, they learn to feel sorry for themselves.\n\nIf children live with ridicule, they learn to feel shy.\n\nIf children live with tolerance, they learn patience.\n\nIf children live with praise, they learn appreciation.\n\nIf children live with acceptance, they learn to love.\n\nIf children live with approval, they learn to like themselves.\n\nIf children live with recognition, they learn it is good to have a goal.\n\nIf children live with sharing, they learn generosity. If children live with fairness, they learn justice.\n\nIf children live with kindness and consideration, they learn respect.\n\nIf children live with friendliness, they learn the world is a nice place in which to live.\n\n**NOLTE, D. L**. Disponível em: www.americanfamilytraditions.com. Acesso em: 30 jul. 2012.",
-    "files": [],
-    "correctAlternative": "B",
-    "alternativaCorreta": "B",
-    "alternativesIntroduction": "Valores culturais de um povo revelam sua forma de ser, agir e pensar. Na concepção da autora, as diferentes formas de educar crianças nos Estados Unidos confirmam que as crianças",
-    "alternatives": [
-      {
-        "letter": "A",
-        "text": "Temem quem as amedronta.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "B",
-        "text": "Aprendem com o que vivem.",
-        "file": null,
-        "isCorrect": true
-      },
-      {
-        "letter": "C",
-        "text": "Amam aqueles que as aceitam.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "D",
-        "text": "São gentis quando respeitadas.",
-        "file": null,
-        "isCorrect": false
-      },
-      {
-        "letter": "E",
-        "text": "Ridicularizam quem as intimida.",
-        "file": null,
-        "isCorrect": false
-      }
-    ]
+    ],
+    "explicacao": "Converta o gasto diário estimado de cada país para reais usando a taxa de câmbio da tabela. Entre os destinos que respeitam o limite de R$ 1 000, a Austrália apresenta o menor custo diário convertido."
   }
 ]

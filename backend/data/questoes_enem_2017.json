@@ -41,7 +41,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O carpinteiro conhece profundamente as madeiras e pouco se importa com o cinema; a expressão ressalta a dedicação quase exclusiva ao seu ofício."
   },
   {
     "title": "Questão 2 - ENEM 2017",
@@ -85,7 +86,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O HPV também infecta homens, que podem transmiti-lo. Por isso a prevenção por vacinação deve alcançar mulheres e homens."
   },
   {
     "title": "Questão 3 - ENEM 2017",
@@ -129,7 +131,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os filhos cresceram nos Estados Unidos, adotaram a língua e os costumes locais e se afastaram culturalmente do pai imigrante."
   },
   {
     "title": "Questão 4 - ENEM 2017",
@@ -173,7 +176,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Mujica fala aos uruguaios emigrados e deseja que encontrem condições de vida melhores, estejam eles no exterior ou no país de origem."
   },
   {
     "title": "Questão 5 - ENEM 2017",
@@ -217,7 +221,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O frade confia em seu conhecimento escolar sobre eclipses para escapar, mas os maias dominam a astronomia e já preveem o fenômeno. A ironia desfaz sua suposta superioridade."
   },
   {
     "title": "Questão 6 - ENEM 2017",
@@ -261,7 +266,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O texto compara mensagens antigas e atuais e mostra que, em ambos os casos, a função básica é compartilhar informações entre pessoas."
   },
   {
     "title": "Questão 7 - ENEM 2017",
@@ -305,7 +311,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Ao acompanhar a reação de Fortunato diante do sofrimento de Garcia, o narrador revela o prazer cruel da personagem com a dor alheia."
   },
   {
     "title": "Questão 8 - ENEM 2017",
@@ -349,7 +356,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A web oferece filtros, mapas e caminhos de navegação; com eles, o usuário pode orientar-se e aprender no espaço aberto da rede."
   },
   {
     "title": "Questão 9 - ENEM 2017",
@@ -393,7 +401,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O comentário mostra que a cantiga oral transmite e reforça expectativas sociais sobre os papéis de homens e mulheres."
   },
   {
     "title": "Questão 10 - ENEM 2017",
@@ -437,7 +446,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A expressão “Longe disso” retoma o que vinha sendo dito para negá-lo, articulando a progressão do argumento."
   },
   {
     "title": "Questão 11 - ENEM 2017",
@@ -445,9 +455,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/11/55ed62f2-789b-4797-9449-8f163efcac59.jpg)",
+    "context": "![](./assets/enem/2017/55ed62f2-789b-4797-9449-8f163efcac59.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/11/55ed62f2-789b-4797-9449-8f163efcac59.jpg"
+      "./assets/enem/2017/55ed62f2-789b-4797-9449-8f163efcac59.jpg"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -483,7 +493,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A imagem contrapõe práticas tradicionais de compra ao consumidor conectado, que pesquisa, interage e compra em plataformas digitais."
   },
   {
     "title": "Questão 12 - ENEM 2017",
@@ -527,7 +538,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O tupi deixou marcas no vocabulário do português brasileiro, especialmente em topônimos que descrevem características dos lugares."
   },
   {
     "title": "Questão 13 - ENEM 2017",
@@ -571,7 +583,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O poema desmonta a narrativa solene do descobrimento com humor e irreverência, tratando o colonialismo de modo iconoclasta."
   },
   {
     "title": "Questão 14 - ENEM 2017",
@@ -615,7 +628,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A propaganda apresenta a posição de um grupo como se fosse consenso coletivo; assim, procura impor uma visão parcial ao público."
   },
   {
     "title": "Questão 15 - ENEM 2017",
@@ -659,7 +673,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Ao manter a grafia com g no nome Gerimum, o menino reafirma a forma registrada e a ligação afetiva com seu lugar de origem."
   },
   {
     "title": "Questão 16 - ENEM 2017",
@@ -667,9 +682,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "**TEXTO I**\n\n**Criatividade em publicidade: teorias e reflexões**\n\nResumo: O presente artigo aborda uma questão primordial na publicidade: a criatividade. Apesar de aclamada pelos departamentos de Criação das agências, devemos ter a consciência de que nem todo anúncio é, de fato, criativo. A partir do resgate teórico, no qual os Conceitos são tratados à luz da publicidade, busca-se estabelecer a compreensão dos temas. Para elucidar tais questões, é analisada uma campanha impressa da marca XXXX. As reflexões apontam que a publicidade criativa é essencialmente simples e apresenta uma releitura do cotidiano.\n\nDepexe, S D. **Travessias: Pesquisas em Educação, Cultura, Linguagem e Artes,** n. 2, 2008.\n\n![](https://enem.dev/2017/questions/16/8690291a-b2de-43d2-a535-5727ad02d022.jpg)",
+    "context": "**TEXTO I**\n\n**Criatividade em publicidade: teorias e reflexões**\n\nResumo: O presente artigo aborda uma questão primordial na publicidade: a criatividade. Apesar de aclamada pelos departamentos de Criação das agências, devemos ter a consciência de que nem todo anúncio é, de fato, criativo. A partir do resgate teórico, no qual os Conceitos são tratados à luz da publicidade, busca-se estabelecer a compreensão dos temas. Para elucidar tais questões, é analisada uma campanha impressa da marca XXXX. As reflexões apontam que a publicidade criativa é essencialmente simples e apresenta uma releitura do cotidiano.\n\nDepexe, S D. **Travessias: Pesquisas em Educação, Cultura, Linguagem e Artes,** n. 2, 2008.\n\n![](./assets/enem/2017/8690291a-b2de-43d2-a535-5727ad02d022.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/16/8690291a-b2de-43d2-a535-5727ad02d022.jpg"
+      "./assets/enem/2017/8690291a-b2de-43d2-a535-5727ad02d022.jpg"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -705,7 +720,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O texto poético brinca com os sentidos de “criação”, aproximando criação artística, produção publicitária e outros usos do termo."
   },
   {
     "title": "Questão 17 - ENEM 2017",
@@ -749,7 +765,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A autora reconhece o potencial da internet para ampliar conhecimentos, desde que pais e professores orientem a busca e a avaliação das informações."
   },
   {
     "title": "Questão 18 - ENEM 2017",
@@ -793,7 +810,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A casa, o curral e a paisagem reaparecem como lembranças carregadas de afeto; o inventário dessas imagens sustenta o lirismo do poema."
   },
   {
     "title": "Questão 19 - ENEM 2017",
@@ -837,7 +855,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A chance pequena de sucesso profissional no futebol torna arriscado abandonar os estudos; o texto defende formação que permita atuar em outras áreas."
   },
   {
     "title": "Questão 20 - ENEM 2017",
@@ -881,7 +900,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Clarice afirma que a língua não é uma herança acabada: cada escritor pode renová-la, além do que fizeram Camões e outros autores."
   },
   {
     "title": "Questão 21 - ENEM 2017",
@@ -889,9 +909,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/21/fd0a9410-0d3c-4f08-b88c-7b37485ca130.jpg)\n\n**TEXTO II**  \nNa sua produção, Goeldi buscou refletir seu caminho  pessoal e político, sua melancolia e paixão sobre os intensos aspectos mais latentes em sua obra, como: cidades, peixes, urubus, caveiras, abandono, solidão, drama e medo.\n\nZULIETTI, L. F. **Goeldi: da melancolia ao inevitável**. Revista de Arte, Mídia e Política. Acesso em: 24 abr. 2017 (adaptado).",
+    "context": "![](./assets/enem/2017/fd0a9410-0d3c-4f08-b88c-7b37485ca130.jpg)\n\n**TEXTO II**  \nNa sua produção, Goeldi buscou refletir seu caminho  pessoal e político, sua melancolia e paixão sobre os intensos aspectos mais latentes em sua obra, como: cidades, peixes, urubus, caveiras, abandono, solidão, drama e medo.\n\nZULIETTI, L. F. **Goeldi: da melancolia ao inevitável**. Revista de Arte, Mídia e Política. Acesso em: 24 abr. 2017 (adaptado).",
     "files": [
-      "https://enem.dev/2017/questions/21/fd0a9410-0d3c-4f08-b88c-7b37485ca130.jpg"
+      "./assets/enem/2017/fd0a9410-0d3c-4f08-b88c-7b37485ca130.jpg"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -900,34 +920,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/21/6aad415a-2159-4c14-909c-2dee498d8fe2.jpg",
+        "file": "./assets/enem/2017/6aad415a-2159-4c14-909c-2dee498d8fe2.jpg",
         "isCorrect": true
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/21/07e33910-d1e5-4593-8f33-df4d23f43409.jpg",
+        "file": "./assets/enem/2017/07e33910-d1e5-4593-8f33-df4d23f43409.jpg",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/21/efc2a958-b93f-42fa-a443-cf34e4866765.jpg",
+        "file": "./assets/enem/2017/efc2a958-b93f-42fa-a443-cf34e4866765.jpg",
         "isCorrect": false
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/21/d2e0dcdd-0234-4ff8-8a6a-f19074af24cf.jpg",
+        "file": "./assets/enem/2017/d2e0dcdd-0234-4ff8-8a6a-f19074af24cf.jpg",
         "isCorrect": false
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/21/154e689a-5a77-4bfd-bfb8-0e2a86097c72.jpg",
+        "file": "./assets/enem/2017/154e689a-5a77-4bfd-bfb8-0e2a86097c72.jpg",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A gravura de Goeldi usa deformação, contrastes fortes e clima de angústia, características do expressionismo europeu."
   },
   {
     "title": "Questão 22 - ENEM 2017",
@@ -971,7 +992,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os textos mostram línguas que, em seus contextos, predominam sobre outras variedades com as quais convivem."
   },
   {
     "title": "Questão 23 - ENEM 2017",
@@ -1015,7 +1037,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O verso “muito para mim” explicita a experiência e a avaliação pessoal do eu lírico, marcas da função emotiva da linguagem."
   },
   {
     "title": "Questão 24 - ENEM 2017",
@@ -1059,7 +1082,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A peça usa “tomar posição” em sentido político e corporal, relacionando a escolha ideológica à posição dos espectadores durante a encenação."
   },
   {
     "title": "Questão 25 - ENEM 2017",
@@ -1103,7 +1127,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A resenha descreve o livro e manifesta uma avaliação sobre a obra e o festival musical de 1967, característica de texto opinativo."
   },
   {
     "title": "Questão 26 - ENEM 2017",
@@ -1147,7 +1172,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A comparação entre medidas da boneca e proporções humanas evidencia que o corpo representado não seria biologicamente viável."
   },
   {
     "title": "Questão 27 - ENEM 2017",
@@ -1191,7 +1217,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os pares de palavras próximos mudam de sentido conforme a situação em que são empregados, como ocorre com “grávida” e “gestante”."
   },
   {
     "title": "Questão 28 - ENEM 2017",
@@ -1199,9 +1226,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/28/de217b18-c918-4279-a59c-131b0d8f4276.jpg)",
+    "context": "![](./assets/enem/2017/de217b18-c918-4279-a59c-131b0d8f4276.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/28/de217b18-c918-4279-a59c-131b0d8f4276.jpg"
+      "./assets/enem/2017/de217b18-c918-4279-a59c-131b0d8f4276.jpg"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -1237,7 +1264,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O cartaz chama atenção para a violência doméstica e busca levar o público a denunciá-la, rompendo o silêncio que a mantém."
   },
   {
     "title": "Questão 29 - ENEM 2017",
@@ -1281,7 +1309,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os textos explicam elementos da própria língua; quando o código é o assunto da mensagem, predomina a função metalinguística."
   },
   {
     "title": "Questão 30 - ENEM 2017",
@@ -1325,7 +1354,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O poema afirma que cada pessoa se reconhece nas outras e que a empatia com o próximo participa da construção da identidade."
   },
   {
     "title": "Questão 31 - ENEM 2017",
@@ -1369,7 +1399,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O esporte-participação privilegia prazer, inclusão e bem-estar; modalidades adaptadas ampliam o acesso de cidadãos à prática esportiva."
   },
   {
     "title": "Questão 32 - ENEM 2017",
@@ -1413,7 +1444,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O Bem-Amado usa humor e exagero para expor interesses e contradições de figuras públicas, exercendo crítica satírica."
   },
   {
     "title": "Questão 33 - ENEM 2017",
@@ -1457,7 +1489,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A resenha narra acontecimentos do filme com verbos no presente, como “retorna” e “descobre”, tornando a ação mais imediata para o leitor."
   },
   {
     "title": "Questão 34 - ENEM 2017",
@@ -1465,9 +1498,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/34/e4b37290-3bc4-4ef6-b757-9065f855a1e6.png)",
+    "context": "![](./assets/enem/2017/e4b37290-3bc4-4ef6-b757-9065f855a1e6.png)",
     "files": [
-      "https://enem.dev/2017/questions/34/e4b37290-3bc4-4ef6-b757-9065f855a1e6.png"
+      "./assets/enem/2017/e4b37290-3bc4-4ef6-b757-9065f855a1e6.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -1503,7 +1536,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O cartaz associa livros e infância, defendendo que a formação de leitores comece cedo."
   },
   {
     "title": "Questão 35 - ENEM 2017",
@@ -1547,7 +1581,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O narrador se dirige diretamente ao leitor com “você”, aproximando o interlocutor da reflexão e envolvendo-o no texto."
   },
   {
     "title": "Questão 36 - ENEM 2017",
@@ -1555,9 +1590,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/36/1cdf0e43-8744-480a-9e9c-1a408d15b0cf.png)",
+    "context": "![](./assets/enem/2017/1cdf0e43-8744-480a-9e9c-1a408d15b0cf.png)",
     "files": [
-      "https://enem.dev/2017/questions/36/1cdf0e43-8744-480a-9e9c-1a408d15b0cf.png"
+      "./assets/enem/2017/1cdf0e43-8744-480a-9e9c-1a408d15b0cf.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -1593,7 +1628,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Valentim combina símbolos de religiões afro-brasileiras com procedimentos da arte geométrica europeia, fundindo repertórios culturais."
   },
   {
     "title": "Questão 37 - ENEM 2017",
@@ -1601,9 +1637,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/37/4d4a90d7-9743-432c-8710-dacb137ea2d5.png)",
+    "context": "![](./assets/enem/2017/4d4a90d7-9743-432c-8710-dacb137ea2d5.png)",
     "files": [
-      "https://enem.dev/2017/questions/37/4d4a90d7-9743-432c-8710-dacb137ea2d5.png"
+      "./assets/enem/2017/4d4a90d7-9743-432c-8710-dacb137ea2d5.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -1639,7 +1675,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A instalação convida visitantes a circular e brincar entre as estruturas; a participação do público integra a própria obra."
   },
   {
     "title": "Questão 38 - ENEM 2017",
@@ -1683,7 +1720,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Expressões próprias da fala rural ajudam a construir uma cena crível do ambiente e das personagens descritos."
   },
   {
     "title": "Questão 39 - ENEM 2017",
@@ -1727,7 +1765,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O comentário sobre palavras difíceis mostra que o narrador associa a linguagem formal a prestígio e admiração social."
   },
   {
     "title": "Questão 40 - ENEM 2017",
@@ -1771,7 +1810,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Mesmo numa convivência próxima, os preconceitos de classe e raça reaparecem e impedem que a lavadeira seja tratada como igual."
   },
   {
     "title": "Questão 41 - ENEM 2017",
@@ -1779,9 +1819,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/41/6947db40-b30c-4455-afa0-b713f578c798.png)\n\nRevista Bolsa, 1986. In: CARRASCOZA, J. A. **A evolução do texto publicitário**: a associação de palavras como elemento de sedução na publicidade. São Paulo: Futura, 1999 (adaptado).",
+    "context": "![](./assets/enem/2017/6947db40-b30c-4455-afa0-b713f578c798.png)\n\nRevista Bolsa, 1986. In: CARRASCOZA, J. A. **A evolução do texto publicitário**: a associação de palavras como elemento de sedução na publicidade. São Paulo: Futura, 1999 (adaptado).",
     "files": [
-      "https://enem.dev/2017/questions/41/6947db40-b30c-4455-afa0-b713f578c798.png"
+      "./assets/enem/2017/6947db40-b30c-4455-afa0-b713f578c798.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -1817,7 +1857,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A propaganda liga a atividade da empresa à fabricação de livros e à ideia de sustentabilidade para construir uma imagem positiva do anunciante."
   },
   {
     "title": "Questão 42 - ENEM 2017",
@@ -1861,7 +1902,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A canção contrapõe o acesso ao parque e a equipamentos de lazer em áreas ricas e pobres, denunciando infraestrutura e investimentos desiguais."
   },
   {
     "title": "Questão 43 - ENEM 2017",
@@ -1869,9 +1911,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/43/b01a5852-707f-4dad-9d93-63376b294f3e.png)\n\n**TEXTO II**  \n**Speto**  \nPaulo César Silva, mais conhecido como Speto, é um grafiteiro paulista envolvido com o _skate_ e a música. O fortalecimento de sua arte ocorreu, em 1999, pela oportunidade de ver de perto as referências que trazia há tempos, ao passar por diversas cidades do Norte do Brasil em uma turnê com a banda O Rappa\n\nRevista Zupi, n. 19, 2010",
+    "context": "![](./assets/enem/2017/b01a5852-707f-4dad-9d93-63376b294f3e.png)\n\n**TEXTO II**  \n**Speto**  \nPaulo César Silva, mais conhecido como Speto, é um grafiteiro paulista envolvido com o _skate_ e a música. O fortalecimento de sua arte ocorreu, em 1999, pela oportunidade de ver de perto as referências que trazia há tempos, ao passar por diversas cidades do Norte do Brasil em uma turnê com a banda O Rappa\n\nRevista Zupi, n. 19, 2010",
     "files": [
-      "https://enem.dev/2017/questions/43/b01a5852-707f-4dad-9d93-63376b294f3e.png"
+      "./assets/enem/2017/b01a5852-707f-4dad-9d93-63376b294f3e.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -1907,7 +1949,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os traços do grafite lembram a xilogravura nordestina, aproximando a arte urbana de uma tradição visual brasileira."
   },
   {
     "title": "Questão 44 - ENEM 2017",
@@ -1951,7 +1994,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Saramago dispensa a pontuação convencional dos diálogos; essa forma de escrita acentua a confusão e o caos da situação narrada."
   },
   {
     "title": "Questão 45 - ENEM 2017",
@@ -1959,9 +2003,9 @@
     "discipline": "linguagens",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/45/33994a70-00e3-4055-a383-d8a650b0b6ab.png)\n\n**TEXTO II**\n\nNo verão de 1954, o artista Robert Rauschenberg (n.1925) criou o termo combine para se referir a suas novas obras que possuíam aspectos tanto da pintura como da escultura.\n\nEm 1958, Cama foi selecionada para ser incluída em uma exposição de jovens artistas americanos e  italianos no Festival dos dois Mundos em Spoleto, na Itália. Os responsáveis pelo festival, entretanto, se recusaram a expor a obra e a removeram para um depósito.\n\nEmbora o mundo da arte debatesse a inovação de se pendurar uma cama numa parede, Rauschenberg considerava sua obra “um dos quadros mais acolhedores que já pintei, mas sempre tive medo de que alguém quisesse se enfiar nela”.\n\nDEMPSEY, A. **Estilos, escolas e movimentos****: guia enciclopédico da arte moderna**.  \nSão Paulo: Cosac e Naify, 2003.",
+    "context": "![](./assets/enem/2017/33994a70-00e3-4055-a383-d8a650b0b6ab.png)\n\n**TEXTO II**\n\nNo verão de 1954, o artista Robert Rauschenberg (n.1925) criou o termo combine para se referir a suas novas obras que possuíam aspectos tanto da pintura como da escultura.\n\nEm 1958, Cama foi selecionada para ser incluída em uma exposição de jovens artistas americanos e  italianos no Festival dos dois Mundos em Spoleto, na Itália. Os responsáveis pelo festival, entretanto, se recusaram a expor a obra e a removeram para um depósito.\n\nEmbora o mundo da arte debatesse a inovação de se pendurar uma cama numa parede, Rauschenberg considerava sua obra “um dos quadros mais acolhedores que já pintei, mas sempre tive medo de que alguém quisesse se enfiar nela”.\n\nDEMPSEY, A. **Estilos, escolas e movimentos****: guia enciclopédico da arte moderna**.  \nSão Paulo: Cosac e Naify, 2003.",
     "files": [
-      "https://enem.dev/2017/questions/45/33994a70-00e3-4055-a383-d8a650b0b6ab.png"
+      "./assets/enem/2017/33994a70-00e3-4055-a383-d8a650b0b6ab.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -1997,7 +2041,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O combine de Rauschenberg incorpora objetos comuns de modo inesperado, dialogando com os ready-mades e rompendo com a pintura tradicional."
   },
   {
     "title": "Questão 46 - ENEM 2017",
@@ -2041,7 +2086,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Tombuctu ocupava posição estratégica nas rotas de comércio transaariano, reunindo circulação de mercadorias, pessoas e conhecimento."
   },
   {
     "title": "Questão 47 - ENEM 2017",
@@ -2085,7 +2131,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A perseguição e o extermínio promovidos pelo nazismo, especialmente contra judeus e eslavos, motivaram a Unesco a rejeitar teorias racistas após a guerra."
   },
   {
     "title": "Questão 48 - ENEM 2017",
@@ -2129,7 +2176,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para Bentham, julga-se uma ação por seus efeitos concretos sobre a felicidade coletiva; o critério é pragmático."
   },
   {
     "title": "Questão 49 - ENEM 2017",
@@ -2173,7 +2221,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A Declaração de 1789 proclama direitos civis válidos para todos os cidadãos, base da universalização do princípio de igualdade."
   },
   {
     "title": "Questão 50 - ENEM 2017",
@@ -2217,7 +2266,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para os povos indígenas, a terra sustenta modos de vida, organização social e tradições; demarcá-la é condição de sobrevivência cultural."
   },
   {
     "title": "Questão 51 - ENEM 2017",
@@ -2225,9 +2275,9 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/51/5a5e8107-449f-49a6-84c0-67a4db52eb4f.jpg)",
+    "context": "![](./assets/enem/2017/5a5e8107-449f-49a6-84c0-67a4db52eb4f.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/51/5a5e8107-449f-49a6-84c0-67a4db52eb4f.jpg"
+      "./assets/enem/2017/5a5e8107-449f-49a6-84c0-67a4db52eb4f.jpg"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -2263,7 +2313,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A ama de leite escravizada convivia intimamente com a família senhorial, mas permanecia submetida à exploração e à desigualdade escravista."
   },
   {
     "title": "Questão 52 - ENEM 2017",
@@ -2307,7 +2358,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A concentração de serviços e renda no centro e a precariedade nas periferias revelam separação social dentro do espaço urbano."
   },
   {
     "title": "Questão 53 - ENEM 2017",
@@ -2351,7 +2403,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A redução de tarifas entre os países da Aliança do Pacífico integra mercados e fortalece sua capacidade de competir no comércio externo."
   },
   {
     "title": "Questão 54 - ENEM 2017",
@@ -2359,9 +2412,9 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/54/b4587b09-f5c4-4e31-a586-0a1ea9b169c1.png)",
+    "context": "![](./assets/enem/2017/b4587b09-f5c4-4e31-a586-0a1ea9b169c1.png)",
     "files": [
-      "https://enem.dev/2017/questions/54/b4587b09-f5c4-4e31-a586-0a1ea9b169c1.png"
+      "./assets/enem/2017/b4587b09-f5c4-4e31-a586-0a1ea9b169c1.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -2397,7 +2450,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A cobertura vegetal favorece a infiltração da chuva no solo; essa água alimenta a recarga dos aquíferos."
   },
   {
     "title": "Questão 55 - ENEM 2017",
@@ -2441,7 +2495,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A perda de nutrientes por lixiviação empobrece o solo e pode intensificar sua acidez, prejudicando a produção agrícola."
   },
   {
     "title": "Questão 56 - ENEM 2017",
@@ -2485,7 +2540,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Produtos a granel, como a soja, dependem de escoamento em grande escala. Terminais atracadouros ampliam a capacidade de embarque para exportação."
   },
   {
     "title": "Questão 57 - ENEM 2017",
@@ -2529,7 +2585,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A desindustrialização relativa não retira dos países desenvolvidos o controle de pesquisa, inovação e tecnologia, que mantém seu comando econômico."
   },
   {
     "title": "Questão 58 - ENEM 2017",
@@ -2573,7 +2630,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Uma democracia multiétnica precisa garantir direitos comuns e, simultaneamente, reconhecer diferenças culturais e sociais entre os grupos."
   },
   {
     "title": "Questão 59 - ENEM 2017",
@@ -2581,10 +2639,10 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/59/6948e245-25f2-4e37-80be-48b113665300.png)\n\n![](https://enem.dev/2017/questions/59/0d9be71d-f646-45e8-b381-585fb13d1613.png)",
+    "context": "![](./assets/enem/2017/6948e245-25f2-4e37-80be-48b113665300.png)\n\n![](./assets/enem/2017/0d9be71d-f646-45e8-b381-585fb13d1613.png)",
     "files": [
-      "https://enem.dev/2017/questions/59/6948e245-25f2-4e37-80be-48b113665300.png",
-      "https://enem.dev/2017/questions/59/0d9be71d-f646-45e8-b381-585fb13d1613.png"
+      "./assets/enem/2017/6948e245-25f2-4e37-80be-48b113665300.png",
+      "./assets/enem/2017/0d9be71d-f646-45e8-b381-585fb13d1613.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -2620,7 +2678,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O climograma mostra invernos muito frios e grande variação anual de temperatura, padrão de Moscou associado à alta latitude."
   },
   {
     "title": "Questão 60 - ENEM 2017",
@@ -2664,7 +2723,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para Amartya Sen, desenvolver significa ampliar liberdades e oportunidades reais das pessoas; cidadania e melhora econômica se reforçam."
   },
   {
     "title": "Questão 61 - ENEM 2017",
@@ -2708,7 +2768,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A presença de bases militares em vários continentes permite aos Estados Unidos projetar poder e agir rapidamente em conflitos distantes."
   },
   {
     "title": "Questão 62 - ENEM 2017",
@@ -2752,7 +2813,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O New Deal usou intervenção estatal para reativar produção, preços e mercado interno durante a crise, reconstruindo condições de acumulação."
   },
   {
     "title": "Questão 63 - ENEM 2017",
@@ -2796,7 +2858,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O manifesto futurista propõe destruir símbolos do passado, como museus e bibliotecas, para afirmar a modernidade como ruptura histórica."
   },
   {
     "title": "Questão 64 - ENEM 2017",
@@ -2840,7 +2903,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A sociedade justa de Rawls parte de pessoas livres e autônomas que aceitam regras comuns; essa relação ecoa o pensamento liberal moderno."
   },
   {
     "title": "Questão 65 - ENEM 2017",
@@ -2884,7 +2948,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Para Demócrito, os átomos são unidades constitutivas da matéria; suas combinações explicam o surgimento dos seres."
   },
   {
     "title": "Questão 66 - ENEM 2017",
@@ -2928,7 +2993,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Sócrates questionava seus interlocutores em diálogo, levando-os a examinar suas próprias ideias; esse procedimento é o método dialético."
   },
   {
     "title": "Questão 67 - ENEM 2017",
@@ -2972,7 +3038,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A atuação crescente dos tribunais constitucionais leva disputas antes resolvidas no Legislativo ao Judiciário, processo de judicialização."
   },
   {
     "title": "Questão 68 - ENEM 2017",
@@ -3016,7 +3083,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Troncos retorcidos, solos ácidos e cupinzeiros caracterizam o Cerrado, cuja vegetação tropófila se adapta à alternância de estações secas e chuvosas."
   },
   {
     "title": "Questão 69 - ENEM 2017",
@@ -3060,7 +3128,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Refinarias precisam receber petróleo e distribuir derivados; por isso se localizam onde há boa infraestrutura de transporte e circulação."
   },
   {
     "title": "Questão 70 - ENEM 2017",
@@ -3104,7 +3173,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A demanda de compradores urbanos por lã incentivou a melhoria dos rebanhos e técnicas pastoris na Europa feudal."
   },
   {
     "title": "Questão 71 - ENEM 2017",
@@ -3112,9 +3182,9 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/71/3b3f7bfa-864f-4176-8792-3363bca336a6.png)",
+    "context": "![](./assets/enem/2017/3b3f7bfa-864f-4176-8792-3363bca336a6.png)",
     "files": [
-      "https://enem.dev/2017/questions/71/3b3f7bfa-864f-4176-8792-3363bca336a6.png"
+      "./assets/enem/2017/3b3f7bfa-864f-4176-8792-3363bca336a6.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -3150,7 +3220,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Comparando energia gerada e superfície inundada, Belo Monte apresenta menor área alagada por unidade de potência."
   },
   {
     "title": "Questão 72 - ENEM 2017",
@@ -3194,7 +3265,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A perda contínua de produtividade em terras áridas e semiáridas expressa a desertificação decorrente da pressão humana sobre o ambiente."
   },
   {
     "title": "Questão 73 - ENEM 2017",
@@ -3238,7 +3310,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A redistribuição de fábricas para além dos antigos polos altera os destinos de trabalhadores e ajuda a explicar novos fluxos migratórios internos."
   },
   {
     "title": "Questão 74 - ENEM 2017",
@@ -3282,7 +3355,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A reserva de vagas para mulheres nas listas de candidaturas partidárias busca reduzir sua sub-representação no Legislativo."
   },
   {
     "title": "Questão 75 - ENEM 2017",
@@ -3326,7 +3400,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O reconhecimento da Palestina como Estado observador pela ONU expressa apoio internacional a uma reivindicação de autodeterminação nacional."
   },
   {
     "title": "Questão 76 - ENEM 2017",
@@ -3370,7 +3445,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A recusa de Luiza Mahin em abandonar crenças e práticas africanas evidencia resistência cultural à imposição colonial e cristã."
   },
   {
     "title": "Questão 77 - ENEM 2017",
@@ -3378,9 +3454,9 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/77/6f74082c-ebf5-4382-8a8e-4e4bb09c08cf.png)\n\nSALGADO-LABOURIAU, M. L. **História ecológica da Terra**. São Paulo: Edgard Blucher, 1994 (adaptado).",
+    "context": "![](./assets/enem/2017/6f74082c-ebf5-4382-8a8e-4e4bb09c08cf.png)\n\nSALGADO-LABOURIAU, M. L. **História ecológica da Terra**. São Paulo: Edgard Blucher, 1994 (adaptado).",
     "files": [
-      "https://enem.dev/2017/questions/77/6f74082c-ebf5-4382-8a8e-4e4bb09c08cf.png"
+      "./assets/enem/2017/6f74082c-ebf5-4382-8a8e-4e4bb09c08cf.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -3416,7 +3492,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Terra e mar aquecem e esfriam em ritmos diferentes. Isso cria diferenças de pressão que alternam o sentido das brisas litorâneas."
   },
   {
     "title": "Questão 78 - ENEM 2017",
@@ -3460,7 +3537,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O Estado Novo controlava a comunicação para difundir uma imagem favorável de Vargas e obter apoio popular ao governo."
   },
   {
     "title": "Questão 79 - ENEM 2017",
@@ -3504,7 +3582,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Os textos mostram normas coletivas usadas para limitar privilégios e reduzir tratamentos desiguais entre grupos sociais."
   },
   {
     "title": "Questão 80 - ENEM 2017",
@@ -3548,7 +3627,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A Lei de Terras exigia compra para obter terras, restringindo o acesso dos pobres e ex-escravizados e favorecendo a concentração fundiária."
   },
   {
     "title": "Questão 81 - ENEM 2017",
@@ -3592,7 +3672,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O queremismo pedia a continuidade de Vargas na condução da transição constitucional, apesar das eleições e da mudança de regime."
   },
   {
     "title": "Questão 82 - ENEM 2017",
@@ -3636,7 +3717,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A elevação de Tiradentes a mártir cívico aproxima sua execução da imagem cristã de sacrifício e redenção."
   },
   {
     "title": "Questão 83 - ENEM 2017",
@@ -3680,7 +3762,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O texto associa carência material à vulnerabilidade de trabalhadores à manipulação ideológica, justificando a preocupação social de parte do clero."
   },
   {
     "title": "Questão 84 - ENEM 2017",
@@ -3724,7 +3807,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A democracia deliberativa exige que decisões sejam discutidas publicamente em debate livre e racional entre cidadãos e Estado."
   },
   {
     "title": "Questão 85 - ENEM 2017",
@@ -3768,7 +3852,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Se todos prometessem pagar sabendo que não o fariam, a promessa perderia sentido. Portanto, a falsa promessa não pode valer como lei universal."
   },
   {
     "title": "Questão 86 - ENEM 2017",
@@ -3812,7 +3897,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Terremotos fortes concentram-se nas zonas de encontro de placas tectônicas, como a margem ocidental da América do Sul."
   },
   {
     "title": "Questão 87 - ENEM 2017",
@@ -3820,10 +3906,10 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/87/a29bc279-ba56-4fe4-aeb0-ff72098524ca.png)\n\nDisponível em: http://img0.cptec.inpe.br. Acesso em: 25 ago. 2014 (adaptado).\n\n![](https://enem.dev/2017/questions/87/d6ce35bb-244b-48b8-9647-e22f10d2a987.png)\n\nDisponível em: http://imagens.climatempo.com.br. Acesso em: 25 ago. 2014 (adaptado).",
+    "context": "![](./assets/enem/2017/a29bc279-ba56-4fe4-aeb0-ff72098524ca.png)\n\nDisponível em: http://img0.cptec.inpe.br. Acesso em: 25 ago. 2014 (adaptado).\n\n![](./assets/enem/2017/d6ce35bb-244b-48b8-9647-e22f10d2a987.png)\n\nDisponível em: http://imagens.climatempo.com.br. Acesso em: 25 ago. 2014 (adaptado).",
     "files": [
-      "https://enem.dev/2017/questions/87/a29bc279-ba56-4fe4-aeb0-ff72098524ca.png",
-      "https://enem.dev/2017/questions/87/d6ce35bb-244b-48b8-9647-e22f10d2a987.png"
+      "./assets/enem/2017/a29bc279-ba56-4fe4-aeb0-ff72098524ca.png",
+      "./assets/enem/2017/d6ce35bb-244b-48b8-9647-e22f10d2a987.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -3859,7 +3945,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A circulação de massas de ar úmidas produziu precipitação e elevou os índices de umidade indicados nos mapas meteorológicos."
   },
   {
     "title": "Questão 88 - ENEM 2017",
@@ -3903,7 +3990,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para Aristóteles, a política coordena as demais atividades da pólis porque orienta sua organização para o bem comum, o sumo bem."
   },
   {
     "title": "Questão 89 - ENEM 2017",
@@ -3947,7 +4035,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Dados sobre interesses individuais permitem direcionar anúncios específicos a cada usuário, personalizando a mensagem comercial."
   },
   {
     "title": "Questão 90 - ENEM 2017",
@@ -3955,9 +4044,9 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/90/382a1a12-19d7-4c42-8e94-fd33fd9c9477.png)",
+    "context": "![](./assets/enem/2017/382a1a12-19d7-4c42-8e94-fd33fd9c9477.png)",
     "files": [
-      "https://enem.dev/2017/questions/90/382a1a12-19d7-4c42-8e94-fd33fd9c9477.png"
+      "./assets/enem/2017/382a1a12-19d7-4c42-8e94-fd33fd9c9477.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -3993,7 +4082,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A releitura artística transforma símbolos visuais em crítica política, associando a trajetória do autor a uma estética de resistência."
   },
   {
     "title": "Questão 91 - ENEM 2017",
@@ -4001,9 +4091,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A toxicidade de algumas substâncias é normalmente representada por um índice conhecido como DL50 (dose letal mediana). Ele representa a dosagem aplicada a uma população de seres vivos que mata 50% desses indivíduos e é normalmente medido utilizando-se ratos como cobaias. Esse índice é muito importante para os seres humanos, pois ao se extrapolar os dados obtidos com o uso de cobaias, pode-se determinar o nível tolerável de contaminação de alimentos, para que possam ser consumidos de forma segura pelas pessoas. O quadro apresenta três pesticidas e suas toxicidades. A unidade mg/kg indica a massa da substância ingerida pela massa da cobaia.\n\n![](https://enem.dev/2017/questions/91/1af39a67-d332-437c-8496-b3627d2f1dfd.png)\n\nSessenta ratos, com massa de 200 g cada, foram divididos em três grupos de vinte. Três amostras de ração, contaminadas, cada uma delas com um dos pesticidas indicados no quadro, na concentração de 3 mg por grama de ração, foram administradas para cada grupo de cobaias. Cada rato consumiu 100g de ração.",
+    "context": "A toxicidade de algumas substâncias é normalmente representada por um índice conhecido como DL50 (dose letal mediana). Ele representa a dosagem aplicada a uma população de seres vivos que mata 50% desses indivíduos e é normalmente medido utilizando-se ratos como cobaias. Esse índice é muito importante para os seres humanos, pois ao se extrapolar os dados obtidos com o uso de cobaias, pode-se determinar o nível tolerável de contaminação de alimentos, para que possam ser consumidos de forma segura pelas pessoas. O quadro apresenta três pesticidas e suas toxicidades. A unidade mg/kg indica a massa da substância ingerida pela massa da cobaia.\n\n![](./assets/enem/2017/1af39a67-d332-437c-8496-b3627d2f1dfd.png)\n\nSessenta ratos, com massa de 200 g cada, foram divididos em três grupos de vinte. Três amostras de ração, contaminadas, cada uma delas com um dos pesticidas indicados no quadro, na concentração de 3 mg por grama de ração, foram administradas para cada grupo de cobaias. Cada rato consumiu 100g de ração.",
     "files": [
-      "https://enem.dev/2017/questions/91/1af39a67-d332-437c-8496-b3627d2f1dfd.png"
+      "./assets/enem/2017/1af39a67-d332-437c-8496-b3627d2f1dfd.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -4039,7 +4129,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A dose aplicada supera a DL50 do diazinon e do malation para grupos de 20 ratos; nesses grupos, pelo menos metade, ou 10 animais, morrerá."
   },
   {
     "title": "Questão 92 - ENEM 2017",
@@ -4083,7 +4174,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Antibióticos podem atacar alvos próprios das bactérias, como parede celular e ribossomos, impedindo sua sobrevivência sem agir do mesmo modo nas células humanas."
   },
   {
     "title": "Questão 93 - ENEM 2017",
@@ -4091,9 +4183,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Dispositivos eletrônicos que utilizam materiais de baixo custo, como polímeros semicondutores, têm sido desenvolvidos para monitorar a concentração de amônia (gás tóxico e incolor) em granjas avícolas. A polianilina é um polímero semicondutor que tem o valor de sua resistência elétrica nominal quadruplicado quando exposta a altas concentrações de amônia. Na ausência de amônia, a polianilina se comporta como um resistor ôhmico e a sua resposta elétrica é mostrada no gráfico.\n\n![](https://enem.dev/2017/questions/93/a9180abf-7120-4dab-a63a-7e8bcb09b559.png)",
+    "context": "Dispositivos eletrônicos que utilizam materiais de baixo custo, como polímeros semicondutores, têm sido desenvolvidos para monitorar a concentração de amônia (gás tóxico e incolor) em granjas avícolas. A polianilina é um polímero semicondutor que tem o valor de sua resistência elétrica nominal quadruplicado quando exposta a altas concentrações de amônia. Na ausência de amônia, a polianilina se comporta como um resistor ôhmico e a sua resposta elétrica é mostrada no gráfico.\n\n![](./assets/enem/2017/a9180abf-7120-4dab-a63a-7e8bcb09b559.png)",
     "files": [
-      "https://enem.dev/2017/questions/93/a9180abf-7120-4dab-a63a-7e8bcb09b559.png"
+      "./assets/enem/2017/a9180abf-7120-4dab-a63a-7e8bcb09b559.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -4129,7 +4221,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A resistência é calculada pela razão entre a tensão e a corrente medidas no gráfico para a maior concentração de amônia, resultando 2,0 × 10⁶ Ω."
   },
   {
     "title": "Questão 94 - ENEM 2017",
@@ -4173,7 +4266,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os nanotubos nos cloroplastos aumentam diretamente a captação de fótons, ampliando a energia luminosa disponível para a fotossíntese."
   },
   {
     "title": "Questão 95 - ENEM 2017",
@@ -4181,9 +4275,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A eletrólise é um processo não espontâneo de grande importância para a indústria química. Uma de suas aplicações é a obtenção do gás cloro e do hidróxido de sódio, a partir de uma solução aquosa de cloreto de sódio. Nesse procedimento, utiliza-se uma célula eletroquímica, como ilustrado.\n\n![](https://enem.dev/2017/questions/95/e4765f64-939a-40ef-a345-e9ca0d1a3c8b.png)",
+    "context": "A eletrólise é um processo não espontâneo de grande importância para a indústria química. Uma de suas aplicações é a obtenção do gás cloro e do hidróxido de sódio, a partir de uma solução aquosa de cloreto de sódio. Nesse procedimento, utiliza-se uma célula eletroquímica, como ilustrado.\n\n![](./assets/enem/2017/e4765f64-939a-40ef-a345-e9ca0d1a3c8b.png)",
     "files": [
-      "https://enem.dev/2017/questions/95/e4765f64-939a-40ef-a345-e9ca0d1a3c8b.png"
+      "./assets/enem/2017/e4765f64-939a-40ef-a345-e9ca0d1a3c8b.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -4219,7 +4313,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na eletrólise da solução aquosa de NaCl, a água é reduzida no cátodo, formando H₂. O hidrogênio é o produto secundário indicado no esquema."
   },
   {
     "title": "Questão 96 - ENEM 2017",
@@ -4263,7 +4358,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A nitratação transforma nitrito em nitrato, o íon nitrogenado que aparece como componente principal dos fertilizantes citados."
   },
   {
     "title": "Questão 97 - ENEM 2017",
@@ -4307,7 +4403,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O calor da chama excita elétrons dos átomos de sódio. Ao voltarem a níveis de menor energia, eles emitem fótons amarelos."
   },
   {
     "title": "Questão 98 - ENEM 2017",
@@ -4315,9 +4412,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A classificação biológica proposta por Whittaker permite distinguir cinco grandes linhas evolutivas utilizando, como critérios de classificação, a organização celular e o modo de nutrição. Woese e seus colaboradores, com base na comparação das sequências que codificam o RNA ribossômico dos seres vivos, estabeleceram relações de ancestralidade entre os grupos e concluíram que os procariontes do reino Monera não eram um grupo coeso do ponto de vista evolutivo.\n\n![](https://enem.dev/2017/questions/98/a50cb779-35c0-41a2-a622-5e38cb707ac9.png)",
+    "context": "A classificação biológica proposta por Whittaker permite distinguir cinco grandes linhas evolutivas utilizando, como critérios de classificação, a organização celular e o modo de nutrição. Woese e seus colaboradores, com base na comparação das sequências que codificam o RNA ribossômico dos seres vivos, estabeleceram relações de ancestralidade entre os grupos e concluíram que os procariontes do reino Monera não eram um grupo coeso do ponto de vista evolutivo.\n\n![](./assets/enem/2017/a50cb779-35c0-41a2-a622-5e38cb707ac9.png)",
     "files": [
-      "https://enem.dev/2017/questions/98/a50cb779-35c0-41a2-a622-5e38cb707ac9.png"
+      "./assets/enem/2017/a50cb779-35c0-41a2-a622-5e38cb707ac9.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -4353,7 +4450,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A classificação de Woese usa dados moleculares para reconstruir ancestralidade e parentesco evolutivo, isto é, relações filogenéticas."
   },
   {
     "title": "Questão 99 - ENEM 2017",
@@ -4361,9 +4459,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Em uma colisão frontal entre dois automóveis, a força que o cinto de segurança exerce sobre o tórax e abdômen do motorista pode causar lesões graves nos órgãos internos. Pensando na segurança do seu produto, um fabricante de automóveis realizou testes em cinco modelos diferentes de cinto. Os testes simularam uma colisão de 0,30 segundo de duração, e os bonecos que representavam os ocupantes foram equipados com acelerômetros. Esse equipamento registra o módulo da desaceleração do boneco em função do tempo. Os parâmetros como massa dos bonecos, dimensões dos cintos e velocidade imediatamente antes e após o impacto foram os mesmos para todos os testes. O resultado final obtido está no gráfico de aceleração por tempo.\n\n![](https://enem.dev/2017/questions/99/04a95fbc-a686-452f-a85a-b5ff100a5b6c.jpg)",
+    "context": "Em uma colisão frontal entre dois automóveis, a força que o cinto de segurança exerce sobre o tórax e abdômen do motorista pode causar lesões graves nos órgãos internos. Pensando na segurança do seu produto, um fabricante de automóveis realizou testes em cinco modelos diferentes de cinto. Os testes simularam uma colisão de 0,30 segundo de duração, e os bonecos que representavam os ocupantes foram equipados com acelerômetros. Esse equipamento registra o módulo da desaceleração do boneco em função do tempo. Os parâmetros como massa dos bonecos, dimensões dos cintos e velocidade imediatamente antes e após o impacto foram os mesmos para todos os testes. O resultado final obtido está no gráfico de aceleração por tempo.\n\n![](./assets/enem/2017/04a95fbc-a686-452f-a85a-b5ff100a5b6c.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/99/04a95fbc-a686-452f-a85a-b5ff100a5b6c.jpg"
+      "./assets/enem/2017/04a95fbc-a686-452f-a85a-b5ff100a5b6c.jpg"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -4399,7 +4497,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O modelo 2 distribui a força da colisão por uma área maior do tórax e abdômen, reduzindo a pressão sobre os órgãos internos."
   },
   {
     "title": "Questão 100 - ENEM 2017",
@@ -4443,7 +4542,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Plaquetas participam da coagulação. Sua substituição artificial pode ajudar pessoas com hemofilia, que têm dificuldade de estancar sangramentos."
   },
   {
     "title": "Questão 101 - ENEM 2017",
@@ -4451,9 +4551,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A figura mostra como é a emissão de radiação eletromagnética para cinco tipos de lâmpada: haleto metálico, tungstênio, mercúrio, xênon e LED (diodo emissor de luz). As áreas marcadas em cinza são proporcionais à intensidade da energia liberada pela lâmpada. As linhas pontilhadas mostram a sensibilidade do olho humano aos diferentes comprimentos de onda. UV e IV são as regiões do ultravioleta e do infravermelho, respectivamente.\n\nUm arquiteto deseja iluminar uma sala usando uma lâmpada que produza boa iluminação, mas que não aqueça o ambiente.\n\n![](https://enem.dev/2017/questions/101/0e9fcc06-6aa7-443d-bfaa-0485813ea263.jpg)",
+    "context": "A figura mostra como é a emissão de radiação eletromagnética para cinco tipos de lâmpada: haleto metálico, tungstênio, mercúrio, xênon e LED (diodo emissor de luz). As áreas marcadas em cinza são proporcionais à intensidade da energia liberada pela lâmpada. As linhas pontilhadas mostram a sensibilidade do olho humano aos diferentes comprimentos de onda. UV e IV são as regiões do ultravioleta e do infravermelho, respectivamente.\n\nUm arquiteto deseja iluminar uma sala usando uma lâmpada que produza boa iluminação, mas que não aqueça o ambiente.\n\n![](./assets/enem/2017/0e9fcc06-6aa7-443d-bfaa-0485813ea263.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/101/0e9fcc06-6aa7-443d-bfaa-0485813ea263.jpg"
+      "./assets/enem/2017/0e9fcc06-6aa7-443d-bfaa-0485813ea263.jpg"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -4489,7 +4589,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "No gráfico, o LED concentra emissão na faixa visível e desperdiça menos energia em infravermelho, atendendo melhor ao objetivo do arquiteto."
   },
   {
     "title": "Questão 102 - ENEM 2017",
@@ -4533,7 +4634,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os núcleos de condensação contêm íons, que atraem as moléculas polares de água por interações íon-dipolo."
   },
   {
     "title": "Questão 103 - ENEM 2017",
@@ -4541,9 +4643,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Em uma linha de transmissão de informações por fibra óptica, quando um sinal diminui sua intensidade para valores inferiores a 10 dB, este precisa ser retransmitido. No entanto, intensidades superiores a 100 dB não podem ser transmitidas adequadamente. A figura apresenta como se dá a perda de sinal (perda óptica) para diferentes comprimentos de onda para certo tipo de fibra óptica.\n\n![](https://enem.dev/2017/questions/103/5885e74b-985f-472a-83a9-525ec6b3e918.jpg)",
+    "context": "Em uma linha de transmissão de informações por fibra óptica, quando um sinal diminui sua intensidade para valores inferiores a 10 dB, este precisa ser retransmitido. No entanto, intensidades superiores a 100 dB não podem ser transmitidas adequadamente. A figura apresenta como se dá a perda de sinal (perda óptica) para diferentes comprimentos de onda para certo tipo de fibra óptica.\n\n![](./assets/enem/2017/5885e74b-985f-472a-83a9-525ec6b3e918.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/103/5885e74b-985f-472a-83a9-525ec6b3e918.jpg"
+      "./assets/enem/2017/5885e74b-985f-472a-83a9-525ec6b3e918.jpg"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -4579,7 +4681,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O sinal pode cair de 100 dB para 10 dB, uma perda máxima de 90 dB. Pela atenuação por quilômetro informada, isso corresponde a 90 km."
   },
   {
     "title": "Questão 104 - ENEM 2017",
@@ -4623,7 +4726,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A atividade do carbono-14 medida no fóssil equivale a um quarto da atividade inicial. Passaram-se duas meias-vidas de 5 730 anos, totalizando 11 460 anos."
   },
   {
     "title": "Questão 105 - ENEM 2017",
@@ -4631,9 +4735,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A figura mostra o funcionamento de uma estação híbrida de geração de eletricidade movida a energia eólica e biogás. Essa estação possibilita que a energia gerada no parque eólico seja armazenada na forma de gás hidrogênio, usado no fornecimento de energia para a rede elétrica comum e para abastecer células a combustível.\n\n![](https://enem.dev/2017/questions/105/fdcdfdb2-4a95-45ce-910c-fe237a92283a.jpg)",
+    "context": "A figura mostra o funcionamento de uma estação híbrida de geração de eletricidade movida a energia eólica e biogás. Essa estação possibilita que a energia gerada no parque eólico seja armazenada na forma de gás hidrogênio, usado no fornecimento de energia para a rede elétrica comum e para abastecer células a combustível.\n\n![](./assets/enem/2017/fdcdfdb2-4a95-45ce-910c-fe237a92283a.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/105/fdcdfdb2-4a95-45ce-910c-fe237a92283a.jpg"
+      "./assets/enem/2017/fdcdfdb2-4a95-45ce-910c-fe237a92283a.jpg"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -4669,7 +4773,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O excedente da energia eólica produz hidrogênio armazenável. Sem vento, ele é usado com o biogás para manter a geração de calor e eletricidade."
   },
   {
     "title": "Questão 106 - ENEM 2017",
@@ -4713,7 +4818,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Sob calor e sol ao longo do dia, os óleos essenciais se volatilizam. Colher ao amanhecer reduz a perda das substâncias de interesse."
   },
   {
     "title": "Questão 107 - ENEM 2017",
@@ -4721,9 +4827,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A epilação a laser (popularmente conhecida como depilação a laser) consiste na aplicação de uma fonte de luz para aquecer e causar uma lesão localizada e controlada nos folículos capilares. Para evitar que outros tecidos sejam danificados, selecionam-se comprimentos de onda que são absorvidos pela melanina presente nos pelos, mas que não afetam a oxi-hemoglobina do sangue e a água dos tecidos da região em que o tratamento será aplicado. A figura mostra como é a absorção de diferentes comprimentos de onda pela melanina, oxi-hemoglobina e água.\n\n![](https://enem.dev/2017/questions/107/d7140b05-a8ee-4974-a104-7a6097572b07.jpg)",
+    "context": "A epilação a laser (popularmente conhecida como depilação a laser) consiste na aplicação de uma fonte de luz para aquecer e causar uma lesão localizada e controlada nos folículos capilares. Para evitar que outros tecidos sejam danificados, selecionam-se comprimentos de onda que são absorvidos pela melanina presente nos pelos, mas que não afetam a oxi-hemoglobina do sangue e a água dos tecidos da região em que o tratamento será aplicado. A figura mostra como é a absorção de diferentes comprimentos de onda pela melanina, oxi-hemoglobina e água.\n\n![](./assets/enem/2017/d7140b05-a8ee-4974-a104-7a6097572b07.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/107/d7140b05-a8ee-4974-a104-7a6097572b07.jpg"
+      "./assets/enem/2017/d7140b05-a8ee-4974-a104-7a6097572b07.jpg"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -4759,7 +4865,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O laser deve aquecer a melanina do pelo com pouca absorção por outros tecidos; no gráfico, 700 nm oferece essa combinação."
   },
   {
     "title": "Questão 108 - ENEM 2017",
@@ -4776,34 +4883,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/108/24461a0d-95e8-462d-a82d-22ac13dff808.jpg",
+        "file": "./assets/enem/2017/24461a0d-95e8-462d-a82d-22ac13dff808.jpg",
         "isCorrect": false
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/108/7d2c21e5-6f18-45ed-83c0-f21311f084a2.jpg",
+        "file": "./assets/enem/2017/7d2c21e5-6f18-45ed-83c0-f21311f084a2.jpg",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/108/11f3a959-f625-48d7-9f8c-b9b76d20cded.jpg",
+        "file": "./assets/enem/2017/11f3a959-f625-48d7-9f8c-b9b76d20cded.jpg",
         "isCorrect": true
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/108/b34b792f-d948-477c-b7db-7fdd8749a507.jpg",
+        "file": "./assets/enem/2017/b34b792f-d948-477c-b7db-7fdd8749a507.jpg",
         "isCorrect": false
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/108/36bdb8ae-b187-4ae8-bc1d-21c475dc645b.jpg",
+        "file": "./assets/enem/2017/36bdb8ae-b187-4ae8-bc1d-21c475dc645b.jpg",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na queda, energia potencial gravitacional vira cinética; a lona a absorve como energia elástica no ponto mais baixo. Na subida, a cinética volta a crescer e depois cai até zero no ponto mais alto, como mostra C."
   },
   {
     "title": "Questão 109 - ENEM 2017",
@@ -4847,7 +4955,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A barragem interrompe a subida dos peixes pelo rio, encurtando o percurso migratório necessário à piracema."
   },
   {
     "title": "Questão 110 - ENEM 2017",
@@ -4855,9 +4964,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Fusível é um dispositivo de proteção contra sobrecorrente em circuitos. Quando a corrente que passa por esse componente elétrico é maior que sua máxima corrente nominal, o fusível queima. Dessa forma, evita que a corrente elevada danifique os aparelhos do circuito. Suponha que o circuito elétrico mostrado seja alimentado por uma fonte de tensão U e que o fusível suporte uma corrente nominal de 500 mA.\n\n![](https://enem.dev/2017/questions/110/eb184743-fe6a-4dd1-9f70-81a4885f121f.jpg)",
+    "context": "Fusível é um dispositivo de proteção contra sobrecorrente em circuitos. Quando a corrente que passa por esse componente elétrico é maior que sua máxima corrente nominal, o fusível queima. Dessa forma, evita que a corrente elevada danifique os aparelhos do circuito. Suponha que o circuito elétrico mostrado seja alimentado por uma fonte de tensão U e que o fusível suporte uma corrente nominal de 500 mA.\n\n![](./assets/enem/2017/eb184743-fe6a-4dd1-9f70-81a4885f121f.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/110/eb184743-fe6a-4dd1-9f70-81a4885f121f.jpg"
+      "./assets/enem/2017/eb184743-fe6a-4dd1-9f70-81a4885f121f.jpg"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -4893,7 +5002,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Usa-se a corrente máxima permitida pelo fusível e a resistência equivalente do circuito. Pela relação U = R·i, a maior tensão segura é 120 V."
   },
   {
     "title": "Questão 111 - ENEM 2017",
@@ -4937,7 +5047,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Contaminantes persistentes se acumulam ao longo da cadeia alimentar. Como predadores de topo, os botos recebem substâncias concentradas em suas presas."
   },
   {
     "title": "Questão 112 - ENEM 2017",
@@ -4945,9 +5056,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "O trombone de Quincke é um dispositivo experimental utilizado para demonstrar o fenômeno da interferência de ondas sonoras. Uma fonte emite ondas sonoras de determinada frequência na entrada do dispositivo. Essas ondas se dividem pelos dois caminhos (ADC e AEC) e se encontram no ponto C, a saída do dispositivo, onde se posiciona um detector. O trajeto ADC pode ser aumentado pelo deslocamento dessa parte do dispositivo. Com o trajeto ADC igual ao AEC, capta-se um som muito intenso na saída. Entretanto, aumentando-se gradativa mente o trajeto ADC, até que ele fique como mostrado na figura, a intensidade do som na saída fica praticamente nula. Desta forma, conhecida a velocidade do som no interior do tubo (320 m/s), é possível determinar o valor da frequência do som produzido pela fonte.\n\n![](https://enem.dev/2017/questions/112/098eea36-23cb-47c4-a57a-e7fddbd056eb.jpg)",
+    "context": "O trombone de Quincke é um dispositivo experimental utilizado para demonstrar o fenômeno da interferência de ondas sonoras. Uma fonte emite ondas sonoras de determinada frequência na entrada do dispositivo. Essas ondas se dividem pelos dois caminhos (ADC e AEC) e se encontram no ponto C, a saída do dispositivo, onde se posiciona um detector. O trajeto ADC pode ser aumentado pelo deslocamento dessa parte do dispositivo. Com o trajeto ADC igual ao AEC, capta-se um som muito intenso na saída. Entretanto, aumentando-se gradativa mente o trajeto ADC, até que ele fique como mostrado na figura, a intensidade do som na saída fica praticamente nula. Desta forma, conhecida a velocidade do som no interior do tubo (320 m/s), é possível determinar o valor da frequência do som produzido pela fonte.\n\n![](./assets/enem/2017/098eea36-23cb-47c4-a57a-e7fddbd056eb.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/112/098eea36-23cb-47c4-a57a-e7fddbd056eb.jpg"
+      "./assets/enem/2017/098eea36-23cb-47c4-a57a-e7fddbd056eb.jpg"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -4983,7 +5094,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A diferença entre os percursos do som no trombone determina a interferência. Aplicando a condição de reforço ou cancelamento à velocidade do som, encontra-se 800 Hz."
   },
   {
     "title": "Questão 113 - ENEM 2017",
@@ -4991,9 +5103,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A farinha de linhaça dourada é um produto natural que oferece grandes benefícios para o nosso organismo. A maior parte dos nutrientes da linhaça encontra-se no óleo desta semente, rico em substâncias lipossolúveis com massas moleculares elevadas. A farinha também apresenta altos teores de fibras proteicas insolúveis em água, celulose, vitaminas lipossolúveis e sais minerais hidrossolúveis.\n\nConsidere o esquema, que resume um processo de separação dos componentes principais da farinha de linhaça dourada.\n\n![](https://enem.dev/2017/questions/113/22e78b2d-34e1-436e-b7d9-0b3f44a11dc7.jpg)",
+    "context": "A farinha de linhaça dourada é um produto natural que oferece grandes benefícios para o nosso organismo. A maior parte dos nutrientes da linhaça encontra-se no óleo desta semente, rico em substâncias lipossolúveis com massas moleculares elevadas. A farinha também apresenta altos teores de fibras proteicas insolúveis em água, celulose, vitaminas lipossolúveis e sais minerais hidrossolúveis.\n\nConsidere o esquema, que resume um processo de separação dos componentes principais da farinha de linhaça dourada.\n\n![](./assets/enem/2017/22e78b2d-34e1-436e-b7d9-0b3f44a11dc7.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/113/22e78b2d-34e1-436e-b7d9-0b3f44a11dc7.jpg"
+      "./assets/enem/2017/22e78b2d-34e1-436e-b7d9-0b3f44a11dc7.jpg"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -5029,7 +5141,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "As substâncias lipossolúveis de maior massa permanecem no resíduo após as etapas de separação descritas; por isso o óleo está no resíduo 4."
   },
   {
     "title": "Questão 114 - ENEM 2017",
@@ -5037,9 +5150,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "O biodiesel é um biocombustível obtido a partir de fontes renováveis, que surgiu como alternativa ao uso do diesel de petróleo para motores de combustão interna. Ele pode ser obtido pela reação entre triglicerídeos, presentes em óleos vegetais e gorduras animais, entre outros, e álcoois de baixa massa molar, como o metanol ou etanol, na presença de um catalisador, de acordo com a equação química:\n\n![](https://enem.dev/2017/questions/114/edc31bcf-bb5f-438b-8349-9b5eb2945835.jpg)",
+    "context": "O biodiesel é um biocombustível obtido a partir de fontes renováveis, que surgiu como alternativa ao uso do diesel de petróleo para motores de combustão interna. Ele pode ser obtido pela reação entre triglicerídeos, presentes em óleos vegetais e gorduras animais, entre outros, e álcoois de baixa massa molar, como o metanol ou etanol, na presença de um catalisador, de acordo com a equação química:\n\n![](./assets/enem/2017/edc31bcf-bb5f-438b-8349-9b5eb2945835.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/114/edc31bcf-bb5f-438b-8349-9b5eb2945835.jpg"
+      "./assets/enem/2017/edc31bcf-bb5f-438b-8349-9b5eb2945835.jpg"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -5075,7 +5188,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A transesterificação de triglicerídeos com álcool produz ésteres de ácidos graxos, a função orgânica do biodiesel."
   },
   {
     "title": "Questão 115 - ENEM 2017",
@@ -5119,7 +5233,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A rotação da centrífuga separa componentes pela diferença de densidade: os mais densos se deslocam para a parte externa ou inferior."
   },
   {
     "title": "Questão 116 - ENEM 2017",
@@ -5127,9 +5242,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Visando explicar uma das propriedades da membrana plasmática, fusionou-se uma célula de camundongo com uma célula humana, formando uma célula híbrida. Em seguida, com o intuito de marcar as proteínas de membrana, dois anticorpos foram inseridos no experimento, um específico para as proteínas de membrana do camundongo e outro para as proteínas de membrana humana. Os anticorpos foram visualizados ao microscópio por meio de fluorescência de cores diferentes.\n\n![](https://enem.dev/2017/questions/116/40eeb203-2784-4815-91a7-0daaa4bee826.jpg)",
+    "context": "Visando explicar uma das propriedades da membrana plasmática, fusionou-se uma célula de camundongo com uma célula humana, formando uma célula híbrida. Em seguida, com o intuito de marcar as proteínas de membrana, dois anticorpos foram inseridos no experimento, um específico para as proteínas de membrana do camundongo e outro para as proteínas de membrana humana. Os anticorpos foram visualizados ao microscópio por meio de fluorescência de cores diferentes.\n\n![](./assets/enem/2017/40eeb203-2784-4815-91a7-0daaa4bee826.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/116/40eeb203-2784-4815-91a7-0daaa4bee826.jpg"
+      "./assets/enem/2017/40eeb203-2784-4815-91a7-0daaa4bee826.jpg"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -5165,7 +5280,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Após a fusão das células, as proteínas marcadas se misturam lateralmente na membrana, evidenciando sua mobilidade na bicamada lipídica."
   },
   {
     "title": "Questão 117 - ENEM 2017",
@@ -5209,7 +5325,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As gêmeas podem inativar aleatoriamente cromossomos X diferentes após a separação dos embriões, fazendo o alelo mutante se expressar em proporções distintas."
   },
   {
     "title": "Questão 118 - ENEM 2017",
@@ -5217,9 +5334,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Para se adequar às normas ambientais atuais, as construtoras precisam prever em suas obras a questão do uso de materiais de modo a minimizar os impactos causados no local. Entre esses materiais está o chamado concregrama ou pisograma, que é um tipo de revestimento composto por peças de concreto com áreas vazadas, preenchidas com solo gramado. As figuras apresentam essas duas formas de piso feitos de concreto.\n\n![](https://enem.dev/2017/questions/118/a8363c3c-d505-4111-a8ad-ad0544f91b6b.jpg)",
+    "context": "Para se adequar às normas ambientais atuais, as construtoras precisam prever em suas obras a questão do uso de materiais de modo a minimizar os impactos causados no local. Entre esses materiais está o chamado concregrama ou pisograma, que é um tipo de revestimento composto por peças de concreto com áreas vazadas, preenchidas com solo gramado. As figuras apresentam essas duas formas de piso feitos de concreto.\n\n![](./assets/enem/2017/a8363c3c-d505-4111-a8ad-ad0544f91b6b.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/118/a8363c3c-d505-4111-a8ad-ad0544f91b6b.jpg"
+      "./assets/enem/2017/a8363c3c-d505-4111-a8ad-ad0544f91b6b.jpg"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -5255,7 +5372,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os espaços vazados do concregrama deixam a água infiltrar no solo, evitando sua impermeabilização total."
   },
   {
     "title": "Questão 119 - ENEM 2017",
@@ -5263,9 +5381,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "Diversos produtos naturais podem ser obtidos de plantas por processo de extração. O lapachol é da classe das naftoquinonas. Sua estrutura apresenta uma hidroxila enólica (pKa = 6,0) que permite que este composto seja isolado da serragem dos ipês por extração com solução adequada, seguida de filtração simples. Considere que pKa = -log Ka, em que Ka é a constante ácida da reação de ionização do lapachol.\n\n![](https://enem.dev/2017/questions/119/cf7185d3-5e84-42ad-974b-2332feadd919.jpg)",
+    "context": "Diversos produtos naturais podem ser obtidos de plantas por processo de extração. O lapachol é da classe das naftoquinonas. Sua estrutura apresenta uma hidroxila enólica (pKa = 6,0) que permite que este composto seja isolado da serragem dos ipês por extração com solução adequada, seguida de filtração simples. Considere que pKa = -log Ka, em que Ka é a constante ácida da reação de ionização do lapachol.\n\n![](./assets/enem/2017/cf7185d3-5e84-42ad-974b-2332feadd919.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/119/cf7185d3-5e84-42ad-974b-2332feadd919.jpg"
+      "./assets/enem/2017/cf7185d3-5e84-42ad-974b-2332feadd919.jpg"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -5301,7 +5419,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A solução de carbonato desprotona a hidroxila ácida do lapachol e forma um sal solúvel em água, facilitando sua extração da serragem."
   },
   {
     "title": "Questão 120 - ENEM 2017",
@@ -5345,7 +5464,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Na osmose reversa, uma pressão mecânica maior que a osmótica empurra água no sentido oposto ao da osmose espontânea, separando-a dos sais."
   },
   {
     "title": "Questão 121 - ENEM 2017",
@@ -5353,9 +5473,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "A invenção do LED azul, que permite a geração de outras cores para compor a luz branca, permitiu a construção de lâmpadas energeticamente mais eficientes e mais duráveis do que as incandescentes e fluorescentes. Em um experimento de laboratório, pretende-se associar duas pilhas em série para acender um LED azul que requer 3,6 volts para o seu funcionamento. Considere as semirreações de redução e seus respectivos potenciais mostrados no quadro.\n\n![](https://enem.dev/2017/questions/121/a24d966d-cf85-4572-b774-9251fc9796a2.jpg)",
+    "context": "A invenção do LED azul, que permite a geração de outras cores para compor a luz branca, permitiu a construção de lâmpadas energeticamente mais eficientes e mais duráveis do que as incandescentes e fluorescentes. Em um experimento de laboratório, pretende-se associar duas pilhas em série para acender um LED azul que requer 3,6 volts para o seu funcionamento. Considere as semirreações de redução e seus respectivos potenciais mostrados no quadro.\n\n![](./assets/enem/2017/a24d966d-cf85-4572-b774-9251fc9796a2.jpg)",
     "files": [
-      "https://enem.dev/2017/questions/121/a24d966d-cf85-4572-b774-9251fc9796a2.jpg"
+      "./assets/enem/2017/a24d966d-cf85-4572-b774-9251fc9796a2.jpg"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -5364,34 +5484,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/121/86a80a3b-6080-46e4-99c8-64b4eb832c77.jpg",
+        "file": "./assets/enem/2017/86a80a3b-6080-46e4-99c8-64b4eb832c77.jpg",
         "isCorrect": false
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/121/4c1e5d4d-b2e8-4266-9afc-b5dac98cbef3.jpg",
+        "file": "./assets/enem/2017/4c1e5d4d-b2e8-4266-9afc-b5dac98cbef3.jpg",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/121/d93462f7-9b7f-4e55-b51c-2f9947a093a7.jpg",
+        "file": "./assets/enem/2017/d93462f7-9b7f-4e55-b51c-2f9947a093a7.jpg",
         "isCorrect": true
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/121/4a41471d-247d-41ec-86a5-c0f04324dda7.jpg",
+        "file": "./assets/enem/2017/4a41471d-247d-41ec-86a5-c0f04324dda7.jpg",
         "isCorrect": false
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/121/6f8788ab-6f51-4ae4-93b6-bc0a3d0ecf42.jpg",
+        "file": "./assets/enem/2017/6f8788ab-6f51-4ae4-93b6-bc0a3d0ecf42.jpg",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Em série, as tensões das pilhas se somam. A associação da alternativa C é a que fornece tensão suficiente para acender o LED azul."
   },
   {
     "title": "Questão 122 - ENEM 2017",
@@ -5399,9 +5520,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "O ácido acetilsalicílico, AAS (massa molar igual a 180 g/mol), é sintetizado a partir da reação do ácido salicílico (massa molar igual a 138 g/mol) com anidrido acético, usando-se ácido sulfúrico como catalisador, conforme a equação química:\n\n![](https://enem.dev/2017/questions/122/49f07218-d755-44c2-90b2-00ce72f5f81e.jpg)\n\nApós a síntese, o AAS é purificado e o rendimento flnal é de aproximadamente 50%. Devido às suas propriedades farmacológicas (antitérmico, analgésico, anti-inflamatório e antitrombótico), o AAS é utilizado como medicamento na forma de comprimidos, nos quais se emprega tipicamente uma massa de 500 mg dessa substância.",
+    "context": "O ácido acetilsalicílico, AAS (massa molar igual a 180 g/mol), é sintetizado a partir da reação do ácido salicílico (massa molar igual a 138 g/mol) com anidrido acético, usando-se ácido sulfúrico como catalisador, conforme a equação química:\n\n![](./assets/enem/2017/49f07218-d755-44c2-90b2-00ce72f5f81e.jpg)\n\nApós a síntese, o AAS é purificado e o rendimento flnal é de aproximadamente 50%. Devido às suas propriedades farmacológicas (antitérmico, analgésico, anti-inflamatório e antitrombótico), o AAS é utilizado como medicamento na forma de comprimidos, nos quais se emprega tipicamente uma massa de 500 mg dessa substância.",
     "files": [
-      "https://enem.dev/2017/questions/122/49f07218-d755-44c2-90b2-00ce72f5f81e.jpg"
+      "./assets/enem/2017/49f07218-d755-44c2-90b2-00ce72f5f81e.jpg"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -5437,7 +5558,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A proporção molar entre ácido salicílico e AAS é 1:1. Aplicando massas molares, teor por comprimido e rendimento informados, são necessários 690 kg do ácido."
   },
   {
     "title": "Questão 123 - ENEM 2017",
@@ -5481,7 +5603,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As bromélias possuem folhas dispostas em roseta, que retêm água da chuva e permitem sua absorção mesmo vivendo sobre árvores."
   },
   {
     "title": "Questão 124 - ENEM 2017",
@@ -5525,7 +5648,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pela lei de Hess, combina-se a reação de formação do FeO com a oxidação por CO. A diferença das entalpias fornecidas é aproximadamente −17 kJ/mol."
   },
   {
     "title": "Questão 125 - ENEM 2017",
@@ -5542,34 +5666,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/125/4cf7ed2b-5dd0-4ee4-a842-aca98c5ac7bb.png",
+        "file": "./assets/enem/2017/4cf7ed2b-5dd0-4ee4-a842-aca98c5ac7bb.png",
         "isCorrect": false
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/125/c9c1114a-0c2f-49ad-be9f-c5123b8e582d.png",
+        "file": "./assets/enem/2017/c9c1114a-0c2f-49ad-be9f-c5123b8e582d.png",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/125/56c6d4eb-6ae6-4b2d-bca7-a465b55787df.png",
+        "file": "./assets/enem/2017/56c6d4eb-6ae6-4b2d-bca7-a465b55787df.png",
         "isCorrect": true
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/125/79db4b1a-8421-4150-b28e-06eda705aa85.png",
+        "file": "./assets/enem/2017/79db4b1a-8421-4150-b28e-06eda705aa85.png",
         "isCorrect": false
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/125/65370191-7b6c-4fd2-a6e7-d947cad08c97.png",
+        "file": "./assets/enem/2017/65370191-7b6c-4fd2-a6e7-d947cad08c97.png",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O segmento da alternativa C tem menor proporção de pares G–C, que formam três ligações de hidrogênio; por isso exige menos calor para separar as fitas."
   },
   {
     "title": "Questão 126 - ENEM 2017",
@@ -5613,7 +5738,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O flúor é o elemento mais eletronegativo e pode atrair elétrons até dos gases nobres em condições adequadas, permitindo sua reação."
   },
   {
     "title": "Questão 127 - ENEM 2017",
@@ -5621,9 +5747,9 @@
     "discipline": "ciencias-natureza",
     "language": null,
     "year": 2017,
-    "context": "No manual fornecido pelo fabricante de uma ducha elétrica de 220V é apresentado um gráfico com a variação da temperatura da água em função da vazão para três condições (morno, quente e superquente). Na condição superquente, a potência dissipada é de 6500 W.\n\nConsidere o calor específico da água igual a 4200 J/(kg C) e a densidade da água igual a 1 kg/L.\n\n![](https://enem.dev/2017/questions/127/95c962ac-5ff6-42db-8e84-677b9d77e56f.png)",
+    "context": "No manual fornecido pelo fabricante de uma ducha elétrica de 220V é apresentado um gráfico com a variação da temperatura da água em função da vazão para três condições (morno, quente e superquente). Na condição superquente, a potência dissipada é de 6500 W.\n\nConsidere o calor específico da água igual a 4200 J/(kg C) e a densidade da água igual a 1 kg/L.\n\n![](./assets/enem/2017/95c962ac-5ff6-42db-8e84-677b9d77e56f.png)",
     "files": [
-      "https://enem.dev/2017/questions/127/95c962ac-5ff6-42db-8e84-677b9d77e56f.png"
+      "./assets/enem/2017/95c962ac-5ff6-42db-8e84-677b9d77e56f.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -5659,7 +5785,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Para a mesma tensão de 220 V, a potência é inversamente proporcional à resistência. Comparando as inclinações das curvas de aquecimento, a condição morno usa 3/8 da potência superquente."
   },
   {
     "title": "Questão 128 - ENEM 2017",
@@ -5703,7 +5830,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os cones da retina respondem a diferentes comprimentos de onda. Sua degeneração compromete a distinção de cores."
   },
   {
     "title": "Questão 129 - ENEM 2017",
@@ -5747,7 +5875,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Uma resistência interna milhares de vezes maior que a resistência do corpo limita a corrente a valor muito pequeno, apesar da alta tensão da cerca."
   },
   {
     "title": "Questão 130 - ENEM 2017",
@@ -5755,9 +5884,9 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "A cromatografia em papel é um método de separação que se baseia na migração diferencial dos componentes de uma mistura entre duas fases imiscíveis. Os componentes da amostra são separados entre a fase estacionária e a fase móvel em movimento no papel. A fase estacionária consiste de celulose praticamente pura, que pode absorver até 22% de água. É a água absorvida que funciona como fase estacionária líquida e que interage com a fase móvel, também líquida (partição líquido-líquido). Os componentes capazes de formar interações intermoleculares mais fortes com a fase estacionária migram mais lentamente.\n\nUma mistura de hexano com 5% (v/v) de acetona foi utilizada como fase móvel na separação dos componentes de um extrato vegetal obtido a partir de pimentões. Considere que esse extrato contém as substâncias representadas.\n\nRIBEIRO, N.M.; NUNES, C. R. Análise de pigmentos de pimentões por cromatografia em papel, **Química Nova na Escola**, n.29, ago. 2008 (adaptado).\n\n![](https://enem.dev/2017/questions/130/5e013833-b780-40ce-ae64-9f1dd61cb6fa.png)",
+    "context": "A cromatografia em papel é um método de separação que se baseia na migração diferencial dos componentes de uma mistura entre duas fases imiscíveis. Os componentes da amostra são separados entre a fase estacionária e a fase móvel em movimento no papel. A fase estacionária consiste de celulose praticamente pura, que pode absorver até 22% de água. É a água absorvida que funciona como fase estacionária líquida e que interage com a fase móvel, também líquida (partição líquido-líquido). Os componentes capazes de formar interações intermoleculares mais fortes com a fase estacionária migram mais lentamente.\n\nUma mistura de hexano com 5% (v/v) de acetona foi utilizada como fase móvel na separação dos componentes de um extrato vegetal obtido a partir de pimentões. Considere que esse extrato contém as substâncias representadas.\n\nRIBEIRO, N.M.; NUNES, C. R. Análise de pigmentos de pimentões por cromatografia em papel, **Química Nova na Escola**, n.29, ago. 2008 (adaptado).\n\n![](./assets/enem/2017/5e013833-b780-40ce-ae64-9f1dd61cb6fa.png)",
     "files": [
-      "https://enem.dev/2017/questions/130/5e013833-b780-40ce-ae64-9f1dd61cb6fa.png"
+      "./assets/enem/2017/5e013833-b780-40ce-ae64-9f1dd61cb6fa.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -5793,7 +5922,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A capsorubina permanece mais presa à fase estacionária e, por isso, acompanha menos a fase móvel do papel, migrando mais devagar."
   },
   {
     "title": "Questão 131 - ENEM 2017",
@@ -5837,7 +5967,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O motorista distraído continua percorrendo a estrada durante o tempo extra de reação. Multiplicando a velocidade pela diferença entre os tempos, obtêm-se 17,4 m adicionais."
   },
   {
     "title": "Questão 132 - ENEM 2017",
@@ -5881,7 +6012,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O sal torna o meio externo hipertônico. Por osmose, a água sai das células dos microrganismos, dificultando sua sobrevivência e conservando o alimento."
   },
   {
     "title": "Questão 133 - ENEM 2017",
@@ -5925,7 +6057,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A tensão induzida é proporcional ao número de espiras da bobina. Duplicar as espiras duplica a tensão máxima sem alterar a corrente de curto indicada."
   },
   {
     "title": "Questão 134 - ENEM 2017",
@@ -5933,10 +6066,10 @@
     "discipline": "ciencias-humanas",
     "language": null,
     "year": 2017,
-    "context": "A ozonólise, reação utilizada na indústria madeireira para a produção de papel, é utilizada em escala de laboratório na síntese de aldeídos e cetonas. As duplas ligações dos alcenos são clivadas pela oxidação com o ozônio (O3), em presença de água e zinco metálico, e a reação produz aldeídos e/ou cetonas, dependendo do grau de substituição da ligação dupla. Ligações duplas dissubstituídas geram cetonas, enquanto as ligações duplas terminais ou monossubstituídas dão origem a aldeídos, como mostra o esquema.\n\n![](https://enem.dev/2017/questions/134/473049c4-f31e-4efc-b18b-e808378bc090.png)\n\nConsidere a ozonólise do composto 1-fenil-2-metilprop-1-eno:\n\n![](https://enem.dev/2017/questions/134/4ebacf49-d6c6-4b9d-a586-ed1b1cadd538.png)\n\nMARTINO, A. **Química, a ciência global.** Goiânia: Editora W, 2014 (adaptado)",
+    "context": "A ozonólise, reação utilizada na indústria madeireira para a produção de papel, é utilizada em escala de laboratório na síntese de aldeídos e cetonas. As duplas ligações dos alcenos são clivadas pela oxidação com o ozônio (O3), em presença de água e zinco metálico, e a reação produz aldeídos e/ou cetonas, dependendo do grau de substituição da ligação dupla. Ligações duplas dissubstituídas geram cetonas, enquanto as ligações duplas terminais ou monossubstituídas dão origem a aldeídos, como mostra o esquema.\n\n![](./assets/enem/2017/473049c4-f31e-4efc-b18b-e808378bc090.png)\n\nConsidere a ozonólise do composto 1-fenil-2-metilprop-1-eno:\n\n![](./assets/enem/2017/4ebacf49-d6c6-4b9d-a586-ed1b1cadd538.png)\n\nMARTINO, A. **Química, a ciência global.** Goiânia: Editora W, 2014 (adaptado)",
     "files": [
-      "https://enem.dev/2017/questions/134/473049c4-f31e-4efc-b18b-e808378bc090.png",
-      "https://enem.dev/2017/questions/134/4ebacf49-d6c6-4b9d-a586-ed1b1cadd538.png"
+      "./assets/enem/2017/473049c4-f31e-4efc-b18b-e808378bc090.png",
+      "./assets/enem/2017/4ebacf49-d6c6-4b9d-a586-ed1b1cadd538.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -5972,7 +6105,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A ozonólise rompe a dupla ligação do alceno e converte seus dois carbonos em carbonilas; para a estrutura dada, formam-se benzaldeído e propanona."
   },
   {
     "title": "Questão 135 - ENEM 2017",
@@ -6016,7 +6150,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A transfusão introduz células sanguíneas de outro organismo para tratar uma condição de saúde, exemplo antigo de terapia celular."
   },
   {
     "title": "Questão 136 - ENEM 2017",
@@ -6033,34 +6168,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/136/095d9fee-b0a3-4486-a6f7-5905be8a8aee.png",
+        "file": "./assets/enem/2017/095d9fee-b0a3-4486-a6f7-5905be8a8aee.png",
         "isCorrect": true
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/136/9b318931-f44c-47f6-bde1-7629aaf7b6e2.png",
+        "file": "./assets/enem/2017/9b318931-f44c-47f6-bde1-7629aaf7b6e2.png",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/136/2a676854-c439-49bc-8187-107963dc04ef.png",
+        "file": "./assets/enem/2017/2a676854-c439-49bc-8187-107963dc04ef.png",
         "isCorrect": false
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/136/0338bf3c-70fc-4cb5-b6d5-28ee0508731e.png",
+        "file": "./assets/enem/2017/0338bf3c-70fc-4cb5-b6d5-28ee0508731e.png",
         "isCorrect": false
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/136/07869d30-eb4d-4450-a76a-ea0654e459f8.png",
+        "file": "./assets/enem/2017/07869d30-eb4d-4450-a76a-ea0654e459f8.png",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "No instante do pagamento da sexta prestação, seu valor P deve ser somado ao valor atual das duas prestações seguintes: P + P/(1 + i/100) + P/(1 + i/100)², expressão da alternativa A."
   },
   {
     "title": "Questão 137 - ENEM 2017",
@@ -6068,9 +6204,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Para realizar a viagem dos sonhos, uma pessoa precisava fazer um empréstimo no valor de R$ 5000,00. Para pagar as prestações, dispõe de, no máximo, R$ 400,00 mensais. Para esse valor de empréstimo, o valor da prestação (P) é calculado em função do número de prestações (n) segundo a fórmula\n\n![](https://enem.dev/2017/questions/137/e7e3ca34-7beb-43f1-bef0-8691dd8922f5.png)\n\nSe necessário, utilize 0,005 como aproximação para log 1,013; 2,602 como aproximação para log 400; 2,525 como aproximação para log 335.",
+    "context": "Para realizar a viagem dos sonhos, uma pessoa precisava fazer um empréstimo no valor de R$ 5000,00. Para pagar as prestações, dispõe de, no máximo, R$ 400,00 mensais. Para esse valor de empréstimo, o valor da prestação (P) é calculado em função do número de prestações (n) segundo a fórmula\n\n![](./assets/enem/2017/e7e3ca34-7beb-43f1-bef0-8691dd8922f5.png)\n\nSe necessário, utilize 0,005 como aproximação para log 1,013; 2,602 como aproximação para log 400; 2,525 como aproximação para log 335.",
     "files": [
-      "https://enem.dev/2017/questions/137/e7e3ca34-7beb-43f1-bef0-8691dd8922f5.png"
+      "./assets/enem/2017/e7e3ca34-7beb-43f1-bef0-8691dd8922f5.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -6106,7 +6242,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Substituindo o limite P = 400 na fórmula de prestações e isolando n com os logaritmos fornecidos, obtém-se n maior que 15 e menor que 16; portanto são necessárias pelo menos 16 parcelas."
   },
   {
     "title": "Questão 138 - ENEM 2017",
@@ -6114,9 +6251,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Raios de luz solar estão atingindo a superfície de um lago formando um ângulo X com a sua superfície, conforme indica a figura.\n\nEm determinadas condições, pode-se supor que a intensidade luminosa desses raios, na superfície do lago, seja dada aproximadamente por I(x) = k . sen(x)\n\nsendo k uma constante, e supondo-se que X está entre 0° e 90º.\n\n![](https://enem.dev/2017/questions/138/7d715e4d-7f9b-43a6-8f5e-4f0e1e782780.png)",
+    "context": "Raios de luz solar estão atingindo a superfície de um lago formando um ângulo X com a sua superfície, conforme indica a figura.\n\nEm determinadas condições, pode-se supor que a intensidade luminosa desses raios, na superfície do lago, seja dada aproximadamente por I(x) = k . sen(x)\n\nsendo k uma constante, e supondo-se que X está entre 0° e 90º.\n\n![](./assets/enem/2017/7d715e4d-7f9b-43a6-8f5e-4f0e1e782780.png)",
     "files": [
-      "https://enem.dev/2017/questions/138/7d715e4d-7f9b-43a6-8f5e-4f0e1e782780.png"
+      "./assets/enem/2017/7d715e4d-7f9b-43a6-8f5e-4f0e1e782780.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -6152,7 +6289,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A intensidade é proporcional a sen(x). Para x = 30°, sen(30°) = 1/2, isto é, 50% da intensidade máxima k."
   },
   {
     "title": "Questão 139 - ENEM 2017",
@@ -6160,9 +6298,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Os congestionamentos de trânsito constituem um problema que aflige, todos os dias, milhares de motoristas brasileiros. O gráfico ilustra a situação, representando, ao longo de um intervalo definido de tempo, a variação da velocidade de um veículo durante um congestionamento.\n\n![](https://enem.dev/2017/questions/139/cae1675d-9ef1-41d5-b0c6-f0a0df4b56b7.png)",
+    "context": "Os congestionamentos de trânsito constituem um problema que aflige, todos os dias, milhares de motoristas brasileiros. O gráfico ilustra a situação, representando, ao longo de um intervalo definido de tempo, a variação da velocidade de um veículo durante um congestionamento.\n\n![](./assets/enem/2017/cae1675d-9ef1-41d5-b0c6-f0a0df4b56b7.png)",
     "files": [
-      "https://enem.dev/2017/questions/139/cae1675d-9ef1-41d5-b0c6-f0a0df4b56b7.png"
+      "./assets/enem/2017/cae1675d-9ef1-41d5-b0c6-f0a0df4b56b7.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -6198,7 +6336,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Nos trechos em que a velocidade do gráfico é zero, o veículo está parado. Somando as durações desses intervalos, obtêm-se 2 minutos."
   },
   {
     "title": "Questão 140 - ENEM 2017",
@@ -6206,9 +6345,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Um garçom precisa escolher uma bandeja de base retangular para servir quatro taças de espumante que precisam ser dispostas em uma única fileira, paralela ao lado maior da bandeja, e com suas bases totalmente apoiadas na bandeja. A base e a borda superior das taças são círculos de raio 4 cm e 5 cm, respectivamente.\n\n![](https://enem.dev/2017/questions/140/40dd65c7-1ff1-420a-a8b1-27f26691f08b.png)",
+    "context": "Um garçom precisa escolher uma bandeja de base retangular para servir quatro taças de espumante que precisam ser dispostas em uma única fileira, paralela ao lado maior da bandeja, e com suas bases totalmente apoiadas na bandeja. A base e a borda superior das taças são círculos de raio 4 cm e 5 cm, respectivamente.\n\n![](./assets/enem/2017/40dd65c7-1ff1-420a-a8b1-27f26691f08b.png)",
     "files": [
-      "https://enem.dev/2017/questions/140/40dd65c7-1ff1-420a-a8b1-27f26691f08b.png"
+      "./assets/enem/2017/40dd65c7-1ff1-420a-a8b1-27f26691f08b.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -6244,7 +6383,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As quatro taças devem ficar lado a lado sem que as bordas se sobreponham. A largura mínima da bandeja é 8 cm e o comprimento mínimo é 38 cm; a área é 8 × 38 = 304 cm²."
   },
   {
     "title": "Questão 141 - ENEM 2017",
@@ -6288,7 +6428,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A polpa de acerola sobe R$ 0,60 por embalagem e representa 1/3 do suco. Para compensar, a polpa de morango, que representa 2/3, deve cair R$ 0,30 por embalagem."
   },
   {
     "title": "Questão 142 - ENEM 2017",
@@ -6332,7 +6473,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A caixa 2 tem um lado de 75 cm e não comporta o cubo de aresta 80 cm. Entre as demais, a caixa 3 tem o menor volume interno, logo deixa menos espaço livre."
   },
   {
     "title": "Questão 143 - ENEM 2017",
@@ -6340,9 +6482,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Um brinquedo infantil caminhão-cegonha é formado por uma carreta e dez carrinhos nela transportados, conforme a figura.\n\n![](https://enem.dev/2017/questions/143/c62c83ca-4ab4-4be7-b882-cedb9116763a.png)\n\nNo setor de produção da empresa que fabrica esse brinquedo, é feita a pintura de todos os carrinhos para que o aspecto do brinquedo fique mais atraente. São utilizadas as cores amarelo, branco, laranja e verde, e cada carrinho é pintado apenas com uma cor. O caminhão-cegonha tem uma cor fixa. A empresa determinou que em todo caminhão-cegonha deve haver pelo menos um carrinho de cada uma das quatro cores disponíveis. Mudança de posição dos carrinhos no caminhão-cegonha não gera um novo modelo do brinquedo.",
+    "context": "Um brinquedo infantil caminhão-cegonha é formado por uma carreta e dez carrinhos nela transportados, conforme a figura.\n\n![](./assets/enem/2017/c62c83ca-4ab4-4be7-b882-cedb9116763a.png)\n\nNo setor de produção da empresa que fabrica esse brinquedo, é feita a pintura de todos os carrinhos para que o aspecto do brinquedo fique mais atraente. São utilizadas as cores amarelo, branco, laranja e verde, e cada carrinho é pintado apenas com uma cor. O caminhão-cegonha tem uma cor fixa. A empresa determinou que em todo caminhão-cegonha deve haver pelo menos um carrinho de cada uma das quatro cores disponíveis. Mudança de posição dos carrinhos no caminhão-cegonha não gera um novo modelo do brinquedo.",
     "files": [
-      "https://enem.dev/2017/questions/143/c62c83ca-4ab4-4be7-b882-cedb9116763a.png"
+      "./assets/enem/2017/c62c83ca-4ab4-4be7-b882-cedb9116763a.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -6378,7 +6520,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Como a posição dos carrinhos não diferencia modelos, contam-se apenas as quantidades de cada cor. Reservando um carrinho para cada uma das quatro cores, distribuem-se os seis restantes entre quatro cores: C(9,3)."
   },
   {
     "title": "Questão 144 - ENEM 2017",
@@ -6422,7 +6565,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A água tem altura de 1,7 − 0,5 = 1,2 m. O volume é 3 × 5 × 1,2 = 18 m³ = 18 000 L; são 18 doses de 1,5 mL, ou 27 mL."
   },
   {
     "title": "Questão 145 - ENEM 2017",
@@ -6430,9 +6574,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Um instituto de pesquisas eleitorais recebe uma encomenda na qual a margem de erro deverá ser de, no máximo, 2 pontos percentuais (0,02).\n\nO instituto tem 5 pesquisas recentes, P1 a P5, sobre o tema objeto da encomenda e irá usar a que tiver o erro menor que o pedido.\n\nOs dados sobre as pesquisas são os seguintes:\n\n![](https://enem.dev/2017/questions/145/2cf08ed8-74ba-469c-9e95-8e264b79394b.png)\n\nem que σ é um parâmetro e N é o número de pessoas  \nentrevistadas pela pesquisa.",
+    "context": "Um instituto de pesquisas eleitorais recebe uma encomenda na qual a margem de erro deverá ser de, no máximo, 2 pontos percentuais (0,02).\n\nO instituto tem 5 pesquisas recentes, P1 a P5, sobre o tema objeto da encomenda e irá usar a que tiver o erro menor que o pedido.\n\nOs dados sobre as pesquisas são os seguintes:\n\n![](./assets/enem/2017/2cf08ed8-74ba-469c-9e95-8e264b79394b.png)\n\nem que σ é um parâmetro e N é o número de pessoas  \nentrevistadas pela pesquisa.",
     "files": [
-      "https://enem.dev/2017/questions/145/2cf08ed8-74ba-469c-9e95-8e264b79394b.png"
+      "./assets/enem/2017/2cf08ed8-74ba-469c-9e95-8e264b79394b.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -6468,7 +6612,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Aplicando a fórmula da margem de erro aos valores de σ e N de cada linha da tabela, P4 é a pesquisa cujo erro atende ao máximo de 0,02 exigido."
   },
   {
     "title": "Questão 146 - ENEM 2017",
@@ -6512,7 +6657,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os bondinhos levam 90 s para percorrer a distância total. Como se encontram 40 s após a saída de A e têm a mesma velocidade, B já viajava por 50 s; saiu 10 s antes de A."
   },
   {
     "title": "Questão 147 - ENEM 2017",
@@ -6520,9 +6666,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Num dia de tempestade, a alteração na profundidade de um rio, num determinado local, foi registrada durante um período de 4 horas. Os resultados estão indicados no gráfico de linhas. Nele, a profundidade h, registrada às 13 horas, não foi anotada e, a partir de h, cada unidade sobre o eixo vertical representa um metro.\n\n![](https://enem.dev/2017/questions/147/285302d4-e938-4376-a2f3-3f320be38b8c.png)\n\nFoi informado que entre 15 horas e 16 horas, a profundidade do rio diminuiu em 10%.",
+    "context": "Num dia de tempestade, a alteração na profundidade de um rio, num determinado local, foi registrada durante um período de 4 horas. Os resultados estão indicados no gráfico de linhas. Nele, a profundidade h, registrada às 13 horas, não foi anotada e, a partir de h, cada unidade sobre o eixo vertical representa um metro.\n\n![](./assets/enem/2017/285302d4-e938-4376-a2f3-3f320be38b8c.png)\n\nFoi informado que entre 15 horas e 16 horas, a profundidade do rio diminuiu em 10%.",
     "files": [
-      "https://enem.dev/2017/questions/147/285302d4-e938-4376-a2f3-3f320be38b8c.png"
+      "./assets/enem/2017/285302d4-e938-4376-a2f3-3f320be38b8c.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -6558,7 +6704,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O gráfico indica profundidade de 20 m às 15 h. A redução de 10% até 16 h equivale a 2 m, resultando em 18 m."
   },
   {
     "title": "Questão 148 - ENEM 2017",
@@ -6566,9 +6713,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Uma rede hoteleira dispõe de cabanas simples na ilha de Gotland, na Suécia, conforme Figura 1. A estrutura de sustentação de cada uma dessas cabanas está representada na Figura 2. A ideia é permitir ao hóspede uma estada livre de tecnologia, mas conectada com a natureza\n\n![](https://enem.dev/2017/questions/148/aff2b260-7282-4164-b347-1cd2ebdf4951.png)",
+    "context": "Uma rede hoteleira dispõe de cabanas simples na ilha de Gotland, na Suécia, conforme Figura 1. A estrutura de sustentação de cada uma dessas cabanas está representada na Figura 2. A ideia é permitir ao hóspede uma estada livre de tecnologia, mas conectada com a natureza\n\n![](./assets/enem/2017/aff2b260-7282-4164-b347-1cd2ebdf4951.png)",
     "files": [
-      "https://enem.dev/2017/questions/148/aff2b260-7282-4164-b347-1cd2ebdf4951.png"
+      "./assets/enem/2017/aff2b260-7282-4164-b347-1cd2ebdf4951.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -6604,7 +6751,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A estrutura apresenta duas faces triangulares paralelas, ligadas por faces retangulares perpendiculares às bases. Trata-se de um prisma triangular reto."
   },
   {
     "title": "Questão 149 - ENEM 2017",
@@ -6612,9 +6760,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "A figura ilustra uma partida de Campo Minado, o jogo presente em praticamente todo computador pessoal. Quatro quadrados em um tabuleiro 16 x 16 foram abertos, e os números em suas faces indicam quantos dos seus 8 vizinhos contêm minas (a serem evitadas). O número 40 no canto inferior direito é o número total de minas no tabuleiro, cujas posições foram escolhidas ao acaso, de forma uniforme, antes de se abrir qualquer quadrado.\n\n![](https://enem.dev/2017/questions/149/d94daac4-0e76-47a6-bdec-90200af5b3c0.png)\n\nEm sua próxima jogada, o jogador deve escolher dentre os quadrados marcados com as letras P, Q, R, S e T um para abrir, sendo que deve escolher aquele com a menor probabilidade de conter uma mina.",
+    "context": "A figura ilustra uma partida de Campo Minado, o jogo presente em praticamente todo computador pessoal. Quatro quadrados em um tabuleiro 16 x 16 foram abertos, e os números em suas faces indicam quantos dos seus 8 vizinhos contêm minas (a serem evitadas). O número 40 no canto inferior direito é o número total de minas no tabuleiro, cujas posições foram escolhidas ao acaso, de forma uniforme, antes de se abrir qualquer quadrado.\n\n![](./assets/enem/2017/d94daac4-0e76-47a6-bdec-90200af5b3c0.png)\n\nEm sua próxima jogada, o jogador deve escolher dentre os quadrados marcados com as letras P, Q, R, S e T um para abrir, sendo que deve escolher aquele com a menor probabilidade de conter uma mina.",
     "files": [
-      "https://enem.dev/2017/questions/149/d94daac4-0e76-47a6-bdec-90200af5b3c0.png"
+      "./assets/enem/2017/d94daac4-0e76-47a6-bdec-90200af5b3c0.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -6650,7 +6798,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os números revelados limitam a posição das minas nas casas vizinhas. Entre P, Q, R, S e T, a casa Q tem a menor probabilidade de conter uma mina."
   },
   {
     "title": "Questão 150 - ENEM 2017",
@@ -6658,9 +6807,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "A imagem apresentada na figura é uma cópia em preto e branco da tela quadrada intitulada O peixe, de Marcos Pinto, que foi colocada em uma parede para exposição e fixada nos pontos A e B.\n\nPor um problema na fixação de um dos pontos, a tela se desprendeu, girando rente à parede. Após o giro, ela ficou posicionada como ilustrado na figura, formando um ângulo de 45° com a linha do horizonte.\n\n![](https://enem.dev/2017/questions/150/e2c89b3e-9c0a-4707-86d9-ea6b70f3cd11.png)\n\nPara recolocar a tela na sua posição original, deve-se girá-la, rente à parede, no menor ângulo possível inferior a 360°",
+    "context": "A imagem apresentada na figura é uma cópia em preto e branco da tela quadrada intitulada O peixe, de Marcos Pinto, que foi colocada em uma parede para exposição e fixada nos pontos A e B.\n\nPor um problema na fixação de um dos pontos, a tela se desprendeu, girando rente à parede. Após o giro, ela ficou posicionada como ilustrado na figura, formando um ângulo de 45° com a linha do horizonte.\n\n![](./assets/enem/2017/e2c89b3e-9c0a-4707-86d9-ea6b70f3cd11.png)\n\nPara recolocar a tela na sua posição original, deve-se girá-la, rente à parede, no menor ângulo possível inferior a 360°",
     "files": [
-      "https://enem.dev/2017/questions/150/e2c89b3e-9c0a-4707-86d9-ea6b70f3cd11.png"
+      "./assets/enem/2017/e2c89b3e-9c0a-4707-86d9-ea6b70f3cd11.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -6696,7 +6845,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Comparando a orientação original do peixe com a tela caída, o menor giro que a recoloca na posição inicial é de 135° no sentido horário."
   },
   {
     "title": "Questão 151 - ENEM 2017",
@@ -6704,10 +6854,10 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "A avaliação de rendimento de alunos de um curso universitário baseia-se na média ponderada das notas obtidas nas disciplinas pelos respectivos números de créditos, como mostra o quadro:\n\n![](https://enem.dev/2017/questions/151/deda154b-bdf4-471b-b4a7-85c1dfae90c1.png)\n\nQuanto melhor a avaliação de um aluno em determinado período letivo, maior sua prioridade na escolha de disciplinas para o período seguinte.\n\nDeterminado aluno sabe que se obtiver avaliação “Bom” ou “Excelente” conseguirá matrícula nas disciplinas que deseja. Ele já realizou as provas de 4 das 5 disciplinas em que está matriculado, mas ainda não realizou a prova da disciplina I, conforme o quadro.\n\n![](https://enem.dev/2017/questions/151/7ea7b9c7-5a2c-4d4e-899d-834c2b5f4af2.png)",
+    "context": "A avaliação de rendimento de alunos de um curso universitário baseia-se na média ponderada das notas obtidas nas disciplinas pelos respectivos números de créditos, como mostra o quadro:\n\n![](./assets/enem/2017/deda154b-bdf4-471b-b4a7-85c1dfae90c1.png)\n\nQuanto melhor a avaliação de um aluno em determinado período letivo, maior sua prioridade na escolha de disciplinas para o período seguinte.\n\nDeterminado aluno sabe que se obtiver avaliação “Bom” ou “Excelente” conseguirá matrícula nas disciplinas que deseja. Ele já realizou as provas de 4 das 5 disciplinas em que está matriculado, mas ainda não realizou a prova da disciplina I, conforme o quadro.\n\n![](./assets/enem/2017/7ea7b9c7-5a2c-4d4e-899d-834c2b5f4af2.png)",
     "files": [
-      "https://enem.dev/2017/questions/151/deda154b-bdf4-471b-b4a7-85c1dfae90c1.png",
-      "https://enem.dev/2017/questions/151/7ea7b9c7-5a2c-4d4e-899d-834c2b5f4af2.png"
+      "./assets/enem/2017/deda154b-bdf4-471b-b4a7-85c1dfae90c1.png",
+      "./assets/enem/2017/7ea7b9c7-5a2c-4d4e-899d-834c2b5f4af2.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -6743,7 +6893,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A média ponderada é a soma de cada nota multiplicada pelos créditos, dividida pelo total de créditos. Impor a menor média da faixa “Bom” e isolar a nota da disciplina I dá 8,25."
   },
   {
     "title": "Questão 152 - ENEM 2017",
@@ -6751,9 +6902,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "A água para o abastecimento de um prédio é armazenada em um sistema formado por dois reservatórios idênticos, em formato de bloco retangular, ligados entre si por um cano igual ao cano de entrada, conforme ilustra a figura.\n\n![](https://enem.dev/2017/questions/152/8a5c8c84-dc4a-434c-95d8-ac7e8a188f0b.png)\n\nA água entra no sistema pelo cano de entrada no Reservatório 1 a uma vazão constante e, ao atingir o nível do cano de ligação, passa a abastecer o Reservatório 2. Suponha que, inicialmente, os dois reservatórios estejam vazios.",
+    "context": "A água para o abastecimento de um prédio é armazenada em um sistema formado por dois reservatórios idênticos, em formato de bloco retangular, ligados entre si por um cano igual ao cano de entrada, conforme ilustra a figura.\n\n![](./assets/enem/2017/8a5c8c84-dc4a-434c-95d8-ac7e8a188f0b.png)\n\nA água entra no sistema pelo cano de entrada no Reservatório 1 a uma vazão constante e, ao atingir o nível do cano de ligação, passa a abastecer o Reservatório 2. Suponha que, inicialmente, os dois reservatórios estejam vazios.",
     "files": [
-      "https://enem.dev/2017/questions/152/8a5c8c84-dc4a-434c-95d8-ac7e8a188f0b.png"
+      "./assets/enem/2017/8a5c8c84-dc4a-434c-95d8-ac7e8a188f0b.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -6762,34 +6913,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/152/f4cd2fd5-8ffc-4cb7-91ae-2c3bd3f73900.png",
+        "file": "./assets/enem/2017/f4cd2fd5-8ffc-4cb7-91ae-2c3bd3f73900.png",
         "isCorrect": false
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/152/da408f74-0165-4374-94f7-4efc3ba68756.png",
+        "file": "./assets/enem/2017/da408f74-0165-4374-94f7-4efc3ba68756.png",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/152/73c9ec1b-6c30-4e0e-8c6a-baf78b10dbb8.png",
+        "file": "./assets/enem/2017/73c9ec1b-6c30-4e0e-8c6a-baf78b10dbb8.png",
         "isCorrect": false
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/152/29e329de-44fe-4da6-8f85-d63e8b31cadd.png",
+        "file": "./assets/enem/2017/29e329de-44fe-4da6-8f85-d63e8b31cadd.png",
         "isCorrect": true
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/152/f4376ddd-f5cb-46ff-b7d6-f95ac887e91c.png",
+        "file": "./assets/enem/2017/f4376ddd-f5cb-46ff-b7d6-f95ac887e91c.png",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Primeiro o nível do reservatório 1 sobe sozinho até o cano. Enquanto o reservatório 2 alcança esse nível, a altura do primeiro permanece constante; depois os dois sobem juntos, com metade da inclinação inicial. Esse comportamento corresponde ao gráfico D."
   },
   {
     "title": "Questão 153 - ENEM 2017",
@@ -6797,10 +6949,10 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "A manchete demonstra que o transporte de grandes cargas representa cada vez mais preocupação quando feito em vias urbanas.\n\n**Caminhão entala em viaduto no Centro**\n\nUm caminhão de grande porte entalou embaixo do viaduto no cruzamento das avenidas Borges de Medeiros e Loureiro da Silva no sentido Centro-Bairro, próximo à Ponte de Pedra, na capital. Esse veículo vinha de São Paulo para Porto Alegre e transportava três grandes tubos, conforme ilustrado na foto.\n\n![](https://enem.dev/2017/questions/153/fab0cf9a-a91f-4842-8d0b-ea7d9cf7dab3.png)\n\nConsidere que o raio externo de cada cano da imagem seja 0,60 m e que eles estejam em cima de uma carroceria cuja parte superior está a 1,30 m do solo. O desenho representa a vista traseira do empilhamento dos canos.\n\n![](https://enem.dev/2017/questions/153/e76c0b65-e180-4f4a-9bd0-aef3b42965d8.png)\n\nA margem de segurança recomendada para que um veículo passe sob um viaduto é que a altura total do veículo com a carga seja, no mínimo, 0,50 m menor do que a altura do vão do viaduto.\n\nConsidere 1,7 como aproximação para (3)1/2",
+    "context": "A manchete demonstra que o transporte de grandes cargas representa cada vez mais preocupação quando feito em vias urbanas.\n\n**Caminhão entala em viaduto no Centro**\n\nUm caminhão de grande porte entalou embaixo do viaduto no cruzamento das avenidas Borges de Medeiros e Loureiro da Silva no sentido Centro-Bairro, próximo à Ponte de Pedra, na capital. Esse veículo vinha de São Paulo para Porto Alegre e transportava três grandes tubos, conforme ilustrado na foto.\n\n![](./assets/enem/2017/fab0cf9a-a91f-4842-8d0b-ea7d9cf7dab3.png)\n\nConsidere que o raio externo de cada cano da imagem seja 0,60 m e que eles estejam em cima de uma carroceria cuja parte superior está a 1,30 m do solo. O desenho representa a vista traseira do empilhamento dos canos.\n\n![](./assets/enem/2017/e76c0b65-e180-4f4a-9bd0-aef3b42965d8.png)\n\nA margem de segurança recomendada para que um veículo passe sob um viaduto é que a altura total do veículo com a carga seja, no mínimo, 0,50 m menor do que a altura do vão do viaduto.\n\nConsidere 1,7 como aproximação para (3)1/2",
     "files": [
-      "https://enem.dev/2017/questions/153/fab0cf9a-a91f-4842-8d0b-ea7d9cf7dab3.png",
-      "https://enem.dev/2017/questions/153/e76c0b65-e180-4f4a-9bd0-aef3b42965d8.png"
+      "./assets/enem/2017/fab0cf9a-a91f-4842-8d0b-ea7d9cf7dab3.png",
+      "./assets/enem/2017/e76c0b65-e180-4f4a-9bd0-aef3b42965d8.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -6836,7 +6988,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A altura máxima da carga é 1,30 m mais o diâmetro do tubo inferior e a elevação geométrica do tubo superior. Acrescentando 0,50 m de segurança, a altura mínima do viaduto é 4,02 m."
   },
   {
     "title": "Questão 154 - ENEM 2017",
@@ -6844,9 +6997,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Um menino acaba de se mudar para um novo bairro e deseja ir à padaria. Pediu ajuda a um amigo que lhe forneceu um mapa com pontos numerados, que representam cinco locais de interesse, entre os quais está a padaria. Além disso, o amigo passou as seguintes instruções: a partir do ponto em que você se encontra, representado pela letra X, ande para oeste, vire à direita na primeira rua que encontrar, siga em frente e vire à esquerda na próxima rua. A padaria estará logo a seguir\n\n![](https://enem.dev/2017/questions/154/e003f9f9-7641-401e-9a08-2226bde38679.png)",
+    "context": "Um menino acaba de se mudar para um novo bairro e deseja ir à padaria. Pediu ajuda a um amigo que lhe forneceu um mapa com pontos numerados, que representam cinco locais de interesse, entre os quais está a padaria. Além disso, o amigo passou as seguintes instruções: a partir do ponto em que você se encontra, representado pela letra X, ande para oeste, vire à direita na primeira rua que encontrar, siga em frente e vire à esquerda na próxima rua. A padaria estará logo a seguir\n\n![](./assets/enem/2017/e003f9f9-7641-401e-9a08-2226bde38679.png)",
     "files": [
-      "https://enem.dev/2017/questions/154/e003f9f9-7641-401e-9a08-2226bde38679.png"
+      "./assets/enem/2017/e003f9f9-7641-401e-9a08-2226bde38679.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -6882,7 +7035,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Seguindo o mapa desde X — oeste, primeira direita e próxima esquerda — chega-se ao ponto 1, onde está a padaria."
   },
   {
     "title": "Questão 155 - ENEM 2017",
@@ -6890,9 +7044,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Três alunos, X, Y e Z, estão matriculados em um curso de inglês. Para avaliar esses alunos, o professor optou por fazer cinco provas. Para que seja aprovado nesse curso, o aluno deverá ter a média aritmética das notas das cinco provas maior ou igual a 6. Na tabela, estão dispostas as notas que cada aluno tirou em cada prova.\n\n![](https://enem.dev/2017/questions/155/fb7df640-ed2c-4e7f-99d5-93815129aa75.png)",
+    "context": "Três alunos, X, Y e Z, estão matriculados em um curso de inglês. Para avaliar esses alunos, o professor optou por fazer cinco provas. Para que seja aprovado nesse curso, o aluno deverá ter a média aritmética das notas das cinco provas maior ou igual a 6. Na tabela, estão dispostas as notas que cada aluno tirou em cada prova.\n\n![](./assets/enem/2017/fb7df640-ed2c-4e7f-99d5-93815129aa75.png)",
     "files": [
-      "https://enem.dev/2017/questions/155/fb7df640-ed2c-4e7f-99d5-93815129aa75.png"
+      "./assets/enem/2017/fb7df640-ed2c-4e7f-99d5-93815129aa75.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -6928,7 +7082,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Calculando a média das cinco notas de cada aluno e comparando-a com 6, somente Z fica abaixo do mínimo de aprovação."
   },
   {
     "title": "Questão 156 - ENEM 2017",
@@ -6936,10 +7091,10 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Uma desenhista projetista deverá desenhar uma tampa de panela em forma circular. Para realizar esse desenho, ela dispõe, no momento, de apenas um compasso, cujo comprimento das hastes é de 10 cm, um transferidor e uma folha de papel com um plano cartesiano. Para esboçar o desenho dessa tampa, ela afastou as hastes do compasso de forma que o ângulo formado por elas fosse de 120o. A ponta seca está representada pelo ponto C, a ponta do grafite está representada pelo ponto B e a cabeça do compasso está representada pelo ponto A conforme a figura.\n\n![](https://enem.dev/2017/questions/156/85a380fd-271f-48cc-99fd-ebb68a0032bc.png)\n\nApós concluir o desenho, ela o encaminha para o setor de produção. Ao receber o desenho com a indicação do raio da tampa, verificará em qual intervalo este se encontra e decidirá o tipo de material a ser utilizado na sua fabricação, de acordo com os dados.\n\n![](https://enem.dev/2017/questions/156/9fbeb0c5-eaec-4613-89d7-585bc786b147.png)",
+    "context": "Uma desenhista projetista deverá desenhar uma tampa de panela em forma circular. Para realizar esse desenho, ela dispõe, no momento, de apenas um compasso, cujo comprimento das hastes é de 10 cm, um transferidor e uma folha de papel com um plano cartesiano. Para esboçar o desenho dessa tampa, ela afastou as hastes do compasso de forma que o ângulo formado por elas fosse de 120o. A ponta seca está representada pelo ponto C, a ponta do grafite está representada pelo ponto B e a cabeça do compasso está representada pelo ponto A conforme a figura.\n\n![](./assets/enem/2017/85a380fd-271f-48cc-99fd-ebb68a0032bc.png)\n\nApós concluir o desenho, ela o encaminha para o setor de produção. Ao receber o desenho com a indicação do raio da tampa, verificará em qual intervalo este se encontra e decidirá o tipo de material a ser utilizado na sua fabricação, de acordo com os dados.\n\n![](./assets/enem/2017/9fbeb0c5-eaec-4613-89d7-585bc786b147.png)",
     "files": [
-      "https://enem.dev/2017/questions/156/85a380fd-271f-48cc-99fd-ebb68a0032bc.png",
-      "https://enem.dev/2017/questions/156/9fbeb0c5-eaec-4613-89d7-585bc786b147.png"
+      "./assets/enem/2017/85a380fd-271f-48cc-99fd-ebb68a0032bc.png",
+      "./assets/enem/2017/9fbeb0c5-eaec-4613-89d7-585bc786b147.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -6975,7 +7130,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "As hastes do compasso formam um triângulo isósceles de lados 10 cm e ângulo de 120°. Pela lei dos cossenos, o raio entre as pontas é 10√3 cm, que pertence ao intervalo do material IV."
   },
   {
     "title": "Questão 157 - ENEM 2017",
@@ -6983,9 +7139,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Uma pessoa ganhou uma pulseira formada por pérolas esféricas, na qual faltava uma das pérolas. A figura indica a posição em que estaria faltando esta pérola.\n\n![](https://enem.dev/2017/questions/157/a3037c5e-69fb-4c42-8587-ba4c6c0f81b4.png)\n\nEla levou a jóia a um joalheiro que verificou que a medida do diâmetro dessas pérolas era 4 milímetros. Em seu estoque, as pérolas do mesmo tipo e formato, disponíveis para reposição, tinham diâmetros iguais a: 4,025 mm; 4,100 mm; 3,970 mm; 4,080 mm e 3,099 mm.\n\nO joalheiro então colocou na pulseira a pérola cujo diâmetro era o mais próximo do diâmetro das pérolas originais.",
+    "context": "Uma pessoa ganhou uma pulseira formada por pérolas esféricas, na qual faltava uma das pérolas. A figura indica a posição em que estaria faltando esta pérola.\n\n![](./assets/enem/2017/a3037c5e-69fb-4c42-8587-ba4c6c0f81b4.png)\n\nEla levou a jóia a um joalheiro que verificou que a medida do diâmetro dessas pérolas era 4 milímetros. Em seu estoque, as pérolas do mesmo tipo e formato, disponíveis para reposição, tinham diâmetros iguais a: 4,025 mm; 4,100 mm; 3,970 mm; 4,080 mm e 3,099 mm.\n\nO joalheiro então colocou na pulseira a pérola cujo diâmetro era o mais próximo do diâmetro das pérolas originais.",
     "files": [
-      "https://enem.dev/2017/questions/157/a3037c5e-69fb-4c42-8587-ba4c6c0f81b4.png"
+      "./assets/enem/2017/a3037c5e-69fb-4c42-8587-ba4c6c0f81b4.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -7021,7 +7177,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A distância de cada diâmetro a 4 mm é, respectivamente, 0,025; 0,100; 0,030; 0,080 e 0,901 mm. O menor desvio é o da pérola de 4,025 mm."
   },
   {
     "title": "Questão 158 - ENEM 2017",
@@ -7065,7 +7222,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "O fator linear da escala é 400 e o fator volumétrico é 400³. Assim, o volume real é 25 × 400³ cm³ = 1 600 m³."
   },
   {
     "title": "Questão 159 - ENEM 2017",
@@ -7073,11 +7231,11 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Uma bicicleta do tipo mountain bike tem uma coroa com 3 engrenagens e uma catraca com 6 engrenagens, que, combinadas entre si, determinam 18 marchas (número de engrenagens da coroa vezes o número de engrenagens da catraca).\n\n![](https://enem.dev/2017/questions/159/c66f38e4-cac9-40bd-ab40-dcc28709d1f2.png)\n\nOs números de dentes das engrenagens das coroas e das catracas dessa bicicleta estão listados no quadro.\n\n![](https://enem.dev/2017/questions/159/71fe199d-31a3-491a-9ed1-4f4266bcec67.png)\n\nSabe-se que o número de voltas efetuadas pela roda traseira a cada pedalada é calculado dividindo-se a quantidade de dentes da coroa pela quantidade de dentes da catraca.\n\nDurante um passeio em uma bicicleta desse tipo, deseja-se fazer um percurso o mais devagar possível, escolhendo, para isso, uma das seguintes combinações de engrenagens (coroa x catraca):\n\n![](https://enem.dev/2017/questions/159/1e1958eb-584c-47db-9aff-348f62def6d6.png)",
+    "context": "Uma bicicleta do tipo mountain bike tem uma coroa com 3 engrenagens e uma catraca com 6 engrenagens, que, combinadas entre si, determinam 18 marchas (número de engrenagens da coroa vezes o número de engrenagens da catraca).\n\n![](./assets/enem/2017/c66f38e4-cac9-40bd-ab40-dcc28709d1f2.png)\n\nOs números de dentes das engrenagens das coroas e das catracas dessa bicicleta estão listados no quadro.\n\n![](./assets/enem/2017/71fe199d-31a3-491a-9ed1-4f4266bcec67.png)\n\nSabe-se que o número de voltas efetuadas pela roda traseira a cada pedalada é calculado dividindo-se a quantidade de dentes da coroa pela quantidade de dentes da catraca.\n\nDurante um passeio em uma bicicleta desse tipo, deseja-se fazer um percurso o mais devagar possível, escolhendo, para isso, uma das seguintes combinações de engrenagens (coroa x catraca):\n\n![](./assets/enem/2017/1e1958eb-584c-47db-9aff-348f62def6d6.png)",
     "files": [
-      "https://enem.dev/2017/questions/159/c66f38e4-cac9-40bd-ab40-dcc28709d1f2.png",
-      "https://enem.dev/2017/questions/159/71fe199d-31a3-491a-9ed1-4f4266bcec67.png",
-      "https://enem.dev/2017/questions/159/1e1958eb-584c-47db-9aff-348f62def6d6.png"
+      "./assets/enem/2017/c66f38e4-cac9-40bd-ab40-dcc28709d1f2.png",
+      "./assets/enem/2017/71fe199d-31a3-491a-9ed1-4f4266bcec67.png",
+      "./assets/enem/2017/1e1958eb-584c-47db-9aff-348f62def6d6.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -7113,7 +7271,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A roda gira tantas vezes por pedalada quanto a razão entre dentes da coroa e da catraca. Comparando essa razão nas cinco combinações propostas, a IV é a menor e produz a menor velocidade."
   },
   {
     "title": "Questão 160 - ENEM 2017",
@@ -7121,9 +7280,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "O comitê organizador da Copa do Mundo 2014 criou a logomarca da Copa, composta de uma figura plana e o slogan “Juntos num só ritmo”, com mãos que se unem formando a taça Fifa. Considere que o comitê organizador resolvesse utilizar todas as cores da bandeira nacional (verde, amarelo, azul e branco) para colorir a logomarca, de forma que regiões vizinhas tenham cores diferentes.\n\n![](https://enem.dev/2017/questions/160/f334ade2-9e0c-4a56-b232-855e5320a966.png)",
+    "context": "O comitê organizador da Copa do Mundo 2014 criou a logomarca da Copa, composta de uma figura plana e o slogan “Juntos num só ritmo”, com mãos que se unem formando a taça Fifa. Considere que o comitê organizador resolvesse utilizar todas as cores da bandeira nacional (verde, amarelo, azul e branco) para colorir a logomarca, de forma que regiões vizinhas tenham cores diferentes.\n\n![](./assets/enem/2017/f334ade2-9e0c-4a56-b232-855e5320a966.png)",
     "files": [
-      "https://enem.dev/2017/questions/160/f334ade2-9e0c-4a56-b232-855e5320a966.png"
+      "./assets/enem/2017/f334ade2-9e0c-4a56-b232-855e5320a966.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -7159,7 +7318,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Aplicando o princípio multiplicativo às regiões da figura, com cores diferentes nas regiões que compartilham fronteira, obtêm-se 972 colorações válidas."
   },
   {
     "title": "Questão 161 - ENEM 2017",
@@ -7167,9 +7327,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Viveiros de lagostas são construídos, por cooperativas locais de pescadores, em formato de prismas reto-retangulares, fixados ao solo e com telas flexíveis de mesma altura, capazes de suportar a corrosão marinha. Para cada viveiro a ser construído, a cooperativa utiliza integralmente 100 metros lineares dessa tela, que é usada apenas nas laterais.\n\n![](https://enem.dev/2017/questions/161/1ab19169-92f4-402e-9e53-2eedef827715.png)",
+    "context": "Viveiros de lagostas são construídos, por cooperativas locais de pescadores, em formato de prismas reto-retangulares, fixados ao solo e com telas flexíveis de mesma altura, capazes de suportar a corrosão marinha. Para cada viveiro a ser construído, a cooperativa utiliza integralmente 100 metros lineares dessa tela, que é usada apenas nas laterais.\n\n![](./assets/enem/2017/1ab19169-92f4-402e-9e53-2eedef827715.png)",
     "files": [
-      "https://enem.dev/2017/questions/161/1ab19169-92f4-402e-9e53-2eedef827715.png"
+      "./assets/enem/2017/1ab19169-92f4-402e-9e53-2eedef827715.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -7205,7 +7365,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Os 100 m de tela formam o perímetro da base retangular: 2x + 2y = 100. O produto xy, área da base, é máximo quando x = y = 25 m."
   },
   {
     "title": "Questão 162 - ENEM 2017",
@@ -7249,7 +7410,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Isolando v, resulta v = K/(p + a) − b. O produto de duas expressões lineares deslocadas é constante, portanto o gráfico é um ramo de hipérbole."
   },
   {
     "title": "Questão 163 - ENEM 2017",
@@ -7257,9 +7419,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/163/b4c6dcfc-5f86-46af-9f78-dd94358a2301.png)\n\nO acesso aos elevadores tem os seguintes custos:  \n• Subir pelo elevador 1: R$ 0,15;  \n• Subir pelo elevador 2: R$ 1,80;  \n• Descer pelo elevador 1: R$ 0,10;  \n• Descer pelo elevador 2: R$ 2,30.\n\nO custo da passagem do teleférico partindo do topo do mirante 1 para o topo do mirante 2 é de R$ 2,00, e do topo do mirante 2 para o topo do mirante 1 é de R$ 2,50.",
+    "context": "![](./assets/enem/2017/b4c6dcfc-5f86-46af-9f78-dd94358a2301.png)\n\nO acesso aos elevadores tem os seguintes custos:  \n• Subir pelo elevador 1: R$ 0,15;  \n• Subir pelo elevador 2: R$ 1,80;  \n• Descer pelo elevador 1: R$ 0,10;  \n• Descer pelo elevador 2: R$ 2,30.\n\nO custo da passagem do teleférico partindo do topo do mirante 1 para o topo do mirante 2 é de R$ 2,00, e do topo do mirante 2 para o topo do mirante 1 é de R$ 2,50.",
     "files": [
-      "https://enem.dev/2017/questions/163/b4c6dcfc-5f86-46af-9f78-dd94358a2301.png"
+      "./assets/enem/2017/b4c6dcfc-5f86-46af-9f78-dd94358a2301.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -7295,7 +7457,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "É mais barato visitar os mirantes separadamente pelo solo: subir e descer pelo elevador 1 custa R$ 0,15 + R$ 0,10, e pelo elevador 2 custa R$ 1,80 + R$ 2,30. O total é R$ 4,35, menor que os trajetos pelo teleférico."
   },
   {
     "title": "Questão 164 - ENEM 2017",
@@ -7339,7 +7502,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Com velocidades iguais, as distâncias percorridas sem olhar a pista são proporcionais aos tempos de distração. Como o tempo de X é 25% do de Y, a razão das distâncias X/Y é 1/4."
   },
   {
     "title": "Questão 165 - ENEM 2017",
@@ -7347,10 +7511,10 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/165/c4d1bd98-124e-4136-9db8-7df0ddc7fdde.png)\n\nAo ser divulgado esse resultado em jornal, o Gráfico 1 foi cortado durante a diagramação, como mostra o Gráfico 2.\n\n![](https://enem.dev/2017/questions/165/6200b8f9-1e5e-46a5-8516-7e24a6a79bd8.png)\n\nApesar de os valores apresentados estarem corretos e a largura das colunas ser a mesma, muitos leitores criticaram o formato do Gráfico 2 impresso no jornal, alegando que houve prejuízo visual para o candidato B.",
+    "context": "![](./assets/enem/2017/c4d1bd98-124e-4136-9db8-7df0ddc7fdde.png)\n\nAo ser divulgado esse resultado em jornal, o Gráfico 1 foi cortado durante a diagramação, como mostra o Gráfico 2.\n\n![](./assets/enem/2017/6200b8f9-1e5e-46a5-8516-7e24a6a79bd8.png)\n\nApesar de os valores apresentados estarem corretos e a largura das colunas ser a mesma, muitos leitores criticaram o formato do Gráfico 2 impresso no jornal, alegando que houve prejuízo visual para o candidato B.",
     "files": [
-      "https://enem.dev/2017/questions/165/c4d1bd98-124e-4136-9db8-7df0ddc7fdde.png",
-      "https://enem.dev/2017/questions/165/6200b8f9-1e5e-46a5-8516-7e24a6a79bd8.png"
+      "./assets/enem/2017/c4d1bd98-124e-4136-9db8-7df0ddc7fdde.png",
+      "./assets/enem/2017/6200b8f9-1e5e-46a5-8516-7e24a6a79bd8.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -7386,7 +7550,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O corte no eixo vertical altera a comparação visual das alturas das barras. Pelas medidas mostradas, a perda relativa da barra do candidato B é 8/35."
   },
   {
     "title": "Questão 166 - ENEM 2017",
@@ -7394,9 +7559,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/166/41a14ec3-8c43-4dc3-b116-be74098827c0.png)",
+    "context": "![](./assets/enem/2017/41a14ec3-8c43-4dc3-b116-be74098827c0.png)",
     "files": [
-      "https://enem.dev/2017/questions/166/41a14ec3-8c43-4dc3-b116-be74098827c0.png"
+      "./assets/enem/2017/41a14ec3-8c43-4dc3-b116-be74098827c0.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -7432,7 +7597,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pelo gráfico, a linha média é 99 e a amplitude é 21. O período determina frequência angular de 3π, e a curva começa no máximo; logo P(t) = 99 + 21cos(3πt)."
   },
   {
     "title": "Questão 167 - ENEM 2017",
@@ -7440,9 +7606,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/167/7bf9f382-d44e-49aa-b785-8f24191c1fb5.png)",
+    "context": "![](./assets/enem/2017/7bf9f382-d44e-49aa-b785-8f24191c1fb5.png)",
     "files": [
-      "https://enem.dev/2017/questions/167/7bf9f382-d44e-49aa-b785-8f24191c1fb5.png"
+      "./assets/enem/2017/7bf9f382-d44e-49aa-b785-8f24191c1fb5.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -7478,7 +7644,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Aplicando a relação entre o raio da esfera e o raio do círculo de corte ao sólido ilustrado, a altura da calota a retirar é 1 cm."
   },
   {
     "title": "Questão 168 - ENEM 2017",
@@ -7486,9 +7653,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/168/24aef861-9c64-4357-ab76-d58d4bf20931.png)",
+    "context": "![](./assets/enem/2017/24aef861-9c64-4357-ab76-d58d4bf20931.png)",
     "files": [
-      "https://enem.dev/2017/questions/168/24aef861-9c64-4357-ab76-d58d4bf20931.png"
+      "./assets/enem/2017/24aef861-9c64-4357-ab76-d58d4bf20931.png"
     ],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -7524,7 +7691,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Usando a semelhança dos triângulos formados pelos raios de luz e pelas alturas indicadas na figura, a altura procurada é 25/3 m."
   },
   {
     "title": "Questão 169 - ENEM 2017",
@@ -7532,9 +7700,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/169/2a8f5ab3-e6e4-4457-8cb4-1fefac4ab935.png)",
+    "context": "![](./assets/enem/2017/2a8f5ab3-e6e4-4457-8cb4-1fefac4ab935.png)",
     "files": [
-      "https://enem.dev/2017/questions/169/2a8f5ab3-e6e4-4457-8cb4-1fefac4ab935.png"
+      "./assets/enem/2017/2a8f5ab3-e6e4-4457-8cb4-1fefac4ab935.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -7570,7 +7738,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A taxa de acessos resulta da variação de acessos dividida pelo intervalo de tempo. No período pedido, o gráfico de X apresenta a maior taxa."
   },
   {
     "title": "Questão 170 - ENEM 2017",
@@ -7578,9 +7747,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "Neste modelo de termômetro, os filetes na cor preta registram as temperaturas mínima e máxima do dia anterior e os filetes na cor cinza registram a temperatura ambiente atual, ou seja, no momento da leitura do termômetro.\n\n![](https://enem.dev/2017/questions/170/7264cbc1-0ae7-4f5d-976a-228c6d2e1184.png)\n\nPor isso ele tem duas colunas. Na da esquerda, os números estão em ordem crescente, de cima para baixo, de -30 °C até 50 °C. Na coluna da direita, os números estão ordenados de forma crescente, de baixo para cima, de -30 °C até 50 °C.\n\nA leitura é feita da seguinte maneira:  \n• a temperatura mínima é indicada pelo nível inferior do filete preto na coluna da esquerda;  \n• a temperatura máxima é indicada pelo nível inferior do filete preto na coluna da direita;  \n• a temperatura atual é indicada pelo nível superior dos filetes cinza nas duas colunas.\n\nDisponível em: www.if.ufrgs.br. Acesso em: 28 ago. 2014 (adaptado).",
+    "context": "Neste modelo de termômetro, os filetes na cor preta registram as temperaturas mínima e máxima do dia anterior e os filetes na cor cinza registram a temperatura ambiente atual, ou seja, no momento da leitura do termômetro.\n\n![](./assets/enem/2017/7264cbc1-0ae7-4f5d-976a-228c6d2e1184.png)\n\nPor isso ele tem duas colunas. Na da esquerda, os números estão em ordem crescente, de cima para baixo, de -30 °C até 50 °C. Na coluna da direita, os números estão ordenados de forma crescente, de baixo para cima, de -30 °C até 50 °C.\n\nA leitura é feita da seguinte maneira:  \n• a temperatura mínima é indicada pelo nível inferior do filete preto na coluna da esquerda;  \n• a temperatura máxima é indicada pelo nível inferior do filete preto na coluna da direita;  \n• a temperatura atual é indicada pelo nível superior dos filetes cinza nas duas colunas.\n\nDisponível em: www.if.ufrgs.br. Acesso em: 28 ago. 2014 (adaptado).",
     "files": [
-      "https://enem.dev/2017/questions/170/7264cbc1-0ae7-4f5d-976a-228c6d2e1184.png"
+      "./assets/enem/2017/7264cbc1-0ae7-4f5d-976a-228c6d2e1184.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -7616,7 +7785,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "A temperatura máxima deve ser lida na base do filete preto da coluna direita, conforme a regra do termômetro. Essa marca está em 19 °C."
   },
   {
     "title": "Questão 171 - ENEM 2017",
@@ -7624,9 +7794,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/171/3bb8824e-3a19-4855-a081-9cc594573f03.png)\n\nUm pivô de três torres (T1, T2 e T3) será instalado em uma fazenda, sendo que as distâncias entre torres consecutivas bem como da base à torre T1 são iguais a 50 m. O fazendeiro pretende ajustar as velocidades das torres, de tal forma que o pivô efetue uma volta completa em 25 horas. Use 3 como aproximação para π.",
+    "context": "![](./assets/enem/2017/3bb8824e-3a19-4855-a081-9cc594573f03.png)\n\nUm pivô de três torres (T1, T2 e T3) será instalado em uma fazenda, sendo que as distâncias entre torres consecutivas bem como da base à torre T1 são iguais a 50 m. O fazendeiro pretende ajustar as velocidades das torres, de tal forma que o pivô efetue uma volta completa em 25 horas. Use 3 como aproximação para π.",
     "files": [
-      "https://enem.dev/2017/questions/171/3bb8824e-3a19-4855-a081-9cc594573f03.png"
+      "./assets/enem/2017/3bb8824e-3a19-4855-a081-9cc594573f03.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -7662,7 +7832,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Em 25 horas, as torres percorrem circunferências de raios 50, 100 e 150 m. Com π ≈ 3, as velocidades 2πr/25 são 12, 24 e 36 m/h."
   },
   {
     "title": "Questão 172 - ENEM 2017",
@@ -7670,9 +7841,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/172/3cab013f-abdc-4a51-8c74-6c0771ab0c6e.png)",
+    "context": "![](./assets/enem/2017/3cab013f-abdc-4a51-8c74-6c0771ab0c6e.png)",
     "files": [
-      "https://enem.dev/2017/questions/172/3cab013f-abdc-4a51-8c74-6c0771ab0c6e.png"
+      "./assets/enem/2017/3cab013f-abdc-4a51-8c74-6c0771ab0c6e.png"
     ],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -7708,7 +7879,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Igualando as expressões dos volumes de água dos dois reservatórios apresentadas na figura, obtém-se o instante t = 1 hora."
   },
   {
     "title": "Questão 173 - ENEM 2017",
@@ -7752,7 +7924,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Após consumir 40% de 100 kg, restam 60 kg. O reabastecimento equivale a um terço do restante, 20 kg; dividindo pela densidade de 0,75 kg/L, obtêm-se 20/0,75 litros."
   },
   {
     "title": "Questão 174 - ENEM 2017",
@@ -7760,9 +7933,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/174/8da9e00a-e25a-4467-8f2f-53488edb0a1f.png)\n\nIBGE. Pesquisa mensal de emprego. Disponível em: www.ibge.gov.br. Acesso em: 30 jul. 2012 (adaptado).",
+    "context": "![](./assets/enem/2017/8da9e00a-e25a-4467-8f2f-53488edb0a1f.png)\n\nIBGE. Pesquisa mensal de emprego. Disponível em: www.ibge.gov.br. Acesso em: 30 jul. 2012 (adaptado).",
     "files": [
-      "https://enem.dev/2017/questions/174/8da9e00a-e25a-4467-8f2f-53488edb0a1f.png"
+      "./assets/enem/2017/8da9e00a-e25a-4467-8f2f-53488edb0a1f.png"
     ],
     "correctAlternative": "B",
     "alternativaCorreta": "B",
@@ -7798,7 +7971,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Ordenando os percentuais de desemprego do gráfico, o valor central da série é 8,0%, sua mediana."
   },
   {
     "title": "Questão 175 - ENEM 2017",
@@ -7806,7 +7980,7 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": null,
+    "context": "Em um trajeto, uma pessoa passa por 10 semáforos independentes. Em cada semáforo, a probabilidade de encontrar o sinal verde é 2/3 e a de encontrar o sinal vermelho é 1/3. Qual é a probabilidade de essa pessoa encontrar exatamente um semáforo verde?",
     "files": [],
     "correctAlternative": "A",
     "alternativaCorreta": "A",
@@ -7815,34 +7989,35 @@
       {
         "letter": "A",
         "text": null,
-        "file": "https://enem.dev/2017/questions/175/76855355-588b-40de-adfa-78c67373b3cd.png",
+        "file": "./assets/enem/2017/76855355-588b-40de-adfa-78c67373b3cd.png",
         "isCorrect": true
       },
       {
         "letter": "B",
         "text": null,
-        "file": "https://enem.dev/2017/questions/175/f0b54cb7-a0b0-4661-a2e2-afda4b8d2135.png",
+        "file": "./assets/enem/2017/f0b54cb7-a0b0-4661-a2e2-afda4b8d2135.png",
         "isCorrect": false
       },
       {
         "letter": "C",
         "text": null,
-        "file": "https://enem.dev/2017/questions/175/b7396163-6b89-41cf-b08b-473d800ef585.png",
+        "file": "./assets/enem/2017/b7396163-6b89-41cf-b08b-473d800ef585.png",
         "isCorrect": false
       },
       {
         "letter": "D",
         "text": null,
-        "file": "https://enem.dev/2017/questions/175/486162c7-f43b-49a2-9476-dddf8af7bdf4.png",
+        "file": "./assets/enem/2017/486162c7-f43b-49a2-9476-dddf8af7bdf4.png",
         "isCorrect": false
       },
       {
         "letter": "E",
         "text": null,
-        "file": "https://enem.dev/2017/questions/175/744d3069-d18a-4930-9697-45171bee53b2.png",
+        "file": "./assets/enem/2017/744d3069-d18a-4930-9697-45171bee53b2.png",
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Há 10 escolhas para o único semáforo verde. Cada sequência específica tem probabilidade (2/3) × (1/3)^9; portanto a probabilidade total é 10 × (2/3) × (1/3)^9."
   },
   {
     "title": "Questão 176 - ENEM 2017",
@@ -7886,7 +8061,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Na primeira fase, economizam-se 200 × 1 + 200 × 0,7 = 340 kWh/dia. Para dobrar essa economia, são necessários 680 kWh/dia. Na segunda fase, os painéis elétricos ocupam 200 × 1,75 = 350 m²; os 330 kWh/dia restantes exigem 330/0,7 ≈ 471,43 m² térmicos, aproximadamente 472 m²."
   },
   {
     "title": "Questão 177 - ENEM 2017",
@@ -7894,9 +8070,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/177/56a01150-592b-4611-8550-81876ca345ec.png)\n\nAs letras do alfabeto, entre as 26 possíveis, bem como os dígitos, entre os 10 possíveis, podem se repetir em qualquer das opções.  \nA empresa quer escolher uma opção de formato cujo número de senhas distintas possíveis seja superior ao número esperado de clientes, mas que esse número não seja superior ao dobro do número esperado de clientes.",
+    "context": "![](./assets/enem/2017/56a01150-592b-4611-8550-81876ca345ec.png)\n\nAs letras do alfabeto, entre as 26 possíveis, bem como os dígitos, entre os 10 possíveis, podem se repetir em qualquer das opções.  \nA empresa quer escolher uma opção de formato cujo número de senhas distintas possíveis seja superior ao número esperado de clientes, mas que esse número não seja superior ao dobro do número esperado de clientes.",
     "files": [
-      "https://enem.dev/2017/questions/177/56a01150-592b-4611-8550-81876ca345ec.png"
+      "./assets/enem/2017/56a01150-592b-4611-8550-81876ca345ec.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -7932,7 +8108,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Calculam-se as senhas de cada formato multiplicando-se 26 para cada letra e 10 para cada algarismo. Apenas o formato V produz um total maior que o público esperado e não maior que o dobro dele."
   },
   {
     "title": "Questão 178 - ENEM 2017",
@@ -7940,9 +8117,9 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/178/9f831180-9696-4e04-9744-29b02d88f8e8.png)",
+    "context": "![](./assets/enem/2017/9f831180-9696-4e04-9744-29b02d88f8e8.png)",
     "files": [
-      "https://enem.dev/2017/questions/178/9f831180-9696-4e04-9744-29b02d88f8e8.png"
+      "./assets/enem/2017/9f831180-9696-4e04-9744-29b02d88f8e8.png"
     ],
     "correctAlternative": "E",
     "alternativaCorreta": "E",
@@ -7978,7 +8155,8 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "Cada um dos 8 participantes enfrenta os outros 7 uma única vez. Como cada partida é contada para dois jogadores, o total é 8 × 7/2 = 28."
   },
   {
     "title": "Questão 179 - ENEM 2017",
@@ -7986,7 +8164,7 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": null,
+    "context": "Um morador de uma região metropolitana tem 50% de probabilidade de chegar atrasado ao trabalho quando chove. Quando não chove, essa probabilidade é de 25%. A previsão indica 30% de probabilidade de chover em determinado dia. Qual é a probabilidade de esse morador chegar atrasado ao trabalho nesse dia?",
     "files": [],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -8022,7 +8200,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Pela probabilidade total, há atraso com chuva (0,30 × 0,50) ou sem chuva (0,70 × 0,25). A soma é 0,325."
   },
   {
     "title": "Questão 180 - ENEM 2017",
@@ -8030,7 +8209,7 @@
     "discipline": "matematica",
     "language": null,
     "year": 2017,
-    "context": null,
+    "context": "Às 17h15 começa uma chuva forte sobre uma piscina vazia. Às 18h, a água atinge 20 cm de altura e o ralo é aberto. A chuva continua até 18h40, quando a altura da água é de 15 cm. Admitindo taxas constantes de chuva e escoamento, em qual intervalo de tempo a piscina ficará vazia?",
     "files": [],
     "correctAlternative": "D",
     "alternativaCorreta": "D",
@@ -8066,7 +8245,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "Em 45 minutos de chuva sem ralo, o nível sobe 20 cm: taxa de chuva 20/45 cm/min. Com ralo aberto e chuva, cai 5 cm em 40 min: a vazão do ralo corresponde a 20/45 + 5/40 = 41/72 cm/min. Depois das 18h40, 15 cm escoam em cerca de 26 minutos; a piscina fica vazia entre 19h e 19h10."
   },
   {
     "title": "Questão 1 - ENEM 2017",
@@ -8110,7 +8290,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A comentarista admira o modo como Frida aceita a própria aparência e celebra uma beleza fora dos padrões convencionais."
   },
   {
     "title": "Questão 2 - ENEM 2017",
@@ -8154,7 +8335,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A notícia informa que a inteligência britânica pretende recrutar e treinar adolescentes familiarizados com tecnologias digitais."
   },
   {
     "title": "Questão 3 - ENEM 2017",
@@ -8162,9 +8344,9 @@
     "discipline": "linguagens",
     "language": "ingles",
     "year": 2017,
-    "context": "![](https://enem.dev/2017/questions/3-ingles/0933a50a-d739-44ba-b540-de42213e3fcf.png)\n\n**Reader’s Digest**, set. 1993.",
+    "context": "![](./assets/enem/2017/0933a50a-d739-44ba-b540-de42213e3fcf.png)\n\n**Reader’s Digest**, set. 1993.",
     "files": [
-      "https://enem.dev/2017/questions/3-ingles/0933a50a-d739-44ba-b540-de42213e3fcf.png"
+      "./assets/enem/2017/0933a50a-d739-44ba-b540-de42213e3fcf.png"
     ],
     "correctAlternative": "C",
     "alternativaCorreta": "C",
@@ -8200,7 +8382,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A publicidade relaciona a possibilidade de usar o serviço em qualquer lugar à decisão de escolher a empresa anunciada."
   },
   {
     "title": "Questão 4 - ENEM 2017",
@@ -8244,7 +8427,8 @@
         "file": null,
         "isCorrect": false
       }
-    ]
+    ],
+    "explicacao": "A autora considera revoltante a recusa da comunidade em reconhecer a negligência no acesso de crianças a armas após a morte relatada."
   },
   {
     "title": "Questão 5 - ENEM 2017",
@@ -8288,6 +8472,7 @@
         "file": null,
         "isCorrect": true
       }
-    ]
+    ],
+    "explicacao": "O guia apresenta história, religião, paisagens e vida contemporânea de Israel para informar e atrair visitantes estrangeiros."
   }
 ]
