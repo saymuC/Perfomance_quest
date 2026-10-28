@@ -30,6 +30,7 @@ import {
 
 import {
     salvarDadosAluno,
+    TURMAS,
     obterDadosAluno,
     obterIdentificadorDispositivo,
     temCadastroValido,
@@ -47,7 +48,15 @@ import {
 } from '../js/api.js';
 
 import { escapeHTML, rotuloPrioridade } from '../js/ui.js';
-import { createResult } from '../../backend/src/resultStore.js';
+import { createResult, createStudent } from '../../backend/src/resultStore.js';
+
+test('as 17 turmas do formulário são aceitas no cadastro e as demais recusadas', () => {
+    const cadastro = { studentName: 'André', registrationNumber: '123', deviceId: '12345678-1234-4234-9234-123456789abc' };
+    for (const className of TURMAS) assert.equal(createStudent({ ...cadastro, className }).className, className);
+    for (const className of ['3A', '1° ano 10', '2° ano 6', '3° ano 4', '4° ano 1']) {
+        assert.throws(() => createStudent({ ...cadastro, className }), /turma/i);
+    }
+});
 
 test('contrato de envio canônico é aceito pelo backend sem aliases redundantes', async t => {
     const uuid = '12345678-1234-4234-9234-123456789abc';
@@ -56,7 +65,7 @@ test('contrato de envio canônico é aceito pelo backend sem aliases redundantes
         recebido = createResult(JSON.parse(opcoes.body));
         return Response.json(recebido, { status: 201 });
     });
-    await enviarResultadoAPI({ nome: 'Aluno Teste', turma: '3A', matricula: '123', deviceId: uuid, studentId: uuid, idempotencyKey: uuid, acertos: 3, total: 5, tempoTotalSegundos: 60, createdAt: '2026-10-06T01:00:00.000Z', respostas: [{ questaoId: 'q1' }] });
+    await enviarResultadoAPI({ nome: 'Aluno Teste', turma: '3° ano 1', matricula: '123', deviceId: uuid, studentId: uuid, idempotencyKey: uuid, acertos: 3, total: 5, tempoTotalSegundos: 60, createdAt: '2026-10-06T01:00:00.000Z', respostas: [{ questaoId: 'q1' }] });
     assert.equal(recebido.percentage, 60);
     assert.equal(recebido.totalTimeSeconds, 60);
     assert.equal(recebido.studentName, 'Aluno Teste');
@@ -93,17 +102,17 @@ test('Frontend - Storage: gerencia cadastro simples do aluno (nome, turma, matr�
 
     const aluno = salvarDadosAluno({
         nome: 'André Luiz',
-        turma: '3a',
+        turma: '3° ano 1',
         matricula: '20260123'
     });
 
     assert.equal(aluno.nome, 'André Luiz');
-    assert.equal(aluno.turma, '3A'); // Normalizado para maiúsculas
+    assert.equal(aluno.turma, '3° ano 1');
     assert.equal(aluno.matricula, '20260123');
 
     const recuperado = obterDadosAluno();
     assert.equal(recuperado.nome, 'André Luiz');
-    assert.equal(recuperado.turma, '3A');
+    assert.equal(recuperado.turma, '3° ano 1');
     assert.equal(temCadastroValido(), true);
     assert.match(aluno.deviceId, /^[0-9a-f-]{36}$/i);
     assert.equal(aluno.deviceId, obterIdentificadorDispositivo());
@@ -113,9 +122,13 @@ test('Frontend - Storage: gerencia cadastro simples do aluno (nome, turma, matr�
 });
 
 test('Frontend - Storage: valida campos obrigatórios do cadastro', () => {
-    assert.throws(() => salvarDadosAluno({ nome: 'A', turma: '3A', matricula: '123' }), /nome válido/i);
+    assert.throws(() => salvarDadosAluno({ nome: 'A', turma: '3° ano 1', matricula: '123' }), /nome válido/i);
     assert.throws(() => salvarDadosAluno({ nome: 'André', turma: '', matricula: '123' }), /turma/i);
-    assert.throws(() => salvarDadosAluno({ nome: 'André', turma: '3A', matricula: '1' }), /matrícula/i);
+    assert.throws(() => salvarDadosAluno({ nome: 'André', turma: '3° ano 1', matricula: '1' }), /matrícula/i);
+    assert.equal(TURMAS.length, 17);
+    assert.deepEqual([TURMAS[0], TURMAS[8], TURMAS[9], TURMAS[13], TURMAS[14], TURMAS[16]],
+        ['1° ano 1', '1° ano 9', '2° ano 1', '2° ano 5', '3° ano 1', '3° ano 3']);
+    assert.throws(() => salvarDadosAluno({ nome: 'André', turma: '1° ano 10', matricula: '123' }), /turma válida/i);
 });
 
 test('Frontend - API: consome url configurada em config.js', () => {

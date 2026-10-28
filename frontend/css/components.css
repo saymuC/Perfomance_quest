@@ -124,7 +124,14 @@
   background: white;
   color: var(--text-main);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.turma-select { cursor: pointer; }
+.turma-select:hover { border-color: var(--primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  .turma-select { transition: none; }
 }
 
 .form-select:focus, .form-input:focus {

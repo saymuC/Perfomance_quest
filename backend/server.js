@@ -5,7 +5,20 @@ import { fileURLToPath } from 'node:url';
 import { LocalResultStore, createPostgresStore, createResult, createStudent } from './src/resultStore.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const questions = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/questoes_enem_2022_2023.json'), 'utf8'));
+const questions = [
+  ...Array.from({ length: 13 }, (_, offset) => 2009 + offset).flatMap(year =>
+    JSON.parse(fs.readFileSync(path.join(__dirname, `data/questoes_enem_${year}.json`), 'utf8')).filter(question => !question.anulada).map(question => ({
+      id: `enem-${year}-${question.index}${question.language ? `-${question.language}` : ''}`,
+      ano: year,
+      area: ['Linguagens', 'Ciências Humanas', 'Ciências da Natureza', 'Matemática'][Math.ceil(question.index / 45) - 1],
+      enunciado: [question.context, question.alternativesIntroduction].filter(Boolean).join('\n\n'),
+      alternativas: question.alternatives.map(alternative => ({ letra: alternative.letter, texto: alternative.text, imagem: alternative.file })),
+      alternativaCorreta: question.alternativaCorreta || question.correctAlternative,
+      explicacao: question.explicacao || ''
+    }))
+  ),
+  ...JSON.parse(fs.readFileSync(path.join(__dirname, 'data/questoes_enem_2022_2023.json'), 'utf8'))
+];
 
 function normalizar(valor) {
   return String(valor).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -190,7 +203,7 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
       const year = url.searchParams.get('year') || 'all';
       const quantity = Number(url.searchParams.get('quantity') || 10);
       const area = normalizar(url.searchParams.get('area') || 'Todas');
-      if ((year !== 'all' && ![2022, 2023].includes(Number(year))) || !Number.isInteger(quantity) || quantity < 1 || quantity > 500) {
+      if ((year !== 'all' && (!/^20\d{2}$/.test(year) || Number(year) < 2009 || Number(year) > 2023)) || !Number.isInteger(quantity) || quantity < 1 || quantity > 500) {
         return responder(res, 400, { error: 'Filtros year ou quantity inválidos.' }, requestOrigin, origins);
       }
 

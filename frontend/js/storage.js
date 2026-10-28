@@ -9,6 +9,9 @@ const CHAVE_ALUNO = 'performance_quest_aluno';
 const CHAVE_FILA_SYNC = 'performance_quest_sync_queue';
 const CHAVE_DISPOSITIVO = 'performance_quest_device_id';
 
+export const TURMAS = [9, 5, 3].flatMap((total, ano) =>
+    Array.from({ length: total }, (_, indice) => `${ano + 1}° ano ${indice + 1}`));
+
 export function novoIdentificador() {
     if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
@@ -35,12 +38,12 @@ export function obterDadosAluno() {
         const raw = localStorage.getItem(CHAVE_ALUNO);
         if (!raw) return null;
         const dados = JSON.parse(raw);
-        if (dados && dados.nome && dados.turma && dados.matricula) {
+        if (dados && dados.nome && TURMAS.includes(dados.turma) && dados.matricula) {
             const deviceId = dados.deviceId || obterIdentificadorDispositivo();
             if (!dados.deviceId) localStorage.setItem(CHAVE_ALUNO, JSON.stringify({ ...dados, deviceId }));
             return {
                 nome: String(dados.nome).trim(),
-                turma: String(dados.turma).trim().toUpperCase(),
+                turma: dados.turma,
                 matricula: String(dados.matricula).trim(),
                 deviceId: dados.deviceId || obterIdentificadorDispositivo(),
                 studentId: dados.studentId || null
@@ -59,8 +62,8 @@ export function salvarDadosAluno({ nome, turma, matricula, deviceId, studentId }
     if (!nome || typeof nome !== 'string' || nome.trim().length < 2) {
         throw new Error('Informe um nome válido com ao menos 2 caracteres.');
     }
-    if (!turma || typeof turma !== 'string' || turma.trim().length === 0) {
-        throw new Error('Informe a turma (ex: 3A, 3B, 3º Ano).');
+    if (!TURMAS.includes(turma)) {
+        throw new Error('Selecione uma turma válida.');
     }
     if (!matricula || typeof matricula !== 'string' || matricula.trim().length < 3) {
         throw new Error('Informe uma matrícula válida (ao menos 3 caracteres).');
@@ -68,7 +71,7 @@ export function salvarDadosAluno({ nome, turma, matricula, deviceId, studentId }
 
     const aluno = {
         nome: nome.trim(),
-        turma: turma.trim().toUpperCase(),
+        turma,
         matricula: matricula.trim(),
         deviceId: deviceId || obterIdentificadorDispositivo(),
         studentId: studentId || obterDadosAluno()?.studentId || null,

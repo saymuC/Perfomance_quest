@@ -6,7 +6,7 @@
  */
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
-import { obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, aplicarRetencaoLocal, registrarAtividadeLocal, limparDadosLocais } from './storage.js';
+import { TURMAS, obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, aplicarRetencaoLocal, registrarAtividadeLocal, limparDadosLocais } from './storage.js';
 import { obterQuestoesSimulado, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
 import { UI, rotuloPrioridade } from './ui.js';
 import { MENSAGENS } from './mensagens.js';
@@ -23,7 +23,7 @@ const estado = {
     historicoTentativa: [],
     resultadoAtual: null,
     consultaRanking: 0,
-    turmasConhecidas: new Set(['3A', '3B', '3C', '3º Ano 1', '3º Ano 2'])
+    turmasConhecidas: new Set(TURMAS)
 };
 
 /**
@@ -513,6 +513,12 @@ function handleLimparHistorico() {
 document.addEventListener('DOMContentLoaded', async () => {
     aplicarRetencaoLocal();
     UI.inicializarTextos();
+    for (const id of ['input-aluno-turma', 'input-modal-turma']) {
+        const select = document.getElementById(id);
+        if (select) {
+            for (const turma of TURMAS) select.add(new Option(turma, turma));
+        }
+    }
     document.addEventListener('pointerdown', registrarAtividadeLocal);
     document.addEventListener('keydown', registrarAtividadeLocal);
     // 1. Inicializa identificação do aluno se já existir

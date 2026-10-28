@@ -80,6 +80,7 @@ server.on('error', (err) => {
   } else {
     console.error('Erro no servidor:', err);
   }
+  process.exitCode = 1;
 });
 
 startServer(PORT);

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.js",
+    "start": "node start.js",
     "start:frontend": "node server.js",
     "start:backend": "node --env-file-if-exists=.env backend/server.js",
     "data:import-enem": "node backend/scripts/import-enem-questions.js",

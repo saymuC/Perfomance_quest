@@ -30,6 +30,12 @@ O cadastro do ranking usa um identificador aleatório persistido no navegador (l
 
 ```bash
 npm install
+npm start
+```
+
+O comando inicia o frontend em `http://localhost:3000/frontend/` e a API em `http://localhost:3001/api`. Para iniciá-los separadamente, use dois terminais:
+
+```bash
 npm run start:backend
 ```
 
@@ -41,7 +47,7 @@ npm run start:frontend
 
 Acesse `http://localhost:3000/frontend/`. A API roda em `http://localhost:3001/api`; ambos os serviços precisam estar ativos.
 
-Para usar o Supabase, copie `.env.example` para `.env`, preencha a URI PostgreSQL do projeto e aplique o schema com `npm run db:migrate`. O comando `npm run start:backend` carrega o `.env` automaticamente e o backend aplica migrations pendentes ao iniciar. No Supabase, use a URI em **Project Settings > Database > Connection string** e mantenha `DATABASE_SSL=true`. Nunca coloque essas credenciais no frontend ou no Git. Sem `DATABASE_URL`, o modo local continua usando `backend/data/results.jsonl`.
+Para usar o Supabase, copie `.env.example` para `.env`, preencha `DATABASE_URL` com a URI PostgreSQL do projeto e aplique o schema com `npm run db:migrate`. `npm start` e `npm run start:backend` carregam o `.env` no backend, que também aplica migrations pendentes ao iniciar. `PG_LOAD_TEST_DATABASE_URL` é usada apenas por `npm run test:postgres-load`; para executar o aplicativo com o banco de teste, configure a URI dele em `DATABASE_URL`. No Supabase, use a URI em **Project Settings > Database > Connection string** e mantenha `DATABASE_SSL=true`. Nunca coloque essas credenciais no frontend ou no Git. Sem `DATABASE_URL`, o modo local continua usando `backend/data/results.jsonl`.
 
 Se o pooler responder `tenant/user postgres.<project-ref> not found`, confira no Render a variável `DATABASE_URL` (o `.env` local não configura o serviço remoto). Copie novamente a URI do **Session Pooler** do projeto Supabase ativo: host/região do pooler e usuário `postgres.<project-ref>` devem pertencer ao mesmo projeto. Atualize a senha no painel se necessário e reinicie o serviço. Não substitua o usuário por `postgres` ao usar o pooler; não publique a URI em logs ou issues.
 
@@ -50,7 +56,7 @@ Se o pooler responder `tenant/user postgres.<project-ref> not found`, confira no
 | Método | Rota | Finalidade |
 |---|---|---|
 | `GET` | `/api/health` | Saúde e tipo de persistência |
-| `GET` | `/api/questions?area=Todas&quantity=10&year=all` | Questões de 2022 e 2023; `year=2022` ou `year=2023` filtra um ano |
+| `GET` | `/api/questions?area=Todas&quantity=10&year=all` | Questões de 2009 a 2023; `year=AAAA` filtra um ano |
 | `POST` | `/api/results` | Salva uma tentativa concluída |
 | `GET` | `/api/rankings?className=3A&limit=20` | Ranking geral ou por turma |
 

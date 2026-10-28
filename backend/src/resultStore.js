@@ -381,6 +381,11 @@ function normalize(value) {
   return String(value).trim().replace(/\s+/g, ' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
+function turmaValida(turma) {
+  const match = /^([1-3])° ano ([1-9])$/.exec(turma);
+  return match && Number(match[2]) <= [9, 5, 3][Number(match[1]) - 1];
+}
+
 export function createResult(input) {
   const studentName = String(input.studentName || input.name || '').trim();
   const className = String(input.className || input.turma || '').trim();
@@ -435,7 +440,7 @@ export function createStudent(input) {
   const className = String(input.className || input.turma || '').trim();
   const registrationNumber = String(input.registrationNumber || input.matricula || '').trim();
   const deviceId = String(input.deviceId || '').trim();
-  if (studentName.length < 2 || studentName.length > 120 || !className || className.length > 40 || registrationNumber.length < 3 || registrationNumber.length > 40 || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(deviceId)) {
+  if (studentName.length < 2 || studentName.length > 120 || !turmaValida(className) || registrationNumber.length < 3 || registrationNumber.length > 40 || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(deviceId)) {
     throw Object.assign(new Error('Nome, turma, matrícula ou identificador do dispositivo inválido.'), { status: 400 });
   }
   return { studentName, nameKey: normalize(studentName), className, registrationNumber, deviceId };

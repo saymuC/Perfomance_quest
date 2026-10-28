@@ -62,7 +62,7 @@ beforeEach(t => {
     resultadoFalha = false;
     feedback = null;
     questaoAtual = questao;
-    salvarDadosAluno({ nome: 'Aluno Teste', turma: '3A', matricula: '123' });
+    salvarDadosAluno({ nome: 'Aluno Teste', turma: '3° ano 1', matricula: '123' });
 });
 
 async function concluirSimulado() {
@@ -190,11 +190,11 @@ test('resposta atrasada da inicialização não sobrescreve o cadastro editado',
     let liberarCadastro;
     cadastroPendente = new Promise(resolve => { liberarCadastro = resolve; });
     await eventos.get('DOMContentLoaded')();
-    salvarDadosAluno({ nome: 'Novo Nome', turma: '3B', matricula: '456', studentId: 'novo-aluno' });
+    salvarDadosAluno({ nome: 'Novo Nome', turma: '3° ano 2', matricula: '456', studentId: 'novo-aluno' });
     liberarCadastro();
     await new Promise(resolve => setImmediate(resolve));
     assert.equal(obterDadosAluno().nome, 'Novo Nome');
-    assert.equal(obterDadosAluno().turma, '3B');
+    assert.equal(obterDadosAluno().turma, '3° ano 2');
     assert.equal(obterDadosAluno().studentId, 'novo-aluno');
 });
 
@@ -218,15 +218,15 @@ test('ranking ignora a resposta atrasada do filtro anterior', async t => {
     t.mock.method(globalThis, 'fetch', url => new Promise(resolve => respostas.set(new URL(url).searchParams.get('className'), resolve)));
     const renderizados = [];
     t.mock.method(UI, 'renderizarRanking', dados => renderizados.push(dados));
-    const antiga = eventos.get('ranking-filtro-turma:change')({ target: { value: '3A' } });
+    const antiga = eventos.get('ranking-filtro-turma:change')({ target: { value: '3° ano 1' } });
     await new Promise(resolve => setImmediate(resolve));
-    const atual = eventos.get('ranking-filtro-turma:change')({ target: { value: '3B' } });
+    const atual = eventos.get('ranking-filtro-turma:change')({ target: { value: '3° ano 2' } });
     await new Promise(resolve => setImmediate(resolve));
-    respostas.get('3B')(Response.json([{ className: '3B' }]));
+    respostas.get('3° ano 2')(Response.json([{ className: '3° ano 2' }]));
     await atual;
-    respostas.get('3A')(Response.json([{ className: '3A' }]));
+    respostas.get('3° ano 1')(Response.json([{ className: '3° ano 1' }]));
     await antiga;
-    assert.deepEqual(renderizados.map(item => item.turmaSelecionada), ['3B']);
+    assert.deepEqual(renderizados.map(item => item.turmaSelecionada), ['3° ano 2']);
 });
 
 test('os dois formulários usam mensagem amigável para nome duplicado', async t => {
