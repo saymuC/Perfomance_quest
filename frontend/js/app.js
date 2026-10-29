@@ -378,7 +378,7 @@ function abrirModalEdicaoAluno() {
         if (inputNome) inputNome.value = aluno.nome;
         if (inputTurma?.tagName === 'SELECT') {
             for (const turma of TURMAS) {
-                if (![...inputTurma.options].some(opcao => opcao.value === turma)) inputTurma.add(new Option(turma, turma));
+                if (![...inputTurma.options].some(opcao => opcao.value === turma)) inputTurma.add(new Option(turma.toUpperCase(), turma));
             }
             inputTurma.value = aluno.turma;
         }
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     for (const id of ['input-aluno-turma', 'input-modal-turma']) {
         const select = document.getElementById(id);
         if (select) {
-            for (const turma of TURMAS) select.add(new Option(turma, turma));
+            for (const turma of TURMAS) select.add(new Option(turma.toUpperCase(), turma));
         }
     }
     document.addEventListener('pointerdown', registrarAtividadeLocal);

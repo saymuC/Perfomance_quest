@@ -72,7 +72,7 @@ test('o modal de edição não converte o select de turma em campo texto', () =>
     assert.match(app, /document\.getElementById\('input-modal-turma'\)/);
     assert.match(app, /if \(inputTurma\?\.tagName === 'SELECT'\)/);
     assert.match(app, /inputTurma\.value = aluno\.turma/);
-    assert.match(app, /inputTurma\.add\(new Option\(turma, turma\)\)/);
+    assert.match(app, /inputTurma\.add\(new Option\(turma\.toUpperCase\(\), turma\)\)/);
 });
 
 test('contrato de envio canônico é aceito pelo backend sem aliases redundantes', async t => {

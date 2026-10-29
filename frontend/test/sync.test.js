@@ -268,7 +268,7 @@ test('editar aluno oferece as turmas válidas e salva a turma selecionada localm
     assert.equal(modal.open, true);
     assert.equal(select.value, '3° ano 1');
     assert.equal(opcoes.length, 17);
-    assert.ok(opcoes.every(opcao => TURMAS.includes(opcao.value)));
+    assert.ok(opcoes.every(opcao => TURMAS.includes(opcao.value) && opcao.text === opcao.value.toUpperCase()));
 
     select.value = '2° ano 2';
     await eventos.get('form-modal-aluno:submit')({ preventDefault() {} });
