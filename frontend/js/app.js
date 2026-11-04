@@ -6,14 +6,17 @@
  */
 
 import { criarSessaoQuiz, carregarHistoricoLocal, limparHistoricoLocal, gerarRelatorioCompleto } from './quiz.js';
-import { TURMAS, obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, aplicarRetencaoLocal, registrarAtividadeLocal, limparDadosLocais } from './storage.js';
+import { TURMAS, obterDadosAluno, obterIdentificadorDispositivo, novoIdentificador, validarDadosAluno, salvarDadosAluno, enfileirarResultadoPendente, obterResultadosPendentes, aplicarRetencaoLocal, registrarAtividadeLocal, limparDadosLocais } from './storage.js';
 import { obterQuestoesSimulado, obterRankingsAPI, verificarSaudeAPI, registrarAlunoAPI } from './api.js';
 import { UI, rotuloPrioridade } from './ui.js';
 import { MENSAGENS } from './mensagens.js';
 import { enviarPontuacao, sincronizarPendencias } from './sync.js';
 
+let cadastroEmAndamento = null;
+
 // Estado global da aplicação
 const estado = {
+    iniciando: false,
     sessaoAtual: null,
     questoes: [],
     indiceAtual: 0,
@@ -74,52 +77,49 @@ function carregarQuestaoAtual() {
  * Inicia uma nova sessão de Simulado
  */
 async function iniciarSimulado() {
+    if (estado.iniciando) return;
+    estado.iniciando = true;
     UI.ocultarErro();
-
-    // Valida se o aluno preencheu a identificação obrigatória
-    const aluno = obterDadosAluno();
-    if (!aluno) {
-        const cardCadastro = document.getElementById('card-identificacao-aluno');
-        if (cardCadastro) {
-            cardCadastro.scrollIntoView({ behavior: 'smooth' });
-            cardCadastro.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.4)';
-            setTimeout(() => cardCadastro.style.boxShadow = '', 2000);
-        }
-        alert(MENSAGENS.identificarAntesSimulado);
-        return;
-    }
-
-    const selectArea = document.getElementById('filtro-area');
-    const selectAno = document.getElementById('filtro-ano');
-    const selectQtd = document.getElementById('filtro-quantidade');
     const btnIniciar = document.getElementById('btn-iniciar-simulado');
-
-    const area = selectArea ? selectArea.value : 'Todas';
-    const quantidade = selectQtd ? parseInt(selectQtd.value, 10) : 5;
-
     if (btnIniciar) {
         btnIniciar.disabled = true;
         btnIniciar.textContent = MENSAGENS.carregandoBotao;
     }
 
-    UI.mostrarCarregando(MENSAGENS.carregandoQuestoes);
-
     try {
-        const dados = await obterQuestoesSimulado({ area, quantidade, ano: selectAno?.value || 'all' });
+        const anos = [...document.querySelectorAll('input[name="ano-enem"]:checked')].map(input => input.value);
+        if (!anos.length) {
+            alert(MENSAGENS.selecionarAno);
+            document.querySelector('input[name="ano-enem"]')?.focus();
+            return;
+        }
+        const aluno = cadastroEmAndamento ? await cadastroEmAndamento : (obterDadosAluno() || await salvarCadastroAluno());
+        if (!aluno) return;
+        const area = document.getElementById('filtro-area')?.value || 'Todas';
+        const quantidade = Number(document.getElementById('filtro-quantidade')?.value || 5);
+        UI.mostrarCarregando(MENSAGENS.carregandoQuestoes);
+        const dados = await obterQuestoesSimulado({ area, quantidade, anos });
 
         const { questoes } = dados;
 
         if (!questoes || questoes.length === 0) {
-            throw new Error('Nenhuma questão disponível para iniciar o simulado.');
+            UI.ocultarCarregando();
+            UI.mostrarErro(MENSAGENS.semQuestoesFiltros);
+            document.getElementById('filtro-area')?.focus();
+            return;
         }
 
+        UI.ocultarCarregando();
+        if (questoes.length < quantidade && !confirm(MENSAGENS.acervoInsuficiente(questoes.length, quantidade))) {
+            document.getElementById('filtro-quantidade')?.focus();
+            return;
+        }
         estado.questoes = questoes;
         estado.indiceAtual = 0;
         estado.historicoTentativa = [];
         estado.resultadoAtual = null;
         estado.sessaoAtual = criarSessaoQuiz(questoes);
 
-        UI.ocultarCarregando();
         UI.mostrarTela('quiz');
         carregarQuestaoAtual();
     } catch (err) {
@@ -133,6 +133,7 @@ async function iniciarSimulado() {
             }
         );
     } finally {
+        estado.iniciando = false;
         if (btnIniciar) {
             btnIniciar.disabled = false;
             btnIniciar.textContent = MENSAGENS.iniciarSimulado;
@@ -339,31 +340,42 @@ async function carregarDadosRanking(turmaFiltro = 'Todas') {
 /**
  * Gerenciamento do Cadastro de Aluno
  */
-async function salvarCadastroAluno(e, prefixo = 'input-aluno', fecharModal = false) {
-    if (e) e.preventDefault();
+function salvarCadastroAluno(e, prefixo = 'input-aluno', fecharModal = false) {
+    e?.preventDefault();
+    if (cadastroEmAndamento) return cadastroEmAndamento;
+    if (e && estado.iniciando) return Promise.resolve(null);
 
-    const inputNome = document.getElementById(`${prefixo}-nome`);
-    const inputTurma = document.getElementById(`${prefixo}-turma`);
-    const inputMatricula = document.getElementById(`${prefixo}-matricula`);
-
-    try {
-        const cadastro = {
-            nome: inputNome ? inputNome.value : '',
-            turma: inputTurma ? inputTurma.value : '',
-            matricula: inputMatricula ? inputMatricula.value : '',
-            deviceId: obterIdentificadorDispositivo(),
-            studentId: obterDadosAluno()?.studentId
-        };
-        const remoto = await registrarAlunoAPI(cadastro);
-        const aluno = salvarDadosAluno({ ...cadastro, studentId: remoto.id });
-
-        UI.atualizarIdentificacaoAluno(aluno);
-        estado.turmasConhecidas.add(aluno.turma);
-        if (fecharModal) fecharModalEdicaoAluno();
-        await tentarSincronizarFilaPendente();
-    } catch (err) {
-        alert(err.status === 409 ? MENSAGENS.nomeJaCadastrado : MENSAGENS.erroSalvarCadastro);
-    }
+    cadastroEmAndamento = (async () => {
+        const campos = Object.fromEntries(['nome', 'turma', 'matricula'].map(campo => [campo, document.getElementById(`${prefixo}-${campo}`)]));
+        const cadastro = Object.fromEntries(Object.entries(campos).map(([campo, input]) => [campo, input?.value.trim() || '']));
+        try {
+            validarDadosAluno(cadastro);
+        } catch (erro) {
+            alert(MENSAGENS.identificacaoInvalida[erro.campo]);
+            campos[erro.campo]?.focus();
+            return null;
+        }
+        const botoes = ['btn-salvar-aluno', 'btn-salvar-modal-aluno'].map(id => document.getElementById(id)).filter(Boolean);
+        botoes.forEach(botao => { botao.disabled = true; });
+        try {
+            cadastro.deviceId = obterIdentificadorDispositivo();
+            cadastro.studentId = obterDadosAluno()?.studentId;
+            const remoto = await registrarAlunoAPI(cadastro);
+            const aluno = salvarDadosAluno({ ...cadastro, studentId: remoto.id });
+            UI.atualizarIdentificacaoAluno(aluno);
+            estado.turmasConhecidas.add(aluno.turma);
+            if (fecharModal) fecharModalEdicaoAluno();
+            void tentarSincronizarFilaPendente();
+            return aluno;
+        } catch (erro) {
+            alert(erro.status === 409 ? MENSAGENS.nomeJaCadastrado : MENSAGENS.erroSalvarCadastro);
+            campos.nome?.focus();
+            return null;
+        } finally {
+            botoes.forEach(botao => { botao.disabled = false; });
+        }
+    })().finally(() => { cadastroEmAndamento = null; });
+    return cadastroEmAndamento;
 }
 
 function abrirModalEdicaoAluno() {

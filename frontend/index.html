@@ -78,7 +78,7 @@
 
         <!-- Estado: Primeiro Acesso (Formulário Simples) -->
         <p data-mensagem="retencaoDados"></p>
-        <form id="form-cadastro-aluno">
+        <form id="form-cadastro-aluno" novalidate>
           <p style="font-size: 0.875rem; color: #475569; margin-bottom: 0.85rem;" data-mensagem="orientacaoCadastro"></p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem;">
             <div>
@@ -116,27 +116,72 @@
           </select>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="filtro-ano" data-mensagem="campoAno"></label>
-          <select id="filtro-ano" class="form-select">
-            <option value="all" selected data-mensagem="todosAnos"></option>
-            <option value="2009">ENEM 2009</option>
-            <option value="2010">ENEM 2010</option>
-            <option value="2011">ENEM 2011</option>
-            <option value="2012">ENEM 2012</option>
-            <option value="2013">ENEM 2013</option>
-            <option value="2014">ENEM 2014</option>
-            <option value="2015">ENEM 2015</option>
-            <option value="2016">ENEM 2016</option>
-            <option value="2017">ENEM 2017</option>
-            <option value="2018">ENEM 2018</option>
-            <option value="2019">ENEM 2019</option>
-            <option value="2020">ENEM 2020</option>
-            <option value="2021">ENEM 2021</option>
-            <option value="2022" data-mensagem="ano2022"></option>
-            <option value="2023" data-mensagem="ano2023"></option>
-          </select>
-        </div>
+        <fieldset class="form-group" style="border: 0; padding: 0;" aria-describedby="orientacao-anos">
+          <legend class="form-label" data-mensagem="campoAno"></legend>
+          <p id="orientacao-anos" data-mensagem="orientacaoAnos"></p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2009" checked>
+              <span data-mensagem="ano2009"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2010" checked>
+              <span data-mensagem="ano2010"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2011" checked>
+              <span data-mensagem="ano2011"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2012" checked>
+              <span data-mensagem="ano2012"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2013" checked>
+              <span data-mensagem="ano2013"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2014" checked>
+              <span data-mensagem="ano2014"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2015" checked>
+              <span data-mensagem="ano2015"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2016" checked>
+              <span data-mensagem="ano2016"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2017" checked>
+              <span data-mensagem="ano2017"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2018" checked>
+              <span data-mensagem="ano2018"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2019" checked>
+              <span data-mensagem="ano2019"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2020" checked>
+              <span data-mensagem="ano2020"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2021" checked>
+              <span data-mensagem="ano2021"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2022" checked>
+              <span data-mensagem="ano2022"></span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer;">
+              <input type="checkbox" name="ano-enem" value="2023" checked>
+              <span data-mensagem="ano2023"></span>
+            </label>
+          </div>
+        </fieldset>
 
         <div class="form-group">
           <label class="form-label" for="filtro-quantidade" data-mensagem="campoQuantidade"></label>
@@ -144,6 +189,13 @@
             <option value="5" selected data-mensagem="quantidadeRapida"></option>
             <option value="10" data-mensagem="quantidadeRecomendada"></option>
             <option value="15" data-mensagem="quantidadeCompleta"></option>
+            <option value="20" data-mensagem="quantidade20"></option>
+            <option value="25" data-mensagem="quantidade25"></option>
+            <option value="30" data-mensagem="quantidade30"></option>
+            <option value="35" data-mensagem="quantidade35"></option>
+            <option value="40" data-mensagem="quantidade40"></option>
+            <option value="45" data-mensagem="quantidade45"></option>
+            <option value="50" data-mensagem="quantidade50"></option>
           </select>
         </div>
 
@@ -327,7 +379,7 @@
         <button id="btn-fechar-modal-aluno" aria-label="" data-mensagem-aria-label="botaoFechar" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">✕</button>
       </div>
 
-      <form id="form-modal-aluno" style="padding-top: 1rem;">
+      <form id="form-modal-aluno" novalidate style="padding-top: 1rem;">
         <div class="form-group">
           <label class="form-label" for="input-modal-nome" data-mensagem="campoNome"></label>
           <input type="text" id="input-modal-nome" class="form-input" required>
@@ -344,7 +396,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.25rem;">
           <button type="button" id="btn-cancelar-modal-aluno" class="btn btn-secondary" data-mensagem="botaoCancelar"></button>
-          <button type="submit" class="btn btn-primary" data-mensagem="botaoSalvarAlteracoes"></button>
+          <button type="submit" id="btn-salvar-modal-aluno" class="btn btn-primary" data-mensagem="botaoSalvarAlteracoes"></button>
         </div>
       </form>
     </div>

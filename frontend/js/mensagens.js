@@ -5,6 +5,23 @@
  */
 
 export const MENSAGENS = {
+    semQuestoesFiltros: 'Não encontramos questões para essa seleção. Escolha outros anos ou outra área e tente iniciar novamente.',
+    orientacaoAnos: 'Marque um ou mais anos para escolher as questões.',
+    selecionarAno: 'Marque pelo menos um ano para iniciar o simulado.',
+    identificacaoInvalida: {
+        nome: 'Informe seu nome com 2 a 120 caracteres para continuar.',
+        turma: 'Selecione sua turma para continuar.',
+        matricula: 'Informe sua matrícula com 3 a 40 caracteres para continuar.'
+    },
+    acervoInsuficiente: (total, pedido) => `Encontramos ${total} questões para os filtros escolhidos, das ${pedido} solicitadas. Quer continuar com ${total}? Se preferir ajustar os filtros, escolha Cancelar.`,
+    quantidade20: '20 questões',
+    quantidade25: '25 questões',
+    quantidade30: '30 questões',
+    quantidade35: '35 questões',
+    quantidade40: '40 questões',
+    quantidade45: '45 questões',
+    quantidade50: '50 questões',
+
     retencaoDados: 'Seu cadastro e histórico neste aparelho são apagados após 30 dias sem uso. Tentativas ainda não enviadas permanecem guardadas até o envio ou até você apagá-las.',
     apagarDadosAparelho: 'Apagar dados deste aparelho',
     confirmarApagarDados: 'Apagar cadastro, histórico e todas as tentativas ainda não enviadas deste aparelho? As pontuações já enviadas continuarão no ranking. Esta ação não pode ser desfeita.',
@@ -55,7 +72,7 @@ export const MENSAGENS = {
     subtituloProjeto: "Simulados e recomendações de estudo para o ENEM",
     tituloCadastro: "👤 Identificação do Estudante",
     nomeAluno: "Nome do Aluno",
-    orientacaoCadastro: "Preencha seus dados para salvar suas tentativas e participar do ranking da sua turma:",
+    orientacaoCadastro: "Preencha seus dados para participar do ranking. Você pode salvar agora ou ao clicar em Iniciar Simulado.",
     campoNome: "Nome Completo: *",
     campoTurma: "Turma: *",
     campoMatricula: "Matrícula / ID: *",
@@ -67,8 +84,21 @@ export const MENSAGENS = {
     areaNatureza: "Ciências da Natureza (Física, Química, Biologia)",
     areaHumanas: "Ciências Humanas (História, Geografia, Filosofia)",
     areaLinguagens: "Linguagens, Códigos e suas Tecnologias",
-    campoAno: "Ano das Questões:",
+    campoAno: "Anos das questões:",
     todosAnos: "Todos os anos (2009 a 2023)",
+    ano2009: "ENEM 2009",
+    ano2010: "ENEM 2010",
+    ano2011: "ENEM 2011",
+    ano2012: "ENEM 2012",
+    ano2013: "ENEM 2013",
+    ano2014: "ENEM 2014",
+    ano2015: "ENEM 2015",
+    ano2016: "ENEM 2016",
+    ano2017: "ENEM 2017",
+    ano2018: "ENEM 2018",
+    ano2019: "ENEM 2019",
+    ano2020: "ENEM 2020",
+    ano2021: "ENEM 2021",
     ano2022: "ENEM 2022",
     ano2023: "ENEM 2023",
     campoQuantidade: "Quantidade de Questões:",
@@ -168,5 +198,5 @@ export const MENSAGENS = {
 
     // Cadastro de estudante
     nomeJaCadastrado: 'Já existe um cadastro com esse nome. Confira seu nome completo e tente novamente.',
-    erroSalvarCadastro: 'Não foi possível salvar seus dados no momento. Tente novamente.'
+    erroSalvarCadastro: 'Não foi possível salvar seus dados. Eles continuam preenchidos: confira sua conexão e tente Salvar Identificação ou Iniciar Simulado novamente.'
 };

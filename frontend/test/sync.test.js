@@ -10,13 +10,14 @@ Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: {
     setItem: (chave, valor) => memoria.set(chave, String(valor)),
     removeItem: chave => memoria.delete(chave)
 } });
+let anosSelecionados = [{ value: '2022' }, { value: '2023' }];
 const eventos = new Map();
 const botoes = new Map(['btn-iniciar-simulado', 'btn-confirmar-resposta', 'btn-proxima-questao', 'ranking-filtro-turma', 'form-cadastro-aluno', 'form-modal-aluno', 'btn-alterar-cadastro-home'].map(id => [id, {
     style: {}, addEventListener: (evento, callback) => eventos.set(`${id}:${evento}`, callback)
 }]));
 globalThis.document = {
     getElementById: id => botoes.get(id) ?? null,
-    querySelectorAll: () => [],
+    querySelectorAll: seletor => seletor === 'input[name="ano-enem"]:checked' ? anosSelecionados : [],
     querySelector: () => null,
     addEventListener: (evento, callback) => eventos.set(evento, callback)
 };
@@ -55,6 +56,16 @@ await eventos.get('DOMContentLoaded')();
 
 beforeEach(t => {
     t.mock.method(console, 'warn', () => {});
+    t.mock.method(globalThis, 'setInterval', () => 0);
+    globalThis.alert = () => {};
+    globalThis.confirm = () => true;
+    anosSelecionados = [{ value: '2022' }, { value: '2023' }];
+    for (const prefixo of ['input-aluno', 'input-modal']) {
+        for (const [campo, value] of Object.entries({ nome: 'Aluno Teste', turma: TURMAS[0], matricula: '123' })) {
+            botoes.set(`${prefixo}-${campo}`, { value, add() {}, focus() { document.activeElement = this; } });
+        }
+    }
+    globalThis.Option = function (text, value) { return { text, value }; };
     memoria.clear();
     requisicoes = [];
     cadastroFalha = false;
@@ -317,4 +328,176 @@ test('histórico informa a retenção e só apaga pendências após confirmaçã
     assert.equal(obterResultadosPendentes().length, 0);
     assert.equal(obterDadosAluno(), null);
     assert.equal(recargas, 1);
+});
+
+
+test('iniciar salva identificação e aguarda confirmação sem duplicar cadastro ou sessão', async t => {
+    memoria.delete('performance_quest_aluno');
+    let liberar;
+    const espera = new Promise(resolve => { liberar = resolve; });
+    let cadastros = 0, consultas = 0, telas = 0, timers = 0;
+    t.mock.method(UI, 'mostrarTela', tela => { if (tela === 'quiz') telas++; });
+    t.mock.method(UI, 'atualizarTimer', () => { timers++; });
+    t.mock.method(globalThis, 'fetch', async url => {
+        if (url.includes('/students')) { cadastros++; await espera; return Response.json({ student: { id: studentId } }); }
+        if (url.includes('/questions')) { consultas++; return Response.json({ questions: [questao] }); }
+        return Response.json({});
+    });
+    const iniciar = eventos.get('btn-iniciar-simulado:click');
+    const primeira = iniciar();
+    await iniciar();
+    const salvar = eventos.get('form-cadastro-aluno:submit')({ preventDefault() {} });
+    assert.equal(cadastros, 1);
+    assert.equal(consultas, 0);
+    assert.equal(timers, 0);
+    liberar();
+    await Promise.all([primeira, salvar]);
+    assert.equal(obterDadosAluno().studentId, studentId);
+    assert.equal(consultas, 1);
+    assert.equal(telas, 1);
+    assert.equal(timers, 1);
+});
+
+test('salvar manualmente e iniciar ao mesmo tempo compartilham o cadastro pendente', async t => {
+    memoria.delete('performance_quest_aluno');
+    let liberar;
+    cadastroPendente = new Promise(resolve => { liberar = resolve; });
+    let chamadas = 0;
+    const original = globalThis.fetch;
+    t.mock.method(globalThis, 'fetch', (...args) => { if (String(args[0]).includes('/students')) chamadas++; return original(...args); });
+    const salvar = eventos.get('form-cadastro-aluno:submit');
+    const primeira = salvar({ preventDefault() {} });
+    const segunda = salvar({ preventDefault() {} });
+    const iniciar = eventos.get('btn-iniciar-simulado:click')();
+    liberar();
+    await Promise.all([primeira, segunda, iniciar]);
+    assert.equal(chamadas, 1);
+    assert.equal(obterDadosAluno().studentId, studentId);
+});
+
+test('identificação salva permite iniciar sem cadastrar novamente', async t => {
+    let cadastros = 0;
+    const original = globalThis.fetch;
+    t.mock.method(globalThis, 'fetch', (...args) => { if (String(args[0]).includes('/students')) cadastros++; return original(...args); });
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(cadastros, 0);
+});
+
+test('dados inválidos orientam e focam o primeiro campo, sem iniciar', async t => {
+    memoria.delete('performance_quest_aluno');
+    const alertas = [];
+    globalThis.alert = mensagem => alertas.push(mensagem);
+    let chamadas = 0;
+    t.mock.method(globalThis, 'fetch', async () => { chamadas++; });
+    const casos = { nome: [' ', 'A', 'N'.repeat(121)], turma: ['', 'T'.repeat(41)], matricula: ['1', 'M'.repeat(41)] };
+    for (const [campo, valores] of Object.entries(casos)) {
+        const input = botoes.get(`input-aluno-${campo}`);
+        const anterior = input.value;
+        for (const value of valores) {
+            input.value = value;
+            await eventos.get('btn-iniciar-simulado:click')();
+            assert.equal(document.activeElement, input);
+            assert.equal(alertas.at(-1), MENSAGENS.identificacaoInvalida[campo]);
+        }
+        input.value = anterior;
+    }
+    assert.equal(chamadas, 0);
+});
+
+test('falha de salvamento preserva os campos e não carrega questões', async t => {
+    memoria.delete('performance_quest_aluno');
+    cadastroFalha = true;
+    let consultas = 0, timers = 0;
+    const original = globalThis.fetch;
+    t.mock.method(globalThis, 'fetch', (...args) => { if (String(args[0]).includes('/questions')) consultas++; return original(...args); });
+    t.mock.method(UI, 'atualizarTimer', () => { timers++; });
+    const alertas = [];
+    globalThis.alert = mensagem => alertas.push(mensagem);
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(botoes.get('input-aluno-nome').value, 'Aluno Teste');
+    assert.equal(obterDadosAluno(), null);
+    assert.equal(consultas, 0);
+    assert.equal(timers, 0);
+    assert.equal(alertas.at(-1), MENSAGENS.erroSalvarCadastro);
+    cadastroFalha = false;
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(consultas, 1);
+});
+
+test('falha ao gravar identificação no aparelho também impede o início', async t => {
+    memoria.delete('performance_quest_aluno');
+    const original = localStorage.setItem;
+    t.mock.method(localStorage, 'setItem', (chave, valor) => { if (chave === 'performance_quest_aluno') throw new Error('quota'); return original(chave, valor); });
+    let telas = 0;
+    t.mock.method(UI, 'mostrarTela', () => { telas++; });
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(telas, 0);
+    assert.equal(obterDadosAluno(), null);
+});
+
+test('sem ano marcado orienta, foca os anos e não inicia nem cadastra', async t => {
+    anosSelecionados = [];
+    let focou = false, chamadas = 0;
+    t.mock.method(document, 'querySelector', () => ({ focus() { focou = true; } }));
+    t.mock.method(globalThis, 'fetch', async () => { chamadas++; });
+    const alertas = [];
+    globalThis.alert = mensagem => alertas.push(mensagem);
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(chamadas, 0);
+    assert.equal(focou, true);
+    assert.equal(alertas[0], MENSAGENS.selecionarAno);
+});
+
+test('acervo insuficiente permite cancelar ou concluir com o total real no histórico', async t => {
+    botoes.set('filtro-quantidade', { value: '50', focus() {} });
+    t.after(() => botoes.delete('filtro-quantidade'));
+    const original = globalThis.fetch;
+    t.mock.method(globalThis, 'fetch', (url, ...args) => String(url).includes('/questions')
+        ? Promise.resolve(Response.json({ questions: Array.from({ length: 45 }, (_, i) => ({ ...questao, id: `mat-2023-${i}`, ano: 2023 })), total: 45 }))
+        : original(url, ...args));
+    let telas = 0;
+    t.mock.method(UI, 'mostrarTela', tela => { if (tela === 'quiz') telas++; });
+    let aviso;
+    globalThis.confirm = mensagem => { aviso = mensagem; return false; };
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(aviso, MENSAGENS.acervoInsuficiente(45, 50));
+    assert.equal(telas, 0);
+    assert.equal(memoria.has('performance_quest_historico'), false);
+    globalThis.confirm = () => true;
+    let progresso, relatorio;
+    t.mock.method(UI, 'renderizarQuestao', dados => { progresso = dados.total; dados.onSelecionarAlternativa('A'); });
+    t.mock.method(UI, 'renderizarRelatorio', dados => { relatorio = dados; });
+    await eventos.get('btn-iniciar-simulado:click')();
+    for (let i = 0; i < 45; i++) {
+        eventos.get('btn-confirmar-resposta:click')();
+        await eventos.get('btn-proxima-questao:click')();
+    }
+    assert.equal(progresso, 45);
+    assert.equal(relatorio.resumo.total, 45);
+    assert.equal(requisicoes.at(-1).totalQuestions, 45);
+    assert.equal(JSON.parse(memoria.get('performance_quest_historico')).length, 45);
+});
+
+
+test('conflito ao salvar pelo início mantém orientação existente e não inicia', async t => {
+    memoria.delete('performance_quest_aluno');
+    t.mock.method(globalThis, 'fetch', async () => Response.json({ error: 'Duplicate' }, { status: 409 }));
+    const alertas = [];
+    globalThis.alert = mensagem => alertas.push(mensagem);
+    let telas = 0;
+    t.mock.method(UI, 'mostrarTela', () => { telas++; });
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.deepEqual(alertas, [MENSAGENS.nomeJaCadastrado]);
+    assert.equal(telas, 0);
+    assert.equal(botoes.get('input-aluno-nome').value, 'Aluno Teste');
+});
+
+test('acervo vazio orienta ajustar filtros e não inicia cronômetro', async t => {
+    t.mock.method(globalThis, 'fetch', async () => Response.json({ questions: [], total: 0 }));
+    let erro, timers = 0;
+    t.mock.method(UI, 'mostrarErro', mensagem => { erro = mensagem; });
+    t.mock.method(UI, 'atualizarTimer', () => { timers++; });
+    await eventos.get('btn-iniciar-simulado:click')();
+    assert.equal(erro, MENSAGENS.semQuestoesFiltros);
+    assert.equal(timers, 0);
 });

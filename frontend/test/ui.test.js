@@ -101,3 +101,13 @@ test('inicialização aplica textos e rótulos acessíveis sem interpretar HTML'
     assert.equal(texto.textContent, MENSAGENS.botaoConfirmarResposta);
     assert.equal(atributo['aria-label'], MENSAGENS.botaoFechar);
 });
+
+
+test('configuração mantém todos os anos do acervo marcados e quantidades crescentes com padrão 5', () => {
+    const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+    const anos = [...html.matchAll(/<input type="checkbox" name="ano-enem" value="(\d+)" checked>/g)].map(match => match[1]);
+    assert.deepEqual(anos, Array.from({ length: 15 }, (_, i) => String(2009 + i)));
+    const seletor = html.match(/<select id="filtro-quantidade"[\s\S]*?<\/select>/)[0];
+    assert.deepEqual([...seletor.matchAll(/value="(\d+)"/g)].map(match => Number(match[1])), [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+    assert.match(seletor, /value="5" selected/);
+});
