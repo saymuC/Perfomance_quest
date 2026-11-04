@@ -144,6 +144,24 @@ test('API local fornece saúde, questões, resultados e ranking', async t => {
   assert.equal((await fetch(`${baseUrl}/api/questions?quantity=501&year=2023`)).status, 400);
   assert.equal((await fetch(`${baseUrl}/api/questions?year=2024`)).status, 400);
 
+  const selectedYears = await fetch(`${baseUrl}/api/questions?area=Todas&quantity=500&year=2022,2023`).then(response => response.json());
+  assert.equal(selectedYears.total, year2022.total + fullQuestionSet.total);
+  assert.equal(new Set(selectedYears.questions.map(q => q.id)).size, selectedYears.questions.length);
+  assert.deepEqual(new Set(selectedYears.questions.map(q => q.ano)), new Set([2022, 2023]));
+  for (const year of ['2022', '2023', '2022,2023', '2009,2016', '2021,2023']) {
+    for (const quantity of [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]) {
+      const dados = await fetch(`${baseUrl}/api/questions?area=Matemática&quantity=${quantity}&year=${year}`).then(r => r.json());
+      assert.equal(dados.questions.length, Math.min(quantity, dados.total));
+      assert.equal(new Set(dados.questions.map(q => q.id)).size, dados.questions.length);
+      assert.ok(dados.questions.every(q => year.split(',').includes(String(q.ano)) && q.area.includes('Matemática')));
+    }
+  }
+  const balanced = await fetch(`${baseUrl}/api/questions?quantity=50&year=2022,2023`).then(r => r.json());
+  const counts = [...Map.groupBy(balanced.questions, q => q.area).values()].map(qs => qs.length);
+  assert.equal(balanced.questions.length, 50);
+  assert.ok(Math.max(...counts) - Math.min(...counts) <= 1);
+  for (const year of ['', '2022,', '2022,2024', 'all,2023']) assert.equal((await fetch(`${baseUrl}/api/questions?year=${year}`)).status, 400);
+
   const saved = await fetch(`${baseUrl}/api/results`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

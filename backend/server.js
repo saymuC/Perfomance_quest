@@ -200,15 +200,16 @@ export async function createApiServer({ store, frontendOrigins, dataFile, reques
     }
 
     if (req.method === 'GET' && url.pathname === '/api/questions') {
-      const year = url.searchParams.get('year') || 'all';
+      const year = url.searchParams.get('year') ?? 'all';
+      const years = year.split(',');
       const quantity = Number(url.searchParams.get('quantity') || 10);
       const area = normalizar(url.searchParams.get('area') || 'Todas');
-      if ((year !== 'all' && (!/^20\d{2}$/.test(year) || Number(year) < 2009 || Number(year) > 2023)) || !Number.isInteger(quantity) || quantity < 1 || quantity > 500) {
+      if ((year !== 'all' && (years.some(year => !/^20\d{2}$/.test(year) || Number(year) < 2009 || Number(year) > 2023))) || !Number.isInteger(quantity) || quantity < 1 || quantity > 500) {
         return responder(res, 400, { error: 'Filtros year ou quantity inválidos.' }, requestOrigin, origins);
       }
 
       const filtered = questions.filter(question => (
-        (year === 'all' || question.ano === Number(year)) && (area === 'todas' || normalizar(question.area).includes(area))
+        (year === 'all' || years.includes(String(question.ano))) && (area === 'todas' || normalizar(question.area).includes(area))
       ));
       return responder(res, 200, { questions: selecionarQuestoes(filtered, quantity, area), total: filtered.length }, requestOrigin, origins);
     }

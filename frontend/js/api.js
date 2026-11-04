@@ -202,13 +202,14 @@ export async function verificarSaudeAPI() {
 /**
  * Obtém questões através da API configurada (GET /api/questions)
  */
-export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 'all' } = {}) {
+export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, ano = 'all', anos } = {}) {
     const baseUrl = getApiBaseUrl();
     const query = new URLSearchParams({
         area,
         quantity: String(quantidade)
     });
-    if (ano) query.append('year', String(ano));
+    if (anos && !anos.length) throw new Error('Selecione ao menos um ano.');
+    query.set('year', anos ? anos.join(',') : String(ano || 'all'));
 
     const url = `${baseUrl}/questions?${query.toString()}`;
     const controller = new AbortController();
@@ -236,12 +237,14 @@ export async function obterQuestoesSimulado({ area = 'Todas', quantidade = 10, a
     const data = await response.json();
     const listaBruta = Array.isArray(data) ? data : (data.questions || data.questoes || []);
 
-    if (!Array.isArray(listaBruta) || listaBruta.length === 0) {
+    if (!Array.isArray(listaBruta)) {
         const erro = new Error('A API não retornou questões.');
         throw erro;
     }
 
-    const todasNormalizadas = listaBruta.map(normalizarQuestao);
+    if (!listaBruta.length) return { questoes: [], fonte: 'api', totalDisponivel: 0 };
+
+    const todasNormalizadas = [...new Map(listaBruta.map(normalizarQuestao).map(questao => [questao.id, questao])).values()];
 
     const selecionadas = area && area !== 'Todas'
         ? embaralhar(todasNormalizadas).slice(0, quantidade)
