@@ -23,7 +23,13 @@ function permitirRecarregarImagem(img) {
         tentar.textContent = MENSAGENS.botaoTentarNovamente;
         tentar.onclick = e => {
             e.preventDefault();
-            img.src = img.src;
+            const url = new URL(img.src);
+            if (url.protocol === 'http:' || url.protocol === 'https:') {
+                url.searchParams.set('_retry', String(Date.now()));
+                img.src = url.href;
+            } else {
+                img.src = img.src;
+            }
         };
         aviso.appendChild(tentar);
         img.after(aviso);
