@@ -268,3 +268,23 @@ test('Frontend - UI: rotuloPrioridade categoriza IPE qualitativamente em pt-BR',
     assert.deepEqual(rotuloPrioridade(0.2), { texto: 'Prioridade baixa', classe: 'badge-success' });
     assert.deepEqual(rotuloPrioridade(0), { texto: 'Prioridade baixa', classe: 'badge-success' });
 });
+
+
+test('consulta preserva ano único, todos e união de anos, com 50 questões sem repetição', async t => {
+    let chamadas = 0, urlAtual;
+    t.mock.method(globalThis, 'fetch', async url => {
+        chamadas++;
+        urlAtual = new URL(url);
+        const questions = Array.from({ length: 60 }, (_, indice) => ({ id: `q${indice}`, ano: indice % 2 ? 2022 : 2023, area: 'Matemática', alternativaCorreta: 'A', alternativas: [{ letra: 'A', texto: 'Resposta' }] }));
+        return Response.json({ questions: [...questions, questions[0]], total: 60 });
+    });
+    for (const [filtro, esperado] of [[{ ano: 2022 }, '2022'], [{ ano: 'all' }, 'all'], [{ anos: ['2023'] }, '2023'], [{ anos: ['2022', '2023'] }, '2022,2023']]) {
+        const dados = await obterQuestoesSimulado({ ...filtro, area: 'Matemática', quantidade: 50 });
+        assert.equal(urlAtual.searchParams.get('year'), esperado);
+        assert.equal(urlAtual.searchParams.get('quantity'), '50');
+        assert.equal(dados.questoes.length, 50);
+        assert.equal(new Set(dados.questoes.map(q => q.id)).size, 50);
+    }
+    await assert.rejects(obterQuestoesSimulado({ anos: [] }), /ano/);
+    assert.equal(chamadas, 4);
+});

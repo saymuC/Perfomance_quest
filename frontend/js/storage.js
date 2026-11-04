@@ -58,16 +58,20 @@ export function obterDadosAluno() {
 /**
  * Salva ou atualiza os dados cadastrais do aluno
  */
-export function salvarDadosAluno({ nome, turma, matricula, deviceId, studentId } = {}) {
-    if (!nome || typeof nome !== 'string' || nome.trim().length < 2) {
-        throw new Error('Informe um nome válido com ao menos 2 caracteres.');
+export function validarDadosAluno({ nome, turma, matricula } = {}) {
+    if (typeof nome !== 'string' || nome.trim().length < 2 || nome.trim().length > 120) {
+        throw Object.assign(new Error('Informe um nome válido com 2 a 120 caracteres.'), { campo: 'nome' });
     }
     if (!TURMAS.includes(turma)) {
-        throw new Error('Selecione uma turma válida.');
+        throw Object.assign(new Error('Informe uma turma válida.'), { campo: 'turma' });
     }
-    if (!matricula || typeof matricula !== 'string' || matricula.trim().length < 3) {
-        throw new Error('Informe uma matrícula válida (ao menos 3 caracteres).');
+    if (typeof matricula !== 'string' || matricula.trim().length < 3 || matricula.trim().length > 40) {
+        throw Object.assign(new Error('Informe uma matrícula válida com 3 a 40 caracteres.'), { campo: 'matricula' });
     }
+}
+
+export function salvarDadosAluno({ nome, turma, matricula, deviceId, studentId } = {}) {
+    validarDadosAluno({ nome, turma, matricula });
 
     const aluno = {
         nome: nome.trim(),
@@ -82,6 +86,7 @@ export function salvarDadosAluno({ nome, turma, matricula, deviceId, studentId }
         localStorage.setItem(CHAVE_ALUNO, JSON.stringify(aluno));
     } catch (e) {
         console.warn('Erro ao salvar dados do aluno no LocalStorage:', e);
+        throw e;
     }
 
     return aluno;
